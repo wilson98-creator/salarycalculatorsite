@@ -42,7 +42,7 @@ export default function AboutPage() {
       <h2>What we believe</h2>
       <ul>
         <li><strong>No login, no tracking of your salary.</strong> The calculator runs entirely in your browser. We never see the numbers you type.</li>
-        <li><strong>No ads above the calculator.</strong> Ads (when we add them) appear below the result, never above the input. We\'re not going to charge you your attention for a $0.30 RPM banner.</li>
+        <li><strong>Unobtrusive advertising.</strong> Display ads help keep the site free. They are clearly labelled and never block the calculator or interrupt your results.</li>
         <li><strong>Source every number.</strong> Every rate, threshold, and coefficient on the site links back to a primary ATO or government source.</li>
         <li><strong>Show the math.</strong> Our methodology page documents exactly how every figure is derived. If we\'re wrong about something, we want it to be easy to find and correct.</li>
         <li><strong>Australian, not Australian-themed.</strong> We\'re not a US personal finance blog with an .com.au slapped on the front. The math is in AUD, the tax rates are ATO rates, the disclaimer is the one an Australian tax agent would actually write.</li>

@@ -84,7 +84,7 @@ export default function HomePage() {
             <ul className="mt-3 space-y-2 pl-5 list-disc">
               <li>Every rate is sourced from the ATO and cited in <Link href="/methodology" className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">our methodology</Link>.</li>
               <li>Tested against the ATO published PAYG formulas ({sources.paygFormulas.label}).</li>
-              <li>No login, no tracking of your salary, no ads above the calculator.</li>
+              <li>No login, no tracking of your salary.</li>
               <li>Built and maintained in Australia.</li>
             </ul>
           </div>
