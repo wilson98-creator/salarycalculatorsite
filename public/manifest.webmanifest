@@ -1,0 +1,13 @@
+{
+  "name": "SalaryCalc — Australian Pay Calculator",
+  "short_name": "SalaryCalc",
+  "description": "Free, accurate Australian salary calculator. Take-home pay, salary sacrifice, HECS, and award rates.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1e6fff",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
