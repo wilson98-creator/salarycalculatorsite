@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     icon: [{ url: '/icons/icon.svg', type: 'image/svg+xml' }],
   },
   manifest: '/manifest.webmanifest',
-  other: gscVerification ? { 'google-site-verification': gscVerification } : undefined,
+  other: { 'google-site-verification': '_6KD07ejnLc9X4RGJB80gujOo0bllGWDKDvVSMxitmY' },
 };
 
 export const viewport: Viewport = {
