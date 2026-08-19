@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://salarycalc.example.com.au/sitemap.xml
+Sitemap: https://salarycalc-au.pages.dev/sitemap.xml
+
