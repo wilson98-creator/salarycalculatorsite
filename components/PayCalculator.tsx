@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   calculate,
   formatAUD,
+  fromAnnual,
   type PayInputs,
   type PayPeriod,
   type PayResult,
@@ -252,6 +253,22 @@ export function PayCalculator() {
 
 function Results({ result }: { result: PayResult }) {
   const periodLabel = periods.find((p) => p.value === result.period)?.label ?? 'Period';
+  // Derive annual net from the per-period result, then convert to all common periods.
+  const periodMultiplier: Record<PayPeriod, number> = {
+    annual: 1,
+    monthly: 12,
+    fortnightly: 26,
+    weekly: 52,
+    daily: 5 * 52,
+    hourly: 38 * 52,
+  };
+  const annualNet = result.net * periodMultiplier[result.period];
+  const allPeriods: { key: PayPeriod; label: string; amount: number; isSelected: boolean }[] = [
+    { key: 'annual', label: 'Annual', amount: fromAnnual(annualNet, 'annual', 38, 52), isSelected: result.period === 'annual' },
+    { key: 'monthly', label: 'Monthly', amount: fromAnnual(annualNet, 'monthly', 38, 52), isSelected: result.period === 'monthly' },
+    { key: 'fortnightly', label: 'Fortnightly', amount: fromAnnual(annualNet, 'fortnightly', 38, 52), isSelected: result.period === 'fortnightly' },
+    { key: 'weekly', label: 'Weekly', amount: fromAnnual(annualNet, 'weekly', 38, 52), isSelected: result.period === 'weekly' },
+  ];
   return (
     <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
       <div className="mb-3 flex items-center justify-between">
@@ -262,7 +279,34 @@ function Results({ result }: { result: PayResult }) {
         <span className="result-label">Net pay</span>
         <span className="result-value text-2xl text-brand-700 dark:text-brand-300">{formatAUD(result.net)}</span>
       </div>
-      <div className="my-2 h-px bg-ink-200 dark:bg-ink-700" />
+
+      <div className="my-3 h-px bg-ink-200 dark:bg-ink-700" />
+
+      <div className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
+        Take-home per period
+      </div>
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+        {allPeriods.map((p) => (
+          <div
+            key={p.key}
+            className={`rounded-lg border p-3 ${
+              p.isSelected
+                ? 'border-brand-300 bg-white dark:border-brand-700 dark:bg-ink-900'
+                : 'border-ink-200 bg-white/60 dark:border-ink-700 dark:bg-ink-900/40'
+            }`}
+          >
+            <div className="text-[11px] font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
+              {p.label}
+            </div>
+            <div className="mt-0.5 font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+              {formatAUD(p.amount)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="my-3 h-px bg-ink-200 dark:bg-ink-700" />
+
       <div className="result-row">
         <span className="result-label">Gross</span>
         <span className="result-value">{formatAUD(result.gross)}</span>
