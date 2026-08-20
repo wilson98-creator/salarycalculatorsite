@@ -1,0 +1,5 @@
+Contact: mailto:hello@salarycalc.example.com.au
+Contact: https://salarycalc.example.com.au/contact/
+Expires: 2027-12-31T23:59:59Z
+Preferred-Languages: en
+Canonical: https://thesalarycalc.com.au/.well-known/security.txt
