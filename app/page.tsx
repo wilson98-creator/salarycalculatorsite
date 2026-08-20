@@ -233,7 +233,7 @@ export default function HomePage() {
             <strong className="text-ink-900 dark:text-ink-50">Paycheck calculator / take home pay calculator</strong> — for the everyday question of "how much is in my next pay". The same calculation, but the calculator shows the per-period number prominently.
           </li>
           <li>
-            <strong className="text-ink-900 dark:text-ink-50">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong> — the same math, from the employer\u2019s side. Your employer\u2019s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
+            <strong className="text-ink-900 dark:text-ink-50">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong> — the same math, from the employer’s side. Your employer’s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
           </li>
           <li>
             <strong className="text-ink-900 dark:text-ink-50">Salary comparison</strong> — for people weighing two job offers. The calculator makes it easy to enter each offer and see the after-tax, after-super comparison.

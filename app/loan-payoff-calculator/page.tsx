@@ -7,7 +7,7 @@ import { JsonLd, faqSchema, softwareApplicationSchema } from '@/components/Schem
 export const metadata: Metadata = {
   title: 'Loan Payoff Calculator (Australia) — Debt Repayment Planner',
   description:
-    'Free Australian loan payoff calculator. See when your loan will be paid off, how much interest you\u2019ll pay, and the savings from extra repayments. Models credit cards, personal loans, and a one-off lump sum (e.g. redundancy).',
+    'Free Australian loan payoff calculator. See when your loan will be paid off, how much interest you’ll pay, and the savings from extra repayments. Models credit cards, personal loans, and a one-off lump sum (e.g. redundancy).',
   alternates: { canonical: '/loan-payoff-calculator' },
 };
 
@@ -23,19 +23,19 @@ const faqs = [
       'You will be paying interest on interest — the balance will grow, not shrink. This is the classic credit card trap. The minimum repayment on most credit cards is 2-3% of the balance, which is roughly equal to the monthly interest on a 20% card, so the balance only just keeps up. To pay it off, you need a payment materially above the monthly interest charge. The calculator flags this with a red warning when it sees it.',
   },
   {
-    question: 'What\u2019s the best strategy for paying off debt?',
+    question: 'What’s the best strategy for paying off debt?',
     answer:
       'Two main approaches. The <strong>avalanche</strong> method pays minimums on everything and puts every spare dollar into the debt with the highest interest rate (mathematically optimal). The <strong>snowball</strong> method puts spare dollars into the smallest balance first (psychologically easier — quick wins). For most people, the avalanche method saves more in interest, but the snowball method is better if motivation is the bottleneck. The choice is mostly a personality question.',
   },
   {
     question: 'Can I use my redundancy payout to clear a loan?',
     answer:
-      'Yes. A redundancy payout (or any lump sum — inheritance, bonus, tax refund) goes directly against the loan principal, which means future interest is calculated on a smaller balance. The bigger the lump sum and the earlier you apply it, the more interest you save. Use the calculator\u2019s "lump sum" field to model this. Most redundancy payouts in Australia are tax-free up to a limit (the ATO\u2019s "genuine redundancy" exemption), so the full amount is usually available to apply to debt.',
+      'Yes. A redundancy payout (or any lump sum — inheritance, bonus, tax refund) goes directly against the loan principal, which means future interest is calculated on a smaller balance. The bigger the lump sum and the earlier you apply it, the more interest you save. Use the calculator’s "lump sum" field to model this. Most redundancy payouts in Australia are tax-free up to a limit (the ATO’s "genuine redundancy" exemption), so the full amount is usually available to apply to debt.',
   },
   {
     question: 'Should I refinance a personal loan?',
     answer:
-      'If your credit score has improved or rates have moved, refinancing can save real money. The break-even point is usually short (1-2 years) for personal loans. For credit cards, balance transfers to a 0% intro rate can buy you 6-18 months of interest-free repayment, but watch for the revert rate and balance transfer fees (typically 1-3% of the balance). The calculator\u2019s output is the same regardless of how the rate is achieved — what matters is the rate you end up paying.',
+      'If your credit score has improved or rates have moved, refinancing can save real money. The break-even point is usually short (1-2 years) for personal loans. For credit cards, balance transfers to a 0% intro rate can buy you 6-18 months of interest-free repayment, but watch for the revert rate and balance transfer fees (typically 1-3% of the balance). The calculator’s output is the same regardless of how the rate is achieved — what matters is the rate you end up paying.',
   },
   {
     question: 'Why is my minimum payment so low?',
@@ -79,7 +79,7 @@ export default function LoanPayoffCalculatorPage() {
         <section className="prose prose-slate dark:prose-invert mt-14">
           <h2>How loan payoff math works</h2>
           <p>
-            Most personal loans and credit cards amortise: each month, interest is calculated on the remaining balance, and your payment is split into interest and principal. The principal portion shrinks the balance; the interest portion is the lender\u2019s cut.
+            Most personal loans and credit cards amortise: each month, interest is calculated on the remaining balance, and your payment is split into interest and principal. The principal portion shrinks the balance; the interest portion is the lender’s cut.
           </p>
           <p>
             Early in the loan, the balance is high, so most of each payment is interest. As the balance shrinks, the interest component falls and the principal component grows. This is why the first 5 years of a personal loan feel like you are barely making progress — and why paying even a small amount extra in the early years can shave years off the loan.
@@ -98,10 +98,10 @@ export default function LoanPayoffCalculatorPage() {
 
           <h2>Using a redundancy payout or other lump sum</h2>
           <p>
-            A one-off payment — a redundancy payout, an inheritance, a tax refund, a bonus, an inheritance — goes directly against the principal. The next month\u2019s interest is calculated on the smaller balance, and the loan is paid off faster. If you have just received a redundancy payout and want to know what it does to your loan balance, the calculator doubles as a <strong>redundancy calculator</strong> — enter the payout in the lump sum field, and the schedule re-runs from month zero with the smaller starting balance.
+            A one-off payment — a redundancy payout, an inheritance, a tax refund, a bonus, an inheritance — goes directly against the principal. The next month’s interest is calculated on the smaller balance, and the loan is paid off faster. If you have just received a redundancy payout and want to know what it does to your loan balance, the calculator doubles as a <strong>redundancy calculator</strong> — enter the payout in the lump sum field, and the schedule re-runs from month zero with the smaller starting balance.
           </p>
           <p>
-            In Australia, "genuine redundancy" payments up to a limit (the ATO\u2019s ETP cap, currently around $11,500 for people under preservation age, more for older workers) are tax-free. The rest is taxed at a concessional rate. So the full payout is usually available to apply to debt, even though you might pay some tax on the larger amount.
+            In Australia, "genuine redundancy" payments up to a limit (the ATO’s ETP cap, currently around $11,500 for people under preservation age, more for older workers) are tax-free. The rest is taxed at a concessional rate. So the full payout is usually available to apply to debt, even though you might pay some tax on the larger amount.
           </p>
           <p>
             The general rule: if the loan interest rate is higher than the after-tax return you would get from investing the lump sum, pay off the loan. For most personal loans and credit cards (12-22% interest), the answer is almost always pay off the loan.

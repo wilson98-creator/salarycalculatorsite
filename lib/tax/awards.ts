@@ -51,7 +51,7 @@ export const commonAwards: Award[] = [
   },
   {
     code: 'MA000009-C',
-    name: 'Children\u2019s Services Award',
+    name: 'Children’s Services Award',
     baseRate: 26.10,
     effectiveFrom: '2025-07-01',
     defaultCasualLoading: 0.25,

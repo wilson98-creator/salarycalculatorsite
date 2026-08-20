@@ -38,7 +38,7 @@ const faqs = [
       'The excess is included in your assessable income and taxed at your marginal rate, with a 15% tax offset. The effective rate is your marginal rate, so the contribution is treated the same as if you had taken it as cash. The cap is a hard ceiling on the tax-advantaged space. Going slightly over is rarely worth it unless you can move the excess into a different cap (e.g. the bring-forward rule).',
   },
   {
-    question: 'Can I salary sacrifice into my spouse\u2019s super?',
+    question: 'Can I salary sacrifice into my spouse’s super?',
     answer:
       'No. Salary sacrifice must go into your own super fund under your own name. To contribute to your spouse, you make an after-tax "spouse contribution" instead, which has a separate cap ($3,000 per year for a tax offset if your spouse earns under $40,000). The two are not interchangeable.',
   },
@@ -79,13 +79,13 @@ export default function SalarySacrificeCalculatorPage() {
         <section className="prose prose-slate dark:prose-invert mt-14">
           <h2>How salary sacrifice actually works</h2>
           <p>
-            Without salary sacrifice, every extra dollar you earn is taxed at your marginal rate. For most middle-income earners that is 30% or 37%. Salary sacrifice redirects part of your pre-tax salary into super, where it is taxed at 15% (the super funds\u2019 concessional rate). The arithmetic is simple: if your marginal rate is higher than 15%, you save the difference on every sacrificed dollar.
+            Without salary sacrifice, every extra dollar you earn is taxed at your marginal rate. For most middle-income earners that is 30% or 37%. Salary sacrifice redirects part of your pre-tax salary into super, where it is taxed at 15% (the super funds’ concessional rate). The arithmetic is simple: if your marginal rate is higher than 15%, you save the difference on every sacrificed dollar.
           </p>
           <p>
             The catch is that the money is now in super, not your transaction account. You cannot spend it until you reach preservation age (60 for most people) and meet a condition of release. The trade-off is forced saving plus the tax saving, in exchange for the loss of liquidity.
           </p>
 
-          <h2>When it works (and when it doesn\u2019t)</h2>
+          <h2>When it works (and when it doesn’t)</h2>
           <p>
             Salary sacrifice works whenever your marginal rate is above 15% and you can afford the reduced take-home pay. For the FY 2026–27 brackets:
           </p>

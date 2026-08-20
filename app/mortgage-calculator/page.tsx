@@ -20,17 +20,17 @@ const faqs = [
   {
     question: 'What does "extra repayments" actually save?',
     answer:
-      'Every extra dollar you pay above the minimum goes entirely to principal, which means the next month\u2019s interest is calculated on a smaller balance. On a typical $650,000 mortgage at 6.25% over 30 years, adding $200 per month to your repayment cuts about 4 years off the loan and saves around $80,000 in interest. The exact number depends on your rate, balance, and how early you start making the extras.',
+      'Every extra dollar you pay above the minimum goes entirely to principal, which means the next month’s interest is calculated on a smaller balance. On a typical $650,000 mortgage at 6.25% over 30 years, adding $200 per month to your repayment cuts about 4 years off the loan and saves around $80,000 in interest. The exact number depends on your rate, balance, and how early you start making the extras.',
   },
   {
     question: 'Should I make extra repayments or put the money in an offset account?',
     answer:
-      'If you have an offset account, parking your spare cash there is usually better than making extra repayments — the offset reduces the interest you pay daily (no extra cost when you withdraw) while an extra repayment locks the money into the loan. An offset is the equivalent of an extra repayment that you can undo. Use an offset for your emergency fund and short-term savings. Use a fixed extra repayment for amounts you\u2019re certain you won\u2019t need.',
+      'If you have an offset account, parking your spare cash there is usually better than making extra repayments — the offset reduces the interest you pay daily (no extra cost when you withdraw) while an extra repayment locks the money into the loan. An offset is the equivalent of an extra repayment that you can undo. Use an offset for your emergency fund and short-term savings. Use a fixed extra repayment for amounts you’re certain you won’t need.',
   },
   {
     question: 'What about an offset account vs redraw?',
     answer:
-      'Both reduce the interest you pay (because they lower the effective loan balance), but they work differently. An offset is a separate transaction account: the loan balance is reduced for interest-calculation purposes, but you can withdraw anytime. Redraw lets you pull back extra repayments you\u2019ve already made — usually without notice, but the loan balance goes back up. Offset is more flexible; redraw is more common on fixed-rate loans where offset isn\u2019t available.',
+      'Both reduce the interest you pay (because they lower the effective loan balance), but they work differently. An offset is a separate transaction account: the loan balance is reduced for interest-calculation purposes, but you can withdraw anytime. Redraw lets you pull back extra repayments you’ve already made — usually without notice, but the loan balance goes back up. Offset is more flexible; redraw is more common on fixed-rate loans where offset isn’t available.',
   },
   {
     question: 'How often should I recalculate my mortgage?',
@@ -40,12 +40,12 @@ const faqs = [
   {
     question: 'Is this calculator right for an investment property?',
     answer:
-      'The math is the same — the loan amortizes the same way. The difference for an investment property is the interest is tax-deductible (the loan itself is usually structured as interest-only rather than principal-and-interest, which the calculator doesn\u2019t model). Talk to your tax agent about the deductibility and structure. The calculator is fine for working out the raw repayment on an investment loan.',
+      'The math is the same — the loan amortizes the same way. The difference for an investment property is the interest is tax-deductible (the loan itself is usually structured as interest-only rather than principal-and-interest, which the calculator doesn’t model). Talk to your tax agent about the deductibility and structure. The calculator is fine for working out the raw repayment on an investment loan.',
   },
   {
     question: 'What if my rate is variable and changes mid-year?',
     answer:
-      'The calculator assumes a fixed rate for the life of the loan. Variable rates change, and so do your minimum repayments if your lender recalculates them (most do annually on the anniversary). For a rough worst-case projection, set the rate to the highest rate you\u2019ve seen in the last 12 months. For a best-case, use the lender\u2019s standard variable rate. The real answer is somewhere in between and the actual outcome will track the cash rate.',
+      'The calculator assumes a fixed rate for the life of the loan. Variable rates change, and so do your minimum repayments if your lender recalculates them (most do annually on the anniversary). For a rough worst-case projection, set the rate to the highest rate you’ve seen in the last 12 months. For a best-case, use the lender’s standard variable rate. The real answer is somewhere in between and the actual outcome will track the cash rate.',
   },
 ];
 
