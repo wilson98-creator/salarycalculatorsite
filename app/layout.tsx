@@ -81,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Script id="theme-bootstrap" strategy="beforeInteractive">{themeBootstrap}</Script>
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1074296697889784"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3088783706802319"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
