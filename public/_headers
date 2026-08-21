@@ -1,10 +1,19 @@
 # Cloudflare Pages caching and security headers
 
 /*
+  # HSTS — tell browsers to always use HTTPS for the next 1 year.
+  # includeSubDomains covers all subdomains (e.g. salarycalc-au.pages.dev).
+  # preload is intentionally omitted — only enable after the site has been
+  # on HTTPS for a while with no mixed content.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # Defence-in-depth for clickjacking and referrer leakage. COOP/COEP
+  # intentionally omitted because Google AdSense loads from a cross-origin
+  # context — enabling COEP would break the ad slot.
+  Cross-Origin-Resource-Policy: same-site
 
 # Long cache for fingerprinted static assets
 /_next/static/*
@@ -27,3 +36,7 @@
   Cache-Control: public, max-age=0, must-revalidate
 /
   Cache-Control: public, max-age=0, must-revalidate
+
+# security.txt — long cache since Expires is in the file itself
+/.well-known/security.txt
+  Cache-Control: public, max-age=86400
