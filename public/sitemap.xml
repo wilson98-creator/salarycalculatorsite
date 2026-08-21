@@ -1,107 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://salarycalc.example.com.au/</loc>
+    <loc>https://thesalarycalc.com.au/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/hecs-calculator/</loc>
+    <loc>https://thesalarycalc.com.au/hecs-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/casual-pay-calculator/</loc>
+    <loc>https://thesalarycalc.com.au/casual-pay-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/salary-sacrifice-calculator/</loc>
+    <loc>https://thesalarycalc.com.au/salary-sacrifice-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/mortgage-calculator/</loc>
+    <loc>https://thesalarycalc.com.au/mortgage-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/loan-payoff-calculator/</loc>
+    <loc>https://thesalarycalc.com.au/loan-payoff-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/</loc>
+    <loc>https://thesalarycalc.com.au/salary-50000-after-tax/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/faq/</loc>
+    <loc>https://thesalarycalc.com.au/salary-70000-after-tax/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/tax-rates/</loc>
+    <loc>https://thesalarycalc.com.au/salary-85000-after-tax/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/methodology/</loc>
+    <loc>https://thesalarycalc.com.au/salary-100000-after-tax/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/salary-120000-after-tax/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/new-south-wales/pay-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/australian-income-tax/</loc>
+    <loc>https://thesalarycalc.com.au/victoria/pay-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/medicare-levy-surcharge/</loc>
+    <loc>https://thesalarycalc.com.au/queensland/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/western-australia/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/south-australia/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/tasmania/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/australian-capital-territory/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/northern-territory/pay-calculator/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/guides/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/faq/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/tax-rates/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/methodology/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/guides/australian-income-tax/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/guides/medicare-levy-surcharge/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/hecs-repayment/</loc>
+    <loc>https://thesalarycalc.com.au/guides/hecs-repayment/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/salary-sacrifice/</loc>
+    <loc>https://thesalarycalc.com.au/guides/salary-sacrifice/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/superannuation/</loc>
+    <loc>https://thesalarycalc.com.au/guides/superannuation/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/guides/stage-3-tax-cuts/</loc>
+    <loc>https://thesalarycalc.com.au/guides/stage-3-tax-cuts/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/about/</loc>
+    <loc>https://thesalarycalc.com.au/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/contact/</loc>
+    <loc>https://thesalarycalc.com.au/contact/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/disclaimer/</loc>
+    <loc>https://thesalarycalc.com.au/disclaimer/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/privacy/</loc>
+    <loc>https://thesalarycalc.com.au/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://salarycalc.example.com.au/terms/</loc>
+    <loc>https://thesalarycalc.com.au/terms/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

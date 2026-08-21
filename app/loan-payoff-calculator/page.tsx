@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { LoanPayoffCalculator } from '@/components/LoanPayoffCalculator';
-import { JsonLd, faqSchema, softwareApplicationSchema } from '@/components/Schema';
+import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Loan Payoff Calculator (Australia) — Debt Repayment Planner',
@@ -55,13 +56,23 @@ export default function LoanPayoffCalculatorPage() {
       <JsonLd data={[
         softwareApplicationSchema(),
         faqSchema(faqs),
+        articleSchema({
+          headline: 'Loan payoff calculator (Australia) — debt repayment planner',
+          description: 'See when your loan will be paid off, how much interest you will pay, and the savings from extra repayments.',
+          url: `${brand.url}/loan-payoff-calculator`,
+        }),
       ]} />
 
       <article className="max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Loan payoff calculator
+          <Breadcrumb items={[
+            { name: 'Home', href: '/' },
+            { name: 'Calculators', href: '/#calculators' },
+            { name: 'Loan payoff' },
+          ]} />
+          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
+          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+            <span className="h-highlight">Loan</span> payoff calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out when your loan will be paid off, how much interest you will pay, and the savings from making extra repayments or applying a lump sum. Built for credit cards, personal loans, and any other amortising debt.

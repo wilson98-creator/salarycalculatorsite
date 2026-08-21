@@ -5,7 +5,7 @@ import { brand } from '@/lib/brand';
 import { AppShell } from '@/components/AppShell';
 import { Analytics } from '@/components/Analytics';
 import { CookieBanner } from '@/components/CookieBanner';
-import { JsonLd, organizationSchema, websiteSchema } from '@/components/Schema';
+import { JsonLd, organizationSchema, websiteSchema, websiteWithSearchActionSchema } from '@/components/Schema';
 
 const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
@@ -95,7 +95,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </AppShell>
         <Analytics ga4Id={ga4Id} plausibleDomain={plausibleDomain} />
         <CookieBanner />
-        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        <JsonLd data={[organizationSchema(), websiteSchema(), websiteWithSearchActionSchema()]} />
       </body>
     </html>
   );

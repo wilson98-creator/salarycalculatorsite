@@ -35,10 +35,45 @@ const config: Config = {
           800: '#112f6b',
           900: '#0c1f47',
         },
+        // Semantic colors — rationed to result figures only.
+        // success = net take-home (the figure the user came for)
+        // danger = tax / Medicare (deductions)
+        // warning = optional flags
+        success: {
+          50: '#ecfdf5',
+          100: '#d1fae5',
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+          700: '#047857',
+        },
+        danger: {
+          50: '#fef2f2',
+          100: '#fee2e2',
+          400: '#f87171',
+          500: '#ef4444',
+          600: '#dc2626',
+          700: '#b91c1c',
+        },
+        warning: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+        },
+        // Footer deep-navy bookend (only used in Footer + Calculator result card on dark)
+        footer: {
+          900: '#0c1f47',
+        },
       },
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+        // One restrained editorial accent for the H1 only — matches the
+        // Bankrate / Which? "publication not a startup" feel.
+        serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       },
       container: {
         center: true,

@@ -2,7 +2,14 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { PayCalculator } from '@/components/PayCalculator';
-import { JsonLd, softwareApplicationSchema, faqSchema } from '@/components/Schema';
+import {
+  JsonLd,
+  softwareApplicationSchema,
+  faqSchema,
+  breadcrumbSchema,
+  articleSchema,
+  websiteWithSearchActionSchema,
+} from '@/components/Schema';
 import { sources } from '@/lib/tax/sources';
 
 export const metadata: Metadata = {
@@ -59,12 +66,23 @@ const calculators = [
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={[softwareApplicationSchema(), faqSchema(homeFaqs)]} />
+      <JsonLd
+        data={[
+          softwareApplicationSchema(),
+          faqSchema(homeFaqs),
+          breadcrumbSchema([{ name: 'Home', url: `${brand.url}/` }]),
+          articleSchema({
+            headline: 'Australian pay calculator (FY 2026–27)',
+            description: brand.shortDescription,
+            url: brand.url,
+          }),
+        ]}
+      />
 
       <section className="grid gap-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Australian pay calculator
+          <h1 className="h-serif max-w-2xl text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+            Australian <span className="h-highlight">pay</span> calculator
           </h1>
           <p className="mt-4 max-w-2xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your take-home pay in seconds. Enter your salary, choose your pay
@@ -125,7 +143,7 @@ export default function HomePage() {
               </li>
               <li className="flex items-baseline justify-between gap-3 border-t border-ink-200 pt-3 dark:border-ink-700">
                 <span className="text-ink-600 dark:text-ink-400">4. Income tax (bracket method)</span>
-                <span className="font-mono font-semibold tabular-nums text-ink-900 dark:text-ink-100">$16,020.00</span>
+                <span className="result-deduction">−$16,020.00</span>
               </li>
               <li className="flex items-baseline justify-between gap-3 pl-4 text-xs text-ink-500 dark:text-ink-500">
                 <span>0% on $0–$18,200 + 15% on $18,201–$45,000 + 30% on $45,001–$85,000</span>
@@ -136,7 +154,7 @@ export default function HomePage() {
               </li>
               <li className="flex items-baseline justify-between gap-3">
                 <span className="text-ink-600 dark:text-ink-400">6. Medicare levy (2%)</span>
-                <span className="font-mono font-semibold tabular-nums text-ink-900 dark:text-ink-100">$1,700.00</span>
+                <span className="result-deduction">−$1,700.00</span>
               </li>
               <li className="flex items-baseline justify-between gap-3">
                 <span className="text-ink-600 dark:text-ink-400">7. HECS-HELP repayment (not enabled)</span>
@@ -144,7 +162,7 @@ export default function HomePage() {
               </li>
               <li className="flex items-baseline justify-between gap-3 border-t-2 border-ink-300 pt-3 dark:border-ink-600">
                 <span className="font-semibold text-ink-900 dark:text-ink-50">Net take-home</span>
-                <span className="font-mono text-lg font-bold tabular-nums text-brand-700 dark:text-brand-300">$67,280.00 / yr</span>
+                <span className="result-figure">$67,280.00 / yr</span>
               </li>
               <li className="flex items-baseline justify-between gap-3 text-xs text-ink-500 dark:text-ink-500">
                 <span>Plus employer super 12% (paid on top, not deducted)</span>

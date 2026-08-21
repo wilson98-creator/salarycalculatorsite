@@ -94,4 +94,74 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
   };
 }
 
+/** HowTo schema for guides that walk the user through a process
+ *  (e.g. "How to calculate your Australian tax"). Powers rich results. */
+export function howToSchema(opts: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: opts.name,
+    description: opts.description,
+    step: opts.steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
+/** Article schema for long-form guides. */
+export function articleSchema(opts: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+  dateModified?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: opts.headline,
+    description: opts.description,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
+    url: opts.url,
+    author: { '@id': `${brand.url}/#organization` },
+    publisher: {
+      '@id': `${brand.url}/#organization`,
+      name: brand.name,
+    },
+    datePublished: opts.datePublished ?? '2025-01-01',
+    dateModified: opts.dateModified ?? brand.lastReviewed,
+    inLanguage: brand.language,
+    isPartOf: { '@id': `${brand.url}/#website` },
+  };
+}
+
+/** WebSite schema with SearchAction — powers Google sitelinks search box. */
+export function websiteWithSearchActionSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${brand.url}/#website`,
+    url: brand.url,
+    name: brand.name,
+    description: brand.shortDescription,
+    inLanguage: brand.language,
+    publisher: { '@id': `${brand.url}/#organization` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${brand.url}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  };
+}
+
 export const allSourceLinks = sources;

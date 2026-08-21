@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { HecsCalculator } from '@/components/HecsCalculator';
-import { JsonLd, faqSchema, softwareApplicationSchema } from '@/components/Schema';
+import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
+import { Breadcrumb } from '@/components/Breadcrumb';
 import { sources } from '@/lib/tax/sources';
 
 export const metadata: Metadata = {
@@ -49,13 +50,23 @@ export default function HecsCalculatorPage() {
       <JsonLd data={[
         softwareApplicationSchema(),
         faqSchema(faqs),
+        articleSchema({
+          headline: 'HECS-HELP repayment calculator (Australia 2026–27)',
+          description: 'Work out your compulsory HECS-HELP, VSL, TSL, SSL or SFSS repayment using the new marginal system.',
+          url: `${brand.url}/hecs-calculator`,
+        }),
       ]} />
 
       <article className="max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">
-            HECS-HELP repayment calculator
+          <Breadcrumb items={[
+            { name: 'Home', href: '/' },
+            { name: 'Calculators', href: '/#calculators' },
+            { name: 'HECS-HELP' },
+          ]} />
+          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
+          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+            HECS-HELP <span className="h-highlight">repayment</span> calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your compulsory HECS-HELP, VSL, TSL, SSL or SFSS repayment for the

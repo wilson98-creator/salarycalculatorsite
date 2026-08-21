@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { MortgageCalculator } from '@/components/MortgageCalculator';
-import { JsonLd, faqSchema, softwareApplicationSchema } from '@/components/Schema';
+import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Mortgage Calculator With Extra Payments (Australia)',
@@ -55,13 +56,23 @@ export default function MortgageCalculatorPage() {
       <JsonLd data={[
         softwareApplicationSchema(),
         faqSchema(faqs),
+        articleSchema({
+          headline: 'Mortgage calculator with extra payments (Australia)',
+          description: 'Work out your monthly repayment, total interest, and how much time and money you save by paying extra.',
+          url: `${brand.url}/mortgage-calculator`,
+        }),
       ]} />
 
       <article className="max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Mortgage calculator with extra payments
+          <Breadcrumb items={[
+            { name: 'Home', href: '/' },
+            { name: 'Calculators', href: '/#calculators' },
+            { name: 'Mortgage' },
+          ]} />
+          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
+          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+            <span className="h-highlight">Mortgage</span> calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your monthly repayment, total interest, and exactly how much time and money you save by paying extra. Built for owner-occupier and investment loans, with the same amortization logic the banks use.

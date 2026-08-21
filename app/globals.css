@@ -99,11 +99,51 @@ body {
   @apply text-ink-100;
 }
 
+/* The big result figure — the only number in success-green.
+   Universal finance-utility pattern (SmartAsset, Ratehub, Which?). */
+.result-figure {
+  @apply font-mono text-4xl font-bold tabular-nums text-success-600 sm:text-5xl;
+}
+.dark .result-figure {
+  @apply text-success-400;
+}
+
+/* Deduction rows: tax, Medicare, HECS — shown in danger-red so the
+   "money out" is visually distinct from "money in" (success-green). */
+.result-deduction {
+  @apply font-mono text-base font-semibold tabular-nums text-danger-600;
+}
+.dark .result-deduction {
+  @apply text-danger-400;
+}
+
 .chip {
   @apply inline-flex items-center gap-1 rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-700;
 }
 .dark .chip {
   @apply bg-brand-900/40 text-brand-200;
+}
+
+/* Editorial H1 — the one restrained serif accent. The H1 reads as
+   "publication" not "startup". Body and UI text stay in the system
+   sans. Keep this rare. */
+.h-serif {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Highlighted word inside the H1 — the Bankrate "block highlight" pattern. */
+.h-highlight {
+  background-color: theme('colors.brand.100');
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.dark .h-highlight {
+  background-color: theme('colors.brand.900 / 40%');
+  color: theme('colors.brand.200');
 }
 
 /* Smooth theme transition */

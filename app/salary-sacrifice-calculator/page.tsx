@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { SalarySacrificeCalculator } from '@/components/SalarySacrificeCalculator';
-import { JsonLd, faqSchema, softwareApplicationSchema } from '@/components/Schema';
+import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
+import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
   title: 'Salary Sacrifice Calculator (Australia 2026–27)',
@@ -55,19 +56,29 @@ export default function SalarySacrificeCalculatorPage() {
       <JsonLd data={[
         softwareApplicationSchema(),
         faqSchema(faqs),
+        articleSchema({
+          headline: 'Salary sacrifice calculator (Australia 2026–27)',
+          description: 'See how much tax you save by sacrificing pre-tax salary into super, and the take-home impact.',
+          url: `${brand.url}/salary-sacrifice-calculator`,
+        }),
       ]} />
 
       <article className="max-w-3xl">
         <header className="mb-10">
-          <p className="text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Salary sacrifice calculator
+          <Breadcrumb items={[
+            { name: 'Home', href: '/' },
+            { name: 'Calculators', href: '/#calculators' },
+            { name: 'Salary sacrifice' },
+          ]} />
+          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
+          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+            Salary <span className="h-highlight">sacrifice</span> calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             See exactly how much tax you save by sacrificing pre-tax salary into super, what your take-home pay change is, and whether the 15% super tax makes it worth it for your situation. Uses the same ATO rates as our other calculators.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">Ato-sourced rates</span>
+            <span className="chip">ATO-sourced rates</span>
             <span className="chip">$30K concessional cap</span>
             <span className="chip">Tax + take-home + super</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
