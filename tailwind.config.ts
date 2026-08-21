@@ -23,61 +23,69 @@ const config: Config = {
           900: '#0f172a',
           950: '#020617',
         },
-        // Ink — warm gray scale (Editorial Ledger, paper-like)
-        // Named `ink` to match existing component classes
+        // Premium Dark Fintech palette (Direction F).
+        // `ink` is reused but mapped to dark-mode values: 50 is the darkest
+        // (deepest ink) and 900 is the lightest (near-white). Existing
+        // component classes like `text-ink-500` continue to work because
+        // Tailwind picks up the new values.
         brand: {
-          50: '#f5f1e8',   // paper / cream
-          100: '#ede6d6',  // warmer cream
-          200: '#c8c0b0',  // rule lines (warm gray)
-          300: '#b8ac97',  // subtle warm gray
-          400: '#8a8174',  // medium warm gray
-          500: '#6b6357',  // secondary text (warm gray)
-          600: '#3d3a32',  // mid-text
-          700: '#2a2820',  // darker text
-          800: '#1a1a1a',  // primary text (warm near-black)
-          900: '#0f0f0f',  // darkest
+          50: '#050811',   // deepest ink (footer background)
+          100: '#0a0e1a',  // page background (deep ink with blue undertone)
+          200: '#14192a',  // elevated surface (cards)
+          300: '#1a1f3a',  // deep purple-blue (subtle accent surface)
+          400: '#1f2440',  // soft borders
+          500: '#5a5a6e',  // medium gray (tertiary text)
+          600: '#a0a0ae',  // light gray (secondary text)
+          700: '#c7cad4',  // light text variant
+          800: '#e8e9ee',  // primary text near-white
+          900: '#fafaf7',  // warm white (headings + result figure container)
         },
-        // ledger = oxblood (the ONLY chromatic color on the surface)
-        // Used for the result figure, section accents, and active state.
+        // ledger = bright yellow-green (the ONLY chromatic color on the surface)
+        // Used for the result figure, CTAs, and active state.
         ledger: {
-          50: '#f5ebeb',   // light oxblood tint (hover bg, focus ring)
-          100: '#e8d0d0',  // softer tint
-          200: '#d4a8a8',  // muted accent
-          400: '#a73838',  // hover state
-          500: '#8b1a1a',  // PRIMARY OXBLOOD — the result figure color
-          600: '#6b1414',  // pressed
-          700: '#4a0e0e',  // darkest
+          50: '#1a2400',   // very dark yellow-green tint
+          100: '#2d3d00',  // darker tint
+          200: '#5a7800',  // muted accent
+          400: '#a6c400',  // hover state
+          500: '#c7f000',  // PRIMARY YELLOW-GREEN — result figure, CTAs
+          600: '#d4f933',  // bright hover
+          700: '#e0ff66',  // lightest
         },
-        // success / danger / warning — kept for tax/medicare deduction rows
-        // and minor state indicators. Restrained use only.
+        // accent2 = vibrant teal (used SPARINGLY for borders, dividers)
+        accent2: {
+          400: '#00a89a',
+          500: '#00d4b5',  // PRIMARY TEAL
+          600: '#2ee0c4',
+        },
+        // success / danger / warning — restrained use for state indicators
         success: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
+          50: '#022c1d',
+          100: '#064e3b',
+          400: '#10b981',
+          500: '#34d399',
+          600: '#6ee7b7',
+          700: '#a7f3d0',
         },
         danger: {
-          50: '#fef2f2',
-          100: '#fee2e2',
+          50: '#3a0d0d',
+          100: '#7f1d1d',
           400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
-          700: '#b91c1c',
+          500: '#fca5a5',
+          600: '#fecaca',
+          700: '#fee2e2',
         },
         warning: {
-          50: '#fffbeb',
-          100: '#fef3c7',
+          50: '#3a2807',
+          100: '#78350f',
           400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
+          500: '#fcd34d',
+          600: '#fde68a',
+          700: '#fef3c7',
         },
-        // Cream paper background + footer bookend
+        // Page / footer bookend
         paper: {
-          0: '#f5f1e8',   // page background light
-          950: '#0a0a0a',  // footer background (still monochrome bookend)
+          0: '#0a0e1a',   // page background dark
+          950: '#050811',  // footer background (deeper still)
         },
       },
       fontFamily: {

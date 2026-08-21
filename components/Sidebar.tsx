@@ -74,7 +74,7 @@ export function Sidebar() {
       {/* Sidebar — borderless, monochrome, monospace labels */}
       <aside
         aria-label="Primary"
-        className={`fixed top-16 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-r border-ink-200 bg-white transition-all duration-200 ease-in-out dark:border-ink-800 dark:bg-ink-950 ${
+        className={`fixed top-16 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-r border-ink-400 bg-paper-0 transition-all duration-200 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ${isCollapsed ? 'lg:w-16' : 'lg:w-64'} w-64 lg:translate-x-0`}
       >
@@ -82,7 +82,7 @@ export function Sidebar() {
         <button
           type="button"
           onClick={() => setCollapsed(!isCollapsed)}
-          className="absolute -right-2 top-4 z-50 hidden font-mono text-[10px] tracking-[0.15em] text-ink-400 transition hover:text-ink-900 dark:hover:text-ink-100 lg:inline"
+          className="absolute -right-2 top-4 z-50 hidden font-mono text-[10px] tracking-[0.15em] text-ink-600 transition hover:text-ink-800 lg:inline"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
@@ -97,11 +97,11 @@ export function Sidebar() {
                   <p className="section-index">§ {section.index} · {section.title}</p>
                 </div>
               )}
-              <ul className="rule-line border-t border-ink-200 dark:border-ink-800">
+              <ul className="rule-line border-t border-ink-400">
                 {section.items.map((item) => {
                   const active = isItemActive(pathname, item.href);
                   return (
-                    <li key={item.href} className="rule-line border-b border-ink-200 dark:border-ink-800">
+                    <li key={item.href} className="rule-line border-b border-ink-400">
                       <Link
                         href={item.href}
                         onClick={close}
@@ -111,8 +111,8 @@ export function Sidebar() {
                           isCollapsed ? 'px-2 text-center' : 'px-6'
                         } ${
                           active
-                            ? 'font-semibold text-ink-900 dark:text-ink-50'
-                            : 'text-ink-700 hover:text-ink-900 dark:text-ink-300 dark:hover:text-ink-50'
+                            ? 'font-semibold text-ink-800'
+                            : 'text-ink-600 hover:text-ink-800'
                         }`}
                       >
                         {isCollapsed ? (
@@ -138,7 +138,7 @@ export function Sidebar() {
 
         {/* Footer note in sidebar (desktop only) */}
         {!isCollapsed && (
-          <div className="rule-line border-t border-ink-200 p-6 text-ink-500 dark:border-ink-800 dark:text-ink-500">
+          <div className="rule-line border-t border-ink-400 p-6 text-ink-600">
             <p className="font-mono text-[11px] uppercase tracking-[0.15em]">FY 2026–27</p>
             <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em]">
               ATO-sourced

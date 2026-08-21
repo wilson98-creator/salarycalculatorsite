@@ -11,16 +11,6 @@ const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
 const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN;
 const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
-const themeBootstrap = `(() => {
-  try {
-    const t = localStorage.getItem('salarycalc_theme');
-    const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const theme = (t === 'light' || t === 'dark') ? t : sys;
-    if (theme === 'dark') document.documentElement.classList.add('dark');
-    document.documentElement.style.colorScheme = theme;
-  } catch (e) {}
-})();`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
   title: {
@@ -71,14 +61,21 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#f5f1e8',
+  themeColor: '#0a0e1a',
 };
+
+// Force the dark class on the HTML element before React hydrates.
+// This makes the site permanently dark — no light mode toggle.
+const forceDark = `(() => {
+  document.documentElement.classList.add('dark');
+  document.documentElement.style.colorScheme = 'dark';
+})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-AU" suppressHydrationWarning>
+    <html lang="en-AU" className="dark" suppressHydrationWarning>
       <head>
-        <Script id="theme-bootstrap" strategy="beforeInteractive">{themeBootstrap}</Script>
+        <Script id="force-dark" strategy="beforeInteractive">{forceDark}</Script>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3088783706802319"
@@ -86,8 +83,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
-      <body className="min-h-screen bg-paper-0 text-ink-800 dark:bg-ink-950 dark:text-ink-50">
-        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-ink-900 focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
+      <body className="min-h-screen bg-paper-0 text-ink-800">
+        <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-ink-800 focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
         <AppShell>
           {children}
         </AppShell>

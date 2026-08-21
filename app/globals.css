@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-}
-.dark {
+  /* Permanent dark mode — no light variant */
+  color-scheme: dark;
   color-scheme: dark;
 }
 
@@ -14,195 +13,153 @@ html, body {
 }
 
 body {
-  background: #f5f1e8;
-  color: #1a1a1a;
+  background: #0a0e1a;
+  color: #e8e9ee;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "kern", "liga", "calt", "ss01", "onum";
-}
-.dark body {
-  background: #0f0f0f;
-  color: #ede6d6;
+  font-feature-settings: "kern", "liga", "calt", "ss01";
 }
 
-/* Custom scrollbar — warm, minimal */
+/* Custom scrollbar — dark, minimal */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #c8c0b0; border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: #8a8174; }
-.dark ::-webkit-scrollbar-thumb { background: #3d3a32; }
-.dark ::-webkit-scrollbar-thumb:hover { background: #6b6357; }
+::-webkit-scrollbar-track { background: #0a0e1a; }
+::-webkit-scrollbar-thumb { background: #1f2440; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #5a5a6e; }
 
 /* ──────────────────────────────────────────────────────────
-   EDITORIAL LEDGER DESIGN SYSTEM
-   - Newspaper feel. Warm cream paper + deep oxblood ink.
-   - Heavy Georgia serif headlines, monospace data.
-   - Rule lines instead of borders. No cards. No rounded corners.
-   - Oxblood is the only chromatic color — rationed to the result
-     figure, section accents, and active state.
+   PREMIUM DARK FINTECH DESIGN SYSTEM
+   - Deep ink bg + elevated surfaces.
+   - Yellow-green accent (RATIONED to result figure + CTAs only).
+   - Teal secondary accent (RATIONED to borders + dividers).
+   - Sans-serif H1 (NOT serif) — modern fintech.
+   - No cards with shadows everywhere. Subtle elevation.
    ────────────────────────────────────────────────────────── */
 
-/* Underline-only inputs (replaces the bordered input style) */
+/* Underline-only inputs */
 .input {
-  @apply w-full border-0 border-b border-ink-300 bg-transparent px-0 py-2 text-base text-ink-800
+  @apply w-full border-0 border-b border-ink-400 bg-transparent px-0 py-2 text-base text-ink-800
     outline-none transition focus:border-ledger-500 focus:ring-0
-    disabled:text-ink-400;
+    disabled:text-ink-500;
   font-feature-settings: "tnum", "lnum";
-}
-.dark .input {
-  @apply border-ink-700 text-ink-50
-    focus:border-ledger-400
-    disabled:text-ink-600;
 }
 
 .label {
-  @apply mb-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500;
-}
-.dark .label {
-  @apply text-ink-400;
+  @apply mb-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-600;
 }
 
 .help {
   @apply mt-1 text-[11px] uppercase tracking-[0.18em] text-ink-500;
 }
-.dark .help {
-  @apply text-ink-400;
-}
 
-/* Text-link style (editorial: underline with offset, no fill) */
+/* Text-link style (fintech: underline + hover color shift) */
 .btn {
   @apply inline-flex items-center justify-center px-1 py-1 text-sm font-semibold
     transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ledger-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-0;
 }
 .btn-text {
-  @apply btn text-ink-800 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-600
-    dark:text-ink-50;
+  @apply btn text-ink-800 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500;
 }
 .btn-arrow {
-  @apply inline-flex items-center gap-1 text-sm font-semibold text-ink-800 hover:text-ledger-600
-    dark:text-ink-50;
+  @apply inline-flex items-center gap-1 text-sm font-semibold text-ink-800 hover:text-ledger-500;
 }
 
-/* Section index marker — the "§ 01" monospace label */
+/* Section index marker */
 .section-index {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500;
-}
-.dark .section-index {
-  @apply text-ink-500;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600;
 }
 
-/* Kicker — a small uppercase label that sits above section headlines */
+/* Kicker */
 .kicker {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-600;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-500;
 }
 .kicker-neutral {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500;
-}
-.dark .kicker-neutral {
-  @apply text-ink-400;
-}
-.dark .kicker {
-  @apply text-ledger-200;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600;
 }
 .kicker-accent {
   @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-500;
 }
 
-/* Hairline rule — the only "border" style in the system */
+/* Hairline rule */
 .rule-line {
-  @apply border-0 border-t border-ink-200;
-}
-.dark .rule-line {
-  @apply border-ink-800;
+  @apply border-0 border-t border-ink-400;
 }
 
-/* Editorial H1 — heavy Georgia, 80px desktop, tight tracking.
-   The Bankrate / FT / Economist look. */
+/* Editorial H1 — heavy sans-serif, modern fintech, 80-96px desktop */
 .h-display {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.98;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.95;
   font-size: 2.5rem; /* 40px mobile */
 }
 @media (min-width: 768px) {
   .h-display {
     font-size: 3.75rem; /* 60px tablet */
-    letter-spacing: -0.035em;
   }
 }
 @media (min-width: 1024px) {
   .h-display {
     font-size: 5rem; /* 80px desktop */
-    letter-spacing: -0.04em;
   }
 }
 
-/* H2 — serif, mid-weight, for section headings */
+/* H2 — sans-serif, mid-weight */
 .h-section {
-  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  font-size: 1.75rem; /* 28px mobile */
+  font-size: 1.75rem;
 }
 @media (min-width: 768px) {
   .h-section {
-    font-size: 2.5rem; /* 40px desktop */
+    font-size: 2.5rem;
   }
 }
 
-/* The oxblood underline accent — sits under a word to highlight it */
-.oxblood-underline {
-  background-image: linear-gradient(transparent calc(100% - 0.18em), #8b1a1a 0.18em);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding: 0 0.1em;
-}
-.dark .oxblood-underline {
-  background-image: linear-gradient(transparent calc(100% - 0.18em), #a73838 0.18em);
+/* The yellow-green highlight block — sits under a word to highlight it */
+.ledger-highlight {
+  background: #c7f000;
+  color: #0a0e1a;
+  padding: 0.1em 0.25em;
+  border-radius: 0.2em;
+  font-weight: 800;
 }
 
-/* Result figure — the ONLY oxblood element on the page. */
+/* Result figure — the ONLY ledger (yellow-green) element on the page. */
 .result-figure {
   font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
   font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
-  color: #8b1a1a;
+  color: #c7f000;
   letter-spacing: -0.03em;
   line-height: 0.95;
-  font-size: 2.5rem; /* 40px mobile */
+  font-size: 2.5rem;
 }
 @media (min-width: 768px) {
   .result-figure {
-    font-size: 4rem; /* 64px tablet */
+    font-size: 4rem;
   }
 }
 @media (min-width: 1024px) {
   .result-figure {
-    font-size: 5rem; /* 80px desktop */
+    font-size: 5rem;
   }
 }
-.dark .result-figure {
-  color: #a73838;
-}
 
-/* Deduction rows (tax, Medicare, HECS) — monochrome warm gray */
+/* Deduction rows (tax, Medicare, HECS) — restrained gray */
 .result-deduction {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: #6b6357;
-}
-.dark .result-deduction {
-  color: #8a8174;
+  color: #a0a0ae;
 }
 
-/* Section spacing — generous, with the newspaper rhythm */
+/* Section spacing — generous */
 .section {
   margin-top: 5rem;
   padding-top: 3rem;
-  border-top: 1px solid #c8c0b0;
+  border-top: 1px solid #1f2440;
 }
 @media (min-width: 768px) {
   .section {
@@ -216,62 +173,72 @@ body {
     padding-top: 5rem;
   }
 }
-.dark .section {
-  border-top-color: #2a2820;
-}
 
-/* Drop cap on the first paragraph of long-form copy */
+/* Drop cap on the first paragraph */
 .drop-cap::first-letter {
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
   font-size: 4em;
   line-height: 0.85;
   float: left;
   margin: 0.1em 0.1em 0.1em 0;
-  font-weight: 700;
-  color: #8b1a1a;
-}
-.dark .drop-cap::first-letter {
-  color: #a73838;
+  font-weight: 800;
+  color: #c7f000;
 }
 
-/* Underline-only period chip — text-based, with a dot for the active state */
+/* Underline-only period chip */
 .chip {
-  @apply inline-flex items-center gap-2 font-mono text-[13px] tracking-wider text-ink-500;
+  @apply inline-flex items-center gap-2 font-mono text-[13px] tracking-wider text-ink-600;
 }
 .chip-active {
   @apply text-ink-800 font-semibold;
 }
 .chip-active::before {
   content: "·";
-  color: #8b1a1a;
+  color: #c7f000;
   font-weight: 700;
   font-size: 1.5em;
   line-height: 0;
   margin-right: 0.15em;
 }
-.dark .chip {
-  @apply text-ink-400;
-}
-.dark .chip-active {
-  @apply text-ink-50;
-}
-.dark .chip-active::before {
-  color: #a73838;
-}
 
-/* Trust-link row — borderless, underlined link with chevron */
+/* Trust-link row */
 .trust-row {
   @apply block py-3 transition hover:opacity-70;
 }
 
-/* Footer — deep navy bookend (the original choice, kept for trust) */
-.footer-navy {
-  background: #0c1f47;
-  color: #f5f1e8;
+/* Footer — deepest ink bookend */
+.footer-deep {
+  background: #050811;
+  color: #e8e9ee;
 }
 .footer-meta {
   @apply font-mono text-[11px] uppercase tracking-[0.2em];
-  color: #b8ac97;
+  color: #5a5a6e;
+}
+
+/* Subtle teal accent surface for select cards */
+.surface-elevated {
+  background: #14192a;
+  border: 1px solid #1f2440;
+}
+.surface-elevated-hover {
+  transition: all 0.2s ease;
+}
+.surface-elevated-hover:hover {
+  border-color: #00d4b5;
+  background: #181d2e;
+}
+
+/* Subtle dot-grid background pattern (fintech dashboard) */
+.dot-grid {
+  background-image: radial-gradient(circle, #1f2440 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Subtle gradient mesh (top-right) */
+.gradient-mesh {
+  background: radial-gradient(ellipse at top right, rgba(199, 240, 0, 0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at bottom left, rgba(0, 212, 181, 0.04) 0%, transparent 50%);
 }
 
 /* Smooth theme transition */

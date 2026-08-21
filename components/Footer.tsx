@@ -3,7 +3,7 @@ import { brand } from '@/lib/brand';
 
 export function Footer() {
   return (
-    <footer className="footer-navy mt-32">
+    <footer className="footer-deep mt-32">
       <div className="rule-line absolute inset-x-0 top-0 border-white/10" aria-hidden="true" />
       <div className="container grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
