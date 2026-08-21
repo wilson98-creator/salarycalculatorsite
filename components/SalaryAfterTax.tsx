@@ -53,9 +53,9 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
               { name: `$${data.gross.toLocaleString()} after tax` },
             ]}
           />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
             ${data.gross.toLocaleString()} after tax{' '}
-            <span className="h-highlight">Australia</span>
+            Australia
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             On a ${data.gross.toLocaleString()} annual salary in Australia, your take-home pay is
@@ -123,8 +123,8 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
         {/* Live calculator for adjustments */}
         <section className="mt-10">
-          <h2 className="h-serif text-2xl text-ink-900 dark:text-ink-50 sm:text-3xl">
-            Adjust for your <span className="h-highlight">situation</span>
+          <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            Adjust for your situation
           </h2>
           <p className="mt-3 text-base text-ink-600 dark:text-ink-400">
             The numbers above assume an Australian resident with no HECS-HELP debt and no
