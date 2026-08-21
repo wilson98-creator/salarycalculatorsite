@@ -92,8 +92,8 @@ export default function SuperGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Superannuation' },
           ]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Superannuation <span className="h-highlight">basics</span> for employees
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Superannuation basics for employees
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Superannuation is Australia&apos;s mandatory private retirement
@@ -104,12 +104,12 @@ export default function SuperGuide() {
             biggest impact on your retirement outcome.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">
+            <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
-            <span className="chip">7 min read</span>
-            <span className="chip">FY 2026-27</span>
-            <span className="chip">12% SG</span>
+            <span className="kicker">7 min read</span>
+            <span className="kicker">FY 2026-27</span>
+            <span className="kicker">12% SG</span>
           </div>
         </header>
 
@@ -404,7 +404,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

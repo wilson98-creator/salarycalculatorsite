@@ -123,8 +123,8 @@ export default function MethodologyPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Methodology' }]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            How we calculate your <span className="h-highlight">pay</span>
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            How we calculate your pay
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Every number on SalaryCalc comes from a published Australian Taxation
@@ -134,12 +134,12 @@ export default function MethodologyPage() {
             payslip, please <Link href="/contact">let us know</Link>.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">
+            <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
-            <span className="chip">Every rate cited</span>
-            <span className="chip">Source code published</span>
-            <span className="chip">Open to correction</span>
+            <span className="kicker">Every rate cited</span>
+            <span className="kicker">Source code published</span>
+            <span className="kicker">Open to correction</span>
           </div>
         </header>
 
@@ -452,7 +452,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

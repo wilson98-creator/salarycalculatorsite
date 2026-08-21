@@ -124,7 +124,7 @@ export function SalarySacrificeCalculator() {
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-2xl border border-ink-200 bg-white p-5 dark:border-ink-700 dark:bg-ink-900">
+        <div className="mt-12">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">Without sacrifice</h3>
           <div className="mt-3 space-y-2">
             <Row label="Income tax" value={before.incomeTax} />
@@ -134,7 +134,7 @@ export function SalarySacrificeCalculator() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-brand-200 bg-brand-50/60 p-5 dark:border-brand-800 dark:bg-brand-900/20">
+        <div className="mt-12">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">With {formatAUD(sacrifice)} sacrifice</h3>
           <div className="mt-3 space-y-2">
             <Row label="Income tax" value={after.incomeTax} />
@@ -145,7 +145,7 @@ export function SalarySacrificeCalculator() {
         </div>
       </div>
 
-      <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-5 dark:border-emerald-800 dark:bg-emerald-900/20">
+      <div className="mt-12">
         <h3 className="text-sm font-semibold text-emerald-900 dark:text-emerald-200">Net benefit of sacrificing {formatAUD(sacrifice)}</h3>
         <div className="mt-3 grid gap-4 sm:grid-cols-4">
           <div>

@@ -106,7 +106,7 @@ export function HecsCalculator() {
         </details>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
+      <div className="mt-12">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="text-base font-semibold text-ink-900 dark:text-ink-50">Annual HECS-HELP repayment</h3>
           <span className="chip">FY {fy}</span>

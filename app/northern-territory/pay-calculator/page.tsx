@@ -57,8 +57,8 @@ export default function NtPayCalculatorPage() {
             { name: 'By state' },
             { name: 'Northern Territory' },
           ]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Northern Territory <span className="h-highlight">pay calculator</span>
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Northern Territory pay calculator
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Calculate your take-home pay in the Northern Territory. The federal tax

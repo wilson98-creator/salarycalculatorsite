@@ -71,16 +71,16 @@ export default function LoanPayoffCalculatorPage() {
             { name: 'Loan payoff' },
           ]} />
           <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            <span className="h-highlight">Loan</span> payoff calculator
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Loan payoff calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out when your loan will be paid off, how much interest you will pay, and the savings from making extra repayments or applying a lump sum. Built for credit cards, personal loans, and any other amortising debt.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">Month-by-month schedule</span>
-            <span className="chip">Extra repayments</span>
-            <span className="chip">Lump sum (e.g. redundancy)</span>
+            <span className="kicker">Month-by-month schedule</span>
+            <span className="kicker">Extra repayments</span>
+            <span className="kicker">Lump sum (e.g. redundancy)</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
           </div>
         </header>

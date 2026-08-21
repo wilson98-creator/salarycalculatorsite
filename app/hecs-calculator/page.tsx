@@ -65,8 +65,8 @@ export default function HecsCalculatorPage() {
             { name: 'HECS-HELP' },
           ]} />
           <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            HECS-HELP <span className="h-highlight">repayment</span> calculator
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            HECS-HELP repayment calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your compulsory HECS-HELP, VSL, TSL, SSL or SFSS repayment for the
@@ -74,9 +74,9 @@ export default function HecsCalculatorPage() {
             new marginal system that took effect on 1 July 2025.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">New marginal system</span>
-            <span className="chip">FY 2026–27 rates</span>
-            <span className="chip">Years-to-payoff projection</span>
+            <span className="kicker">New marginal system</span>
+            <span className="kicker">FY 2026–27 rates</span>
+            <span className="kicker">Years-to-payoff projection</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
           </div>
         </header>

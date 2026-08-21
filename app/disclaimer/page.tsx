@@ -70,8 +70,8 @@ export default function DisclaimerPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Disclaimer' }]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            <span className="h-highlight">Disclaimer</span>
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Disclaimer
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             SalaryCalc provides estimates only. The information and calculators
@@ -80,12 +80,12 @@ export default function DisclaimerPage() {
             calculator output.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">
+            <span className="kicker">
               Last updated <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
-            <span className="chip">Not a tax agent</span>
-            <span className="chip">No PI insurance</span>
-            <span className="chip">Use at your own risk</span>
+            <span className="kicker">Not a tax agent</span>
+            <span className="kicker">No PI insurance</span>
+            <span className="kicker">Use at your own risk</span>
           </div>
         </header>
 
@@ -267,7 +267,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

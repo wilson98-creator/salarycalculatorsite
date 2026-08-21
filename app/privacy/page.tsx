@@ -80,8 +80,8 @@ export default function PrivacyPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Privacy' }]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            <span className="h-highlight">Privacy</span> policy
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Privacy policy
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             SalaryCalc is built around a simple principle: we never see the
@@ -90,11 +90,11 @@ export default function PrivacyPage() {
             you have.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">
+            <span className="kicker">
               Last updated <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
-            <span className="chip">Compliant with the Australian Privacy Principles</span>
-            <span className="chip">Calculator runs in your browser</span>
+            <span className="kicker">Compliant with the Australian Privacy Principles</span>
+            <span className="kicker">Calculator runs in your browser</span>
           </div>
         </header>
 
@@ -274,7 +274,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

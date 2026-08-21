@@ -68,8 +68,8 @@ export default function CasualPayCalculatorPage() {
             { name: 'Casual pay' },
           ]} />
           <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            <span className="h-highlight">Casual</span> pay calculator
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Casual pay calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your loaded casual hourly rate and what lands in your bank after
@@ -77,9 +77,9 @@ export default function CasualPayCalculatorPage() {
             defaults for the most common Modern Awards.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">25% casual loading default</span>
-            <span className="chip">9 common awards</span>
-            <span className="chip">HECS-aware</span>
+            <span className="kicker">25% casual loading default</span>
+            <span className="kicker">9 common awards</span>
+            <span className="kicker">HECS-aware</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
           </div>
         </header>

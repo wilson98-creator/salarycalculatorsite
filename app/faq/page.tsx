@@ -252,7 +252,7 @@ export default function FaqPage() {
         </section>
       ))}
 
-      <aside className="mt-12 rounded-2xl border border-ink-200 bg-white p-5 text-sm text-ink-600 dark:border-ink-800 dark:bg-ink-900 dark:text-ink-300">
+      <aside className="mt-12">
         <p className="font-semibold text-ink-900 dark:text-ink-50">Didn\'t find your answer?</p>
         <p className="mt-2">
           Email <a href={`mailto:${brand.contactEmail}`} className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">{brand.contactEmail}</a> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.

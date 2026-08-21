@@ -71,16 +71,16 @@ export default function MortgageCalculatorPage() {
             { name: 'Mortgage' },
           ]} />
           <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            <span className="h-highlight">Mortgage</span> calculator
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Mortgage calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Work out your monthly repayment, total interest, and exactly how much time and money you save by paying extra. Built for owner-occupier and investment loans, with the same amortization logic the banks use.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">Standard amortization</span>
-            <span className="chip">Extra payments</span>
-            <span className="chip">Interest + time saved</span>
+            <span className="kicker">Standard amortization</span>
+            <span className="kicker">Extra payments</span>
+            <span className="kicker">Interest + time saved</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
           </div>
         </header>

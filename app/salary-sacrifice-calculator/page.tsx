@@ -71,16 +71,16 @@ export default function SalarySacrificeCalculatorPage() {
             { name: 'Salary sacrifice' },
           ]} />
           <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-serif mt-2 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Salary <span className="h-highlight">sacrifice</span> calculator
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Salary sacrifice calculator
           </h1>
           <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             See exactly how much tax you save by sacrificing pre-tax salary into super, what your take-home pay change is, and whether the 15% super tax makes it worth it for your situation. Uses the same ATO rates as our other calculators.
           </p>
           <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">ATO-sourced rates</span>
-            <span className="chip">$30K concessional cap</span>
-            <span className="chip">Tax + take-home + super</span>
+            <span className="kicker">ATO-sourced rates</span>
+            <span className="kicker">$30K concessional cap</span>
+            <span className="kicker">Tax + take-home + super</span>
             <span>Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
           </div>
         </header>

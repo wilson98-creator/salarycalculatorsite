@@ -184,7 +184,7 @@ export function CasualPayCalculator() {
         </label>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
+      <div className="mt-12">
         <h3 className="mb-3 text-base font-semibold text-ink-900 dark:text-ink-50">Your casual pay</h3>
 
         <div className="result-row">

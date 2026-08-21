@@ -95,7 +95,7 @@ export function MortgageCalculator() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
+      <div className="mt-12">
         <h3 className="mb-1 text-base font-semibold text-ink-900 dark:text-ink-50">Monthly repayment</h3>
         <p className="font-mono text-3xl font-bold tabular-nums text-brand-700 dark:text-brand-300">
           {formatAUD(minPayment + extraMonthly)}

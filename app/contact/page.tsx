@@ -70,17 +70,17 @@ export default function ContactPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Contact <span className="h-highlight">SalaryCalc</span>
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Contact SalaryCalc
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             The fastest way to reach us is email. We read every message and aim
             to respond within 1-2 business days.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">All emails read</span>
-            <span className="chip">24-hour error response</span>
-            <span className="chip">Security disclosure process</span>
+            <span className="kicker">All emails read</span>
+            <span className="kicker">24-hour error response</span>
+            <span className="kicker">Security disclosure process</span>
           </div>
         </header>
 
@@ -213,7 +213,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

@@ -119,8 +119,8 @@ export default function SalarySacrificeGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Salary sacrifice' },
           ]} />
-          <h1 className="h-serif mt-3 text-3xl text-ink-900 dark:text-ink-50 sm:text-4xl">
-            Salary <span className="h-highlight">sacrifice</span>: how to lower your tax bill the legal way
+          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+            Salary sacrifice: how to lower your tax bill the legal way
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
             Salary sacrifice is an arrangement where you redirect part of
@@ -131,12 +131,12 @@ export default function SalarySacrificeGuide() {
             where it does not make sense.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
-            <span className="chip">
+            <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
-            <span className="chip">8 min read</span>
-            <span className="chip">FY 2026-27</span>
-            <span className="chip">$30K cap</span>
+            <span className="kicker">8 min read</span>
+            <span className="kicker">FY 2026-27</span>
+            <span className="kicker">$30K cap</span>
           </div>
         </header>
 
@@ -379,7 +379,7 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block rounded-2xl border border-ink-200 bg-white p-4 transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
       >
         <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
           {title} →

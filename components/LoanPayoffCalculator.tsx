@@ -119,7 +119,7 @@ export function LoanPayoffCalculator() {
         </div>
       </div>
 
-      <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
+      <div className="mt-12">
         <h3 className="mb-1 text-base font-semibold text-ink-900 dark:text-ink-50">With current payment of {formatAUD(payment)}/month</h3>
 
         {!paymentCoversInterest && (
@@ -151,7 +151,7 @@ export function LoanPayoffCalculator() {
       </div>
 
       {(extraMonthly > 0 || redundancy > 0) && (
-        <div className="mt-5 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 dark:border-emerald-800 dark:bg-emerald-900/20">
+        <div className="mt-12">
           <h3 className="text-base font-semibold text-emerald-900 dark:text-emerald-200">
             Savings {redundancy > 0 ? `with lump sum + ${formatAUD(extraMonthly)}/month extra` : `with ${formatAUD(extraMonthly)} extra per month`}
           </h3>
