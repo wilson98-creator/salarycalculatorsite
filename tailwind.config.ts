@@ -24,21 +24,29 @@ const config: Config = {
           950: '#020617',
         },
         brand: {
-          50: '#eef6ff',
-          100: '#d9eaff',
-          200: '#bcd9ff',
-          300: '#8ec0ff',
-          400: '#599cff',
-          500: '#1e6fff',
-          600: '#1758cc',
-          700: '#134299',
-          800: '#112f6b',
-          900: '#0c1f47',
+          50: '#fafafa',
+          100: '#e5e5e5',
+          200: '#d4d4d4',
+          300: '#a3a3a3',
+          400: '#737373',
+          500: '#0a0a0a',
+          600: '#000000',
+          700: '#000000',
+          800: '#000000',
+          900: '#000000',
         },
-        // Semantic colors — rationed to result figures only.
-        // success = net take-home (the figure the user came for)
-        // danger = tax / Medicare (deductions)
-        // warning = optional flags
+        // accent = the ONLY color used on the surface: the result figure.
+        // Single saturated orange, rationed to one place per page.
+        accent: {
+          50: '#fff7ed',
+          100: '#ffedd5',
+          400: '#ff7a45',
+          500: '#ff5722',
+          600: '#e64a19',
+          700: '#c2410c',
+        },
+        // success / danger / warning — kept for tax/medicare deduction rows
+        // and minor state indicators. Restrained use only.
         success: {
           50: '#ecfdf5',
           100: '#d1fae5',
@@ -63,9 +71,10 @@ const config: Config = {
           600: '#d97706',
           700: '#b45309',
         },
-        // Footer deep-navy bookend (only used in Footer + Calculator result card on dark)
-        footer: {
-          900: '#0c1f47',
+        // Pure black for footer (monochrome bookend)
+        paper: {
+          0: '#ffffff',
+          950: '#000000',
         },
       },
       fontFamily: {

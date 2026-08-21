@@ -71,7 +71,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#1e6fff',
+  themeColor: '#0a0a0a',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -86,12 +86,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
-      <body className="min-h-screen bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-100">
+      <body className="min-h-screen bg-white text-ink-900 dark:bg-ink-950 dark:text-ink-100">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-ink-900 focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
         <AppShell>
-          <main id="main" className="container py-10 sm:py-14">
-            {children}
-          </main>
+          {children}
         </AppShell>
         <Analytics ga4Id={ga4Id} plausibleDomain={plausibleDomain} />
         <CookieBanner />

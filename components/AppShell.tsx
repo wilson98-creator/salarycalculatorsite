@@ -78,7 +78,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           isCollapsed ? 'lg:ml-16' : 'lg:ml-64'
         }`}
       >
-        {children}
+        <main id="main" className="container py-12 sm:py-16 lg:py-20">
+          {children}
+        </main>
         <Footer />
       </div>
     </SidebarContext.Provider>

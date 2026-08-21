@@ -69,7 +69,7 @@ export function PayCalculator() {
   ]);
 
   return (
-    <section aria-labelledby="calculator-heading" className="card not-prose">
+    <section aria-labelledby="calculator-heading" className="not-prose">
       <h2 id="calculator-heading" className="sr-only">Pay calculator</h2>
 
       <div className="grid gap-6">
@@ -270,81 +270,96 @@ function Results({ result }: { result: PayResult }) {
     { key: 'weekly', label: 'Weekly', amount: fromAnnual(annualNet, 'weekly', 38, 52), isSelected: result.period === 'weekly' },
   ];
   return (
-    <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-6 dark:border-brand-800 dark:bg-brand-900/20">
-      <div className="mb-3 flex items-center justify-between">
-        <h3 className="text-base font-semibold text-ink-900 dark:text-ink-50">Your take-home pay</h3>
-        <span className="chip">{periodLabel}</span>
-      </div>
-      <div className="result-row">
-        <span className="result-label">Net pay</span>
-        <span className="result-value text-2xl text-brand-700 dark:text-brand-300">{formatAUD(result.net)}</span>
+    <div className="mt-12">
+      {/* The result figure — the ONLY orange element. */}
+      <p className="section-index">Take-home pay</p>
+      <p className="result-figure mt-2">{formatAUD(result.net)}</p>
+      <p className="kicker mt-3">
+        as of {new Date().toISOString().slice(0, 10)} · {periodLabel.toLowerCase()}
+      </p>
+
+      {/* Take-home per period — horizontal rows with hairlines, not a grid */}
+      <div className="mt-12">
+        <p className="kicker">Per period</p>
+        <ul className="mt-3 rule-line border-t border-ink-200 dark:border-ink-800">
+          {allPeriods.map((p) => (
+            <li
+              key={p.key}
+              className="rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 py-3 dark:border-ink-800"
+            >
+              <span className={`font-mono text-[11px] uppercase tracking-[0.15em] ${p.isSelected ? 'text-ink-900 dark:text-ink-50' : 'text-ink-500 dark:text-ink-400'}`}>
+                {p.isSelected && <span className="text-accent-500">· </span>}
+                {p.label}
+              </span>
+              <span className="font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+                {formatAUD(p.amount)}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <div className="my-3 h-px bg-ink-200 dark:bg-ink-700" />
-
-      <div className="mb-1 text-xs font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
-        Take-home per period
-      </div>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-        {allPeriods.map((p) => (
-          <div
-            key={p.key}
-            className={`rounded-lg border p-3 ${
-              p.isSelected
-                ? 'border-brand-300 bg-white dark:border-brand-700 dark:bg-ink-900'
-                : 'border-ink-200 bg-white/60 dark:border-ink-700 dark:bg-ink-900/40'
-            }`}
-          >
-            <div className="text-[11px] font-medium uppercase tracking-wide text-ink-500 dark:text-ink-400">
-              {p.label}
-            </div>
-            <div className="mt-0.5 font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-50">
-              {formatAUD(p.amount)}
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="my-3 h-px bg-ink-200 dark:bg-ink-700" />
-
-      <div className="result-row">
-        <span className="result-label">Gross</span>
-        <span className="result-value">{formatAUD(result.gross)}</span>
-      </div>
-      <div className="result-row">
-        <span className="result-label">Taxable income</span>
-        <span className="result-value">{formatAUD(result.taxableIncome)}</span>
-      </div>
-      <div className="result-row">
-        <span className="result-label">PAYG income tax</span>
-        <span className="result-value text-rose-700 dark:text-rose-400">−{formatAUD(result.incomeTax)}</span>
-      </div>
-      <div className="result-row">
-        <span className="result-label">Medicare levy</span>
-        <span className="result-value text-rose-700 dark:text-rose-400">−{formatAUD(result.medicare)}</span>
-      </div>
-      {result.hecsRepayment > 0 && (
-        <div className="result-row">
-          <span className="result-label">HECS-HELP repayment</span>
-          <span className="result-value text-rose-700 dark:text-rose-400">−{formatAUD(result.hecsRepayment)}</span>
+      {/* Breakdown — monospace, no zebra, just top/bottom rule lines */}
+      <div className="mt-12">
+        <p className="kicker">Breakdown</p>
+        <ul className="mt-3 rule-line border-t border-ink-200 dark:border-ink-800">
+          <BreakdownRow label="Gross salary" value={formatAUD(result.gross)} />
+          <BreakdownRow label="Taxable income" value={formatAUD(result.taxableIncome)} muted />
+          <BreakdownRow label="Income tax" value={`−${formatAUD(result.incomeTax)}`} deduction />
+          <BreakdownRow label="Medicare levy" value={`−${formatAUD(result.medicare)}`} deduction />
+          {result.hecsRepayment > 0 && (
+            <BreakdownRow label="HECS-HELP repayment" value={`−${formatAUD(result.hecsRepayment)}`} deduction />
+          )}
+          {result.postTaxDeductions > 0 && (
+            <BreakdownRow label="Post-tax deductions" value={`−${formatAUD(result.postTaxDeductions)}`} deduction />
+          )}
+          <BreakdownRow label="Net take-home" value={formatAUD(result.net)} bold total />
+          <BreakdownRow label="Superannuation (employer, on top)" value={formatAUD(result.superannuation)} muted />
+        </ul>
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">
+          <span>Effective rate: {(result.effectiveRate * 100).toFixed(1)}%</span>
+          <span>Marginal rate: {(result.marginalRate * 100).toFixed(0)}%</span>
         </div>
-      )}
-      {result.postTaxDeductions > 0 && (
-        <div className="result-row">
-          <span className="result-label">Post-tax deductions</span>
-          <span className="result-value text-rose-700 dark:text-rose-400">−{formatAUD(result.postTaxDeductions)}</span>
-        </div>
-      )}
-      <div className="my-2 h-px bg-ink-200 dark:bg-ink-700" />
-      <div className="result-row">
-        <span className="result-label text-ink-500 dark:text-ink-400">Superannuation (employer, on top)</span>
-        <span className="result-value text-ink-700 dark:text-ink-300">{formatAUD(result.superannuation)}</span>
-      </div>
-      <div className="mt-5 flex flex-wrap gap-2 text-xs text-ink-600 dark:text-ink-400">
-        <span className="chip bg-white dark:bg-ink-900">Effective tax: {(result.effectiveRate * 100).toFixed(1)}%</span>
-        <span className="chip bg-white dark:bg-ink-900">Marginal rate: {(result.marginalRate * 100).toFixed(0)}%</span>
       </div>
     </div>
+  );
+}
+
+function BreakdownRow({
+  label,
+  value,
+  deduction = false,
+  bold = false,
+  muted = false,
+  total = false,
+}: {
+  label: string;
+  value: string;
+  deduction?: boolean;
+  bold?: boolean;
+  muted?: boolean;
+  total?: boolean;
+}) {
+  const valueClass = deduction
+    ? 'font-mono text-base font-medium tabular-nums text-ink-500 dark:text-ink-400'
+    : bold
+    ? 'font-mono text-lg font-bold tabular-nums text-ink-900 dark:text-ink-50'
+    : muted
+    ? 'font-mono text-sm tabular-nums text-ink-500 dark:text-ink-400'
+    : 'font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-50';
+  return (
+    <li
+      className={`rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 dark:border-ink-800 ${
+        total ? 'py-4' : 'py-3'
+      }`}
+    >
+      <span
+        className={`text-sm ${muted ? 'text-ink-500 dark:text-ink-400' : 'text-ink-700 dark:text-ink-300'}`}
+      >
+        {label}
+      </span>
+      <span className={valueClass}>{value}</span>
+    </li>
   );
 }
 /* triggered rebuild at Wed Aug 19 22:41:52 UTC 2026 */
