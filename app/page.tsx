@@ -10,6 +10,7 @@ import {
   articleSchema,
 } from '@/components/Schema';
 import { sources } from '@/lib/tax/sources';
+import { getLatestNews } from '@/lib/news/loader';
 
 export const metadata: Metadata = {
   title: 'Australian Pay Calculator (FY 2026–27) — Take-Home Pay After Tax',
@@ -56,6 +57,7 @@ const calculators = [
 ];
 
 export default function HomePage() {
+  const latestNews = getLatestNews(2);
   return (
     <>
       <JsonLd
@@ -289,12 +291,68 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 05 — Common questions
+          § 06 — Latest Money Briefs
+          ────────────────────────────────────────────────────────── */}
+      {latestNews.length > 0 && (
+        <section className="section">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-4">
+              <p className="section-index">§ 06</p>
+              <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+                Money Briefs.
+              </h2>
+              <p className="mt-4 text-sm text-ink-600 dark:text-ink-400">
+                The week in Australian money — interest rates, tax, super, wages,
+                property — explained in plain English. New briefs on Tuesdays and Fridays.
+              </p>
+              <p className="mt-6">
+                <Link
+                  href="/news/"
+                  className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500 dark:text-ink-50"
+                >
+                  See all briefs →
+                </Link>
+              </p>
+            </div>
+            <div className="lg:col-span-8">
+              <ul className="space-y-0">
+                {latestNews.map((post) => (
+                  <li key={post.id} className="rule-line border-t border-b border-ink-200 py-6 dark:border-ink-800">
+                    <Link
+                      href={`/news/${post.id}/`}
+                      className="group block"
+                    >
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="kicker">{post.kicker || 'Money brief'}</span>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                          {new Date(post.date).toLocaleDateString('en-AU', { day: '2-digit', month: 'short' })}
+                        </span>
+                      </div>
+                      <h3 className="mt-3 text-xl font-semibold text-ink-900 group-hover:text-ledger-500 dark:text-ink-50 sm:text-2xl">
+                        {post.title}
+                      </h3>
+                      <p className="mt-2 max-w-3xl text-sm text-ink-600 dark:text-ink-400 sm:text-base">
+                        {post.excerpt}
+                      </p>
+                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                        Read brief →
+                      </p>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ──────────────────────────────────────────────────────────
+          § 07 — Common questions
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="section-index">§ 05</p>
+            <p className="section-index">§ 07</p>
             <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
               Common questions.
             </h2>

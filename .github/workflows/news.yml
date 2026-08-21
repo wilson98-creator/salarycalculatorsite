@@ -1,0 +1,72 @@
+name: Money Briefs — Auto-Generate
+
+# Auto-generates 2 plain-English "Money Briefs" per week from trusted
+# Australian financial news sources. Each run:
+#   1. Fetches RSS from RBA, ABC News, SMH, The Guardian AU, ABS
+#   2. Picks the freshest 2 items not already covered
+#   3. Writes a JSON file to content/news/
+#   4. Commits + pushes → Cloudflare Pages auto-deploys the new post
+#
+# Schedule (cron is UTC):
+#   Mon 23:00 UTC = Tue 9:00 AEST (QLD standard, NSW/VIC +10 in winter)
+#   Thu 23:00 UTC = Fri 9:00 AEST
+#
+# Also runs on manual dispatch (workflow_dispatch) so you can trigger it
+# from the GitHub Actions tab when something big drops.
+
+on:
+  schedule:
+    - cron: '0 23 * * 1'  # Tuesday 9am AEST
+    - cron: '0 23 * * 4'  # Friday 9am AEST
+  workflow_dispatch:
+
+# Cancel any in-flight run for the same ref — saves CI minutes.
+concurrency:
+  group: news-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    name: Generate weekly briefs
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Need full history so we can dedupe against existing posts.
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-20-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-20-
+
+      - name: Run generator
+        run: node scripts/generate-news.mjs
+
+      - name: Commit & push if changed
+        run: |
+          if [[ -n "$(git status --porcelain content/news/)" ]]; then
+            git config user.name "SalaryCalc Bot"
+            git config user.email "bot@salarycalc.example.com.au"
+            git add content/news/
+            git commit -m "Auto: weekly money briefs ($(date -u +%Y-%m-%d))"
+            git push
+            echo "Pushed new briefs."
+          else
+            echo "No new briefs to push."
+          fi

@@ -34,6 +34,7 @@ export function Footer() {
             <li><Link href="/tax-rates" className="hover:text-white">Tax rates</Link></li>
             <li><Link href="/methodology" className="hover:text-white">Methodology</Link></li>
             <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
+            <li><Link href="/news" className="hover:text-white">Money Briefs</Link></li>
             <li><Link href="/faq" className="hover:text-white">FAQ</Link></li>
           </ul>
         </div>

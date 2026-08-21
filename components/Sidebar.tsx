@@ -40,6 +40,7 @@ const sections: Section[] = [
     index: '03',
     title: 'Learn',
     items: [
+      { href: '/news', label: 'Money Briefs' },
       { href: '/guides', label: 'All guides' },
       { href: '/guides/australian-income-tax', label: 'Income tax' },
       { href: '/guides/hecs-repayment', label: 'HECS repayment' },

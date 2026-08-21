@@ -6,6 +6,31 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://thesalarycalc.com.au/news/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/news/2026-08-22-rba-august-decision/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/news/2026-08-19-wage-growth-print/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/news/2026-08-15-ato-crypto-record-keeping/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://thesalarycalc.com.au/news/2026-08-12-property-nationally-flat/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://thesalarycalc.com.au/hecs-calculator/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
