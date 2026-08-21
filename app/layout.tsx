@@ -71,7 +71,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0a0a0a',
+  themeColor: '#f5f1e8',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -86,7 +86,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           strategy="afterInteractive"
         />
       </head>
-      <body className="min-h-screen bg-white text-ink-900 dark:bg-ink-950 dark:text-ink-100">
+      <body className="min-h-screen bg-paper-0 text-ink-800 dark:bg-ink-950 dark:text-ink-50">
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-ink-900 focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
         <AppShell>
           {children}

@@ -122,7 +122,7 @@ export function Sidebar() {
                         ) : (
                           <span className="flex items-baseline gap-3">
                             {active && (
-                              <span className="font-mono text-accent-500">·</span>
+                              <span className="font-mono text-ledger-500">·</span>
                             )}
                             <span>{item.label}</span>
                           </span>

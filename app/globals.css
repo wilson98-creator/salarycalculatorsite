@@ -14,77 +14,78 @@ html, body {
 }
 
 body {
-  background: #ffffff;
-  color: #0a0a0a;
+  background: #f5f1e8;
+  color: #1a1a1a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "ss02";
+  font-feature-settings: "kern", "liga", "calt", "ss01", "onum";
 }
 .dark body {
-  background: #0a0a0a;
-  color: #fafafa;
+  background: #0f0f0f;
+  color: #ede6d6;
 }
 
-/* Custom scrollbar — minimal, monochrome */
+/* Custom scrollbar — warm, minimal */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #d4d4d4; border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: #a3a3a3; }
-.dark ::-webkit-scrollbar-thumb { background: #404040; }
-.dark ::-webkit-scrollbar-thumb:hover { background: #525252; }
+::-webkit-scrollbar-thumb { background: #c8c0b0; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #8a8174; }
+.dark ::-webkit-scrollbar-thumb { background: #3d3a32; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #6b6357; }
 
 /* ──────────────────────────────────────────────────────────
-   REFINED MINIMAL DESIGN SYSTEM
-   - No cards. No rounded corners. No fills.
-   - Rule lines (1px hairline) as section dividers.
-   - Result figure is the ONLY color element on the page.
-   - Massive whitespace.
+   EDITORIAL LEDGER DESIGN SYSTEM
+   - Newspaper feel. Warm cream paper + deep oxblood ink.
+   - Heavy Georgia serif headlines, monospace data.
+   - Rule lines instead of borders. No cards. No rounded corners.
+   - Oxblood is the only chromatic color — rationed to the result
+     figure, section accents, and active state.
    ────────────────────────────────────────────────────────── */
 
 /* Underline-only inputs (replaces the bordered input style) */
 .input {
-  @apply w-full border-0 border-b border-ink-300 bg-transparent px-0 py-2 text-base text-ink-900
-    outline-none transition focus:border-ink-900 focus:ring-0
+  @apply w-full border-0 border-b border-ink-300 bg-transparent px-0 py-2 text-base text-ink-800
+    outline-none transition focus:border-ledger-500 focus:ring-0
     disabled:text-ink-400;
   font-feature-settings: "tnum", "lnum";
 }
 .dark .input {
-  @apply border-ink-700 text-ink-100
-    focus:border-ink-100
+  @apply border-ink-700 text-ink-50
+    focus:border-ledger-400
     disabled:text-ink-600;
 }
 
 .label {
-  @apply mb-1 block text-[11px] font-medium uppercase tracking-[0.15em] text-ink-500;
+  @apply mb-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-500;
 }
 .dark .label {
   @apply text-ink-400;
 }
 
 .help {
-  @apply mt-1 text-[11px] uppercase tracking-[0.15em] text-ink-400;
+  @apply mt-1 text-[11px] uppercase tracking-[0.18em] text-ink-500;
 }
 .dark .help {
-  @apply text-ink-500;
+  @apply text-ink-400;
 }
 
-/* Text-link style (replaces btn-primary for monochrome aesthetic) */
+/* Text-link style (editorial: underline with offset, no fill) */
 .btn {
   @apply inline-flex items-center justify-center px-1 py-1 text-sm font-semibold
-    transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ink-900 focus-visible:ring-offset-2;
+    transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ledger-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-0;
 }
 .btn-text {
-  @apply btn text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2
-    dark:text-ink-100;
+  @apply btn text-ink-800 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-600
+    dark:text-ink-50;
 }
 .btn-arrow {
-  @apply inline-flex items-center gap-1 text-sm font-semibold text-ink-900 hover:text-accent-500
-    dark:text-ink-100 dark:hover:text-accent-400;
+  @apply inline-flex items-center gap-1 text-sm font-semibold text-ink-800 hover:text-ledger-600
+    dark:text-ink-50;
 }
 
 /* Section index marker — the "§ 01" monospace label */
 .section-index {
-  @apply font-mono text-[11px] uppercase tracking-[0.15em] text-ink-400;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500;
 }
 .dark .section-index {
   @apply text-ink-500;
@@ -92,13 +93,19 @@ body {
 
 /* Kicker — a small uppercase label that sits above section headlines */
 .kicker {
-  @apply font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-600;
 }
-.dark .kicker {
+.kicker-neutral {
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500;
+}
+.dark .kicker-neutral {
   @apply text-ink-400;
 }
+.dark .kicker {
+  @apply text-ledger-200;
+}
 .kicker-accent {
-  @apply font-mono text-[11px] uppercase tracking-[0.15em] text-accent-500;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-500;
 }
 
 /* Hairline rule — the only "border" style in the system */
@@ -109,25 +116,25 @@ body {
   @apply border-ink-800;
 }
 
-/* Editorial H1 — the one restrained display moment.
-   64px on mobile, 96px on desktop, Georgia 800, tight tracking. */
+/* Editorial H1 — heavy Georgia, 80px desktop, tight tracking.
+   The Bankrate / FT / Economist look. */
 .h-display {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-  font-size: 2.75rem; /* 44px mobile */
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  font-size: 2.5rem; /* 40px mobile */
 }
 @media (min-width: 768px) {
   .h-display {
-    font-size: 4.5rem; /* 72px tablet */
-    letter-spacing: -0.045em;
+    font-size: 3.75rem; /* 60px tablet */
+    letter-spacing: -0.035em;
   }
 }
 @media (min-width: 1024px) {
   .h-display {
-    font-size: 5.5rem; /* 88px desktop */
-    letter-spacing: -0.05em;
+    font-size: 5rem; /* 80px desktop */
+    letter-spacing: -0.04em;
   }
 }
 
@@ -136,7 +143,7 @@ body {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.1;
   font-size: 1.75rem; /* 28px mobile */
 }
 @media (min-width: 768px) {
@@ -145,102 +152,111 @@ body {
   }
 }
 
-/* The orange dot signature — sits above a word to mark it */
-.orange-dot::before {
-  content: "·";
-  color: #ff5722;
-  font-weight: 700;
-  margin-right: 0.05em;
-  display: inline-block;
-  transform: translateY(-0.5em);
-  font-size: 1.5em;
-  line-height: 0;
+/* The oxblood underline accent — sits under a word to highlight it */
+.oxblood-underline {
+  background-image: linear-gradient(transparent calc(100% - 0.18em), #8b1a1a 0.18em);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0.1em;
+}
+.dark .oxblood-underline {
+  background-image: linear-gradient(transparent calc(100% - 0.18em), #a73838 0.18em);
 }
 
-/* Result figure — the ONLY orange element on the page. */
+/* Result figure — the ONLY oxblood element on the page. */
 .result-figure {
   font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
-  font-weight: 600;
+  font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
-  color: #ff5722;
-  letter-spacing: -0.04em;
+  color: #8b1a1a;
+  letter-spacing: -0.03em;
   line-height: 0.95;
-  font-size: 3rem; /* 48px mobile */
+  font-size: 2.5rem; /* 40px mobile */
 }
 @media (min-width: 768px) {
   .result-figure {
-    font-size: 4.5rem; /* 72px tablet */
+    font-size: 4rem; /* 64px tablet */
   }
 }
 @media (min-width: 1024px) {
   .result-figure {
-    font-size: 5.5rem; /* 88px desktop */
+    font-size: 5rem; /* 80px desktop */
   }
 }
+.dark .result-figure {
+  color: #a73838;
+}
 
-/* Deduction rows (tax, Medicare, HECS) — restrained red, not green-for-money */
+/* Deduction rows (tax, Medicare, HECS) — monochrome warm gray */
 .result-deduction {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: #737373; /* monochrome for the minimal aesthetic */
+  color: #6b6357;
 }
 .dark .result-deduction {
-  color: #a3a3a3;
+  color: #8a8174;
 }
 
-/* Section spacing — massive, per the Refined Minimal brief */
+/* Section spacing — generous, with the newspaper rhythm */
 .section {
-  margin-top: 6rem;
+  margin-top: 5rem;
   padding-top: 3rem;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #c8c0b0;
 }
 @media (min-width: 768px) {
   .section {
-    margin-top: 8rem;
+    margin-top: 7rem;
     padding-top: 4rem;
   }
 }
 @media (min-width: 1024px) {
   .section {
-    margin-top: 10rem;
+    margin-top: 9rem;
     padding-top: 5rem;
   }
 }
 .dark .section {
-  border-top-color: #262626;
+  border-top-color: #2a2820;
 }
 
 /* Drop cap on the first paragraph of long-form copy */
 .drop-cap::first-letter {
   font-family: ui-serif, Georgia, "Times New Roman", serif;
-  font-size: 3.5em;
+  font-size: 4em;
   line-height: 0.85;
   float: left;
   margin: 0.1em 0.1em 0.1em 0;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #8b1a1a;
 }
 .dark .drop-cap::first-letter {
-  color: #fafafa;
+  color: #a73838;
 }
 
 /* Underline-only period chip — text-based, with a dot for the active state */
 .chip {
   @apply inline-flex items-center gap-2 font-mono text-[13px] tracking-wider text-ink-500;
 }
+.chip-active {
+  @apply text-ink-800 font-semibold;
+}
 .chip-active::before {
   content: "·";
-  color: #ff5722;
+  color: #8b1a1a;
   font-weight: 700;
   font-size: 1.5em;
   line-height: 0;
+  margin-right: 0.15em;
 }
 .dark .chip {
   @apply text-ink-400;
 }
 .dark .chip-active {
-  @apply text-ink-100;
+  @apply text-ink-50;
+}
+.dark .chip-active::before {
+  color: #a73838;
 }
 
 /* Trust-link row — borderless, underlined link with chevron */
@@ -248,17 +264,17 @@ body {
   @apply block py-3 transition hover:opacity-70;
 }
 
-/* Footer — pure black bookend, white text, monospace metadata */
-.footer-black {
-  background: #000000;
-  color: #ffffff;
+/* Footer — deep navy bookend (the original choice, kept for trust) */
+.footer-navy {
+  background: #0c1f47;
+  color: #f5f1e8;
 }
 .footer-meta {
-  @apply font-mono text-[11px] uppercase tracking-[0.15em];
-  color: #a3a3a3;
+  @apply font-mono text-[11px] uppercase tracking-[0.2em];
+  color: #b8ac97;
 }
 
-/* Smooth theme transition (kept from before) */
+/* Smooth theme transition */
 html {
   transition: background-color 0.2s ease;
 }

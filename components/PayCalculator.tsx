@@ -288,7 +288,7 @@ function Results({ result }: { result: PayResult }) {
               className="rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 py-3 dark:border-ink-800"
             >
               <span className={`font-mono text-[11px] uppercase tracking-[0.15em] ${p.isSelected ? 'text-ink-900 dark:text-ink-50' : 'text-ink-500 dark:text-ink-400'}`}>
-                {p.isSelected && <span className="text-accent-500">· </span>}
+                {p.isSelected && <span className="text-ledger-500">· </span>}
                 {p.label}
               </span>
               <span className="font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">

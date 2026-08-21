@@ -71,19 +71,20 @@ export default function HomePage() {
       />
 
       {/* ──────────────────────────────────────────────────────────
-          HERO — asymmetric, massive H1, calculator on the right
+          HERO — Editorial Ledger. Kicker, H1 with oxblood underline,
+          calculator on the right. Newspaper rhythm.
           ────────────────────────────────────────────────────────── */}
       <section className="grid gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-6">
-          <p className="kicker">AUSTRALIAN PAY CALCULATOR · FY 2026–27</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
-            What you actually <span className="orange-dot">take</span> home.
+          <p className="kicker">Australian Pay Calculator · FY 2026–27 · ATO-Grounded</p>
+          <h1 className="h-display mt-6 text-ink-800 dark:text-ink-50">
+            What you actually <span className="oxblood-underline">take</span> home.
           </h1>
-          <p className="mt-8 max-w-md text-lg text-ink-700 dark:text-ink-300">
-            ATO-grounded, real-time calculation. No login, no tracking,
-            every rate cited.
+          <p className="mt-8 max-w-md text-lg text-ink-600 dark:text-ink-300">
+            The honest, ATO-grounded Australian pay calculator. No login,
+            no tracking, every rate cited, every bracket explained.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
             <span>Methodology last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
             <span>Sources: ATO</span>
           </div>
