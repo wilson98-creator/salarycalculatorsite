@@ -286,12 +286,136 @@ function slugify(s) {
     .slice(0, 80);
 }
 
+/* ──────────────────────────────────────────────────────────
+   GROQ LLM INTEGRATION
+   If GROQ_API_KEY is set, call Llama 3.1 70B to generate a real, unique
+   explanation for each article. Falls back to the template-based
+   `buildExplanation` if no key is set, or if the API call fails.
+
+   Free tier: https://console.groq.com (sign up with Google, grab an API key)
+   Add GROQ_API_KEY as a GitHub Actions secret to enable.
+   ────────────────────────────────────────────────────────── */
+const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+
+async function buildExplanationWithLlm(item) {
+  if (!process.env.GROQ_API_KEY) return null;
+
+  const systemPrompt = `You are an Australian finance writer for SalaryCalc (thesalarycalc.com.au). You write plain-English "Money Briefs" that summarise the week's biggest Australian financial news for everyday workers, borrowers, savers, and taxpayers.
+
+Style rules:
+- Australian English spelling (organisation, recognise, colour).
+- Plain language. No "according to reports", no "stakeholders", no "headwinds".
+- Always start the first paragraph with a concrete fact, not a hedge.
+- No em dashes, use commas or full stops instead.
+- Keep total body to 100-150 words across 2-3 short paragraphs.
+- "What this means" bullets must start with the affected group in 2-4 words, then a colon, then the practical impact in one sentence. Examples: "Variable-rate mortgage:", "Savers:", "Workers on awards:", "First-home buyers:".
+- Pick 1-3 related calculator/guide slugs from the list. Only pick ones that genuinely help the reader.
+- Do NOT make up specific numbers you don't know. Use approximate language if needed.
+- Output ONLY the JSON object, no commentary, no markdown fences.`;
+
+  const userPrompt = `Article to summarise:
+
+Title: ${item.title}
+Source: ${item.feed.name}
+Source URL: ${item.link}
+RSS description: ${item.description}
+
+Related URL slugs you can pick from:
+- / (main pay calculator)
+- /salary-sacrifice-calculator
+- /hecs-calculator
+- /casual-pay-calculator
+- /mortgage-calculator
+- /loan-payoff-calculator
+- /guides/australian-income-tax
+- /guides/hecs-repayment
+- /guides/medicare-levy-surcharge
+- /guides/salary-sacrifice
+- /guides/superannuation
+- /guides/stage-3-tax-cuts
+
+Return a JSON object with exactly these fields:
+{
+  "body": "<2-3 paragraphs, 100-150 words total, plain Australian English>",
+  "whatItMeans": ["<bullet 1>", "<bullet 2>", "<bullet 3>", "<bullet 4 (optional)>"],
+  "category": "<one of: interest-rates | tax | super | wages | inflation | property | markets | general>",
+  "relatedSlugs": ["<slug 1>", "<slug 2>"]
+}`;
+
+  try {
+    const res = await fetch(GROQ_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt },
+        ],
+        temperature: 0.6,
+        max_tokens: 800,
+        response_format: { type: 'json_object' },
+      }),
+      signal: AbortSignal.timeout(30_000),
+    });
+
+    if (!res.ok) {
+      console.warn(`[news] Groq HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+      return null;
+    }
+
+    const json = await res.json();
+    const text = json?.choices?.[0]?.message?.content;
+    if (!text) {
+      console.warn('[news] Groq returned empty content');
+      return null;
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(text);
+    } catch (err) {
+      console.warn(`[news] Groq returned non-JSON: ${text.slice(0, 200)}`);
+      return null;
+    }
+
+    if (!parsed.body || !Array.isArray(parsed.whatItMeans)) {
+      console.warn('[news] Groq returned invalid shape');
+      return null;
+    }
+
+    return {
+      body: String(parsed.body),
+      whatItMeans: parsed.whatItMeans.map((s) => String(s)).filter(Boolean),
+      category: typeof parsed.category === 'string' ? parsed.category : 'general',
+      relatedSlugs: Array.isArray(parsed.relatedSlugs)
+        ? parsed.relatedSlugs.map((s) => String(s).replace(/^\/|\/$/g, '')).filter(Boolean)
+        : [],
+    };
+  } catch (err) {
+    console.warn(`[news] Groq call failed: ${err.message}`);
+    return null;
+  }
+}
+
 function writePost(item) {
   const date = item.pubDate.toISOString().slice(0, 10);
   const slug = slugify(item.title);
   const id = `${date}-${slug}`;
-  const exp = buildExplanation(item);
 
+  // Synchronous write — explanation was generated before this in main().
+  const filename = `${id}.json`;
+  const filepath = join(CONTENT_DIR, filename);
+  if (existsSync(filepath)) {
+    console.log(`[news] skip (already exists): ${filename}`);
+    return false;
+  }
+
+  const exp = item._explanation;
   const post = {
     id,
     date,
@@ -305,18 +429,12 @@ function writePost(item) {
     whatItMeans: exp.whatItMeans,
     relatedSlugs: exp.relatedSlugs,
     autoGenerated: true,
+    llmGenerated: !!item._llmGenerated,
   };
 
-  // De-dupe by id
-  const filename = `${id}.json`;
-  const filepath = join(CONTENT_DIR, filename);
-  if (existsSync(filepath)) {
-    console.log(`[news] skip (already exists): ${filename}`);
-    return false;
-  }
-
   writeFileSync(filepath, JSON.stringify(post, null, 2) + '\n', 'utf-8');
-  console.log(`[news] wrote: ${filename}`);
+  const tag = item._llmGenerated ? ' (LLM)' : ' (template)';
+  console.log(`[news] wrote${tag}: ${filename}`);
   return true;
 }
 
@@ -347,6 +465,25 @@ async function main() {
   const fresh = allItems.slice(0, MAX_PER_RUN);
 
   console.log(`[news] selected ${fresh.length} fresh item(s) to write`);
+
+  if (process.env.GROQ_API_KEY) {
+    console.log(`[news] GROQ_API_KEY set — using Llama 3.3 70B for explanations`);
+  } else {
+    console.log(`[news] no GROQ_API_KEY — falling back to template-based explanations. To enable, set GROQ_API_KEY in GitHub Actions secrets (get a free key at https://console.groq.com)`);
+  }
+
+  // Build explanation for each fresh item. If GROQ_API_KEY is set, use the LLM;
+  // otherwise (or on LLM failure) fall back to the template.
+  for (const item of fresh) {
+    let exp = await buildExplanationWithLlm(item);
+    if (exp) {
+      item._llmGenerated = true;
+    } else {
+      exp = buildExplanation(item);
+      item._llmGenerated = false;
+    }
+    item._explanation = exp;
+  }
 
   let written = 0;
   for (const item of fresh) {

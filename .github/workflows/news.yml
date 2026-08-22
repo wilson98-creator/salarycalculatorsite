@@ -56,6 +56,12 @@ jobs:
             ${{ runner.os }}-node-20-
 
       - name: Run generator
+        # GROQ_API_KEY is optional. If set (in repo Settings > Secrets > Actions),
+        # the script uses Llama 3.3 70B via Groq for unique, human-quality
+        # explanations. If unset, it falls back to topic-based templates.
+        # Get a free key at https://console.groq.com (Google sign-up, ~1 min).
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/generate-news.mjs
 
       - name: Commit & push if changed

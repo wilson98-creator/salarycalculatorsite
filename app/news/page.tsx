@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { loadAllNews } from '@/lib/news/loader';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
@@ -186,6 +187,16 @@ export default function NewsIndexPage() {
           sources and we are not financial advisers. See our{' '}
           <Link href="/disclaimer/" className="underline decoration-1 underline-offset-4 hover:text-ledger-500">disclaimer</Link>.
         </p>
+      </section>
+
+      {/* Newsletter — primary conversion on this page */}
+      <section className="section">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="news-page"
+          heading="Never miss a Money Brief."
+          description="Twice a week, free, in your inbox. The biggest Australian financial news, explained in plain English. About 90 seconds to read each."
+        />
       </section>
 
       <JsonLd

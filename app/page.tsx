@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { PayCalculator } from '@/components/PayCalculator';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import {
   JsonLd,
   softwareApplicationSchema,
@@ -385,6 +386,18 @@ export default function HomePage() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ──────────────────────────────────────────────────────────
+          § 08 — Newsletter capture (Web3Forms)
+          ────────────────────────────────────────────────────────── */}
+      <section className="section">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="home-bottom"
+          heading="Get the Money Briefs in your inbox."
+          description="Every Tuesday and Friday we send the week's biggest Australian financial news, explained in plain English. Free, twice a week, unsubscribe with one click."
+        />
       </section>
     </>
   );
