@@ -1,6 +1,15 @@
 import type { Config } from 'tailwindcss';
 import typography from '@tailwindcss/typography';
 
+/**
+ * Theme architecture
+ * ------------------
+ * All colour tokens are CSS custom properties (var(--ink-50) etc.) defined in
+ * app/globals.css. We override them in :root (light mode) and .dark (dark
+ * mode), so the SAME component classes — text-ink-800, bg-paper-0, etc. —
+ * automatically render correctly in both modes. No dark: variants needed
+ * in source files.
+ */
 const config: Config = {
   darkMode: 'class',
   content: [
@@ -10,88 +19,86 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Premium Dark Fintech — INK palette mapped to dark-mode values.
-        // Low numbers (50) = dark surfaces, high numbers (950) = bright text.
-        // This is the COLOUR the body text, borders, and surfaces render in.
+        // INK — the base neutral scale.
+        // Light mode: 50 = warm cream (page bg), 800 = deep navy (primary text).
+        // Dark mode:  50 = deep ink (page bg),    800 = near-white (primary text).
         ink: {
-          50: '#0a0e1a',   // page background (darkest)
-          100: '#14192a',  // elevated surface
-          200: '#1f2440',  // surface (cards)
-          300: '#2a2f4d',  // border light
-          400: '#3a3a4a',  // border (stronger)
-          500: '#5a5a6e',  // muted text
-          600: '#a0a0ae',  // secondary text (>=4.5:1 on #0a0e1a)
-          700: '#c7cad4',  // light text (>=7:1 on #0a0e1a, AAA)
-          800: '#e8e9ee',  // primary text (>=14:1 on #0a0e1a, AAA+)
-          900: '#f1f2f5',  // near-white
-          950: '#fafaf7',  // warmest white (brightest)
+          50: 'var(--ink-50)',
+          100: 'var(--ink-100)',
+          200: 'var(--ink-200)',
+          300: 'var(--ink-300)',
+          400: 'var(--ink-400)',
+          500: 'var(--ink-500)',
+          600: 'var(--ink-600)',
+          700: 'var(--ink-700)',
+          800: 'var(--ink-800)',
+          900: 'var(--ink-900)',
+          950: 'var(--ink-950)',
         },
-        // Brand palette (premium dark, used for footer / result figure).
+        // BRAND — same scale, used for footer / result figure / brand surfaces.
         brand: {
-          50: '#050811',   // deepest ink (footer background)
-          100: '#0a0e1a',  // page background (alias of ink-50)
-          200: '#14192a',  // elevated surface (alias of ink-100)
-          300: '#1a1f3a',  // deep purple-blue (subtle accent surface)
-          400: '#1f2440',  // soft borders (alias of ink-200)
-          500: '#5a5a6e',  // medium gray (alias of ink-500)
-          600: '#a0a0ae',  // light gray (alias of ink-600)
-          700: '#c7cad4',  // light text (alias of ink-700)
-          800: '#e8e9ee',  // primary text (alias of ink-800)
-          900: '#fafaf7',  // warm white (alias of ink-950)
+          50: 'var(--brand-50)',
+          100: 'var(--brand-100)',
+          200: 'var(--brand-200)',
+          300: 'var(--brand-300)',
+          400: 'var(--brand-400)',
+          500: 'var(--brand-500)',
+          600: 'var(--brand-600)',
+          700: 'var(--brand-700)',
+          800: 'var(--brand-800)',
+          900: 'var(--brand-900)',
         },
-        // ledger = bright yellow-green (the ONLY chromatic color on the surface)
-        // Used for the result figure, CTAs, and active state.
+        // LEDGER — the yellow-green accent (result figure, CTAs, active).
+        // Dark mode uses a vivid lime; light mode uses a darker olive for AA contrast on cream.
         ledger: {
-          50: '#1a2400',   // very dark yellow-green tint
-          100: '#2d3d00',  // darker tint
-          200: '#5a7800',  // muted accent
-          400: '#a6c400',  // hover state
-          500: '#c7f000',  // PRIMARY YELLOW-GREEN — result figure, CTAs
-          600: '#d4f933',  // bright hover
-          700: '#e0ff66',  // lightest
+          50: 'var(--ledger-50)',
+          100: 'var(--ledger-100)',
+          200: 'var(--ledger-200)',
+          400: 'var(--ledger-400)',
+          500: 'var(--ledger-500)',
+          600: 'var(--ledger-600)',
+          700: 'var(--ledger-700)',
         },
-        // accent2 = vibrant teal (used SPARINGLY for borders, dividers)
+        // ACCENT2 — vibrant teal for borders / dividers (used SPARINGLY).
         accent2: {
-          400: '#00a89a',
-          500: '#00d4b5',  // PRIMARY TEAL
-          600: '#2ee0c4',
+          400: 'var(--accent2-400)',
+          500: 'var(--accent2-500)',
+          600: 'var(--accent2-600)',
         },
-        // success / danger / warning — restrained use for state indicators
+        // Semantic palettes — darker variants for light mode, lighter for dark.
         success: {
-          50: '#022c1d',
-          100: '#064e3b',
-          400: '#10b981',
-          500: '#34d399',
-          600: '#6ee7b7',
-          700: '#a7f3d0',
+          50: 'var(--success-50)',
+          100: 'var(--success-100)',
+          400: 'var(--success-400)',
+          500: 'var(--success-500)',
+          600: 'var(--success-600)',
+          700: 'var(--success-700)',
         },
         danger: {
-          50: '#3a0d0d',
-          100: '#7f1d1d',
-          400: '#f87171',
-          500: '#fca5a5',
-          600: '#fecaca',
-          700: '#fee2e2',
+          50: 'var(--danger-50)',
+          100: 'var(--danger-100)',
+          400: 'var(--danger-400)',
+          500: 'var(--danger-500)',
+          600: 'var(--danger-600)',
+          700: 'var(--danger-700)',
         },
         warning: {
-          50: '#3a2807',
-          100: '#78350f',
-          400: '#fbbf24',
-          500: '#fcd34d',
-          600: '#fde68a',
-          700: '#fef3c7',
+          50: 'var(--warning-50)',
+          100: 'var(--warning-100)',
+          400: 'var(--warning-400)',
+          500: 'var(--warning-500)',
+          600: 'var(--warning-600)',
+          700: 'var(--warning-700)',
         },
-        // Page / footer bookend
+        // Page / footer bookend.
         paper: {
-          0: '#0a0e1a',   // page background dark
-          950: '#050811',  // footer background (deeper still)
+          0: 'var(--paper-0)',
+          950: 'var(--paper-950)',
         },
       },
       fontFamily: {
         sans: ['ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-        // One restrained editorial accent for the H1 only — matches the
-        // Bankrate / Which? "publication not a startup" feel.
         serif: ['ui-serif', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       },
       container: {
@@ -115,9 +122,9 @@ const config: Config = {
           css: {
             '--tw-prose-body': theme('colors.ink.700'),
             '--tw-prose-headings': theme('colors.ink.800'),
-            '--tw-prose-links': theme('colors.ledger.600'),
+            '--tw-prose-links': theme('colors.ledger.500'),
             '--tw-prose-bold': theme('colors.ink.800'),
-            '--tw-prose-quotes': theme('colors.ink.700'),
+            '--tw-prose-quotes': theme('colors.ink.600'),
             '--tw-prose-quote-borders': theme('colors.ledger.500'),
             '--tw-prose-code': theme('colors.ink.800'),
             '--tw-prose-bullets': theme('colors.ink.400'),
@@ -139,7 +146,7 @@ const config: Config = {
             ol: { marginTop: '0.75rem', marginBottom: '0.75rem', paddingLeft: '1.5rem' },
             li: { marginTop: '0.4rem', marginBottom: '0.4rem' },
             a: { textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: '500' },
-            'a:hover': { color: theme('colors.ledger.700') },
+            'a:hover': { color: theme('colors.ledger.600') },
             blockquote: {
               fontStyle: 'italic',
               borderLeftWidth: '3px',
@@ -156,17 +163,17 @@ const config: Config = {
         },
         invert: {
           css: {
-            '--tw-prose-body': theme('colors.ink.300'),
-            '--tw-prose-headings': theme('colors.brand.50'),
-            '--tw-prose-links': theme('colors.ledger.200'),
-            '--tw-prose-bold': theme('colors.brand.50'),
-            '--tw-prose-quotes': theme('colors.ink.200'),
-            '--tw-prose-quote-borders': theme('colors.ledger.400'),
-            '--tw-prose-code': theme('colors.brand.50'),
+            '--tw-prose-body': theme('colors.ink.700'),
+            '--tw-prose-headings': theme('colors.ink.800'),
+            '--tw-prose-links': theme('colors.ledger.500'),
+            '--tw-prose-bold': theme('colors.ink.800'),
+            '--tw-prose-quotes': theme('colors.ink.600'),
+            '--tw-prose-quote-borders': theme('colors.ledger.500'),
+            '--tw-prose-code': theme('colors.ink.800'),
             '--tw-prose-bullets': theme('colors.ink.600'),
-            '--tw-prose-hr': theme('colors.ink.700'),
-            '--tw-prose-thead-borders': theme('colors.ink.600'),
-            '--tw-prose-table-borders': theme('colors.ink.700'),
+            '--tw-prose-hr': theme('colors.ink.300'),
+            '--tw-prose-thead-borders': theme('colors.ink.500'),
+            '--tw-prose-table-borders': theme('colors.ink.300'),
           },
         },
       }),

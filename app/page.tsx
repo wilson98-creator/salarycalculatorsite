@@ -13,9 +13,9 @@ import { sources } from '@/lib/tax/sources';
 import { getLatestNews } from '@/lib/news/loader';
 
 export const metadata: Metadata = {
-  title: 'Australian Pay Calculator (FY 2026–27) — Take-Home Pay After Tax',
+  title: 'Australian Pay Calculator (FY 2026–27), Take-Home Pay After Tax',
   description:
-    'Free, accurate Australian pay calculator — also covers wage, salary, paycheck, annual income, hourly wage, payroll, salary comparison and holiday entitlement. FY 2026–27 ATO rates.',
+    'Free, accurate Australian pay calculator, also covers wage, salary, paycheck, annual income, hourly wage, payroll, salary comparison and holiday entitlement. FY 2026–27 ATO rates.',
   alternates: { canonical: '/' },
 };
 
@@ -28,17 +28,17 @@ const homeFaqs = [
   {
     question: 'How much tax will I pay on $80,000?',
     answer:
-      'For FY 2026–27, on a $80,000 annual salary you pay $14,520 in income tax plus $1,600 Medicare levy — a net take-home of about $63,880 per year, or around $2,457 per fortnight. Use the calculator above for the exact figure for your situation. Employer super of $9,600 (12%) is paid on top.',
+      'For FY 2026–27, on a $80,000 annual salary you pay $14,520 in income tax plus $1,600 Medicare levy, a net take-home of about $63,880 per year, or around $2,457 per fortnight. Use the calculator above for the exact figure for your situation. Employer super of $9,600 (12%) is paid on top.',
   },
   {
     question: 'Does this include superannuation?',
     answer:
-      'Yes. The Superannuation Guarantee is shown as a separate line — it is an employer cost paid on top of your salary, not a deduction from your take-home pay. If your offer is a Total Employment Cost that includes super, tick "My gross includes super" and the calculator will peel super off the top before computing tax.',
+      'Yes. The Superannuation Guarantee is shown as a separate line, it is an employer cost paid on top of your salary, not a deduction from your take-home pay. If your offer is a Total Employment Cost that includes super, tick "My gross includes super" and the calculator will peel super off the top before computing tax.',
   },
   {
     question: 'How is HECS-HELP repayment calculated?',
     answer:
-      'From 1 July 2025 HECS-HELP uses a marginal bracket system — you only pay the higher rate on income above each threshold, not on your whole income. For FY 2026–27 the threshold is around $69,528. Tick the "I have a HECS-HELP debt" option in the calculator to see the impact on your take-home pay.',
+      'From 1 July 2025 HECS-HELP uses a marginal bracket system, you only pay the higher rate on income above each threshold, not on your whole income. For FY 2026–27 the threshold is around $69,528. Tick the "I have a HECS-HELP debt" option in the calculator to see the impact on your take-home pay.',
   },
   {
     question: 'Is this financial advice?',
@@ -65,7 +65,7 @@ export default function HomePage() {
           softwareApplicationSchema(),
           faqSchema(homeFaqs),
           articleSchema({
-            headline: 'Australian Pay Calculator (FY 2026–27) — Take-Home Pay After Tax',
+            headline: 'Australian Pay Calculator (FY 2026–27), Take-Home Pay After Tax',
             description: brand.shortDescription,
             url: brand.url,
           }),
@@ -73,7 +73,7 @@ export default function HomePage() {
       />
 
       {/* ──────────────────────────────────────────────────────────
-          HERO — Editorial Ledger. Kicker, H1 with oxblood underline,
+          HERO, Editorial Ledger. Kicker, H1 with oxblood underline,
           calculator on the right. Newspaper rhythm.
           ────────────────────────────────────────────────────────── */}
       <section className="grid gap-16 lg:grid-cols-12 lg:gap-12">
@@ -99,7 +99,7 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 01 — How the calculation works
+          § 01, How the calculation works
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -111,7 +111,7 @@ export default function HomePage() {
           </div>
           <div className="lg:col-span-8">
             <p className="drop-cap text-base text-ink-700 sm:text-lg">
-              Australian income tax is progressive — different rates apply
+              Australian income tax is progressive, different rates apply
               to different portions of your income, not a single flat rate
               on the whole amount. Here is the actual calculation, with
               numbers, for someone earning $85,000 in FY 2026–27. Source:{' '}
@@ -175,7 +175,7 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 02 — PAYG vs your actual tax
+          § 02, PAYG vs your actual tax
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 03 — Other calculators
+          § 03, Other calculators
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -241,7 +241,7 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 04 — All the ways to calculate your pay
+          § 04, All the ways to calculate your pay
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -254,7 +254,7 @@ export default function HomePage() {
           <div className="lg:col-span-8">
             <p className="text-base text-ink-700 sm:text-lg">
               People search for this calculation under a dozen different
-              names — wage calculator, paycheck calculator, salary
+              names, wage calculator, paycheck calculator, salary
               calculator, annual income calculator, take home pay
               calculator, online payroll calculator. They are all the
               same problem: <em>how much of what I earn actually lands in
@@ -263,22 +263,22 @@ export default function HomePage() {
             </p>
             <ul className="mt-10 space-y-6 text-base text-ink-700">
               <li>
-                <strong className="text-ink-900">Wage calculator / hourly wage calculator / hourly to salary calculator</strong> — for people paid by the hour. Enter your hourly rate, set hours per week and weeks per year, and the calculator annualises the rest.
+                <strong className="text-ink-900">Wage calculator / hourly wage calculator / hourly to salary calculator</strong>, for people paid by the hour. Enter your hourly rate, set hours per week and weeks per year, and the calculator annualises the rest.
               </li>
               <li>
-                <strong className="text-ink-900">Salary calculator / annual salary calculator / annual income calculator</strong> — for salaried employees. Enter your package as an annual figure and the calculator shows the monthly, fortnightly and weekly take-home equivalents.
+                <strong className="text-ink-900">Salary calculator / annual salary calculator / annual income calculator</strong>, for salaried employees. Enter your package as an annual figure and the calculator shows the monthly, fortnightly and weekly take-home equivalents.
               </li>
               <li>
-                <strong className="text-ink-900">Paycheck calculator / take home pay calculator</strong> — for the everyday question of &quot;how much is in my next pay&quot;. The same calculation, but the calculator shows the per-period number prominently.
+                <strong className="text-ink-900">Paycheck calculator / take home pay calculator</strong>, for the everyday question of &quot;how much is in my next pay&quot;. The same calculation, but the calculator shows the per-period number prominently.
               </li>
               <li>
-                <strong className="text-ink-900">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong> — the same math, from the employer&apos;s side. Your employer&apos;s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
+                <strong className="text-ink-900">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong>, the same math, from the employer&apos;s side. Your employer&apos;s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
               </li>
               <li>
-                <strong className="text-ink-900">Salary comparison</strong> — for people weighing two job offers. The calculator makes it easy to enter each offer and see the after-tax, after-super comparison.
+                <strong className="text-ink-900">Salary comparison</strong>, for people weighing two job offers. The calculator makes it easy to enter each offer and see the after-tax, after-super comparison.
               </li>
               <li>
-                <strong className="text-ink-900">Holiday entitlement calculator</strong> — annual leave is paid at the ordinary rate (casuals receive 25% casual loading instead of paid leave). The main calculator shows your take-home per pay; the annual leave component is just your ordinary rate multiplied by the hours of leave accrued.
+                <strong className="text-ink-900">Holiday entitlement calculator</strong>, annual leave is paid at the ordinary rate (casuals receive 25% casual loading instead of paid leave). The main calculator shows your take-home per pay; the annual leave component is just your ordinary rate multiplied by the hours of leave accrued.
               </li>
             </ul>
             <p className="mt-8 text-base text-ink-700">
@@ -291,7 +291,7 @@ export default function HomePage() {
       </section>
 
       {/* ──────────────────────────────────────────────────────────
-          § 06 — Latest Money Briefs
+          § 06, Latest Money Briefs
           ────────────────────────────────────────────────────────── */}
       {latestNews.length > 0 && (
         <section className="section">
@@ -302,8 +302,8 @@ export default function HomePage() {
                 Money Briefs.
               </h2>
               <p className="mt-4 text-sm text-ink-600">
-                The week in Australian money — interest rates, tax, super, wages,
-                property — explained in plain English. New briefs on Tuesdays and Fridays.
+                The week in Australian money, interest rates, tax, super, wages,
+                property, explained in plain English. New briefs on Tuesdays and Fridays.
               </p>
               <p className="mt-6">
                 <Link
@@ -347,7 +347,7 @@ export default function HomePage() {
       )}
 
       {/* ──────────────────────────────────────────────────────────
-          § 07 — Common questions
+          § 07, Common questions
           ────────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="grid gap-12 lg:grid-cols-12">

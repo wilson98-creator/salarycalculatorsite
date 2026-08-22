@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Methodology — how SalaryCalc calculates Australian take-home pay',
+  title: 'Methodology, how SalaryCalc calculates Australian take-home pay',
   description:
     'Line-by-line explanation of how SalaryCalc calculates Australian take-home pay, with source links to the ATO for every rate and threshold. FY 2026-27 brackets fully cited.',
   alternates: { canonical: '/methodology' },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'hecs repayment calculation',
   ],
   openGraph: {
-    title: 'Methodology — how SalaryCalc calculates your pay',
+    title: 'Methodology, how SalaryCalc calculates your pay',
     description: 'Every rate, threshold, and formula on SalaryCalc, with a direct link to the ATO source.',
     url: `${brand.url}/methodology`,
     type: 'article',
@@ -105,7 +105,7 @@ export default function MethodologyPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Methodology — how SalaryCalc calculates Australian take-home pay',
+            headline: 'Methodology, how SalaryCalc calculates Australian take-home pay',
             description: metadata.description as string,
             url: `${brand.url}/methodology`,
             datePublished: '2026-01-15',
@@ -143,11 +143,11 @@ export default function MethodologyPage() {
           </div>
         </header>
 
-        {/* TL;DR summary table — the headline is the pipeline, but most users
+        {/* TL;DR summary table, the headline is the pipeline, but most users
             want to see "what's the rate, where does it come from" first. */}
         <section aria-labelledby="rates-summary" className="card not-prose mb-12">
           <h2 id="rates-summary" className="text-base font-semibold text-ink-900">
-            Rate source summary — at a glance
+            Rate source summary, at a glance
           </h2>
           <p className="mt-1 text-sm text-ink-600">
             Every rate, threshold, and coefficient on the site links back to one of
@@ -196,7 +196,7 @@ export default function MethodologyPage() {
           <h2>1. The pipeline</h2>
           <p>
             Every time you change an input, the calculator runs the following
-            pipeline. The whole thing takes a few milliseconds in your browser —
+            pipeline. The whole thing takes a few milliseconds in your browser , 
             nothing is sent to a server.
           </p>
           <ol>
@@ -320,7 +320,7 @@ export default function MethodologyPage() {
             The Superannuation Guarantee is the minimum amount your employer must
             contribute on top of your salary. It is 12% of ordinary time
             earnings from 1 July 2025 onwards. It is not deducted from your
-            take-home pay — the calculator shows it as a separate line so the
+            take-home pay, the calculator shows it as a separate line so the
             number is never confused with your net pay.
           </p>
 

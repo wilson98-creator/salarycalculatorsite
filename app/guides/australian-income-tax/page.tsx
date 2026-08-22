@@ -30,7 +30,7 @@ const faqs = [
   {
     question: 'How is Australian income tax calculated?',
     answer:
-      'Australian income tax is progressive — different rates apply to different portions of your income. For FY 2026-27 the resident brackets are 0% to $18,200, 15% to $45,000, 30% to $135,000, 37% to $190,000, and 45% above that. Add the 2% Medicare levy on top, subtract the Low Income Tax Offset (LITO) if eligible, and add the HECS-HELP repayment if you have a study debt.',
+      'Australian income tax is progressive, different rates apply to different portions of your income. For FY 2026-27 the resident brackets are 0% to $18,200, 15% to $45,000, 30% to $135,000, 37% to $190,000, and 45% above that. Add the 2% Medicare levy on top, subtract the Low Income Tax Offset (LITO) if eligible, and add the HECS-HELP repayment if you have a study debt.',
   },
   {
     question: 'What is the difference between PAYG and the actual tax?',
@@ -60,12 +60,12 @@ const faqs = [
   {
     question: 'How do I check if my payslip is correct?',
     answer:
-      'Compare the year-to-date tax withheld on your payslip with what the SalaryCalc calculator shows for the same period. Small differences (a few dollars per pay) are normal — they are the rounding difference between the PAYG Schedule 1 formulas and the annual bracket method. Large differences (tens or hundreds of dollars) suggest a problem: an incorrect TFN declaration, missing HELP code, or a payroll software error. Talk to your payroll officer if the gap is large.',
+      'Compare the year-to-date tax withheld on your payslip with what the SalaryCalc calculator shows for the same period. Small differences (a few dollars per pay) are normal, they are the rounding difference between the PAYG Schedule 1 formulas and the annual bracket method. Large differences (tens or hundreds of dollars) suggest a problem: an incorrect TFN declaration, missing HELP code, or a payroll software error. Talk to your payroll officer if the gap is large.',
   },
   {
     question: 'When does a small pay rise stop being worth it?',
     answer:
-      'In the old HECS repayment system, crossing a threshold could mean a flat percentage of your entire income was now subject to repayment — sometimes more than the pay rise. The new marginal HECS system (from 1 July 2025) fixed this. For income tax, the progressive bracket system means every dollar is taxed at its own marginal rate, so any pay rise is always worth more than the tax on the last dollar.',
+      'In the old HECS repayment system, crossing a threshold could mean a flat percentage of your entire income was now subject to repayment, sometimes more than the pay rise. The new marginal HECS system (from 1 July 2025) fixed this. For income tax, the progressive bracket system means every dollar is taxed at its own marginal rate, so any pay rise is always worth more than the tax on the last dollar.',
   },
 ];
 
@@ -96,7 +96,7 @@ export default function IncomeTaxGuide() {
             Australian income tax: a complete guide
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
-            Australian income tax is progressive — different rates apply to
+            Australian income tax is progressive, different rates apply to
             different portions of your income, not a single flat rate on the
             whole amount. This guide walks through how the system works, who
             pays what, and the most common ways people end up with the wrong
@@ -127,7 +127,7 @@ export default function IncomeTaxGuide() {
             <li className="flex items-baseline gap-3">
               <span className="font-mono font-semibold text-brand-600">→</span>
               <span className="text-ink-700">
-                Your employer withholds a slightly different number (PAYG) than your actual annual tax — the difference reconciles at tax time.
+                Your employer withholds a slightly different number (PAYG) than your actual annual tax, the difference reconciles at tax time.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
@@ -162,8 +162,8 @@ export default function IncomeTaxGuide() {
             the Pay As You Go (PAYG) system.
           </p>
           <p>
-            The two pieces of machinery — what you actually owe and what your
-            employer withholds — use slightly different math. The withholding
+            The two pieces of machinery, what you actually owe and what your
+            employer withholds, use slightly different math. The withholding
             method (ATO Schedule 1, NAT 1004) uses weekly-equivalent earnings
             and small rounding coefficients and is designed to get close to but
             not exactly match the annual tax. The annual tax brackets (the
@@ -206,7 +206,7 @@ export default function IncomeTaxGuide() {
           <p>
             These rates are exclusive of the 2% Medicare levy, which is
             calculated on top. Foreign residents for tax purposes are not
-            eligible for the tax-free threshold or the Medicare levy — see the
+            eligible for the tax-free threshold or the Medicare levy, see the
             residency section below.
           </p>
           <p>
@@ -243,7 +243,7 @@ export default function IncomeTaxGuide() {
             the offset is zero. Non-residents are not eligible.
           </p>
           <p>
-            For an $80,000 earner, LITO has been fully phased out — the
+            For an $80,000 earner, LITO has been fully phased out, the
             marginal reduction below the phase-out point is larger than the
             remaining offset. The SalaryCalc calculator applies LITO
             automatically.
@@ -275,11 +275,11 @@ export default function IncomeTaxGuide() {
             not model it.
           </p>
           <p>
-            The MLS is calculated on &quot;MLS income&quot; — taxable income
+            The MLS is calculated on &quot;MLS income&quot;, taxable income
             plus reportable fringe benefits, reportable employer super
             contributions, and net investment losses. Many people do not
             realise the surcharge applies to the whole of your MLS income, not
-            just the portion above the threshold — so a $200,000 earner pays
+            just the portion above the threshold, so a $200,000 earner pays
             1% on the whole $200,000, not just on the $95,000 above $105,000.
             See the dedicated{' '}
             <Link href="/guides/medicare-levy-surcharge">MLS guide</Link> for
@@ -291,7 +291,7 @@ export default function IncomeTaxGuide() {
             If you have a HECS-HELP, VSL, TSL, SSL, or SFSS debt, compulsory
             repayments kick in once your &quot;repayment income&quot;
             exceeds the threshold for the financial year. From 1 July 2025
-            the repayment system is marginal — you only pay the higher rate
+            the repayment system is marginal, you only pay the higher rate
             on income above each threshold, not on your whole income. For
             FY 2026-27 the threshold is around $69,528.
           </p>
@@ -337,7 +337,7 @@ export default function IncomeTaxGuide() {
           <p>
             In practice, this means your payslip number for tax can differ by
             a few dollars from a &quot;what tax do I actually owe&quot;
-            calculation. Neither is wrong — they are different methods. The
+            calculation. Neither is wrong, they are different methods. The
             SalaryCalc calculator uses the actual tax-bracket method, which
             is what the ATO uses to assess your final tax position.
           </p>

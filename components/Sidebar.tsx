@@ -72,7 +72,7 @@ export function Sidebar() {
         aria-hidden="true"
       />
 
-      {/* Sidebar — accessible nav with clear active state and visible borders.
+      {/* Sidebar, accessible nav with clear active state and visible borders.
           Slightly elevated surface so it reads as a distinct region. */}
       <aside
         aria-label="Primary"
@@ -80,7 +80,7 @@ export function Sidebar() {
           isOpen ? 'translate-x-0' : '-translate-x-full'
         } ${isCollapsed ? 'lg:w-16' : 'lg:w-72'} w-72 lg:translate-x-0`}
       >
-        {/* Collapse toggle (desktop only) — visible button, keyboard accessible */}
+        {/* Collapse toggle (desktop only), visible button, keyboard accessible */}
         <button
           type="button"
           onClick={() => setCollapsed(!isCollapsed)}
@@ -117,7 +117,7 @@ export function Sidebar() {
                             : 'text-ink-600 hover:bg-ink-200 hover:text-ink-800'
                         }`}
                       >
-                        {/* Active indicator — left bar in yellow-green */}
+                        {/* Active indicator, left bar in yellow-green */}
                         {active && (
                           <span
                             aria-hidden="true"

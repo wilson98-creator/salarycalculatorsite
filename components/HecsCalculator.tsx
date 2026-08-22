@@ -131,7 +131,7 @@ export function HecsCalculator() {
 
         {belowThreshold && (
           <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-            Your income is below the repayment threshold — no compulsory repayment this year, but your balance will still be indexed on 1 June.
+            Your income is below the repayment threshold, no compulsory repayment this year, but your balance will still be indexed on 1 June.
           </p>
         )}
 
@@ -141,7 +141,7 @@ export function HecsCalculator() {
             <h4 className="text-sm font-semibold text-ink-900">Projection (flat income, {indexation}% indexation)</h4>
             <div className="result-row">
               <span className="result-label">Years to pay off</span>
-              <span className="result-value">{projection.yearsToPayoff || '—'}</span>
+              <span className="result-value">{projection.yearsToPayoff || ', '}</span>
             </div>
             <div className="result-row">
               <span className="result-label">Total repaid</span>
@@ -153,7 +153,7 @@ export function HecsCalculator() {
             </div>
             {projection.yearsToPayoff >= 50 && (
               <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-                Your repayment doesn&apos;t cover the annual indexation — your debt is projected to grow for 50+ years. Consider voluntary repayments, salary sacrifice into super (which lowers your repayment income), or talking to a financial counsellor.
+                Your repayment doesn&apos;t cover the annual indexation, your debt is projected to grow for 50+ years. Consider voluntary repayments, salary sacrifice into super (which lowers your repayment income), or talking to a financial counsellor.
               </p>
             )}
           </>

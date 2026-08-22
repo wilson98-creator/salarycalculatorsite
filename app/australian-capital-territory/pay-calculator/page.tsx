@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'ACT Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'ACT Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'ACT (Australian Capital Territory) pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Canberra cost-of-living context.',
   alternates: { canonical: '/australian-capital-territory/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in the ACT compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Canberra is identical to the tax on $80,000 in Sydney or Melbourne. Territory differences show up in cost of living, average wages, and (for employers) the rate of payroll tax — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Canberra is identical to the tax on $80,000 in Sydney or Melbourne. Territory differences show up in cost of living, average wages, and (for employers) the rate of payroll tax, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in the ACT?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How does Canberra cost of living compare?',
     answer:
-      'Canberra is more affordable than Sydney but more expensive than Adelaide or Hobart. Median rent for a one-bedroom inner-city apartment is around $510/week (around $26,500/year — about 27% of a $100k salary). Transport is reasonable (a strong cycling culture means many public servants commute by bike), and groceries are close to the national average.',
+      'Canberra is more affordable than Sydney but more expensive than Adelaide or Hobart. Median rent for a one-bedroom inner-city apartment is around $510/week (around $26,500/year, about 27% of a $100k salary). Transport is reasonable (a strong cycling culture means many public servants commute by bike), and groceries are close to the national average.',
   },
 ];
 
@@ -58,7 +58,7 @@ export default function ActPayCalculatorPage() {
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in the Australian Capital Territory. The federal
             tax brackets, Medicare levy, and HELP repayment thresholds are the same
-            across Australia — so the math is identical whether you work in Canberra or
+            across Australia, so the math is identical whether you work in Canberra or
             anywhere else. What varies is the cost of living, the median wage in your
             industry, and the APS-specific allowances that apply to public-service roles.
           </p>

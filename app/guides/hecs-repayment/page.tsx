@@ -72,7 +72,7 @@ const faqs = [
   {
     question: 'How is my HECS balance indexed?',
     answer:
-      'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024 — previously the balance was indexed by CPI alone. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
+      'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024, previously the balance was indexed by CPI alone. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
   },
   {
     question: 'Can I make voluntary HECS repayments?',
@@ -87,7 +87,7 @@ const faqs = [
   {
     question: 'What happens to my HECS debt if I move overseas?',
     answer:
-      'Your HELP debt remains and continues to be indexed on 1 June each year while you are overseas. You are still required to make compulsory repayments if your worldwide repayment income exceeds the threshold. The ATO has a process for making voluntary overseas repayments, and you can update your contact details via myGov. After 6 months overseas, the indexation on your balance is calculated differently — see the ATO overseas repayment page for details.',
+      'Your HELP debt remains and continues to be indexed on 1 June each year while you are overseas. You are still required to make compulsory repayments if your worldwide repayment income exceeds the threshold. The ATO has a process for making voluntary overseas repayments, and you can update your contact details via myGov. After 6 months overseas, the indexation on your balance is calculated differently, see the ATO overseas repayment page for details.',
   },
   {
     question: 'How long does it take to pay off HECS?',
@@ -204,7 +204,7 @@ export default function HecsGuide() {
             earned.
           </p>
           <p>
-            From 1 July 2025 the system is marginal — like income tax, you
+            From 1 July 2025 the system is marginal, like income tax, you
             only pay the higher rate on the income above each threshold, not
             on your whole income. For FY 2025-26 the schedule was:
           </p>
@@ -235,7 +235,7 @@ export default function HecsGuide() {
             </tbody>
           </table>
           <p>
-            For FY 2026-27 the thresholds have shifted up — the lower
+            For FY 2026-27 the thresholds have shifted up, the lower
             threshold is now around $69,528. The SalaryCalc{' '}
             <Link href="/hecs-calculator">HECS calculator</Link> applies the
             marginal method automatically.
@@ -259,7 +259,7 @@ export default function HecsGuide() {
             benefits, repayment income can be significantly higher.
           </p>
 
-          <h2>4. Indexation — when it hurts and when it doesn&apos;t</h2>
+          <h2>4. Indexation, when it hurts and when it doesn&apos;t</h2>
           <p>
             On 1 June each year the ATO increases your HECS balance by the
             lower of CPI and the Wage Price Index (WPI) for the previous 12
@@ -286,7 +286,7 @@ export default function HecsGuide() {
             money would earn (or cost you) elsewhere. If indexation is
             running at 4% and you can earn 5% in a high-interest savings
             account, keeping the cash makes sense. If you have a mortgage at
-            6% and indexation is 3%, the comparison is closer — and the
+            6% and indexation is 3%, the comparison is closer, and the
             psychological benefit of clearing the debt matters too.
           </p>
           <p>
@@ -323,7 +323,7 @@ export default function HecsGuide() {
           <p>
             The SalaryCalc HECS calculator includes a debt balance and
             years-to-payoff estimate that accounts for indexation. The default
-            indexation assumption is around 3% per year — adjust if you
+            indexation assumption is around 3% per year, adjust if you
             expect a higher or lower long-term rate.
           </p>
 
@@ -333,7 +333,7 @@ export default function HecsGuide() {
               <strong>Not ticking the HECS box on your TFN declaration.</strong>{' '}
               If you do not tick the box, your employer will not withhold any
               HECS repayment, and the ATO will calculate the full amount at
-              tax time — which can be a nasty surprise.
+              tax time, which can be a nasty surprise.
             </li>
             <li>
               <strong>Ignoring indexation while earning below the threshold.</strong>{' '}

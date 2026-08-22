@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SalaryAfterTaxPage, type SalaryAfterTaxData } from '@/components/SalaryAfterTax';
 
 export const metadata: Metadata = {
-  title: '$100,000 After Tax Australia (FY 2026–27) — Take-Home Pay',
+  title: '$100,000 After Tax Australia (FY 2026–27), Take-Home Pay',
   description:
     'On a $100,000 salary in Australia, your take-home pay is about $77,480 per year (~$2,980 per fortnight). See the full breakdown, effective tax rate, and live calculator.',
   alternates: { canonical: '/salary-100000-after-tax' },
@@ -19,12 +19,12 @@ const data: SalaryAfterTaxData = {
   perFortnight: 2980,
   perMonth: 6457,
   blurb:
-    "On $100,000 a year the first $18,200 is tax-free, $26,800 is taxed at 15% ($4,020), and the remaining $55,000 is taxed at 30% ($16,500), for a total of $20,520 in income tax. LITO has fully phased out at this income. The Medicare levy adds 2% × $100,000 = $2,000. Net take-home is $77,480 per year, or $2,980 per fortnight before super. Employer super of $12,000 (12%) is paid on top of your salary. Note: above ~$93,000, the Medicare Levy Surcharge applies if you do not have private hospital cover — see the methodology page for the threshold.",
+    "On $100,000 a year the first $18,200 is tax-free, $26,800 is taxed at 15% ($4,020), and the remaining $55,000 is taxed at 30% ($16,500), for a total of $20,520 in income tax. LITO has fully phased out at this income. The Medicare levy adds 2% × $100,000 = $2,000. Net take-home is $77,480 per year, or $2,980 per fortnight before super. Employer super of $12,000 (12%) is paid on top of your salary. Note: above ~$93,000, the Medicare Levy Surcharge applies if you do not have private hospital cover, see the methodology page for the threshold.",
   faqs: [
     {
       question: 'How much tax do I pay on a $100,000 salary in Australia?',
       answer:
-        'On $100,000 you pay $20,520 in income tax plus $2,000 Medicare levy, for a total of $22,520. The effective tax rate is 22.52%. The marginal rate at $100,000 is 30% — you stay in this bracket until $135,000.',
+        'On $100,000 you pay $20,520 in income tax plus $2,000 Medicare levy, for a total of $22,520. The effective tax rate is 22.52%. The marginal rate at $100,000 is 30%, you stay in this bracket until $135,000.',
     },
     {
       question: 'What is $100,000 a year after tax per fortnight?',
@@ -49,7 +49,7 @@ const data: SalaryAfterTaxData = {
     {
       question: 'What about the Medicare Levy Surcharge on $100,000?',
       answer:
-        'On $100,000 as a single person without private hospital cover, the Medicare Levy Surcharge does NOT apply — it kicks in at $93,000+ for singles but only if you do not have appropriate private hospital cover. If you earn above $93,000 and do not have private cover, the surcharge adds 1-1.5% of your income. Most people in this bracket take out basic hospital cover (often less than $1,000/year) to avoid the surcharge. See the methodology page for the full thresholds.',
+        'On $100,000 as a single person without private hospital cover, the Medicare Levy Surcharge does NOT apply, it kicks in at $93,000+ for singles but only if you do not have appropriate private hospital cover. If you earn above $93,000 and do not have private cover, the surcharge adds 1-1.5% of your income. Most people in this bracket take out basic hospital cover (often less than $1,000/year) to avoid the surcharge. See the methodology page for the full thresholds.',
     },
   ],
 };

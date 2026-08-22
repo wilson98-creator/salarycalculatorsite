@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Privacy policy — SalaryCalc',
+  title: 'Privacy policy, SalaryCalc',
   description:
     'How SalaryCalc handles your data. Calculator inputs are processed in your browser and never sent to our servers. We do not track your salary.',
   alternates: { canonical: '/privacy' },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'salarycalc privacy',
   ],
   openGraph: {
-    title: 'Privacy policy — SalaryCalc',
+    title: 'Privacy policy, SalaryCalc',
     description: 'Calculator inputs are processed in your browser and never sent to our servers.',
     url: `${brand.url}/privacy`,
     type: 'article',
@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'Does SalaryCalc see the salary figure I type into the calculator?',
     answer:
-      'No. The pay calculator runs entirely in your browser. The salary figure, residency, and any other inputs you type are processed locally in JavaScript and never sent to our servers. We do not log, store, or transmit your inputs. You can verify this by opening the browser DevTools network tab and using the calculator — there are no outgoing requests with your salary data.',
+      'No. The pay calculator runs entirely in your browser. The salary figure, residency, and any other inputs you type are processed locally in JavaScript and never sent to our servers. We do not log, store, or transmit your inputs. You can verify this by opening the browser DevTools network tab and using the calculator, there are no outgoing requests with your salary data.',
   },
   {
     question: 'What analytics do you use?',
@@ -67,7 +67,7 @@ export default function PrivacyPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Privacy policy — SalaryCalc',
+            headline: 'Privacy policy, SalaryCalc',
             description: metadata.description as string,
             url: `${brand.url}/privacy`,
             datePublished: '2026-01-15',
@@ -101,13 +101,13 @@ export default function PrivacyPage() {
         {/* TL;DR summary box */}
         <section aria-labelledby="privacy-summary" className="card not-prose mb-12">
           <h2 id="privacy-summary" className="text-base font-semibold text-ink-900">
-            TL;DR — what we collect
+            TL;DR, what we collect
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <PrivacyRow label="Your salary" value="Never. Calculator runs in your browser." />
             <PrivacyRow label="Your inputs (residency, HECS, etc.)" value="Never. Same as above." />
             <PrivacyRow label="Your name or email" value="Only if you email us." />
-            <PrivacyRow label="Page views (aggregate)" value="Yes — via Plausible and Google Analytics 4." />
+            <PrivacyRow label="Page views (aggregate)" value="Yes, via Plausible and Google Analytics 4." />
             <PrivacyRow label="Cookies for ad delivery" value="Set by Google AdSense, with consent (where required)." />
             <PrivacyRow label="IP address" value="Anonymised in GA4; not stored by us." />
             <PrivacyRow label="Data sold to third parties" value="Never." />
@@ -137,7 +137,7 @@ export default function PrivacyPage() {
             set cookies or use local storage to distinguish unique visitors. We
             have configured GA4 to anonymise IP addresses and disabled
             advertising features. Both tools record page URLs and referrers in
-            aggregate — no personally identifying information is collected.
+            aggregate, no personally identifying information is collected.
           </p>
 
           <h2>3. Advertising</h2>

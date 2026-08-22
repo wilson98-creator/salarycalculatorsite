@@ -35,7 +35,7 @@ const faqs = [
   {
     question: 'Is super paid on top of my salary or deducted from it?',
     answer:
-      'On top. The SG is an employer cost — your employer pays 12% of your salary into your super fund in addition to your take-home pay. If you are offered a "Total Employment Cost" package (e.g. $100,000 including super), the calculator will peel the super off the top to find your taxable gross.',
+      'On top. The SG is an employer cost, your employer pays 12% of your salary into your super fund in addition to your take-home pay. If you are offered a "Total Employment Cost" package (e.g. $100,000 including super), the calculator will peel the super off the top to find your taxable gross.',
   },
   {
     question: 'When can I access my super?',
@@ -55,17 +55,17 @@ const faqs = [
   {
     question: 'Can I choose my own super fund?',
     answer:
-      'Yes. You can choose your own super fund, or accept the "MySuper" default fund your employer nominates. To choose your own, give your employer a Standard Choice form with your fund details. If you change jobs frequently, consolidating into one fund avoids paying multiple sets of fees — use the ATO "lost super" search via myGov to find old accounts.',
+      'Yes. You can choose your own super fund, or accept the "MySuper" default fund your employer nominates. To choose your own, give your employer a Standard Choice form with your fund details. If you change jobs frequently, consolidating into one fund avoids paying multiple sets of fees, use the ATO "lost super" search via myGov to find old accounts.',
   },
   {
     question: 'Should I consolidate my super accounts?',
     answer:
-      'If you have changed jobs and not consolidated, you could be paying multiple sets of fees (admin, investment, advice, insurance). Consolidate into one fund — use the ATO lost super search to find old accounts, then roll them into your preferred fund in a few clicks. Watch out for insurance you might lose when you close an old account.',
+      'If you have changed jobs and not consolidated, you could be paying multiple sets of fees (admin, investment, advice, insurance). Consolidate into one fund, use the ATO lost super search to find old accounts, then roll them into your preferred fund in a few clicks. Watch out for insurance you might lose when you close an old account.',
   },
   {
     question: 'What is the default investment option?',
     answer:
-      'Most funds default you to a "Balanced" option around 60-70% growth assets. Younger people with longer time horizons can usually afford more growth assets; people approaching retirement usually shift to more conservative options to reduce the risk of a market downturn eating into their savings just as they need them. Most funds let you switch investment options online for free, but a switch only affects future contributions and rebalancing — it does not retroactively change past returns.',
+      'Most funds default you to a "Balanced" option around 60-70% growth assets. Younger people with longer time horizons can usually afford more growth assets; people approaching retirement usually shift to more conservative options to reduce the risk of a market downturn eating into their savings just as they need them. Most funds let you switch investment options online for free, but a switch only affects future contributions and rebalancing, it does not retroactively change past returns.',
   },
 ];
 
@@ -113,10 +113,10 @@ export default function SuperGuide() {
           </div>
         </header>
 
-        {/* TL;DR — the four levers */}
+        {/* TL;DR, the four levers */}
         <section aria-labelledby="super-tldr" className="card not-prose mb-10">
           <h2 id="super-tldr" className="text-base font-semibold text-ink-900">
-            The 60-second version — the four levers
+            The 60-second version, the four levers
           </h2>
           <p className="mt-1 text-sm text-ink-600">
             Your retirement outcome is driven by these four factors, in this order of impact.
@@ -172,7 +172,7 @@ export default function SuperGuide() {
           </p>
           <p>
             For an $80,000 salary, the SG contribution is $9,600 per year.
-            Your employer pays this in addition to your take-home pay — it
+            Your employer pays this in addition to your take-home pay, it
             is not deducted from your gross salary.
           </p>
           <p>
@@ -254,7 +254,7 @@ export default function SuperGuide() {
 
           <h2>5. When you can access it</h2>
           <p>
-            Super is &quot;preserved&quot; — you cannot withdraw it until
+            Super is &quot;preserved&quot;, you cannot withdraw it until
             you reach preservation age and meet a condition of release.
             Preservation age is 60 for everyone born after 1 July 1964.
             From age 60 you can access your super even if you are still
@@ -306,7 +306,7 @@ export default function SuperGuide() {
             <li>
               <strong>Having multiple super accounts.</strong> If you have
               changed jobs and not consolidated, you could be paying
-              multiple sets of fees. Consolidate into one fund — use the
+              multiple sets of fees. Consolidate into one fund, use the
               ATO&apos;s &quot;lost super&quot; search.
             </li>
             <li>

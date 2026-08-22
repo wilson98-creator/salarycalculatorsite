@@ -142,7 +142,7 @@ export function articleSchema(opts: {
   };
 }
 
-/** WebSite schema with SearchAction — powers Google sitelinks search box. */
+/** WebSite schema with SearchAction, powers Google sitelinks search box. */
 export function websiteWithSearchActionSchema() {
   return {
     '@context': 'https://schema.org',

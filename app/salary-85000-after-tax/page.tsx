@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SalaryAfterTaxPage, type SalaryAfterTaxData } from '@/components/SalaryAfterTax';
 
 export const metadata: Metadata = {
-  title: '$85,000 After Tax Australia (FY 2026–27) — Take-Home Pay',
+  title: '$85,000 After Tax Australia (FY 2026–27), Take-Home Pay',
   description:
     'On an $85,000 salary in Australia, your take-home pay is about $67,280 per year (~$2,588 per fortnight). See the full breakdown, effective tax rate, and live calculator.',
   alternates: { canonical: '/salary-85000-after-tax' },

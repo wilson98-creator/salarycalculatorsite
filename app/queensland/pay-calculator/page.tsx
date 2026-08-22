@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Queensland Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'Queensland Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'Queensland pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Brisbane cost-of-living context.',
   alternates: { canonical: '/queensland/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in Queensland compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Brisbane is identical to the tax on $80,000 in Sydney or Melbourne. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Brisbane is identical to the tax on $80,000 in Sydney or Melbourne. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in Queensland?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How does Brisbane cost of living compare to Sydney and Melbourne?',
     answer:
-      'Brisbane is noticeably cheaper than Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $540/week (around $28,000/year — about 28% of a $100k salary). Transport, groceries, and utilities are at or below the national average. The same take-home pay goes materially further in Brisbane than in Sydney.',
+      'Brisbane is noticeably cheaper than Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $540/week (around $28,000/year, about 28% of a $100k salary). Transport, groceries, and utilities are at or below the national average. The same take-home pay goes materially further in Brisbane than in Sydney.',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function QldPayCalculatorPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in Queensland. The federal tax brackets,
-            Medicare levy, and HELP repayment thresholds are the same across Australia —
+            Medicare levy, and HELP repayment thresholds are the same across Australia , 
             so the math is identical whether you work in Brisbane, the Gold Coast, or
             Cairns. What varies is the cost of living, the median wage in your industry,
             and the state-specific allowances that may apply to your role.
@@ -85,7 +85,7 @@ export default function QldPayCalculatorPage() {
             Take-home pay is the same as everywhere else in Australia (federal tax
             applies uniformly), but the cost of living outside Brisbane is materially
             lower than Sydney or Melbourne. FIFO and site-based workers should check how
-            their allowances are taxed — most are added to gross and taxed at marginal
+            their allowances are taxed, most are added to gross and taxed at marginal
             rates.
           </p>
 

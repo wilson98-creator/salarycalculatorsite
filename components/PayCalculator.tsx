@@ -237,7 +237,7 @@ export function PayCalculator() {
                 value={medicareExemption}
                 onChange={(e) => setMedicareExemption(e.target.value as 'full' | 'half' | 'none')}
               >
-                <option value="none">None — full 2% applies</option>
+                <option value="none">None, full 2% applies</option>
                 <option value="half">Half exemption</option>
                 <option value="full">Full exemption</option>
               </select>
@@ -271,14 +271,14 @@ function Results({ result }: { result: PayResult }) {
   ];
   return (
     <div className="mt-12">
-      {/* The result figure — the ONLY orange element. */}
+      {/* The result figure, the ONLY orange element. */}
       <p className="section-index">Take-home pay</p>
       <p className="result-figure mt-2">{formatAUD(result.net)}</p>
       <p className="kicker mt-3">
         as of {new Date().toISOString().slice(0, 10)} · {periodLabel.toLowerCase()}
       </p>
 
-      {/* Take-home per period — horizontal rows with hairlines, not a grid */}
+      {/* Take-home per period, horizontal rows with hairlines, not a grid */}
       <div className="mt-12">
         <p className="kicker">Per period</p>
         <ul className="mt-3 rule-line border-t border-ink-200">
@@ -299,7 +299,7 @@ function Results({ result }: { result: PayResult }) {
         </ul>
       </div>
 
-      {/* Breakdown — monospace, no zebra, just top/bottom rule lines */}
+      {/* Breakdown, monospace, no zebra, just top/bottom rule lines */}
       <div className="mt-12">
         <p className="kicker">Breakdown</p>
         <ul className="mt-3 rule-line border-t border-ink-200">

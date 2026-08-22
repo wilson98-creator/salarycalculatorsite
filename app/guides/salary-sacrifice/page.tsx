@@ -36,7 +36,7 @@ const howToSteps = [
   },
   {
     name: 'Watch the cap',
-    text: 'Concessional contributions (your sacrifice + employer SG) are capped at $30,000 per year. Going over the cap means the excess is added to your assessable income and taxed at your marginal rate — defeating the purpose.',
+    text: 'Concessional contributions (your sacrifice + employer SG) are capped at $30,000 per year. Going over the cap means the excess is added to your assessable income and taxed at your marginal rate, defeating the purpose.',
   },
   {
     name: 'Check your super fund accepts the contributions',
@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'When does salary sacrifice actually save money?',
     answer:
-      'When your marginal tax rate is higher than 15% (the super tax rate). For most Australian employees that means anyone earning above $45,000 a year — which is most of us. The higher your marginal rate, the bigger the saving. A 37% earner saves 22 cents on every sacrificed dollar; a 30% earner saves 15 cents. Below $45,000 the saving is small enough that the lost take-home pay usually is not worth it.',
+      'When your marginal tax rate is higher than 15% (the super tax rate). For most Australian employees that means anyone earning above $45,000 a year, which is most of us. The higher your marginal rate, the bigger the saving. A 37% earner saves 22 cents on every sacrificed dollar; a 30% earner saves 15 cents. Below $45,000 the saving is small enough that the lost take-home pay usually is not worth it.',
   },
   {
     question: 'How much can I salary sacrifice?',
@@ -67,7 +67,7 @@ const faqs = [
   {
     question: 'Does salary sacrifice reduce my take-home pay?',
     answer:
-      'Yes — but less than you might think. Sacrificing $10,000 into super on a $95,000 salary saves around $2,900 in tax, but your take-home pay only drops by about $7,100 (because the tax saving partly offsets the sacrificed amount). The sacrifice is pre-tax, so the net impact on your bank account is smaller than the gross sacrifice.',
+      'Yes, but less than you might think. Sacrificing $10,000 into super on a $95,000 salary saves around $2,900 in tax, but your take-home pay only drops by about $7,100 (because the tax saving partly offsets the sacrificed amount). The sacrifice is pre-tax, so the net impact on your bank account is smaller than the gross sacrifice.',
   },
   {
     question: 'What happens if I go over the $30,000 cap?',
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'What is a novated lease?',
     answer:
-      'A novated lease is a specific type of salary sacrifice where you redirect pre-tax salary to pay for a car lease (and often its running costs). The tax mechanics are the same — the sacrificed amount reduces your taxable income — but novated leases have additional Fringe Benefits Tax (FBT) rules. The main trade-off is that the car is owned by the finance company, not you, until the lease ends.',
+      'A novated lease is a specific type of salary sacrifice where you redirect pre-tax salary to pay for a car lease (and often its running costs). The tax mechanics are the same, the sacrificed amount reduces your taxable income, but novated leases have additional Fringe Benefits Tax (FBT) rules. The main trade-off is that the car is owned by the finance company, not you, until the lease ends.',
   },
   {
     question: 'Can I salary sacrifice into my spouse\'s super?',
@@ -185,7 +185,7 @@ export default function SalarySacrificeGuide() {
             Without salary sacrifice, your marginal tax rate is 30%, 37%, or
             45% on the top portion of your income. With salary sacrifice,
             that top portion goes into your super fund instead, where it is
-            taxed at 15% — the super funds&apos; flat tax rate on
+            taxed at 15%, the super funds&apos; flat tax rate on
             concessional contributions.
           </p>
           <p>
@@ -213,7 +213,7 @@ export default function SalarySacrificeGuide() {
             you had never salary sacrificed it. So the cap is the cliff.
           </p>
 
-          <h2>3. Division 293 — the surcharge for high earners</h2>
+          <h2>3. Division 293, the surcharge for high earners</h2>
           <p>
             If your combined income and concessional super contributions
             exceed $250,000, an additional 15% Division 293 tax applies to
@@ -228,7 +228,7 @@ export default function SalarySacrificeGuide() {
             less profitable.
           </p>
 
-          <h2>4. Novated leases — a different kind of sacrifice</h2>
+          <h2>4. Novated leases, a different kind of sacrifice</h2>
           <p>
             A novated lease is a three-way agreement between you, your
             employer, and a finance company. Your employer pays for the
@@ -259,7 +259,7 @@ export default function SalarySacrificeGuide() {
             Employees of public hospitals, charities, and some government
             bodies are eligible for &quot;salary packaging&quot; under FBT
             concessions, which can let you sacrifice a much larger portion
-            of your salary — up to the FBT-exempt cap (currently $30,000 +
+            of your salary, up to the FBT-exempt cap (currently $30,000 +
             grossed-up amount under certain arrangements). Common items:
             mortgage repayments, rent, credit card debt, child care, school
             fees.
@@ -283,7 +283,7 @@ export default function SalarySacrificeGuide() {
               concessional contributions and warn you before you exceed it.
             </li>
             <li>
-              Check your super fund accepts the contributions (it should —
+              Check your super fund accepts the contributions (it should , 
               most do).
             </li>
             <li>
@@ -304,7 +304,7 @@ export default function SalarySacrificeGuide() {
               <strong>You are about to access your super.</strong> If you
               are over 60 and planning to withdraw super, salary
               sacrificing into it now is the same as just investing it
-              normally — minus the extra layer of fees.
+              normally, minus the extra layer of fees.
             </li>
             <li>
               <strong>You have a partner with a lower income.</strong>{' '}
@@ -362,7 +362,7 @@ export default function SalarySacrificeGuide() {
           <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/salary-sacrifice-calculator" title="Salary sacrifice calculator" detail="See the tax saving and take-home impact instantly." />
-            <TrustLink href="/hecs-calculator" title="HECS-HELP calculator" detail="Sacrifice reduces your repayment income — see how." />
+            <TrustLink href="/hecs-calculator" title="HECS-HELP calculator" detail="Sacrifice reduces your repayment income, see how." />
             <TrustLink href="/guides/superannuation" title="Superannuation guide" detail="How the SG, the 15% super tax, and preservation work." />
             <TrustLink href="/guides/stage-3-tax-cuts" title="Stage 3 tax cuts" detail="What changed and what is still to come." />
             <TrustLink href="/methodology" title="Methodology" detail="How every number is calculated, with citations." />

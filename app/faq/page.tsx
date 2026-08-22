@@ -6,7 +6,7 @@ import { JsonLd, faqSchema } from '@/components/Schema';
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
   description:
-    'Common questions about Australian pay, tax, superannuation, HECS-HELP, Medicare and more. Clear, sourced answers — no financial jargon.',
+    'Common questions about Australian pay, tax, superannuation, HECS-HELP, Medicare and more. Clear, sourced answers, no financial jargon.',
   alternates: { canonical: '/faq' },
 };
 
@@ -15,7 +15,7 @@ const faqs = [
   {
     cat: 'Basics',
     q: 'How is Australian income tax calculated?',
-    a: `Australia uses a progressive tax system — different rates apply to different portions of your income, not a single flat rate on the whole amount. For FY 2026–27 the resident brackets are 0% on the first $18,200, 15% on $18,201 to $45,000, 30% on $45,001 to $135,000, 37% on $135,001 to $190,000, and 45% on income above $190,000. The 2% Medicare levy is calculated on top. Source: ATO "Tax rates – Australian residents".`,
+    a: `Australia uses a progressive tax system, different rates apply to different portions of your income, not a single flat rate on the whole amount. For FY 2026–27 the resident brackets are 0% on the first $18,200, 15% on $18,201 to $45,000, 30% on $45,001 to $135,000, 37% on $135,001 to $190,000, and 45% on income above $190,000. The 2% Medicare levy is calculated on top. Source: ATO "Tax rates – Australian residents".`,
   },
   {
     cat: 'Basics',
@@ -25,7 +25,7 @@ const faqs = [
   {
     cat: 'Basics',
     q: 'What is the difference between gross and net pay?',
-    a: 'Gross pay is what you earn before any deductions. Net pay (also called take-home pay) is what lands in your bank account after PAYG income tax, the Medicare levy, any HECS-HELP repayment, and any post-tax deductions (union fees, salary-packaged items) are taken out. Superannuation is paid on top of your gross pay by your employer — it is not deducted from your take-home.',
+    a: 'Gross pay is what you earn before any deductions. Net pay (also called take-home pay) is what lands in your bank account after PAYG income tax, the Medicare levy, any HECS-HELP repayment, and any post-tax deductions (union fees, salary-packaged items) are taken out. Superannuation is paid on top of your gross pay by your employer, it is not deducted from your take-home.',
   },
   {
     cat: 'Basics',
@@ -35,7 +35,7 @@ const faqs = [
   {
     cat: 'Basics',
     q: 'What is a pay period?',
-    a: 'A pay period is how often you get paid. In Australia the most common pay periods are weekly (52 pays/year), fortnightly (26 pays/year) and monthly (12 pays/year). The calculator on this site handles all of them — enter what you are actually paid and we convert the annual tax to the period you chose.',
+    a: 'A pay period is how often you get paid. In Australia the most common pay periods are weekly (52 pays/year), fortnightly (26 pays/year) and monthly (12 pays/year). The calculator on this site handles all of them, enter what you are actually paid and we convert the annual tax to the period you chose.',
   },
   {
     cat: 'Basics',
@@ -45,7 +45,7 @@ const faqs = [
   {
     cat: 'Basics',
     q: 'How accurate is the SalaryCalc calculator?',
-    a: 'For most employees the result is within a few dollars of what your employer withholds. The calculator uses the actual annual tax brackets (the most accurate method) rather than the weekly-equivalent PAYG formula, so the per-period number can differ slightly from your payslip — that is normal and gets reconciled at tax time. The calculator does not model every situation (Medicare Levy Surcharge, child support, garnishees, certain salary-packaging arrangements). See the methodology page for the full list of what is and is not modelled.',
+    a: 'For most employees the result is within a few dollars of what your employer withholds. The calculator uses the actual annual tax brackets (the most accurate method) rather than the weekly-equivalent PAYG formula, so the per-period number can differ slightly from your payslip, that is normal and gets reconciled at tax time. The calculator does not model every situation (Medicare Levy Surcharge, child support, garnishees, certain salary-packaging arrangements). See the methodology page for the full list of what is and is not modelled.',
   },
   {
     cat: 'Basics',
@@ -89,12 +89,12 @@ const faqs = [
   {
     cat: 'Medicare',
     q: 'What is the Medicare Levy Surcharge (MLS)?',
-    a: 'The Medicare Levy Surcharge is an additional 1% to 1.5% charged to higher-income earners who do not hold an appropriate private hospital cover policy. For FY 2026–27 it applies to singles earning above $105,000 and families above $210,000. It is on top of the standard 2% Medicare levy. The SalaryCalc pay calculator does not model MLS — it kicks in at tax time, not through PAYG withholding. Use a dedicated MLS calculator or a tax agent for that figure.',
+    a: 'The Medicare Levy Surcharge is an additional 1% to 1.5% charged to higher-income earners who do not hold an appropriate private hospital cover policy. For FY 2026–27 it applies to singles earning above $105,000 and families above $210,000. It is on top of the standard 2% Medicare levy. The SalaryCalc pay calculator does not model MLS, it kicks in at tax time, not through PAYG withholding. Use a dedicated MLS calculator or a tax agent for that figure.',
   },
   {
     cat: 'Medicare',
     q: 'Do I pay Medicare levy as a foreign resident?',
-    a: 'No. Foreign residents for tax purposes are generally not liable for the Medicare levy. The calculator handles this — select "Non-resident" in the residency field. If you are a permanent resident or an Australian citizen, you are liable.',
+    a: 'No. Foreign residents for tax purposes are generally not liable for the Medicare levy. The calculator handles this, select "Non-resident" in the residency field. If you are a permanent resident or an Australian citizen, you are liable.',
   },
 
   // HECS / HELP
@@ -116,7 +116,7 @@ const faqs = [
   {
     cat: 'HECS-HELP',
     q: 'How is my HECS balance indexed?',
-    a: 'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024 — previously the balance was indexed by CPI alone, which led to some years of very high indexation. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
+    a: 'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024, previously the balance was indexed by CPI alone, which led to some years of very high indexation. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
   },
   {
     cat: 'HECS-HELP',
@@ -128,17 +128,17 @@ const faqs = [
   {
     cat: 'Super',
     q: 'What is the Superannuation Guarantee?',
-    a: 'The Superannuation Guarantee (SG) is the minimum amount your employer must contribute to your superannuation fund on top of your salary. It is 12% of ordinary time earnings from 1 July 2025 onwards (up from 11.5% the year before). It is not deducted from your take-home pay — it is an additional employer cost. Most people also have the option to make extra personal contributions, including pre-tax salary sacrifice and after-tax contributions.',
+    a: 'The Superannuation Guarantee (SG) is the minimum amount your employer must contribute to your superannuation fund on top of your salary. It is 12% of ordinary time earnings from 1 July 2025 onwards (up from 11.5% the year before). It is not deducted from your take-home pay, it is an additional employer cost. Most people also have the option to make extra personal contributions, including pre-tax salary sacrifice and after-tax contributions.',
   },
   {
     cat: 'Super',
     q: 'Is super included in my salary?',
-    a: 'Generally no — the SG is paid on top of your gross salary. If your offer letter says "$80,000 plus super", your employer pays you $80,000 into your bank and $9,600 into your super fund. Some offers, particularly for senior roles, are quoted as a "Total Remuneration Package" (TRP) that bundles super into the headline figure. Tick "My gross includes super" in the calculator if that is your situation.',
+    a: 'Generally no, the SG is paid on top of your gross salary. If your offer letter says "$80,000 plus super", your employer pays you $80,000 into your bank and $9,600 into your super fund. Some offers, particularly for senior roles, are quoted as a "Total Remuneration Package" (TRP) that bundles super into the headline figure. Tick "My gross includes super" in the calculator if that is your situation.',
   },
   {
     cat: 'Super',
     q: 'What is salary sacrifice?',
-    a: 'Salary sacrifice is an arrangement where you agree with your employer to redirect part of your pre-tax salary into superannuation (or a novated lease, or other benefits). Because the sacrificed amount is taken out before income tax is calculated, your taxable income drops. Super contributions through salary sacrifice are taxed at 15% inside the fund, which is usually lower than your marginal tax rate. There is an annual concessional (before-tax) contributions cap — $30,000 for FY 2025–26, indexed to wages after that.',
+    a: 'Salary sacrifice is an arrangement where you agree with your employer to redirect part of your pre-tax salary into superannuation (or a novated lease, or other benefits). Because the sacrificed amount is taken out before income tax is calculated, your taxable income drops. Super contributions through salary sacrifice are taxed at 15% inside the fund, which is usually lower than your marginal tax rate. There is an annual concessional (before-tax) contributions cap, $30,000 for FY 2025–26, indexed to wages after that.',
   },
   {
     cat: 'Super',
@@ -150,7 +150,7 @@ const faqs = [
   {
     cat: 'Residency',
     q: 'How is tax different for foreign residents?',
-    a: 'Foreign residents for tax purposes are not eligible for the tax-free threshold, the Low Income Tax Offset (LITO), or the Medicare levy. They pay tax from the first dollar of Australian-sourced income, at different (usually higher) rates. For FY 2026–27 the non-resident brackets are 30% up to $135,000, 37% from $135,001 to $190,000, and 45% above $190,000. Working holiday makers (subclass 417/462) have a different rate again — see the next question. Source: ATO "Tax rates – Foreign residents".',
+    a: 'Foreign residents for tax purposes are not eligible for the tax-free threshold, the Low Income Tax Offset (LITO), or the Medicare levy. They pay tax from the first dollar of Australian-sourced income, at different (usually higher) rates. For FY 2026–27 the non-resident brackets are 30% up to $135,000, 37% from $135,001 to $190,000, and 45% above $190,000. Working holiday makers (subclass 417/462) have a different rate again, see the next question. Source: ATO "Tax rates – Foreign residents".',
   },
   {
     cat: 'Residency',
@@ -159,7 +159,7 @@ const faqs = [
   },
   {
     cat: 'Residency',
-    q: 'I have two jobs — how does that affect my tax?',
+    q: 'I have two jobs, how does that affect my tax?',
     a: 'Generally you claim the tax-free threshold from your highest-paying employer only. If both employers apply the threshold, you will be under-withheld through the year and end up with a tax bill at tax time. You can ask one employer not to apply the threshold, or use the ATO\'s Medicare levy variation declaration / Tax File Number declaration to fine-tune. The calculator assumes the threshold is fully applied to the one job you are entering.',
   },
 
@@ -172,17 +172,17 @@ const faqs = [
   {
     cat: 'Pay scenarios',
     q: 'What are penalty rates?',
-    a: 'Penalty rates are higher pay rates payable for working unsociable hours — evenings, weekends, public holidays, and overtime. They are set by the Modern Award that covers your job. Common examples: 125% for Saturday, 150% for Sunday, 225% (or 250%) for public holidays. Casual employees also receive a 25% casual loading on top. Use the penalty rate calculator to model a roster.',
+    a: 'Penalty rates are higher pay rates payable for working unsociable hours, evenings, weekends, public holidays, and overtime. They are set by the Modern Award that covers your job. Common examples: 125% for Saturday, 150% for Sunday, 225% (or 250%) for public holidays. Casual employees also receive a 25% casual loading on top. Use the penalty rate calculator to model a roster.',
   },
   {
     cat: 'Pay scenarios',
     q: 'What is casual loading?',
-    a: 'Casual employees receive a loading — usually 25% — on top of the equivalent permanent hourly rate, in compensation for not receiving paid leave (annual leave, personal leave, etc.). The loading is added before tax and is paid at the same rate as ordinary time earnings. From 1 July 2025 the national minimum wage is $24.10 per hour, so the minimum casual rate is $30.13 per hour including the 25% loading.',
+    a: 'Casual employees receive a loading, usually 25%, on top of the equivalent permanent hourly rate, in compensation for not receiving paid leave (annual leave, personal leave, etc.). The loading is added before tax and is paid at the same rate as ordinary time earnings. From 1 July 2025 the national minimum wage is $24.10 per hour, so the minimum casual rate is $30.13 per hour including the 25% loading.',
   },
   {
     cat: 'Pay scenarios',
     q: 'How is overtime calculated?',
-    a: 'Overtime is time worked beyond your ordinary hours. The rate depends on your Modern Award or employment contract — common multipliers are 150% (time and a half) for the first 2-3 hours, and 200% (double time) after that. Casual employees receive the casual loading on top of the overtime rate. Overtime is taxed as ordinary income (no special rate), so the extra pay just pushes you into your marginal bracket.',
+    a: 'Overtime is time worked beyond your ordinary hours. The rate depends on your Modern Award or employment contract, common multipliers are 150% (time and a half) for the first 2-3 hours, and 200% (double time) after that. Casual employees receive the casual loading on top of the overtime rate. Overtime is taxed as ordinary income (no special rate), so the extra pay just pushes you into your marginal bracket.',
   },
   {
     cat: 'Pay scenarios',
@@ -194,7 +194,7 @@ const faqs = [
   {
     cat: 'Practical',
     q: 'Is this site free?',
-    a: 'Yes. The calculator is free to use, with no login, no account, and no tracking of your salary. The site is supported by unobtrusive advertising (only displayed below the calculator result) and may, in future, recommend financial products that pay a small referral fee — when we do, those recommendations are clearly labelled. We do not sell your data.',
+    a: 'Yes. The calculator is free to use, with no login, no account, and no tracking of your salary. The site is supported by unobtrusive advertising (only displayed below the calculator result) and may, in future, recommend financial products that pay a small referral fee, when we do, those recommendations are clearly labelled. We do not sell your data.',
   },
   {
     cat: 'Practical',
@@ -231,7 +231,7 @@ export default function FaqPage() {
       <header className="mb-10">
         <h1 className="text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">Frequently asked questions</h1>
         <p className="mt-4 text-base text-ink-600 sm:text-lg">
-          Plain-English answers to common questions about Australian pay, tax, super and HECS-HELP. Every answer is sourced from the ATO — see the <Link href="/methodology" className="text-brand-600 underline-offset-2 hover:underline">methodology page</Link> for the full list of sources.
+          Plain-English answers to common questions about Australian pay, tax, super and HECS-HELP. Every answer is sourced from the ATO, see the <Link href="/methodology" className="text-brand-600 underline-offset-2 hover:underline">methodology page</Link> for the full list of sources.
         </p>
       </header>
 

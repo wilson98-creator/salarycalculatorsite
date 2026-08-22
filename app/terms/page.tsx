@@ -5,13 +5,13 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Terms of service — SalaryCalc',
+  title: 'Terms of service, SalaryCalc',
   description:
     'Terms governing your use of SalaryCalc. Free for personal, non-commercial use. Not financial or tax advice. Governed by NSW law.',
   alternates: { canonical: '/terms' },
   keywords: ['terms of service', 'terms of use', 'salarycalc terms'],
   openGraph: {
-    title: 'Terms of service — SalaryCalc',
+    title: 'Terms of service, SalaryCalc',
     description: 'Free for personal, non-commercial use. Not financial or tax advice.',
     url: `${brand.url}/terms`,
     type: 'article',
@@ -57,7 +57,7 @@ export default function TermsPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Terms of service — SalaryCalc',
+            headline: 'Terms of service, SalaryCalc',
             description: metadata.description as string,
             url: `${brand.url}/terms`,
             datePublished: '2026-01-15',
@@ -75,7 +75,7 @@ export default function TermsPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             By using {brand.name} (the &quot;Service&quot;) you agree to the
-            following terms. We have written them in plain English — please
+            following terms. We have written them in plain English, please
             read them. If you have any questions,{' '}
             <Link href="/contact">get in touch</Link>.
           </p>
@@ -145,7 +145,7 @@ export default function TermsPage() {
 
           <h2>6. Changes to the Service</h2>
           <p>
-            We may update the Service from time to time — adding calculators,
+            We may update the Service from time to time, adding calculators,
             refining the methodology, fixing bugs, or removing underused
             features. We aim to give reasonable notice on the homepage for
             any change that affects the user experience materially.

@@ -6,7 +6,7 @@ import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/c
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Loan Payoff Calculator (Australia) — Debt Repayment Planner',
+  title: 'Loan Payoff Calculator (Australia), Debt Repayment Planner',
   description:
     'Free Australian loan payoff calculator. See when your loan will be paid off, how much interest you’ll pay, and the savings from extra repayments. Models credit cards, personal loans, and a one-off lump sum (e.g. redundancy).',
   alternates: { canonical: '/loan-payoff-calculator' },
@@ -21,27 +21,27 @@ const faqs = [
   {
     question: 'What if my payment is less than the monthly interest?',
     answer:
-      'You will be paying interest on interest — the balance will grow, not shrink. This is the classic credit card trap. The minimum repayment on most credit cards is 2-3% of the balance, which is roughly equal to the monthly interest on a 20% card, so the balance only just keeps up. To pay it off, you need a payment materially above the monthly interest charge. The calculator flags this with a red warning when it sees it.',
+      'You will be paying interest on interest, the balance will grow, not shrink. This is the classic credit card trap. The minimum repayment on most credit cards is 2-3% of the balance, which is roughly equal to the monthly interest on a 20% card, so the balance only just keeps up. To pay it off, you need a payment materially above the monthly interest charge. The calculator flags this with a red warning when it sees it.',
   },
   {
     question: 'What’s the best strategy for paying off debt?',
     answer:
-      'Two main approaches. The <strong>avalanche</strong> method pays minimums on everything and puts every spare dollar into the debt with the highest interest rate (mathematically optimal). The <strong>snowball</strong> method puts spare dollars into the smallest balance first (psychologically easier — quick wins). For most people, the avalanche method saves more in interest, but the snowball method is better if motivation is the bottleneck. The choice is mostly a personality question.',
+      'Two main approaches. The <strong>avalanche</strong> method pays minimums on everything and puts every spare dollar into the debt with the highest interest rate (mathematically optimal). The <strong>snowball</strong> method puts spare dollars into the smallest balance first (psychologically easier, quick wins). For most people, the avalanche method saves more in interest, but the snowball method is better if motivation is the bottleneck. The choice is mostly a personality question.',
   },
   {
     question: 'Can I use my redundancy payout to clear a loan?',
     answer:
-      'Yes. A redundancy payout (or any lump sum — inheritance, bonus, tax refund) goes directly against the loan principal, which means future interest is calculated on a smaller balance. The bigger the lump sum and the earlier you apply it, the more interest you save. Use the calculator’s "lump sum" field to model this. Most redundancy payouts in Australia are tax-free up to a limit (the ATO’s "genuine redundancy" exemption), so the full amount is usually available to apply to debt.',
+      'Yes. A redundancy payout (or any lump sum, inheritance, bonus, tax refund) goes directly against the loan principal, which means future interest is calculated on a smaller balance. The bigger the lump sum and the earlier you apply it, the more interest you save. Use the calculator’s "lump sum" field to model this. Most redundancy payouts in Australia are tax-free up to a limit (the ATO’s "genuine redundancy" exemption), so the full amount is usually available to apply to debt.',
   },
   {
     question: 'Should I refinance a personal loan?',
     answer:
-      'If your credit score has improved or rates have moved, refinancing can save real money. The break-even point is usually short (1-2 years) for personal loans. For credit cards, balance transfers to a 0% intro rate can buy you 6-18 months of interest-free repayment, but watch for the revert rate and balance transfer fees (typically 1-3% of the balance). The calculator’s output is the same regardless of how the rate is achieved — what matters is the rate you end up paying.',
+      'If your credit score has improved or rates have moved, refinancing can save real money. The break-even point is usually short (1-2 years) for personal loans. For credit cards, balance transfers to a 0% intro rate can buy you 6-18 months of interest-free repayment, but watch for the revert rate and balance transfer fees (typically 1-3% of the balance). The calculator’s output is the same regardless of how the rate is achieved, what matters is the rate you end up paying.',
   },
   {
     question: 'Why is my minimum payment so low?',
     answer:
-      'Credit card minimums are usually 2-3% of the balance or a flat dollar amount (whichever is higher). On a $10,000 balance at 20% interest, the monthly interest is around $167, and the minimum is around $250-300 — so most of your payment is interest, and only a small amount pays down the principal. This is by design: lenders make money on the interest. To get ahead, pay significantly more than the minimum — even $50 a month extra makes a big difference over a few years.',
+      'Credit card minimums are usually 2-3% of the balance or a flat dollar amount (whichever is higher). On a $10,000 balance at 20% interest, the monthly interest is around $167, and the minimum is around $250-300, so most of your payment is interest, and only a small amount pays down the principal. This is by design: lenders make money on the interest. To get ahead, pay significantly more than the minimum, even $50 a month extra makes a big difference over a few years.',
   },
   {
     question: 'Is it better to pay off the loan or invest the spare cash?',
@@ -57,7 +57,7 @@ export default function LoanPayoffCalculatorPage() {
         softwareApplicationSchema(),
         faqSchema(faqs),
         articleSchema({
-          headline: 'Loan payoff calculator (Australia) — debt repayment planner',
+          headline: 'Loan payoff calculator (Australia), debt repayment planner',
           description: 'See when your loan will be paid off, how much interest you will pay, and the savings from extra repayments.',
           url: `${brand.url}/loan-payoff-calculator`,
         }),
@@ -93,7 +93,7 @@ export default function LoanPayoffCalculatorPage() {
             Most personal loans and credit cards amortise: each month, interest is calculated on the remaining balance, and your payment is split into interest and principal. The principal portion shrinks the balance; the interest portion is the lender’s cut.
           </p>
           <p>
-            Early in the loan, the balance is high, so most of each payment is interest. As the balance shrinks, the interest component falls and the principal component grows. This is why the first 5 years of a personal loan feel like you are barely making progress — and why paying even a small amount extra in the early years can shave years off the loan.
+            Early in the loan, the balance is high, so most of each payment is interest. As the balance shrinks, the interest component falls and the principal component grows. This is why the first 5 years of a personal loan feel like you are barely making progress, and why paying even a small amount extra in the early years can shave years off the loan.
           </p>
 
           <h2>Avalanche vs snowball: which debt strategy?</h2>
@@ -104,12 +104,12 @@ export default function LoanPayoffCalculatorPage() {
             The <strong>snowball method</strong> is psychologically easier: pay the minimum on every debt, and put spare dollars into the smallest balance first. The quick win of clearing a small debt gives you momentum. The total interest is slightly higher, but if it is the difference between staying the course and giving up, it is the better strategy.
           </p>
           <p>
-            For most people, the avalanche method is the right default — but the calculator works either way. Pick the one you will actually stick to.
+            For most people, the avalanche method is the right default, but the calculator works either way. Pick the one you will actually stick to.
           </p>
 
           <h2>Using a redundancy payout or other lump sum</h2>
           <p>
-            A one-off payment — a redundancy payout, an inheritance, a tax refund, a bonus, an inheritance — goes directly against the principal. The next month’s interest is calculated on the smaller balance, and the loan is paid off faster. If you have just received a redundancy payout and want to know what it does to your loan balance, the calculator doubles as a <strong>redundancy calculator</strong> — enter the payout in the lump sum field, and the schedule re-runs from month zero with the smaller starting balance.
+            A one-off payment, a redundancy payout, an inheritance, a tax refund, a bonus, an inheritance, goes directly against the principal. The next month’s interest is calculated on the smaller balance, and the loan is paid off faster. If you have just received a redundancy payout and want to know what it does to your loan balance, the calculator doubles as a <strong>redundancy calculator</strong>, enter the payout in the lump sum field, and the schedule re-runs from month zero with the smaller starting balance.
           </p>
           <p>
             In Australia, "genuine redundancy" payments up to a limit (the ATO’s ETP cap, currently around $11,500 for people under preservation age, more for older workers) are tax-free. The rest is taxed at a concessional rate. So the full payout is usually available to apply to debt, even though you might pay some tax on the larger amount.
@@ -153,10 +153,10 @@ export default function LoanPayoffCalculatorPage() {
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
-            <li><Link href="/">Pay calculator</Link> — see what you can afford to put toward debt each month.</li>
-            <li><Link href="/mortgage-calculator">Mortgage calculator</Link> — for home loans, which have lower rates and longer terms.</li>
-            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link> — student debt is its own thing (income-contingent, not amortising the same way).</li>
-            <li><Link href="/methodology">Methodology</Link> — the math behind the numbers.</li>
+            <li><Link href="/">Pay calculator</Link>, see what you can afford to put toward debt each month.</li>
+            <li><Link href="/mortgage-calculator">Mortgage calculator</Link>, for home loans, which have lower rates and longer terms.</li>
+            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, student debt is its own thing (income-contingent, not amortising the same way).</li>
+            <li><Link href="/methodology">Methodology</Link>, the math behind the numbers.</li>
           </ul>
         </section>
       </article>

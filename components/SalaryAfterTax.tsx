@@ -69,10 +69,10 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
           </p>
         </header>
 
-        {/* Result panel — the hero. Calculator-is-the-hero pattern. */}
+        {/* Result panel, the hero. Calculator-is-the-hero pattern. */}
         <section aria-labelledby="result-heading" className="card not-prose mb-10">
           <h2 id="result-heading" className="sr-only">
-            ${data.gross.toLocaleString()} after tax — at a glance
+            ${data.gross.toLocaleString()} after tax, at a glance
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
@@ -145,11 +145,11 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
             For FY 2026–27, the brackets are:
           </p>
           <ul>
-            <li><strong>$0 – $18,200</strong> — 0% (tax-free threshold)</li>
-            <li><strong>$18,201 – $45,000</strong> — 15% (down from 16% in FY 2024–25)</li>
-            <li><strong>$45,001 – $135,000</strong> — 30%</li>
-            <li><strong>$135,001 – $190,000</strong> — 37%</li>
-            <li><strong>$190,001+</strong> — 45%</li>
+            <li><strong>$0 – $18,200</strong>, 0% (tax-free threshold)</li>
+            <li><strong>$18,201 – $45,000</strong>, 15% (down from 16% in FY 2024–25)</li>
+            <li><strong>$45,001 – $135,000</strong>, 30%</li>
+            <li><strong>$135,001 – $190,000</strong>, 37%</li>
+            <li><strong>$190,001+</strong>, 45%</li>
           </ul>
           <p>
             The Medicare levy adds another 2% of taxable income. Together, this gives the
@@ -158,7 +158,7 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
           <h2>How this compares to last year</h2>
           <p>
-            FY 2026–27 is the second phase of the Stage 3 tax cuts — the 16% bracket
+            FY 2026–27 is the second phase of the Stage 3 tax cuts, the 16% bracket
             dropped to 15%. On a ${data.gross.toLocaleString()} salary, the change is worth
             about <strong>${Math.round(data.gross * 0.01).toLocaleString()} in tax savings per year</strong>
             compared to FY 2024–25. The tax-free threshold stayed at $18,200.
@@ -166,11 +166,11 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
           <h2>What changes the answer</h2>
           <ul>
-            <li><strong>HECS-HELP debt</strong> — adds a marginal repayment once you cross the HECS threshold (around $69,528 for FY 2026–27). Most mid-career professionals have a HELP debt.</li>
-            <li><strong>Salary sacrifice into super</strong> — reduces your taxable income, but the sacrificed amount is locked until age 60.</li>
-            <li><strong>Private hospital cover</strong> — avoids the Medicare Levy Surcharge (only relevant above ~$93k for singles).</li>
-            <li><strong>Sole trader / contractor income</strong> — adds a 5% Medicare levy surcharge and removes the PAYG-withheld assumption (you pay quarterly PAYG instalments instead).</li>
-            <li><strong>Working holiday maker (subclass 417/462)</strong> — flat 15% on the first $45,000, then resident rates. Different brackets, different answer.</li>
+            <li><strong>HECS-HELP debt</strong>, adds a marginal repayment once you cross the HECS threshold (around $69,528 for FY 2026–27). Most mid-career professionals have a HELP debt.</li>
+            <li><strong>Salary sacrifice into super</strong>, reduces your taxable income, but the sacrificed amount is locked until age 60.</li>
+            <li><strong>Private hospital cover</strong>, avoids the Medicare Levy Surcharge (only relevant above ~$93k for singles).</li>
+            <li><strong>Sole trader / contractor income</strong>, adds a 5% Medicare levy surcharge and removes the PAYG-withheld assumption (you pay quarterly PAYG instalments instead).</li>
+            <li><strong>Working holiday maker (subclass 417/462)</strong>, flat 15% on the first $45,000, then resident rates. Different brackets, different answer.</li>
           </ul>
         </section>
 
@@ -194,11 +194,11 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
         <section className="prose prose-slate prose-invert mt-12 max-w-3xl">
           <h2>Related calculators</h2>
           <ul>
-            <li><Link href="/">Pay calculator</Link> — full live calculator with HECS, sacrifice, and all periods.</li>
-            <li><Link href="/salary-sacrifice-calculator">Salary sacrifice calculator</Link> — see what you save by sacrificing into super.</li>
-            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link> — add the marginal HECS repayment.</li>
-            <li><Link href="/methodology">Methodology</Link> — every formula, fully cited.</li>
-            <li><Link href="/tax-rates">FY 2026–27 tax rates</Link> — all brackets in one place.</li>
+            <li><Link href="/">Pay calculator</Link>, full live calculator with HECS, sacrifice, and all periods.</li>
+            <li><Link href="/salary-sacrifice-calculator">Salary sacrifice calculator</Link>, see what you save by sacrificing into super.</li>
+            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, add the marginal HECS repayment.</li>
+            <li><Link href="/methodology">Methodology</Link>, every formula, fully cited.</li>
+            <li><Link href="/tax-rates">FY 2026–27 tax rates</Link>, all brackets in one place.</li>
           </ul>
         </section>
       </article>

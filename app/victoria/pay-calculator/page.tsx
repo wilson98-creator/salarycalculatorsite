@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Victoria Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'Victoria Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'Victoria pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Melbourne cost-of-living context.',
   alternates: { canonical: '/victoria/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in Victoria compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Melbourne is identical to the tax on $80,000 in Adelaide or Brisbane. State differences show up in cost of living, average wages, and the rate of payroll tax paid by your employer — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Melbourne is identical to the tax on $80,000 in Adelaide or Brisbane. State differences show up in cost of living, average wages, and the rate of payroll tax paid by your employer, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in Victoria?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How does Melbourne cost of living affect take-home pay?',
     answer:
-      'Melbourne housing costs are the second-highest in Australia after Sydney (median rent for a one-bedroom inner-city apartment is around $580/week, or $30,000/year — about 30% of a $100k salary). Transport, groceries, and utilities are close to the national average. The take-home pay is the same as elsewhere, but housing is the big variable that affects what it can buy you.',
+      'Melbourne housing costs are the second-highest in Australia after Sydney (median rent for a one-bedroom inner-city apartment is around $580/week, or $30,000/year, about 30% of a $100k salary). Transport, groceries, and utilities are close to the national average. The take-home pay is the same as elsewhere, but housing is the big variable that affects what it can buy you.',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function VicPayCalculatorPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in Victoria. The federal tax brackets, Medicare
-            levy, and HELP repayment thresholds are the same across Australia — so the
+            levy, and HELP repayment thresholds are the same across Australia, so the
             math is identical whether you work in Melbourne, Geelong, or Ballarat. What
             varies is the cost of living, the median wage in your industry, and the
             state-specific allowances that may apply to your role.
@@ -77,7 +77,7 @@ export default function VicPayCalculatorPage() {
             concentrated in health, education, professional services, retail, and
             manufacturing. Melbourne&apos;s CBD and inner suburbs are home to most of
             the finance, legal, and tech roles that pay above the state median.
-            Regional Victoria — Geelong, Ballarat, Bendigo, Wodonga — has a more mixed
+            Regional Victoria, Geelong, Ballarat, Bendigo, Wodonga, has a more mixed
             economy with strong health, education, and agricultural sectors.
           </p>
           <p>
@@ -93,7 +93,7 @@ export default function VicPayCalculatorPage() {
             Service Award</em> and various industry-specific awards. Private-sector
             employees are covered by the federal Modern Awards that apply across
             Australia. Penalty rates, shift loadings, and remote-area incentives are set
-            by the relevant award or enterprise agreement — not by tax law — and are
+            by the relevant award or enterprise agreement, not by tax law, and are
             added to your gross pay before the calculator applies tax.
           </p>
           <p>

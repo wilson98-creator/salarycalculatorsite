@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SalaryAfterTaxPage, type SalaryAfterTaxData } from '@/components/SalaryAfterTax';
 
 export const metadata: Metadata = {
-  title: '$120,000 After Tax Australia (FY 2026–27) — Take-Home Pay',
+  title: '$120,000 After Tax Australia (FY 2026–27), Take-Home Pay',
   description:
     'On a $120,000 salary in Australia, your take-home pay is about $91,080 per year (~$3,503 per fortnight). See the full breakdown, effective tax rate, and live calculator.',
   alternates: { canonical: '/salary-120000-after-tax' },
@@ -19,12 +19,12 @@ const data: SalaryAfterTaxData = {
   perFortnight: 3503,
   perMonth: 7590,
   blurb:
-    "On $120,000 a year the first $18,200 is tax-free, $26,800 is taxed at 15% ($4,020), and the remaining $75,000 is taxed at 30% ($22,500), for a total of $26,520 in income tax. LITO has fully phased out at this income. The Medicare levy adds 2% × $120,000 = $2,400. Net take-home is $91,080 per year, or $3,503 per fortnight before super. Employer super of $14,400 (12%) is paid on top of your salary. Note: salary sacrifice starts to look attractive in this bracket — see the calculator above to model it.",
+    "On $120,000 a year the first $18,200 is tax-free, $26,800 is taxed at 15% ($4,020), and the remaining $75,000 is taxed at 30% ($22,500), for a total of $26,520 in income tax. LITO has fully phased out at this income. The Medicare levy adds 2% × $120,000 = $2,400. Net take-home is $91,080 per year, or $3,503 per fortnight before super. Employer super of $14,400 (12%) is paid on top of your salary. Note: salary sacrifice starts to look attractive in this bracket, see the calculator above to model it.",
   faqs: [
     {
       question: 'How much tax do I pay on a $120,000 salary in Australia?',
       answer:
-        'On $120,000 you pay $26,520 in income tax plus $2,400 Medicare levy, for a total of $28,920. The effective tax rate is 24.10%. The marginal rate at $120,000 is 30% — you stay in this bracket until $135,000.',
+        'On $120,000 you pay $26,520 in income tax plus $2,400 Medicare levy, for a total of $28,920. The effective tax rate is 24.10%. The marginal rate at $120,000 is 30%, you stay in this bracket until $135,000.',
     },
     {
       question: 'What is $120,000 a year after tax per fortnight?',

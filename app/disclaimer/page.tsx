@@ -5,13 +5,13 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Disclaimer — SalaryCalc',
+  title: 'Disclaimer, SalaryCalc',
   description:
     'SalaryCalc provides estimates only and does not provide financial or tax advice. Read the full disclaimer before relying on any calculator output.',
   alternates: { canonical: '/disclaimer' },
   keywords: ['disclaimer', 'no advice', 'estimates only', 'salarycalc'],
   openGraph: {
-    title: 'Disclaimer — SalaryCalc',
+    title: 'Disclaimer, SalaryCalc',
     description: 'SalaryCalc provides estimates only and does not provide financial or tax advice.',
     url: `${brand.url}/disclaimer`,
     type: 'article',
@@ -27,7 +27,7 @@ const faqs = [
   {
     question: 'Can I rely on the calculator for my tax return?',
     answer:
-      'No. Use the ATO\'s myTax, a registered tax agent, or tax-preparation software for your actual return. The calculator is for everyday estimates — "roughly what tax will I pay on $X" — not for filing.',
+      'No. Use the ATO\'s myTax, a registered tax agent, or tax-preparation software for your actual return. The calculator is for everyday estimates, "roughly what tax will I pay on $X", not for filing.',
   },
   {
     question: 'Why might the calculator disagree with my payslip?',
@@ -57,7 +57,7 @@ export default function DisclaimerPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Disclaimer — SalaryCalc',
+            headline: 'Disclaimer, SalaryCalc',
             description: metadata.description as string,
             url: `${brand.url}/disclaimer`,
             datePublished: '2026-01-15',
@@ -75,7 +75,7 @@ export default function DisclaimerPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             SalaryCalc provides estimates only. The information and calculators
-            on this site are general information — not financial, tax, or
+            on this site are general information, not financial, tax, or
             legal advice. Read this page in full before relying on any
             calculator output.
           </p>
@@ -89,7 +89,7 @@ export default function DisclaimerPage() {
           </div>
         </header>
 
-        {/* TL;DR — the 30-second version */}
+        {/* TL;DR, the 30-second version */}
         <section aria-labelledby="disclaimer-summary" className="card not-prose mb-12 border-warning-200 bg-warning-50">
           <h2 id="disclaimer-summary" className="text-base font-semibold text-ink-900">
             The 30-second version
@@ -110,7 +110,7 @@ export default function DisclaimerPage() {
             <li className="flex items-baseline gap-3">
               <span className="font-mono font-semibold text-warning-700">3.</span>
               <span className="text-ink-700">
-                <strong>Binding decisions need a professional.</strong> For your tax return, a job offer, a salary sacrifice agreement — talk to a registered tax agent.
+                <strong>Binding decisions need a professional.</strong> For your tax return, a job offer, a salary sacrifice agreement, talk to a registered tax agent.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
@@ -141,7 +141,7 @@ export default function DisclaimerPage() {
           </p>
           <p>
             Pay and tax outcomes depend on individual circumstances that this
-            Service does not, and cannot, take into account — including but
+            Service does not, and cannot, take into account, including but
             not limited to your full employment contract, private health
             insurance arrangements, reportable fringe benefits, study debt
             indexation, child support obligations, and the specifics of any

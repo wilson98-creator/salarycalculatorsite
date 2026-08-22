@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { SalaryAfterTaxPage, type SalaryAfterTaxData } from '@/components/SalaryAfterTax';
 
 export const metadata: Metadata = {
-  title: '$50,000 After Tax Australia (FY 2026–27) — Take-Home Pay',
+  title: '$50,000 After Tax Australia (FY 2026–27), Take-Home Pay',
   description:
     'On a $50,000 salary in Australia, your take-home pay is about $43,730 per year (~$1,682 per fortnight). See the full breakdown, effective tax rate, and live calculator.',
   alternates: { canonical: '/salary-50000-after-tax' },
@@ -19,7 +19,7 @@ const data: SalaryAfterTaxData = {
   perFortnight: 1682,
   perMonth: 3644,
   blurb:
-    "On $50,000 a year you are in the second tax bracket (15% on income between $18,201 and $45,000) with a small amount taxed at the 30% rate above that. The Low Income Tax Offset (LITO) gives you back most of the tax paid between $37,500 and $45,000, and continues to phase out above $45,000 at 1.5c per dollar until it reaches zero at $66,667. On a $50,000 salary LITO is worth $250, which brings the income tax to $5,270. Add the 2% Medicare levy ($1,000) and the net take-home is $43,730 per year — about $1,682 per fortnight before super. Employer super of $6,000 (12%) is paid on top of your salary and does not reduce your take-home.",
+    "On $50,000 a year you are in the second tax bracket (15% on income between $18,201 and $45,000) with a small amount taxed at the 30% rate above that. The Low Income Tax Offset (LITO) gives you back most of the tax paid between $37,500 and $45,000, and continues to phase out above $45,000 at 1.5c per dollar until it reaches zero at $66,667. On a $50,000 salary LITO is worth $250, which brings the income tax to $5,270. Add the 2% Medicare levy ($1,000) and the net take-home is $43,730 per year, about $1,682 per fortnight before super. Employer super of $6,000 (12%) is paid on top of your salary and does not reduce your take-home.",
   faqs: [
     {
       question: 'How much tax do I pay on a $50,000 salary in Australia?',

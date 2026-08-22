@@ -59,7 +59,7 @@ const faqs = [
   {
     question: 'When will I see the new withholding in my pay?',
     answer:
-      'The ATO updates its PAYG withholding schedules, employers update their payroll systems, and the new withholding starts from the first pay period beginning on or after the new rates take effect. Most employees see the change in their first pay in July. The change does not flow through automatically to your payslip in the same week the new rates start — payroll software takes a few days to roll out.',
+      'The ATO updates its PAYG withholding schedules, employers update their payroll systems, and the new withholding starts from the first pay period beginning on or after the new rates take effect. Most employees see the change in their first pay in July. The change does not flow through automatically to your payslip in the same week the new rates start, payroll software takes a few days to roll out.',
   },
   {
     question: 'Do the cuts affect foreign residents?',
@@ -116,13 +116,13 @@ export default function Stage3Guide() {
         {/* TL;DR timeline */}
         <section aria-labelledby="stage3-tldr" className="card not-prose mb-10">
           <h2 id="stage3-tldr" className="text-base font-semibold text-ink-900">
-            The 60-second version — the three cuts
+            The 60-second version, the three cuts
           </h2>
           <ol className="mt-5 space-y-3 text-sm">
             <li className="flex gap-3">
               <span className="font-mono font-semibold text-brand-600">1.</span>
               <div>
-                <p className="font-semibold text-ink-900">1 July 2024 — Stage 3 rewrite</p>
+                <p className="font-semibold text-ink-900">1 July 2024, Stage 3 rewrite</p>
                 <p className="text-ink-700">
                   19% became 16% ($18,201-$45,000). 32.5% became 30% ($45,001-$135,000). 37% threshold rose to $135,000. 45% threshold rose to $190,000. Top rate unchanged.
                 </p>
@@ -131,7 +131,7 @@ export default function Stage3Guide() {
             <li className="flex gap-3">
               <span className="font-mono font-semibold text-brand-600">2.</span>
               <div>
-                <p className="font-semibold text-ink-900">1 July 2026 — Cost of living cut</p>
+                <p className="font-semibold text-ink-900">1 July 2026, Cost of living cut</p>
                 <p className="text-ink-700">
                   Second bracket dropped from 16% to 15%. Maximum saving: $268/year for income $45,000+. Already legislated.
                 </p>
@@ -140,7 +140,7 @@ export default function Stage3Guide() {
             <li className="flex gap-3">
               <span className="font-mono font-semibold text-brand-600">3.</span>
               <div>
-                <p className="font-semibold text-ink-900">1 July 2027 — Next cut (already legislated)</p>
+                <p className="font-semibold text-ink-900">1 July 2027, Next cut (already legislated)</p>
                 <p className="text-ink-700">
                   Second bracket will drop from 15% to 14%. Maximum saving at the new rate: $536/year for income $45,000+ (combined with the 2026-27 cut).
                 </p>
@@ -303,7 +303,7 @@ export default function Stage3Guide() {
 
           <h2>6. Practical effect on your pay</h2>
           <p>
-            The annual savings are real but modest in weekly terms — around
+            The annual savings are real but modest in weekly terms, around
             $5-$10 per week for most middle-income earners. The big pay
             change from 1 July 2024 was the shift in the second bracket, not
             the new cut. The 2026 and 2027 cuts are smaller and more
@@ -327,7 +327,7 @@ export default function Stage3Guide() {
             </li>
             <li>
               They do not affect foreign residents or working holiday makers
-              — those schedules are unchanged.
+             , those schedules are unchanged.
             </li>
             <li>
               They do not retroactively refund money already paid under the

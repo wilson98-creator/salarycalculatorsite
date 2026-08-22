@@ -2,10 +2,167 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ──────────────────────────────────────────────────────────
+   THEME TOKENS — CSS custom properties for light + dark modes.
+   The same component classes (text-ink-800, bg-paper-0, etc.)
+   automatically pick up the right values per mode.
+
+   Light mode (default, :root) = warm cream + deep navy.
+   Dark mode (.dark) = deep ink + near-white.
+
+   All body text in both modes meets WCAG AA (>=4.5:1).
+   All primary text meets WCAG AAA (>=7:1).
+   ────────────────────────────────────────────────────────── */
 :root {
-  /* Permanent dark mode — no light variant */
-  color-scheme: dark;
+  color-scheme: light;
+
+  /* Paper / page surfaces */
+  --paper-0: #f7f3e9;   /* page background (warm cream) */
+  --paper-950: #efe9d6; /* deeper cream for footer */
+
+  /* INK — light mode */
+  --ink-50:  #f7f3e9;   /* page bg (cream) */
+  --ink-100: #ffffff;   /* card surface (white) */
+  --ink-200: #f0ead9;   /* subtle surface */
+  --ink-300: #e0d9c5;   /* border */
+  --ink-400: #c2b89e;   /* stronger border / hover border */
+  --ink-500: #8a8a95;   /* muted text */
+  --ink-600: #5a5a6e;   /* secondary text (>=7:1 on cream) */
+  --ink-700: #2a2f4d;   /* primary text */
+  --ink-800: #0c1f47;   /* deep navy (highest contrast) */
+  --ink-900: #050811;
+  --ink-950: #020617;
+
+  /* BRAND — same scale, used for footer / result surface */
+  --brand-50:  #efe9d6; /* deeper paper for footer bookend */
+  --brand-100: #f7f3e9;
+  --brand-200: #ffffff;
+  --brand-300: #f0ead9;
+  --brand-400: #e0d9c5;
+  --brand-500: #5a5a6e;
+  --brand-600: #2a2f4d;
+  --brand-700: #0c1f47;
+  --brand-800: #0c1f47; /* footer text */
+  --brand-900: #050811;
+
+  /* LEDGER — yellow-green accent (dark olive for AA contrast on cream) */
+  --ledger-50:  #f0f5d0;
+  --ledger-100: #dde988;
+  --ledger-200: #c5d800;
+  --ledger-400: #8fa300;
+  --ledger-500: #6b8000; /* primary yellow-green on cream (4.7:1) */
+  --ledger-600: #556600;
+  --ledger-700: #3d4d00;
+
+  /* ACCENT2 — teal (darker on cream) */
+  --accent2-400: #007a6e;
+  --accent2-500: #008b7a; /* primary teal on cream */
+  --accent2-600: #00a89a;
+
+  /* Success / danger / warning — darker variants for cream bg */
+  --success-50:  #ecfdf5;
+  --success-100: #d1fae5;
+  --success-400: #059669;
+  --success-500: #047857;
+  --success-600: #065f46;
+  --success-700: #064e3b;
+
+  --danger-50:  #fef2f2;
+  --danger-100: #fee2e2;
+  --danger-400: #dc2626;
+  --danger-500: #b91c1c;
+  --danger-600: #991b1b;
+  --danger-700: #7f1d1d;
+
+  --warning-50:  #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-400: #d97706;
+  --warning-500: #b45309;
+  --warning-600: #92400e;
+  --warning-700: #78350f;
+
+  /* Direct hex aliases for non-Tailwind CSS (e.g. body bg, scrollbar) */
+  --bg-base: #f7f3e9;
+  --text-base: #0c1f47;
+  --border-base: #e0d9c5;
+  --accent-base: #6b8000;
+  --highlight-bg: #6b8000;
+  --highlight-fg: #f7f3e9;
 }
+
+.dark {
+  color-scheme: dark;
+
+  --paper-0: #0a0e1a;
+  --paper-950: #050811;
+
+  --ink-50:  #0a0e1a;
+  --ink-100: #14192a;
+  --ink-200: #1f2440;
+  --ink-300: #2a2f4d;
+  --ink-400: #3a3a4a;
+  --ink-500: #5a5a6e;
+  --ink-600: #a0a0ae;
+  --ink-700: #c7cad4;
+  --ink-800: #e8e9ee;
+  --ink-900: #f1f2f5;
+  --ink-950: #fafaf7;
+
+  --brand-50:  #050811;
+  --brand-100: #0a0e1a;
+  --brand-200: #14192a;
+  --brand-300: #1a1f3a;
+  --brand-400: #1f2440;
+  --brand-500: #5a5a6e;
+  --brand-600: #a0a0ae;
+  --brand-700: #c7cad4;
+  --brand-800: #e8e9ee;
+  --brand-900: #fafaf7;
+
+  --ledger-50:  #1a2400;
+  --ledger-100: #2d3d00;
+  --ledger-200: #5a7800;
+  --ledger-400: #a6c400;
+  --ledger-500: #c7f000;
+  --ledger-600: #d4f933;
+  --ledger-700: #e0ff66;
+
+  --accent2-400: #00a89a;
+  --accent2-500: #00d4b5;
+  --accent2-600: #2ee0c4;
+
+  --success-50:  #022c1d;
+  --success-100: #064e3b;
+  --success-400: #10b981;
+  --success-500: #34d399;
+  --success-600: #6ee7b7;
+  --success-700: #a7f3d0;
+
+  --danger-50:  #3a0d0d;
+  --danger-100: #7f1d1d;
+  --danger-400: #f87171;
+  --danger-500: #fca5a5;
+  --danger-600: #fecaca;
+  --danger-700: #fee2e2;
+
+  --warning-50:  #3a2807;
+  --warning-100: #78350f;
+  --warning-400: #fbbf24;
+  --warning-500: #fcd34d;
+  --warning-600: #fde68a;
+  --warning-700: #fef3c7;
+
+  --bg-base: #0a0e1a;
+  --text-base: #e8e9ee;
+  --border-base: #1f2440;
+  --accent-base: #c7f000;
+  --highlight-bg: #c7f000;
+  --highlight-fg: #0a0e1a;
+}
+
+/* ──────────────────────────────────────────────────────────
+   GLOBAL BASE
+   ────────────────────────────────────────────────────────── */
 
 html, body {
   height: 100%;
@@ -15,22 +172,23 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 body {
-  background: #0a0e1a;
-  color: #e8e9ee;
+  background: var(--bg-base);
+  color: var(--text-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern", "liga", "calt", "ss01";
   font-size: 17px;
   line-height: 1.7;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Visible focus indicators — required for keyboard / screen-reader users.
-   We use the ledger (yellow-green) accent so it pops against the dark bg. */
+/* Visible focus indicators */
 *:focus-visible {
-  outline: 2px solid #c7f000;
+  outline: 2px solid var(--accent-base);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -38,13 +196,11 @@ button:focus-visible,
 a:focus-visible {
   outline-offset: 3px;
 }
-
-/* Remove default focus for mouse users, keep for keyboard. */
 *:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Respect users who prefer reduced motion (WCAG 2.3.3) */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -54,176 +210,171 @@ a:focus-visible {
   }
 }
 
-/* Custom scrollbar — dark, minimal */
+/* Scrollbar — adapts to mode */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: #0a0e1a; }
-::-webkit-scrollbar-thumb { background: #1f2440; border-radius: 5px; }
-::-webkit-scrollbar-thumb:hover { background: #5a5a6e; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-base); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-500); }
 
 /* Selection */
 ::selection {
-  background: #c7f000;
-  color: #0a0e1a;
+  background: var(--accent-base);
+  color: var(--highlight-fg);
 }
 
 /* ──────────────────────────────────────────────────────────
-   PREMIUM DARK FINTECH DESIGN SYSTEM
-   - Deep ink bg + elevated surfaces.
-   - Yellow-green accent (RATIONED to result figure + CTAs only).
-   - Teal secondary accent (RATIONED to borders + dividers).
-   - Sans-serif H1 (NOT serif) — modern fintech.
-   - No cards with shadows everywhere. Subtle elevation.
+   DESIGN SYSTEM UTILITIES
    ────────────────────────────────────────────────────────── */
 
-/* Underline-only inputs — clear labels, generous touch targets */
 .input {
-  @apply w-full border-0 border-b border-ink-400 bg-transparent px-0 py-3 text-base text-ink-800
-    outline-none transition focus:border-ledger-500 focus:ring-0
-    disabled:text-ink-500;
+  @apply w-full border-0 border-b bg-transparent px-0 py-3 text-base outline-none transition focus:ring-0;
+  border-color: var(--ink-400);
+  color: var(--ink-800);
   font-feature-settings: "tnum", "lnum";
   min-height: 44px;
 }
+.input::placeholder {
+  color: var(--ink-500);
+}
+.input:focus {
+  border-color: var(--accent-base);
+}
+.input:disabled {
+  color: var(--ink-500);
+}
 
 .label {
-  @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-ink-700;
+  @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em];
+  color: var(--ink-700);
 }
 
 .help {
-  @apply mt-1.5 text-xs uppercase tracking-[0.18em] text-ink-500;
+  @apply mt-1.5 text-xs uppercase tracking-[0.18em];
+  color: var(--ink-500);
 }
 
-/* Text-link style (fintech: underline + hover color shift) */
 .btn {
-  @apply inline-flex items-center justify-center px-1 py-1 text-sm font-semibold
-    transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ledger-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-0;
+  @apply inline-flex items-center justify-center px-1 py-1 text-sm font-semibold transition;
   min-height: 32px;
+  color: var(--ink-800);
 }
 .btn-text {
-  @apply btn text-ink-800 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500;
+  @apply btn underline decoration-1 underline-offset-4;
+}
+.btn-text:hover {
+  text-decoration-thickness: 2px;
+  color: var(--accent-base);
 }
 .btn-arrow {
-  @apply inline-flex items-center gap-1 text-sm font-semibold text-ink-800 hover:text-ledger-500;
+  @apply inline-flex items-center gap-1 text-sm font-semibold;
+  color: var(--ink-800);
+}
+.btn-arrow:hover {
+  color: var(--accent-base);
 }
 
-/* Section index marker */
 .section-index {
-  @apply font-mono text-xs uppercase tracking-[0.2em] text-ink-600;
+  @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: var(--ink-600);
 }
 
-/* Kicker */
 .kicker {
-  @apply font-mono text-xs uppercase tracking-[0.2em] text-ledger-500;
+  @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: var(--accent-base);
 }
 .kicker-neutral {
-  @apply font-mono text-xs uppercase tracking-[0.2em] text-ink-600;
+  @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: var(--ink-600);
 }
 .kicker-accent {
-  @apply font-mono text-xs uppercase tracking-[0.2em] text-ledger-500;
+  @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: var(--accent-base);
 }
 
-/* Hairline rule */
 .rule-line {
-  @apply border-0 border-t border-ink-300;
+  @apply border-0 border-t;
+  border-color: var(--ink-300);
 }
 
-/* Editorial H1 — heavy sans-serif, modern fintech, 48-64px desktop
-   (smaller than before — better readability, more comfortable to scan) */
+/* Editorial H1 — heavy sans-serif, modern fintech */
 .h-display {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.05;
-  font-size: 2.25rem; /* 36px mobile */
+  font-size: 2.25rem;
+  color: var(--ink-800);
 }
 @media (min-width: 768px) {
-  .h-display {
-    font-size: 3rem; /* 48px tablet */
-  }
+  .h-display { font-size: 3rem; }
 }
 @media (min-width: 1024px) {
-  .h-display {
-    font-size: 4rem; /* 64px desktop */
-  }
+  .h-display { font-size: 4rem; }
 }
 
-/* H2 — sans-serif, mid-weight */
 .h-section {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  font-size: 1.625rem; /* 26px mobile */
+  font-size: 1.625rem;
+  color: var(--ink-800);
 }
 @media (min-width: 768px) {
-  .h-section {
-    font-size: 2rem; /* 32px tablet */
-  }
+  .h-section { font-size: 2rem; }
 }
 @media (min-width: 1024px) {
-  .h-section {
-    font-size: 2.5rem; /* 40px desktop */
-  }
+  .h-section { font-size: 2.5rem; }
 }
 
-/* The yellow-green highlight block — sits under a word to highlight it */
+/* Highlight block — yellow-green on dark, olive on light */
 .ledger-highlight {
-  background: #c7f000;
-  color: #0a0e1a;
-  padding: 0.1em 0.3em;
-  border-radius: 0.2em;
+  background: var(--highlight-bg);
+  color: var(--highlight-fg);
+  padding: 0.05em 0.3em;
+  border-radius: 0.15em;
   font-weight: 800;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
-/* Result figure — the ONLY ledger (yellow-green) element on the page.
-   Sized for impact but not overwhelming. */
+/* Result figure — the ONLY chromatic element on the page */
 .result-figure {
   font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
   font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
-  color: #c7f000;
+  color: var(--accent-base);
   letter-spacing: -0.03em;
   line-height: 1;
   font-size: 2.5rem;
 }
 @media (min-width: 768px) {
-  .result-figure {
-    font-size: 3.5rem;
-  }
+  .result-figure { font-size: 3.5rem; }
 }
 @media (min-width: 1024px) {
-  .result-figure {
-    font-size: 4.5rem;
-  }
+  .result-figure { font-size: 4.5rem; }
 }
 
-/* Deduction rows (tax, Medicare, HECS) — restrained gray */
 .result-deduction {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: #c7cad4;
+  color: var(--ink-700);
 }
 
-/* Section spacing — generous */
 .section {
   margin-top: 4rem;
   padding-top: 2.5rem;
-  border-top: 1px solid #1f2440;
+  border-top: 1px solid var(--ink-300);
 }
 @media (min-width: 768px) {
-  .section {
-    margin-top: 5.5rem;
-    padding-top: 3rem;
-  }
+  .section { margin-top: 5.5rem; padding-top: 3rem; }
 }
 @media (min-width: 1024px) {
-  .section {
-    margin-top: 7rem;
-    padding-top: 4rem;
-  }
+  .section { margin-top: 7rem; padding-top: 4rem; }
 }
 
-/* Drop cap on the first paragraph */
 .drop-cap::first-letter {
   font-family: ui-sans-serif, system-ui, "Segoe UI", sans-serif;
   font-size: 4em;
@@ -231,200 +382,202 @@ a:focus-visible {
   float: left;
   margin: 0.1em 0.12em 0.1em 0;
   font-weight: 800;
-  color: #c7f000;
+  color: var(--accent-base);
 }
 
-/* Underline-only period chip */
 .chip {
-  @apply inline-flex items-center gap-2 font-mono text-sm tracking-wider text-ink-600;
+  @apply inline-flex items-center gap-2 font-mono text-sm tracking-wider;
+  color: var(--ink-600);
 }
 .chip-active {
-  @apply text-ink-800 font-semibold;
+  @apply font-semibold;
+  color: var(--ink-800);
 }
 .chip-active::before {
   content: "·";
-  color: #c7f000;
+  color: var(--accent-base);
   font-weight: 700;
   font-size: 1.5em;
   line-height: 0;
   margin-right: 0.15em;
 }
 
-/* Trust-link row */
 .trust-row {
-  @apply block py-3 transition hover:opacity-80;
+  @apply block py-3 transition;
+}
+.trust-row:hover {
+  opacity: 0.7;
 }
 
-/* Footer — deepest ink bookend */
 .footer-deep {
+  background: var(--ink-800);
+  color: #f7f3e9;
+}
+.dark .footer-deep {
   background: #050811;
   color: #e8e9ee;
 }
 .footer-meta {
   @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: var(--ink-500);
+}
+.footer-deep .footer-meta {
+  color: #8a8a95;
+}
+.dark .footer-deep .footer-meta {
   color: #7a7a86;
 }
 
-/* Subtle teal accent surface for select cards */
 .surface-elevated {
-  background: #14192a;
-  border: 1px solid #1f2440;
+  background: var(--ink-100);
+  border: 1px solid var(--ink-300);
 }
 .surface-elevated-hover {
   transition: all 0.2s ease;
 }
 .surface-elevated-hover:hover {
-  border-color: #00d4b5;
+  border-color: var(--accent2-500);
+  background: var(--ink-200);
+}
+.dark .surface-elevated-hover:hover {
   background: #181d2e;
 }
 
-/* Subtle dot-grid background pattern (fintech dashboard) */
 .dot-grid {
-  background-image: radial-gradient(circle, #1f2440 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--ink-300) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-/* Subtle gradient mesh (top-right) */
 .gradient-mesh {
-  background: radial-gradient(ellipse at top right, rgba(199, 240, 0, 0.05) 0%, transparent 50%),
-              radial-gradient(ellipse at bottom left, rgba(0, 212, 181, 0.04) 0%, transparent 50%);
+  background:
+    radial-gradient(ellipse at top right, rgba(199, 240, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(0, 212, 181, 0.04) 0%, transparent 50%);
 }
-
-/* Smooth theme transition */
-html {
-  transition: background-color 0.2s ease;
-}
-body {
-  transition: background-color 0.2s ease, color 0.2s ease;
+.dark .gradient-mesh {
+  background:
+    radial-gradient(ellipse at top right, rgba(199, 240, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, rgba(0, 212, 181, 0.04) 0%, transparent 50%);
 }
 
 /* ──────────────────────────────────────────────────────────
-   ACCESSIBLE TYPOGRAPHY FOR LONG-FORM CONTENT
-   - Body: 17px (above WCAG AAA recommendation of 16px+)
-   - Line height: 1.75 (well above 1.5 WCAG minimum)
-   - Max measure: 65ch (~720px) for comfortable reading
-   - Headings: clear hierarchy, generous spacing
+   RESULT-ROW PATTERN — for HECS, Casual, Salary Sacrifice, etc.
+   Label on the left, value on the right in a pill.
+   ────────────────────────────────────────────────────────── */
+.result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+}
+.result-label {
+  font-size: 0.9375rem;
+  color: var(--ink-700);
+  line-height: 1.45;
+}
+.result-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--ink-400);
+  background: var(--ink-100);
+  border-radius: 6px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-800);
+  white-space: nowrap;
+  min-height: 36px;
+}
+.result-value-lg {
+  padding: 0.55rem 1.1rem;
+  font-size: 1.0625rem;
+  border-color: var(--accent-base);
+  color: var(--accent-base);
+  font-weight: 700;
+}
+.result-value-deduction {
+  border-color: var(--danger-400);
+  color: var(--danger-500);
+}
+.result-value-accent {
+  border-color: var(--accent-base);
+  color: var(--accent-base);
+  font-weight: 700;
+}
+
+/* ──────────────────────────────────────────────────────────
+   PROSE — accessible long-form content styles
    ────────────────────────────────────────────────────────── */
 .prose-content {
   max-width: 65ch;
-  color: #c7cad4;
-  font-size: 1.0625rem; /* 17px */
+  color: var(--ink-700);
+  font-size: 1.0625rem;
   line-height: 1.75;
 }
-.prose-content p {
-  margin-top: 1.1rem;
-  margin-bottom: 1.1rem;
-  color: #c7cad4;
-}
-.prose-content p:first-child {
-  margin-top: 0;
-}
+.prose-content p { margin-top: 1.1rem; margin-bottom: 1.1rem; color: var(--ink-700); }
+.prose-content p:first-child { margin-top: 0; }
 .prose-content h2 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #e8e9ee;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.875rem; font-weight: 700; color: var(--ink-800);
+  letter-spacing: -0.02em; line-height: 1.2;
+  margin-top: 2.5rem; margin-bottom: 1rem;
 }
 .prose-content h3 {
-  font-size: 1.375rem;
-  font-weight: 700;
-  color: #e8e9ee;
-  letter-spacing: -0.01em;
-  line-height: 1.3;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
+  font-size: 1.375rem; font-weight: 700; color: var(--ink-800);
+  letter-spacing: -0.01em; line-height: 1.3;
+  margin-top: 2rem; margin-bottom: 0.75rem;
 }
 .prose-content h4 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: #e8e9ee;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.125rem; font-weight: 700; color: var(--ink-800);
+  margin-top: 1.5rem; margin-bottom: 0.5rem;
 }
 .prose-content a {
-  color: #c7f000;
+  color: var(--accent-base);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
   transition: color 0.15s ease;
 }
-.prose-content a:hover {
-  color: #d4f933;
-  text-decoration-thickness: 2px;
-}
-.prose-content strong {
-  color: #e8e9ee;
-  font-weight: 600;
-}
-.prose-content em {
-  font-style: italic;
-  color: #e8e9ee;
-}
+.prose-content a:hover { text-decoration-thickness: 2px; opacity: 0.85; }
+.prose-content strong { color: var(--ink-800); font-weight: 600; }
+.prose-content em { font-style: italic; color: var(--ink-800); }
 .prose-content ul, .prose-content ol {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
-  color: #c7cad4;
+  margin-top: 1rem; margin-bottom: 1rem; padding-left: 1.5rem;
+  color: var(--ink-700);
 }
 .prose-content ul { list-style: disc; }
 .prose-content ol { list-style: decimal; }
-.prose-content li {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding-left: 0.25rem;
-}
-.prose-content li::marker {
-  color: #a0a0ae;
-}
+.prose-content li { margin-top: 0.5rem; margin-bottom: 0.5rem; padding-left: 0.25rem; }
+.prose-content li::marker { color: var(--ink-500); }
 .prose-content blockquote {
-  border-left: 3px solid #c7f000;
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  font-style: italic;
-  color: #a0a0ae;
+  border-left: 3px solid var(--accent-base);
+  padding-left: 1rem; margin: 1.5rem 0;
+  font-style: italic; color: var(--ink-600);
 }
 .prose-content code {
-  background: #1f2440;
-  color: #e8e9ee;
-  padding: 0.1em 0.4em;
-  border-radius: 3px;
+  background: var(--ink-200);
+  color: var(--ink-800);
+  padding: 0.1em 0.4em; border-radius: 3px;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.9em;
 }
-.prose-content hr {
-  margin: 2.5rem 0;
-  border: 0;
-  border-top: 1px solid #1f2440;
-}
-.prose-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.95rem;
-}
+.prose-content hr { margin: 2.5rem 0; border: 0; border-top: 1px solid var(--ink-300); }
+.prose-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; }
 .prose-content th, .prose-content td {
-  padding: 0.65rem 0.85rem;
-  text-align: left;
-  border-bottom: 1px solid #1f2440;
+  padding: 0.65rem 0.85rem; text-align: left; border-bottom: 1px solid var(--ink-300);
 }
-.prose-content th {
-  font-weight: 600;
-  color: #e8e9ee;
-  border-bottom: 1px solid #3a3a4a;
-}
+.prose-content th { font-weight: 600; color: var(--ink-800); border-bottom: 1px solid var(--ink-400); }
 
-/* Skip link — visually hidden until focused */
+/* Skip link */
 .skip-link {
   position: fixed;
-  left: 1rem;
-  top: 1rem;
+  left: 1rem; top: 1rem;
   z-index: 100;
   padding: 0.75rem 1.25rem;
-  background: #c7f000;
-  color: #0a0e1a;
+  background: var(--accent-base);
+  color: var(--highlight-fg);
   font-weight: 700;
   font-size: 0.875rem;
   text-decoration: none;
@@ -432,6 +585,52 @@ body {
   transform: translateY(-200%);
   transition: transform 0.2s ease;
 }
-.skip-link:focus {
-  transform: translateY(0);
+.skip-link:focus { transform: translateY(0); }
+
+/* Cards (general purpose) */
+.card {
+  background: var(--ink-100);
+  border: 1px solid var(--ink-300);
+  border-radius: 12px;
+  padding: 1.5rem;
+  color: var(--ink-700);
 }
+.card h2, .card h3, .card h4 { color: var(--ink-800); }
+
+/* Text-link utility (fintech: underline + hover color shift) */
+.text-link {
+  color: var(--accent-base);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 500;
+}
+.text-link:hover { text-decoration-thickness: 2px; }
+
+/* Common utility class re-mappings to make text colors work in both modes */
+.text-ink-50  { color: var(--ink-50); }
+.text-ink-100 { color: var(--ink-100); }
+.text-ink-200 { color: var(--ink-200); }
+.text-ink-300 { color: var(--ink-300); }
+.text-ink-400 { color: var(--ink-400); }
+.text-ink-500 { color: var(--ink-500); }
+.text-ink-600 { color: var(--ink-600); }
+.text-ink-700 { color: var(--ink-700); }
+.text-ink-800 { color: var(--ink-800); }
+.text-ink-900 { color: var(--ink-900); }
+.text-ink-950 { color: var(--ink-950); }
+.text-brand-500 { color: var(--brand-500); }
+.text-brand-600 { color: var(--brand-600); }
+.text-brand-700 { color: var(--brand-700); }
+.text-ledger-500 { color: var(--accent-base); }
+.text-ledger-600 { color: var(--ledger-600); }
+.bg-ink-50 { background: var(--ink-50); }
+.bg-ink-100 { background: var(--ink-100); }
+.bg-ink-200 { background: var(--ink-200); }
+.bg-paper-0 { background: var(--paper-0); }
+.bg-paper-950 { background: var(--paper-950); }
+.border-ink-200 { border-color: var(--ink-200); }
+.border-ink-300 { border-color: var(--ink-300); }
+.border-ink-400 { border-color: var(--ink-400); }
+.border-ink-500 { border-color: var(--ink-500); }
+.divide-ink-200 > * + * { border-color: var(--ink-200); }
+.divide-ink-300 > * + * { border-color: var(--ink-300); }

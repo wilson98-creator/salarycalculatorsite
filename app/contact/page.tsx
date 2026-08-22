@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Contact SalaryCalc — report an error or suggest a feature',
+  title: 'Contact SalaryCalc, report an error or suggest a feature',
   description:
     'How to get in touch with the SalaryCalc team. We respond to all emails within 1-2 business days. Found a wrong number? We will investigate within 24 hours.',
   alternates: { canonical: '/contact' },
@@ -25,7 +25,7 @@ const faqs = [
       'We read every email. Error reports: within 24 hours. Bug reports: within 1-2 business days. Feature requests and general feedback: within 1 week. Press and partnership enquiries: within 5 business days.',
   },
   {
-    question: 'I found a wrong number — what should I include in my email?',
+    question: 'I found a wrong number, what should I include in my email?',
     answer:
       'Please include: (1) the figure on the site, (2) the figure you expect (e.g. from the ATO publication), (3) a link to the ATO source you checked against, (4) the date you checked. The more specific you are, the faster we can fix it.',
   },
@@ -37,12 +37,12 @@ const faqs = [
   {
     question: 'Can I get personal tax advice?',
     answer:
-      'No — we are a calculator, not a tax agent. Please consult a registered tax agent. We can help with calculator errors and feature requests, but not with your specific tax situation.',
+      'No, we are a calculator, not a tax agent. Please consult a registered tax agent. We can help with calculator errors and feature requests, but not with your specific tax situation.',
   },
   {
     question: 'Do you accept guest posts or sponsored content?',
     answer:
-      'We do not currently publish guest posts. We may, in future, recommend products that pay us a small referral fee (e.g. a novated lease provider or a salary packaging service) — when we do, we will label those recommendations clearly as sponsored or affiliate. If you have a partnership proposal, please email us with a clear subject line.',
+      'We do not currently publish guest posts. We may, in future, recommend products that pay us a small referral fee (e.g. a novated lease provider or a salary packaging service), when we do, we will label those recommendations clearly as sponsored or affiliate. If you have a partnership proposal, please email us with a clear subject line.',
   },
   {
     question: 'Where are you based?',
@@ -57,7 +57,7 @@ export default function ContactPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Contact SalaryCalc — report an error or suggest a feature',
+            headline: 'Contact SalaryCalc, report an error or suggest a feature',
             description: metadata.description as string,
             url: `${brand.url}/contact`,
             datePublished: '2026-01-15',
@@ -84,7 +84,7 @@ export default function ContactPage() {
           </div>
         </header>
 
-        {/* Email card — the hero CTA */}
+        {/* Email card, the hero CTA */}
         <section className="card not-prose mb-10 border-brand-200 bg-brand-50">
           <p className="text-sm font-semibold text-brand-700">Email us</p>
           <a
@@ -113,25 +113,25 @@ export default function ContactPage() {
               24 hours and fix it if confirmed.
             </li>
             <li>
-              <strong>Bug report</strong> — describe what you typed, what you
+              <strong>Bug report</strong>, describe what you typed, what you
               expected, and what happened. A screenshot or screen recording
               helps. Include your browser and device if the bug seems
               browser-specific.
             </li>
             <li>
-              <strong>Feature request</strong> — what calculator, what it
+              <strong>Feature request</strong>, what calculator, what it
               should compute, who would use it, and (if you have one) a link
               to the ATO publication or government source that supports it.
               We prioritise features with a clear user need and a public
               source.
             </li>
             <li>
-              <strong>Press / partnership / sponsorship</strong> — please
+              <strong>Press / partnership / sponsorship</strong>, please
               use the same email with a clear subject line. We aim to respond
               within 5 business days.
             </li>
             <li>
-              <strong>Security disclosure</strong> — please follow the
+              <strong>Security disclosure</strong>, please follow the
               responsible disclosure process documented in our{' '}
               <a href="/.well-known/security.txt">security.txt</a> file. We
               aim to acknowledge security reports within 48 hours.

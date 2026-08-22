@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'About SalaryCalc — Australian pay calculator, methodology, and editorial standards',
+  title: 'About SalaryCalc, Australian pay calculator, methodology, and editorial standards',
   description:
     'SalaryCalc is a free Australian pay calculator built on ATO-sourced rates. Learn how we keep our numbers honest, our editorial standards, the team behind the site, and how to report an error.',
   alternates: { canonical: '/about' },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'tax calculator australia',
   ],
   openGraph: {
-    title: 'About SalaryCalc — Australian pay calculator',
+    title: 'About SalaryCalc, Australian pay calculator',
     description: 'How SalaryCalc keeps its numbers honest. Methodology, editorial standards, and how to report an error.',
     url: `${brand.url}/about`,
     type: 'article',
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: 'Who builds SalaryCalc?',
     answer:
-      'SalaryCalc is built and maintained by a small team of Australian developers and writers. We publish the source code for our tax calculations (lib/tax/brackets.ts in the repository) so any developer or tax professional can audit our numbers in under a minute. We do not disclose the personal identity of individual contributors — the site is a brand, not a personal platform.',
+      'SalaryCalc is built and maintained by a small team of Australian developers and writers. We publish the source code for our tax calculations (lib/tax/brackets.ts in the repository) so any developer or tax professional can audit our numbers in under a minute. We do not disclose the personal identity of individual contributors, the site is a brand, not a personal platform.',
   },
   {
     question: 'Where do the tax rates come from?',
@@ -39,7 +39,7 @@ const faqs = [
   {
     question: 'Is SalaryCalc free?',
     answer:
-      'Yes. The site is free to use, with no login required. We do not track the numbers you type into the calculator — the calculation runs entirely in your browser, and we never see your salary. The site is supported by unobtrusive display advertising, which is clearly labelled. We do not accept payment in exchange for favourable calculator outputs, and we do not sell your data.',
+      'Yes. The site is free to use, with no login required. We do not track the numbers you type into the calculator, the calculation runs entirely in your browser, and we never see your salary. The site is supported by unobtrusive display advertising, which is clearly labelled. We do not accept payment in exchange for favourable calculator outputs, and we do not sell your data.',
   },
   {
     question: 'Is SalaryCalc a tax agent or financial adviser?',
@@ -92,7 +92,7 @@ export default function AboutPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: `About ${brand.name} — Australian pay calculator, methodology, and editorial standards`,
+            headline: `About ${brand.name}, Australian pay calculator, methodology, and editorial standards`,
             description: metadata.description as string,
             url: `${brand.url}/about`,
             datePublished: '2026-01-15',
@@ -115,7 +115,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             SalaryCalc is a free Australian pay calculator built on ATO-sourced rates
-            and a transparent methodology. We are a brand — not a personal platform —
+            and a transparent methodology. We are a brand, not a personal platform , 
             and we publish our source so any developer or tax professional can audit
             our numbers in under a minute.
           </p>
@@ -127,7 +127,7 @@ export default function AboutPage() {
           </div>
         </header>
 
-        {/* Quick facts — E-E-A-T compensation pattern */}
+        {/* Quick facts, E-E-A-T compensation pattern */}
         <section aria-labelledby="quick-facts" className="card not-prose mb-12">
           <h2 id="quick-facts" className="text-base font-semibold text-ink-900">
             SalaryCalc at a glance
@@ -140,7 +140,7 @@ export default function AboutPage() {
             <Fact label="Number of state landing pages" value="8 (every state and territory)" />
             <Fact label="Number of long-form guides" value="6 published, expanding to ~30 over the next year" />
             <Fact label="Login required" value="No" />
-            <Fact label="Salary data collected" value="None — calculations run in your browser" />
+            <Fact label="Salary data collected" value="None, calculations run in your browser" />
             <Fact label="Update frequency" value="Reviewed at every financial year start (1 July) and after the federal budget" />
             <Fact label="Open source" value="Rate file is published; full source is on GitHub" />
           </dl>
@@ -151,7 +151,7 @@ export default function AboutPage() {
           <h2>Why we built SalaryCalc</h2>
           <p>
             Most Australian pay calculators fall into one of three camps. There are
-            government tools that are technically accurate but unusable — the ATO&apos;s
+            government tools that are technically accurate but unusable, the ATO&apos;s
             PAYG calculator is a form with a separate page for every rate, and the
             published formulas require you to know your weekly equivalent in dollars
             to the cent. There are bank and super fund tools that are marketing
@@ -184,7 +184,7 @@ export default function AboutPage() {
               <strong>Source every number.</strong> Every rate, threshold, and
               coefficient on the site links back to a primary ATO or government
               source. If a number on the site does not have a citation, that is a
-              bug — please report it.
+              bug, please report it.
             </li>
             <li>
               <strong>Show the math.</strong> Our{' '}
@@ -275,7 +275,7 @@ export default function AboutPage() {
           <p>
             The site is supported by unobtrusive display advertising. We may, in
             future, recommend products that pay us a small referral fee (e.g. a
-            novated lease provider or a salary packaging service) — when we do, we
+            novated lease provider or a salary packaging service), when we do, we
             will label those recommendations clearly as sponsored or affiliate. We
             do not accept payment in exchange for favourable calculator outputs,
             and we do not sell your data.
@@ -295,7 +295,7 @@ export default function AboutPage() {
           </p>
         </section>
 
-        {/* Change log — for E-E-A-T and "recency signals" */}
+        {/* Change log, for E-E-A-T and "recency signals" */}
         <section aria-labelledby="changelog" className="mt-16 max-w-3xl">
           <h2
             id="changelog"
@@ -352,7 +352,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Trust link cluster — internal linking for SEO */}
+        {/* Trust link cluster, internal linking for SEO */}
         <section aria-labelledby="trust-links" className="mt-16 max-w-3xl">
           <h2
             id="trust-links"
@@ -383,7 +383,7 @@ export default function AboutPage() {
             Ready to calculate?
           </h2>
           <p className="mt-2 text-sm text-ink-700">
-            Try the pay calculator — see your take-home pay for FY 2026-27 with
+            Try the pay calculator, see your take-home pay for FY 2026-27 with
             HECS, salary sacrifice, and all pay periods supported.
           </p>
           <Link

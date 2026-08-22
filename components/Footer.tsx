@@ -52,7 +52,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="container flex flex-col items-start justify-between gap-3 py-6 text-xs sm:flex-row sm:items-center">
-          <p className="footer-meta">Estimates only — not financial or tax advice. For your actual tax position, consult a registered tax agent.</p>
+          <p className="footer-meta">Estimates only, not financial or tax advice. For your actual tax position, consult a registered tax agent.</p>
           <p className="footer-meta">Made in Australia · ATO-sourced · © {new Date().getFullYear()}</p>
         </div>
       </div>

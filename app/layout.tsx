@@ -14,7 +14,7 @@ const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
   title: {
-    default: `${brand.name} — Australian Pay Calculator (FY 2026–27)`,
+    default: `${brand.name}, Australian Pay Calculator (FY 2026–27)`,
     template: `%s · ${brand.name}`,
   },
   description: brand.shortDescription,
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     locale: 'en_AU',
     url: brand.url,
     siteName: brand.name,
-    title: `${brand.name} — Australian Pay Calculator (FY 2026–27)`,
+    title: `${brand.name}, Australian Pay Calculator (FY 2026–27)`,
     description: brand.shortDescription,
   },
-  twitter: { card: 'summary_large_image', title: `${brand.name} — Australian Pay Calculator`, description: brand.shortDescription },
+  twitter: { card: 'summary_large_image', title: `${brand.name}, Australian Pay Calculator`, description: brand.shortDescription },
   icons: {
     icon: [{ url: '/icons/icon.svg', type: 'image/svg+xml' }],
   },
@@ -64,18 +64,30 @@ export const viewport: Viewport = {
   themeColor: '#0a0e1a',
 };
 
-// Force the dark class on the HTML element before React hydrates.
-// This makes the site permanently dark — no light mode toggle.
-const forceDark = `(() => {
-  document.documentElement.classList.add('dark');
-  document.documentElement.style.colorScheme = 'dark';
+// Read the user's stored theme preference (or fall back to dark) and
+// apply the .dark class before React hydrates. This avoids a flash of
+// the wrong theme on first paint.
+const themeBootstrap = `(() => {
+  try {
+    var stored = window.localStorage.getItem('salarycalc_theme');
+    var theme = stored === 'light' ? 'light' : 'dark';
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    document.documentElement.style.colorScheme = theme;
+  } catch (e) {
+    document.documentElement.classList.add('dark');
+    document.documentElement.style.colorScheme = 'dark';
+  }
 })();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-AU" className="dark" suppressHydrationWarning>
       <head>
-        <Script id="force-dark" strategy="beforeInteractive">{forceDark}</Script>
+        <Script id="theme-bootstrap" strategy="beforeInteractive">{themeBootstrap}</Script>
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3088783706802319"

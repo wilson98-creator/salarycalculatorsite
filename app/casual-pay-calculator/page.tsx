@@ -6,24 +6,24 @@ import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/c
 import { Breadcrumb } from '@/components/Breadcrumb';
 
 export const metadata: Metadata = {
-  title: 'Casual Pay Calculator Australia (FY 2026–27) — With Loading & Tax',
+  title: 'Casual Pay Calculator Australia (FY 2026–27), With Loading & Tax',
   description:
-    'Free Australian casual pay calculator. Enter your hourly rate, casual loading, and hours — see the loaded rate, weekly/fortnightly/annual pay, tax, HECS, and super.',
+    'Free Australian casual pay calculator. Enter your hourly rate, casual loading, and hours, see the loaded rate, weekly/fortnightly/annual pay, tax, HECS, and super.',
   alternates: { canonical: '/casual-pay-calculator' },
 };
 
 const faqs = [
   {
     question: 'What is casual loading?',
-    answer: 'Casual loading is an extra percentage (usually 25%) added to the ordinary base hourly rate for casual employees. It compensates casuals for not receiving paid leave entitlements like annual leave, personal leave, and redundancy pay. The loading is paid at the same tax rate as ordinary earnings — it is not a special tax rate. From 1 July 2025 the national minimum wage is $24.10/hour, so the minimum casual rate is $30.13/hour including the 25% loading.',
+    answer: 'Casual loading is an extra percentage (usually 25%) added to the ordinary base hourly rate for casual employees. It compensates casuals for not receiving paid leave entitlements like annual leave, personal leave, and redundancy pay. The loading is paid at the same tax rate as ordinary earnings, it is not a special tax rate. From 1 July 2025 the national minimum wage is $24.10/hour, so the minimum casual rate is $30.13/hour including the 25% loading.',
   },
   {
     question: 'How much is casual loading?',
-    answer: 'The standard casual loading under most Modern Awards is 25%. Some awards or enterprise agreements specify a different rate (20% is also common, and a few are 22.5% or 23%). Your employer is required to pay the higher of the award rate and the National Employment Standards. Check your award or your contract — the calculator defaults to 25%.',
+    answer: 'The standard casual loading under most Modern Awards is 25%. Some awards or enterprise agreements specify a different rate (20% is also common, and a few are 22.5% or 23%). Your employer is required to pay the higher of the award rate and the National Employment Standards. Check your award or your contract, the calculator defaults to 25%.',
   },
   {
     question: 'Are penalty rates extra to casual loading?',
-    answer: 'Yes. Penalty rates (e.g. 150% for Saturday, 200% for Sunday and public holidays) are calculated on top of the loaded casual rate. The method depends on the award — some apply the penalty first, then add the loading; others apply the loading first, then the penalty. The calculator models the base loaded rate only. For an exact penalty calculation, use the ATO Fair Work PACT tool or your award\'s specific rules.',
+    answer: 'Yes. Penalty rates (e.g. 150% for Saturday, 200% for Sunday and public holidays) are calculated on top of the loaded casual rate. The method depends on the award, some apply the penalty first, then add the loading; others apply the loading first, then the penalty. The calculator models the base loaded rate only. For an exact penalty calculation, use the ATO Fair Work PACT tool or your award\'s specific rules.',
   },
   {
     question: 'Do casual employees get superannuation?',
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     question: 'How is casual pay taxed?',
-    answer: 'Casual pay is taxed the same as permanent pay — your employer withholds PAYG income tax from each pay based on the ATO formulas. There is no special "casual tax rate". If you tick the tax-free threshold on your TFN declaration and HECS box (if applicable), the withholding will be correct. Any over- or under-withholding is reconciled at tax time.',
+    answer: 'Casual pay is taxed the same as permanent pay, your employer withholds PAYG income tax from each pay based on the ATO formulas. There is no special "casual tax rate". If you tick the tax-free threshold on your TFN declaration and HECS box (if applicable), the withholding will be correct. Any over- or under-withholding is reconciled at tax time.',
   },
   {
     question: 'Can my casual loading be less than 25%?',
@@ -91,7 +91,7 @@ export default function CasualPayCalculatorPage() {
           <p>
             A casual employee is someone who works on a non-regular, as-needed basis
             with no guaranteed hours. In return for that flexibility, casual
-            employees receive a loading on top of the ordinary base rate — the
+            employees receive a loading on top of the ordinary base rate, the
             standard is 25% under most Modern Awards.
           </p>
           <p>
@@ -122,7 +122,7 @@ export default function CasualPayCalculatorPage() {
           <p>
             For the exact pay rules for your award, use the Fair Work
             Ombudsman&apos;s <a href="https://www.fairwork.gov.au/pay-and-conditions-tools/calculators/penalty-rates-calculator" target="_blank" rel="noopener noreferrer">Pay and Conditions Tool</a>{' '}
-            (PACT) — it is the authority for award rates, penalty rates, and
+            (PACT), it is the authority for award rates, penalty rates, and
             allowances.
           </p>
 
@@ -144,23 +144,23 @@ export default function CasualPayCalculatorPage() {
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>How this fits into a broader pay plan</h2>
           <p>
-            If you earn income from multiple casual jobs, the calculator handles each one separately, but the ATO adds them up at tax time. Your combined casual income across all employers is what determines your tax bracket, your Medicare levy, and any HECS repayment liability. If your total casual income pushes you into a higher tax bracket, it may be worth sacrificing into super to reduce your repayment income — see our <Link href="/salary-sacrifice-calculator">salary sacrifice calculator</Link>.
+            If you earn income from multiple casual jobs, the calculator handles each one separately, but the ATO adds them up at tax time. Your combined casual income across all employers is what determines your tax bracket, your Medicare levy, and any HECS repayment liability. If your total casual income pushes you into a higher tax bracket, it may be worth sacrificing into super to reduce your repayment income, see our <Link href="/salary-sacrifice-calculator">salary sacrifice calculator</Link>.
           </p>
           <p>
             For most casual workers, the hourly rate they see in the job ad is the base rate before the 25% casual loading. The effective rate (loaded rate) is what they are actually paid per hour. The <strong>hourly wage calculator</strong> side of this tool is designed for that: enter the base rate from the ad, set loading to 25%, and the loaded rate is what you compare offers against.
           </p>
           <p>
-            On <strong>holiday entitlement</strong>: casuals do not get paid annual leave, personal leave, or public holidays (with rare exceptions). Instead, the 25% casual loading is meant to compensate for that lost entitlement. The math: paid leave at 4 weeks annual + 2 weeks personal + 10 days personal/carer = about 7.6 weeks. 7.6/52 ≈ 14.6%, which is well below the 25% loading. So in theory, casuals are over-compensated for their lost leave. In practice, the loading is also meant to cover the lack of job security, sick days without pay, and the irregularity of hours — which is why the 25% is the floor, not the ceiling. If you are weighing a casual role against a permanent one, a <strong>holiday entitlement calculator</strong> helps you put a dollar value on the leave you would be giving up — load in your hourly rate, your expected hours, and the number of weeks of paid leave a permanent role would offer, and the difference is the implicit value of the 25% loading.
+            On <strong>holiday entitlement</strong>: casuals do not get paid annual leave, personal leave, or public holidays (with rare exceptions). Instead, the 25% casual loading is meant to compensate for that lost entitlement. The math: paid leave at 4 weeks annual + 2 weeks personal + 10 days personal/carer = about 7.6 weeks. 7.6/52 ≈ 14.6%, which is well below the 25% loading. So in theory, casuals are over-compensated for their lost leave. In practice, the loading is also meant to cover the lack of job security, sick days without pay, and the irregularity of hours, which is why the 25% is the floor, not the ceiling. If you are weighing a casual role against a permanent one, a <strong>holiday entitlement calculator</strong> helps you put a dollar value on the leave you would be giving up, load in your hourly rate, your expected hours, and the number of weeks of paid leave a permanent role would offer, and the difference is the implicit value of the 25% loading.
           </p>
         </section>
 
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Other tools you might need</h2>
           <ul>
-            <li><Link href="/">Main pay calculator</Link> — for permanent roles, salary packaging, and detailed scenarios.</li>
-            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link> — see your student debt repayment in isolation.</li>
-            <li><Link href="/tax-rates">Tax rates</Link> — current brackets, Medicare thresholds, HECS schedules.</li>
-            <li><Link href="/methodology">Methodology</Link> — exactly how every number is calculated.</li>
+            <li><Link href="/">Main pay calculator</Link>, for permanent roles, salary packaging, and detailed scenarios.</li>
+            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, see your student debt repayment in isolation.</li>
+            <li><Link href="/tax-rates">Tax rates</Link>, current brackets, Medicare thresholds, HECS schedules.</li>
+            <li><Link href="/methodology">Methodology</Link>, exactly how every number is calculated.</li>
           </ul>
         </section>
       </article>

@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, articleSchema, faqSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Guides — Australian pay, tax and super explained',
+  title: 'Guides, Australian pay, tax and super explained',
   description:
     'Long-form guides on Australian income tax, Medicare, HECS-HELP, salary sacrifice, superannuation and the Stage 3 tax cuts. Plain English, ATO-sourced, no jargon. Updated for FY 2026-27.',
   alternates: { canonical: '/guides' },
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'stage 3 tax cuts',
   ],
   openGraph: {
-    title: 'Guides — Australian pay, tax and super explained',
+    title: 'Guides, Australian pay, tax and super explained',
     description: 'Long-form guides on Australian pay and tax. Plain English, ATO-sourced, no jargon.',
     url: `${brand.url}/guides`,
     type: 'website',
@@ -30,7 +30,7 @@ const guides = [
   {
     slug: 'australian-income-tax',
     title: 'Australian income tax: a complete guide',
-    blurb: 'How the tax system works end-to-end — brackets, offsets, Medicare, residency, and the differences between PAYG withholding and what you actually owe.',
+    blurb: 'How the tax system works end-to-end, brackets, offsets, Medicare, residency, and the differences between PAYG withholding and what you actually owe.',
     readTime: '9 min read',
     keywords: ['australian income tax', 'tax brackets', 'payg', 'medicare levy'],
   },
@@ -100,7 +100,7 @@ export default function GuidesIndexPage() {
       <JsonLd
         data={[
           articleSchema({
-            headline: 'Guides — Australian pay, tax and super explained',
+            headline: 'Guides, Australian pay, tax and super explained',
             description: metadata.description as string,
             url: `${brand.url}/guides`,
             datePublished: '2026-01-15',

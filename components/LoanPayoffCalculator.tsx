@@ -18,7 +18,7 @@ export function LoanPayoffCalculator() {
     () => amortize({ principal: balance, annualRate: rate, termMonths: 12 * 30, monthlyPayment: payment, extraMonthly }),
     [balance, rate, payment, extraMonthly],
   );
-  // Redundancy: assume a lump-sum payment at month 0 — just apply it to the balance.
+  // Redundancy: assume a lump-sum payment at month 0, just apply it to the balance.
   const withRedundancyBalance = Math.max(0, balance - redundancy);
   const withRedundancy = useMemo(
     () => amortize({ principal: withRedundancyBalance, annualRate: rate, termMonths: 12 * 30, monthlyPayment: payment, extraMonthly }),
@@ -102,7 +102,7 @@ export function LoanPayoffCalculator() {
         </div>
 
         <div>
-          <label htmlFor="lp-redundancy" className="label">Lump sum (e.g. redundancy payout) — optional</label>
+          <label htmlFor="lp-redundancy" className="label">Lump sum (e.g. redundancy payout), optional</label>
           <div className="flex items-stretch gap-2">
             <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
             <input
@@ -115,7 +115,7 @@ export function LoanPayoffCalculator() {
               onChange={(e) => setRedundancy(parseFloat(e.target.value) || 0)}
             />
           </div>
-          <p className="help">A one-off payment applied to the balance — useful for modelling a redundancy payout, bonus, or inheritance.</p>
+          <p className="help">A one-off payment applied to the balance, useful for modelling a redundancy payout, bonus, or inheritance.</p>
         </div>
       </div>
 

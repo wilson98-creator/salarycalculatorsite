@@ -5,7 +5,7 @@ import { sources } from '@/lib/tax/sources';
 import { brand } from '@/lib/brand';
 
 export const metadata: Metadata = {
-  title: 'Australian tax rates — current and historical',
+  title: 'Australian tax rates, current and historical',
   description: 'Australian resident and non-resident income tax brackets, Medicare levy thresholds, and HECS-HELP repayment schedules for the current and previous financial years.',
   alternates: { canonical: '/tax-rates' },
 };
@@ -36,7 +36,7 @@ export default function TaxRatesPage() {
                 <tr key={b.label}>
                   <td>{b.label.split(' (')[0]}</td>
                   <td>{(b.rate * 100).toFixed(0)}%</td>
-                  <td>{b.base === 0 ? '—' : `$${b.base.toLocaleString('en-AU')}`}</td>
+                  <td>{b.base === 0 ? ', ' : `$${b.base.toLocaleString('en-AU')}`}</td>
                 </tr>
               ))}
             </tbody>

@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: 'How is my HECS balance indexed?',
-    answer: 'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024 — previously the balance was indexed by CPI alone. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
+    answer: 'On 1 June each year the ATO increases your HECS-HELP balance by the lower of the Consumer Price Index (CPI) and the Wage Price Index (WPI) for the previous 12 months. The WPI cap was introduced by the Universities Accord Act 2024, previously the balance was indexed by CPI alone. Recent indexation rates: 7.1% (June 2023), 4.7% (June 2024), 3.2% (June 2025), 2.8% (June 2026).',
   },
   {
     question: 'Can I make voluntary HECS repayments?',
@@ -40,7 +40,7 @@ const faqs = [
   },
   {
     question: 'What happens to my HECS debt if I move overseas?',
-    answer: 'Your HELP debt remains and continues to be indexed on 1 June each year while you are overseas. You are still required to make compulsory repayments if your worldwide repayment income exceeds the threshold. The ATO has a process for making voluntary overseas repayments, and you can update your contact details via myGov. After 6 months overseas, the indexation on your balance is calculated differently — see the ATO\'s overseas repayment page for details.',
+    answer: 'Your HELP debt remains and continues to be indexed on 1 June each year while you are overseas. You are still required to make compulsory repayments if your worldwide repayment income exceeds the threshold. The ATO has a process for making voluntary overseas repayments, and you can update your contact details via myGov. After 6 months overseas, the indexation on your balance is calculated differently, see the ATO\'s overseas repayment page for details.',
   },
 ];
 
@@ -89,7 +89,7 @@ export default function HecsCalculatorPage() {
             From 1 July 2025, HECS-HELP repayments are calculated using a marginal
             bracket system, the same way income tax is. The change replaced the old
             flat-rate system, where crossing a threshold meant a flat percentage of
-            your entire repayment income — which created situations where a small pay
+            your entire repayment income, which created situations where a small pay
             rise could cost more than it earned.
           </p>
           <p>
@@ -160,13 +160,13 @@ export default function HecsCalculatorPage() {
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>HECS as a debt repayment problem</h2>
           <p>
-            HECS-HELP is unusual among Australian debts in that it is not amortising in the traditional sense. There is no fixed monthly bill, no term, and no penalty for missing a payment — your employer withholds the right amount (or the ATO assesses it at tax time) and the balance grows by indexation every June. For most people, this makes it the most favourable debt they will ever have, and they should not rush to pay it off ahead of higher-rate debts like credit cards or personal loans.
+            HECS-HELP is unusual among Australian debts in that it is not amortising in the traditional sense. There is no fixed monthly bill, no term, and no penalty for missing a payment, your employer withholds the right amount (or the ATO assesses it at tax time) and the balance grows by indexation every June. For most people, this makes it the most favourable debt they will ever have, and they should not rush to pay it off ahead of higher-rate debts like credit cards or personal loans.
           </p>
           <p>
-            If you are building a general debt repayment plan, a <strong>debt repayment calculator</strong> is the right starting point. The conventional advice is to use the <strong>avalanche method</strong>: pay the minimum on every debt, and direct every spare dollar to the debt with the highest interest rate. For most Australians, that means credit cards (18-22%) and personal loans (9-14%) come first, then HECS last — because HECS behaves more like a slowly-indexing savings plan than a typical loan. Use our <Link href="/loan-payoff-calculator">loan payoff calculator</Link> to model credit card and personal loan scenarios, and our <Link href="/loan-payoff-calculator">debt payoff calculator</Link> to see how long different payoff strategies actually take on a real balance.
+            If you are building a general debt repayment plan, a <strong>debt repayment calculator</strong> is the right starting point. The conventional advice is to use the <strong>avalanche method</strong>: pay the minimum on every debt, and direct every spare dollar to the debt with the highest interest rate. For most Australians, that means credit cards (18-22%) and personal loans (9-14%) come first, then HECS last, because HECS behaves more like a slowly-indexing savings plan than a typical loan. Use our <Link href="/loan-payoff-calculator">loan payoff calculator</Link> to model credit card and personal loan scenarios, and our <Link href="/loan-payoff-calculator">debt payoff calculator</Link> to see how long different payoff strategies actually take on a real balance.
           </p>
           <p>
-            Where this changes: if you are on the marginal repayment system, the repayment rate increases as your income grows. A 1.5% indexation combined with a 2% effective repayment rate means you are slowly gaining ground even without voluntary payments. If you are on the old flat-rate system (pre-July 2025 debts), the analysis is different — talk to a financial counsellor before making voluntary payments.
+            Where this changes: if you are on the marginal repayment system, the repayment rate increases as your income grows. A 1.5% indexation combined with a 2% effective repayment rate means you are slowly gaining ground even without voluntary payments. If you are on the old flat-rate system (pre-July 2025 debts), the analysis is different, talk to a financial counsellor before making voluntary payments.
           </p>
         </section>
 

@@ -66,7 +66,7 @@ const faqs = [
   {
     question: 'Is the MLS calculated on the whole income or just the excess?',
     answer:
-      'On the whole of your MLS income, not just the portion above the threshold. A $150,000 single with no private hospital cover pays 1.5% on the whole $150,000 — $2,250 on top of the standard $3,000 Medicare levy. This surprises many people at tax time.',
+      'On the whole of your MLS income, not just the portion above the threshold. A $150,000 single with no private hospital cover pays 1.5% on the whole $150,000, $2,250 on top of the standard $3,000 Medicare levy. This surprises many people at tax time.',
   },
   {
     question: 'What counts as "appropriate" private hospital cover?',
@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'What is the Lifetime Health Cover loading?',
     answer:
-      'Lifetime Health Cover (LHC) loading is an additional 2% per year over age 30 that applies if you take out private hospital cover for the first time after age 31, up to a maximum of 70%. It applies for 10 years of continuous cover. LHC is separate to the MLS. It can be a reason to take out cover earlier, even if you do not currently earn above the MLS threshold — you lock in no loading while you are young.',
+      'Lifetime Health Cover (LHC) loading is an additional 2% per year over age 30 that applies if you take out private hospital cover for the first time after age 31, up to a maximum of 70%. It applies for 10 years of continuous cover. LHC is separate to the MLS. It can be a reason to take out cover earlier, even if you do not currently earn above the MLS threshold, you lock in no loading while you are young.',
   },
   {
     question: 'When is the MLS paid?',
@@ -230,7 +230,7 @@ export default function MlsGuide() {
           <p>
             Family thresholds increase by $1,500 for each dependent child
             after the first. The income used to determine the tier is your
-            &quot;MLS income&quot; — taxable income plus reportable fringe
+            &quot;MLS income&quot;, taxable income plus reportable fringe
             benefits, reportable employer super contributions, and net
             investment losses.
           </p>
@@ -240,7 +240,7 @@ export default function MlsGuide() {
             Once you cross the threshold, the surcharge rate is applied to
             the whole of your MLS income, not just the portion above the
             threshold. A single person earning $150,000 with no private
-            hospital cover pays 1.5% on the whole $150,000 — $2,250 on top
+            hospital cover pays 1.5% on the whole $150,000, $2,250 on top
             of the standard $3,000 Medicare levy. The total Medicare-related
             cost is $5,250.
           </p>
@@ -255,7 +255,7 @@ export default function MlsGuide() {
           <h2>4. The &quot;appropriate level&quot; of private cover</h2>
           <p>
             To avoid the surcharge, you need &quot;appropriate private
-            patient hospital cover&quot; — that is, hospital cover that
+            patient hospital cover&quot;, that is, hospital cover that
             includes all of the clinical categories required by the ATO. It
             does not need to be the most expensive top-tier policy, and it
             does not need to include extras (dental, optical, etc.). Many
@@ -278,7 +278,7 @@ export default function MlsGuide() {
           <p>
             LHC loading is a separate consideration to the MLS. It can be a
             reason to take out cover earlier, even if you do not currently
-            earn above the MLS threshold — you lock in no loading while you
+            earn above the MLS threshold, you lock in no loading while you
             are young, and you can always drop the policy later (though you
             will pay the loading again if you re-take it after a gap).
           </p>
@@ -338,7 +338,7 @@ export default function MlsGuide() {
           <h2>9. Try the calculator</h2>
           <p>
             The main pay calculator on the <Link href="/">homepage</Link>{' '}
-            does not include the MLS — it models only what your employer
+            does not include the MLS, it models only what your employer
             withholds through PAYG. For an MLS-aware estimate, use the
             ATO&apos;s{' '}
             <a

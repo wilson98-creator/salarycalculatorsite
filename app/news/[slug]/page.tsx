@@ -114,7 +114,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
 
         <hr className="rule-line my-12" />
 
-        {/* Body — paragraph-by-paragraph */}
+        {/* Body, paragraph-by-paragraph */}
         <div className="max-w-3xl space-y-5 text-base text-ink-700 sm:text-lg">
           {post.body.split(/\n\n+/).map((para, i) => (
             <p key={i} className={i === 0 ? 'drop-cap text-ink-700' : ''}>
@@ -221,7 +221,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
                 {post.source}
               </a>
               . We do not speak for the original publisher. Always cross-check the
-              primary source — especially for tax, super, and legal decisions — and
+              primary source, especially for tax, super, and legal decisions, and
               consider talking to a registered tax agent or financial adviser before
               acting on anything in this brief.
             </p>

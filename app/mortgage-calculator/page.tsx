@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'How does the mortgage calculator work?',
     answer:
-      'The calculator uses the standard amortization formula: monthly payment = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1], where P is the loan amount, r is the monthly interest rate (annual ÷ 12), and n is the total number of monthly payments. It then runs an amortization schedule — month by month — to compute the total interest and payoff time, with or without extra payments.',
+      'The calculator uses the standard amortization formula: monthly payment = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1], where P is the loan amount, r is the monthly interest rate (annual ÷ 12), and n is the total number of monthly payments. It then runs an amortization schedule, month by month, to compute the total interest and payoff time, with or without extra payments.',
   },
   {
     question: 'What does "extra repayments" actually save?',
@@ -26,12 +26,12 @@ const faqs = [
   {
     question: 'Should I make extra repayments or put the money in an offset account?',
     answer:
-      'If you have an offset account, parking your spare cash there is usually better than making extra repayments — the offset reduces the interest you pay daily (no extra cost when you withdraw) while an extra repayment locks the money into the loan. An offset is the equivalent of an extra repayment that you can undo. Use an offset for your emergency fund and short-term savings. Use a fixed extra repayment for amounts you’re certain you won’t need.',
+      'If you have an offset account, parking your spare cash there is usually better than making extra repayments, the offset reduces the interest you pay daily (no extra cost when you withdraw) while an extra repayment locks the money into the loan. An offset is the equivalent of an extra repayment that you can undo. Use an offset for your emergency fund and short-term savings. Use a fixed extra repayment for amounts you’re certain you won’t need.',
   },
   {
     question: 'What about an offset account vs redraw?',
     answer:
-      'Both reduce the interest you pay (because they lower the effective loan balance), but they work differently. An offset is a separate transaction account: the loan balance is reduced for interest-calculation purposes, but you can withdraw anytime. Redraw lets you pull back extra repayments you’ve already made — usually without notice, but the loan balance goes back up. Offset is more flexible; redraw is more common on fixed-rate loans where offset isn’t available.',
+      'Both reduce the interest you pay (because they lower the effective loan balance), but they work differently. An offset is a separate transaction account: the loan balance is reduced for interest-calculation purposes, but you can withdraw anytime. Redraw lets you pull back extra repayments you’ve already made, usually without notice, but the loan balance goes back up. Offset is more flexible; redraw is more common on fixed-rate loans where offset isn’t available.',
   },
   {
     question: 'How often should I recalculate my mortgage?',
@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'Is this calculator right for an investment property?',
     answer:
-      'The math is the same — the loan amortizes the same way. The difference for an investment property is the interest is tax-deductible (the loan itself is usually structured as interest-only rather than principal-and-interest, which the calculator doesn’t model). Talk to your tax agent about the deductibility and structure. The calculator is fine for working out the raw repayment on an investment loan.',
+      'The math is the same, the loan amortizes the same way. The difference for an investment property is the interest is tax-deductible (the loan itself is usually structured as interest-only rather than principal-and-interest, which the calculator doesn’t model). Talk to your tax agent about the deductibility and structure. The calculator is fine for working out the raw repayment on an investment loan.',
   },
   {
     question: 'What if my rate is variable and changes mid-year?',
@@ -93,7 +93,7 @@ export default function MortgageCalculatorPage() {
             A principal-and-interest mortgage is a standard amortizing loan. Each month, your repayment is split into two parts: interest on the remaining balance, and a small amount of principal. Early in the loan, most of the repayment is interest; by the end, most of it is principal. This is why the total interest you pay over 30 years on a typical Australian mortgage is often close to the original loan amount.
           </p>
           <p>
-            The minimum monthly repayment is calculated so the loan is fully paid off at the end of the term, assuming the rate never changes. That means the first 5–10 years of a 30-year mortgage are mostly interest — typically 70–80% of each repayment in year one.
+            The minimum monthly repayment is calculated so the loan is fully paid off at the end of the term, assuming the rate never changes. That means the first 5–10 years of a 30-year mortgage are mostly interest, typically 70–80% of each repayment in year one.
           </p>
 
           <h2>Why extra payments work so well</h2>
@@ -106,10 +106,10 @@ export default function MortgageCalculatorPage() {
 
           <h2>Offset accounts vs extra repayments</h2>
           <p>
-            Many Australian mortgages come with a 100% offset account. Parking spare cash in the offset is functionally identical to making an extra repayment — both reduce the interest you pay — but the offset is more flexible because you can withdraw the money anytime. The trade-off is that money in an offset is "available" and you might spend it, while an extra repayment is locked into the loan.
+            Many Australian mortgages come with a 100% offset account. Parking spare cash in the offset is functionally identical to making an extra repayment, both reduce the interest you pay, but the offset is more flexible because you can withdraw the money anytime. The trade-off is that money in an offset is "available" and you might spend it, while an extra repayment is locked into the loan.
           </p>
           <p>
-            The usual strategy: use the offset for your emergency fund and short-term savings, and use a fixed extra repayment for amounts you are sure you will not need. If you have neither, the extra repayment is the better default — it is guaranteed to reduce the loan, while money sitting in a transaction account earns nothing.
+            The usual strategy: use the offset for your emergency fund and short-term savings, and use a fixed extra repayment for amounts you are sure you will not need. If you have neither, the extra repayment is the better default, it is guaranteed to reduce the loan, while money sitting in a transaction account earns nothing.
           </p>
 
           <h2>Refinancing vs paying extra</h2>
@@ -125,7 +125,7 @@ export default function MortgageCalculatorPage() {
             <li><strong>Paying extra into a loan that has no offset or redraw.</strong> You cannot get the money back without refinancing. Check the loan features first.</li>
             <li><strong>Choosing a longer term to lower the minimum, then never paying extra.</strong> You will pay vastly more interest. Pick the shortest term you can comfortably afford.</li>
             <li><strong>Ignoring the rate in favour of the extras.</strong> A 0.25% rate reduction beats $200 a month extra every time. Always shop the rate first.</li>
-            <li><strong>Not telling the lender to recalculate the minimum after a lump sum.</strong> If you make a $20,000 lump sum and the lender keeps the minimum at the original amount, the loan pays off years early — but most people do not realise it. Either recalculate yourself or ask the lender to re-amortise.</li>
+            <li><strong>Not telling the lender to recalculate the minimum after a lump sum.</strong> If you make a $20,000 lump sum and the lender keeps the minimum at the original amount, the loan pays off years early, but most people do not realise it. Either recalculate yourself or ask the lender to re-amortise.</li>
           </ul>
 
           <h2>Frequently asked questions</h2>
@@ -146,10 +146,10 @@ export default function MortgageCalculatorPage() {
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
-            <li><Link href="/">Pay calculator</Link> — what you can actually afford to put toward a mortgage each month.</li>
-            <li><Link href="/salary-sacrifice-calculator">Salary sacrifice calculator</Link> — see if sacrificing into super or a novated lease changes what you can borrow.</li>
-            <li><Link href="/loan-payoff-calculator">Loan payoff calculator</Link> — for personal loans and credit cards rather than mortgages.</li>
-            <li><Link href="/methodology">Methodology</Link> — exactly how every figure on this site is calculated.</li>
+            <li><Link href="/">Pay calculator</Link>, what you can actually afford to put toward a mortgage each month.</li>
+            <li><Link href="/salary-sacrifice-calculator">Salary sacrifice calculator</Link>, see if sacrificing into super or a novated lease changes what you can borrow.</li>
+            <li><Link href="/loan-payoff-calculator">Loan payoff calculator</Link>, for personal loans and credit cards rather than mortgages.</li>
+            <li><Link href="/methodology">Methodology</Link>, exactly how every figure on this site is calculated.</li>
           </ul>
         </section>
       </article>

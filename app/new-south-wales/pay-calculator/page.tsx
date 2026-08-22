@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'NSW Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'NSW Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'New South Wales pay calculator. Same ATO federal tax brackets as the rest of Australia, with state-specific cost-of-living context. Live calculator, FY 2026–27 rates.',
   alternates: { canonical: '/new-south-wales/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in NSW compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every state. A person earning $80,000 in Sydney pays exactly the same income tax as a person earning $80,000 in Perth, Hobart, or Darwin. The differences between states show up in cost of living, average wages, and (for employees) the rate of payroll tax paid by your employer — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every state. A person earning $80,000 in Sydney pays exactly the same income tax as a person earning $80,000 in Perth, Hobart, or Darwin. The differences between states show up in cost of living, average wages, and (for employees) the rate of payroll tax paid by your employer, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in NSW?',
@@ -26,12 +26,12 @@ const faqs = [
   {
     question: 'How does Sydney cost of living affect take-home pay?',
     answer:
-      'Sydney has the highest housing costs in Australia (median rent for a one-bedroom apartment is around $700/week, or $36,400/year — about 35% of a $100k salary). Transport, groceries, and utilities are also higher than the national average. The take-home pay is the same as elsewhere, but it goes less far. Use the calculator above to see your take-home, then check your state-specific expenses separately.',
+      'Sydney has the highest housing costs in Australia (median rent for a one-bedroom apartment is around $700/week, or $36,400/year, about 35% of a $100k salary). Transport, groceries, and utilities are also higher than the national average. The take-home pay is the same as elsewhere, but it goes less far. Use the calculator above to see your take-home, then check your state-specific expenses separately.',
   },
   {
     question: 'What about NSW public-sector penalty rates and allowances?',
     answer:
-      'NSW public-sector awards include shift allowances, on-call allowances, and remote-area incentives that vary by department and role. The calculator above models the standard tax treatment of these payments — they are added to gross income and taxed at your marginal rate. The actual rate of each allowance is set by the relevant NSW award or enterprise agreement, not by tax law.',
+      'NSW public-sector awards include shift allowances, on-call allowances, and remote-area incentives that vary by department and role. The calculator above models the standard tax treatment of these payments, they are added to gross income and taxed at your marginal rate. The actual rate of each allowance is set by the relevant NSW award or enterprise agreement, not by tax law.',
   },
 ];
 
@@ -64,7 +64,7 @@ export default function NswPayCalculatorPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in NSW. The federal tax brackets, Medicare
-            levy, and HELP repayment thresholds are the same across Australia — so the
+            levy, and HELP repayment thresholds are the same across Australia, so the
             math is identical whether you work in Sydney, Wollongong, or Tamworth. What
             varies is the cost of living, the median wage in your industry, and the
             state-specific allowances that may apply to your role.
@@ -101,7 +101,7 @@ export default function NswPayCalculatorPage() {
             Award</em> and various industry-specific awards. Private-sector employees
             are covered by the federal Modern Awards that apply across Australia.
             Penalty rates, shift loadings, and remote-area incentives are set by the
-            relevant award or enterprise agreement — not by tax law — and are added to
+            relevant award or enterprise agreement, not by tax law, and are added to
             your gross pay before the calculator applies tax.
           </p>
           <p>

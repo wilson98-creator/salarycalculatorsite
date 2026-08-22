@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Tasmania Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'Tasmania Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'Tasmania pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Hobart cost-of-living context.',
   alternates: { canonical: '/tasmania/pay-calculator' },
@@ -16,17 +16,17 @@ const faqs = [
   {
     question: 'Is tax different in Tasmania compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Hobart is identical to the tax on $80,000 in Sydney or Perth. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Hobart is identical to the tax on $80,000 in Sydney or Perth. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in Tasmania?',
     answer:
-      'Tasmania has the lowest average wages of the mainland states — around $1,790 per week or roughly $93,000 per year. The median is closer to $80,000. Hobart wages for health, education, and government are the largest employing sectors. Tourism, agriculture, and aquaculture are significant regional employers.',
+      'Tasmania has the lowest average wages of the mainland states, around $1,790 per week or roughly $93,000 per year. The median is closer to $80,000. Hobart wages for health, education, and government are the largest employing sectors. Tourism, agriculture, and aquaculture are significant regional employers.',
   },
   {
     question: 'How does Tasmania cost of living compare?',
     answer:
-      'Hobart housing costs have risen sharply but remain well below Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $420/week (around $22,000/year — about 22% of a $100k salary). Transport, groceries, and utilities are close to the national average. The same take-home pay goes materially further in Tasmania than in the larger capitals.',
+      'Hobart housing costs have risen sharply but remain well below Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $420/week (around $22,000/year, about 22% of a $100k salary). Transport, groceries, and utilities are close to the national average. The same take-home pay goes materially further in Tasmania than in the larger capitals.',
   },
 ];
 
@@ -57,7 +57,7 @@ export default function TasPayCalculatorPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in Tasmania. The federal tax brackets, Medicare
-            levy, and HELP repayment thresholds are the same across Australia — so the
+            levy, and HELP repayment thresholds are the same across Australia, so the
             math is identical whether you work in Hobart, Launceston, or Burnie. What
             varies is the cost of living, the median wage in your industry, and the
             state-specific allowances that may apply to your role.
@@ -73,7 +73,7 @@ export default function TasPayCalculatorPage() {
           <p>
             Tasmania has a workforce concentrated in health, education, government,
             tourism, and agriculture. Wages are the lowest of the mainland states, but
-            the cost of living — especially housing — is also the lowest. The trade-off
+            the cost of living, especially housing, is also the lowest. The trade-off
             means the same take-home pay supports a materially higher standard of
             living than in Sydney or Melbourne.
           </p>

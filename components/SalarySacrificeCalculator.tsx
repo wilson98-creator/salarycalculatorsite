@@ -171,7 +171,7 @@ export function SalarySacrificeCalculator() {
 
       {overCap && (
         <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-          Heads up: your total concessional contributions (SG {formatAUD(sgAlready)} + sacrifice {formatAUD(sacrifice)} = {formatAUD(newConcessionalTotal)}) exceed the {formatAUD0(CONCESSIONAL_CAP)} cap. The excess is added to your assessable income and taxed at your marginal rate, with a 15% offset — usually not worth doing past the cap.
+          Heads up: your total concessional contributions (SG {formatAUD(sgAlready)} + sacrifice {formatAUD(sacrifice)} = {formatAUD(newConcessionalTotal)}) exceed the {formatAUD0(CONCESSIONAL_CAP)} cap. The excess is added to your assessable income and taxed at your marginal rate, with a 15% offset, usually not worth doing past the cap.
         </p>
       )}
     </section>

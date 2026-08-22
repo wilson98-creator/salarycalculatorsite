@@ -21,7 +21,7 @@ const faqs = [
   {
     question: 'When does salary sacrifice actually save money?',
     answer:
-      'When your marginal tax rate is higher than 15% (the super tax rate). For most Australian employees that means anyone earning above $45,000 a year — which is most of us. The higher your marginal rate, the bigger the saving. A 37% earner saves 22 cents on every sacrificed dollar; a 30% earner saves 15 cents. Below $45,000 the saving is small enough that the lost take-home pay usually is not worth it.',
+      'When your marginal tax rate is higher than 15% (the super tax rate). For most Australian employees that means anyone earning above $45,000 a year, which is most of us. The higher your marginal rate, the bigger the saving. A 37% earner saves 22 cents on every sacrificed dollar; a 30% earner saves 15 cents. Below $45,000 the saving is small enough that the lost take-home pay usually is not worth it.',
   },
   {
     question: 'How much can I salary sacrifice?',
@@ -31,7 +31,7 @@ const faqs = [
   {
     question: 'Does salary sacrifice reduce my take-home pay?',
     answer:
-      'Yes — but less than you might think. Sacrificing $10,000 into super on a $95,000 salary saves around $2,900 in tax, but your take-home pay only drops by about $7,100 (because the tax saving partly offsets the sacrificed amount). The sacrifice is pre-tax, so the net impact on your bank account is smaller than the gross sacrifice.',
+      'Yes, but less than you might think. Sacrificing $10,000 into super on a $95,000 salary saves around $2,900 in tax, but your take-home pay only drops by about $7,100 (because the tax saving partly offsets the sacrificed amount). The sacrifice is pre-tax, so the net impact on your bank account is smaller than the gross sacrifice.',
   },
   {
     question: 'What happens if I go over the $30,000 cap?',
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'Is salary sacrifice different from a novated lease?',
     answer:
-      'A novated lease is a specific type of salary sacrifice where you redirect pre-tax salary to pay for a car lease (and often its running costs). The tax mechanics are the same — the sacrificed amount reduces your taxable income — but novated leases have additional Fringe Benefits Tax (FBT) rules. The main trade-off is that the car is owned by the finance company, not you, until the lease ends. Use the <Link href="/">main pay calculator</Link> to model the take-home difference, and talk to a salary packaging provider for the FBT-aware analysis.',
+      'A novated lease is a specific type of salary sacrifice where you redirect pre-tax salary to pay for a car lease (and often its running costs). The tax mechanics are the same, the sacrificed amount reduces your taxable income, but novated leases have additional Fringe Benefits Tax (FBT) rules. The main trade-off is that the car is owned by the finance company, not you, until the lease ends. Use the <Link href="/">main pay calculator</Link> to model the take-home difference, and talk to a salary packaging provider for the FBT-aware analysis.',
   },
 ];
 
@@ -101,11 +101,11 @@ export default function SalarySacrificeCalculatorPage() {
             Salary sacrifice works whenever your marginal rate is above 15% and you can afford the reduced take-home pay. For the FY 2026–27 brackets:
           </p>
           <ul>
-            <li><strong>$0 – $18,200:</strong> marginal rate 0% — sacrificing just moves pre-tax money into super, with no immediate tax saving. Not usually worth it unless you are saving for the First Home Super Saver Scheme (FHSS).</li>
-            <li><strong>$18,201 – $45,000:</strong> marginal rate 15% — no tax saving (the super tax matches your marginal rate). Skip unless your employer mandates it or you want the discipline.</li>
-            <li><strong>$45,001 – $135,000:</strong> marginal rate 30% — save 15 cents on every sacrificed dollar. This is the sweet spot for most people.</li>
-            <li><strong>$135,001 – $190,000:</strong> marginal rate 37% — save 22 cents on every dollar. Strong case for maximising the cap.</li>
-            <li><strong>$190,001+:</strong> marginal rate 45% — save 30 cents on every dollar. Division 293 may apply (15% extra on concessional contributions above $250,000 of combined income), reducing the effective saving but still worth doing up to the cap.</li>
+            <li><strong>$0 – $18,200:</strong> marginal rate 0%, sacrificing just moves pre-tax money into super, with no immediate tax saving. Not usually worth it unless you are saving for the First Home Super Saver Scheme (FHSS).</li>
+            <li><strong>$18,201 – $45,000:</strong> marginal rate 15%, no tax saving (the super tax matches your marginal rate). Skip unless your employer mandates it or you want the discipline.</li>
+            <li><strong>$45,001 – $135,000:</strong> marginal rate 30%, save 15 cents on every sacrificed dollar. This is the sweet spot for most people.</li>
+            <li><strong>$135,001 – $190,000:</strong> marginal rate 37%, save 22 cents on every dollar. Strong case for maximising the cap.</li>
+            <li><strong>$190,001+:</strong> marginal rate 45%, save 30 cents on every dollar. Division 293 may apply (15% extra on concessional contributions above $250,000 of combined income), reducing the effective saving but still worth doing up to the cap.</li>
           </ul>
 
           <h2>The concessional cap and what happens at the edge</h2>
@@ -126,7 +126,7 @@ export default function SalarySacrificeCalculatorPage() {
 
           <h2>Salary sacrifice vs after-tax super contributions</h2>
           <p>
-            You can also contribute to super from your after-tax pay. These are called "non-concessional" contributions and have a separate cap ($120,000 per year, or $360,000 under the bring-forward rule). They do not reduce your taxable income, so there is no immediate tax saving — but the investment earnings inside super are still taxed at 15% instead of your marginal rate, which compounds over decades.
+            You can also contribute to super from your after-tax pay. These are called "non-concessional" contributions and have a separate cap ($120,000 per year, or $360,000 under the bring-forward rule). They do not reduce your taxable income, so there is no immediate tax saving, but the investment earnings inside super are still taxed at 15% instead of your marginal rate, which compounds over decades.
           </p>
           <p>
             Use salary sacrifice for the tax saving now. Use after-tax contributions once you have maxed the concessional cap or once the bring-forward is exhausted.
@@ -158,10 +158,10 @@ export default function SalarySacrificeCalculatorPage() {
         <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
-            <li><Link href="/">Pay calculator</Link> — your baseline take-home, before sacrifice.</li>
-            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link> — sacrifice lowers your repayment income, which can drop you into a lower HECS band.</li>
-            <li><Link href="/guides/salary-sacrifice">Salary sacrifice guide</Link> — the long-form explainer with the worked numbers.</li>
-            <li><Link href="/methodology">Methodology</Link> — how every figure is derived.</li>
+            <li><Link href="/">Pay calculator</Link>, your baseline take-home, before sacrifice.</li>
+            <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, sacrifice lowers your repayment income, which can drop you into a lower HECS band.</li>
+            <li><Link href="/guides/salary-sacrifice">Salary sacrifice guide</Link>, the long-form explainer with the worked numbers.</li>
+            <li><Link href="/methodology">Methodology</Link>, how every figure is derived.</li>
           </ul>
         </section>
       </article>

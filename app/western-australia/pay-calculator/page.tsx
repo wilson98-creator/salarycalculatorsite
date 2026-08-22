@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Western Australia Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'Western Australia Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'Western Australia pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Perth cost-of-living context.',
   alternates: { canonical: '/western-australia/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in Western Australia compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Perth is identical to the tax on $80,000 in Brisbane or Adelaide. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Perth is identical to the tax on $80,000 in Brisbane or Adelaide. State differences show up in cost of living, average wages, and (for employers) the rate of payroll tax, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in Western Australia?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How does Perth cost of living compare to other capitals?',
     answer:
-      'Perth housing costs have risen sharply since 2020 but remain below Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $520/week (around $27,000/year — about 27% of a $100k salary). Transport and groceries are close to the national average. The take-home pay is the same as elsewhere, but the resources sector in WA often pays above the national median.',
+      'Perth housing costs have risen sharply since 2020 but remain below Sydney and Melbourne. Median rent for a one-bedroom inner-city apartment is around $520/week (around $27,000/year, about 27% of a $100k salary). Transport and groceries are close to the national average. The take-home pay is the same as elsewhere, but the resources sector in WA often pays above the national median.',
   },
 ];
 
@@ -59,7 +59,7 @@ export default function WaPayCalculatorPage() {
           </h1>
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in Western Australia. The federal tax brackets,
-            Medicare levy, and HELP repayment thresholds are the same across Australia —
+            Medicare levy, and HELP repayment thresholds are the same across Australia , 
             so the math is identical whether you work in Perth, Bunbury, or a FIFO site
             in the Pilbara. What varies is the cost of living, the median wage in your
             industry, and the site allowances that apply to many resources roles.
@@ -84,7 +84,7 @@ export default function WaPayCalculatorPage() {
             Take-home pay is the same as everywhere else in Australia (federal tax
             applies uniformly). What varies is the gross: a typical WA mining engineer
             might earn $180,000-$220,000, which after federal tax and Medicare levy
-            leaves a take-home of around $128,000-$155,000 — materially higher than the
+            leaves a take-home of around $128,000-$155,000, materially higher than the
             same role in Sydney or Melbourne.
           </p>
 

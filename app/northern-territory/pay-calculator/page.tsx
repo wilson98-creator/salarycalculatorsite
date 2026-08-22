@@ -6,7 +6,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Northern Territory Pay Calculator (FY 2026–27) — Salary & Take-Home Pay | SalaryCalc',
+  title: 'Northern Territory Pay Calculator (FY 2026–27), Salary & Take-Home Pay | SalaryCalc',
   description:
     'Northern Territory pay calculator. Federal tax applies the same as everywhere in Australia. Live calculator, FY 2026–27 rates, Darwin cost-of-living context.',
   alternates: { canonical: '/northern-territory/pay-calculator' },
@@ -16,7 +16,7 @@ const faqs = [
   {
     question: 'Is tax different in the Northern Territory compared to other states?',
     answer:
-      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Darwin is identical to the tax on $80,000 in Sydney or Melbourne. Territory differences show up in cost of living, average wages, and (for employers) the rate of payroll tax — not in your take-home pay.',
+      'No. Personal income tax and the Medicare levy are federal and apply the same way in every Australian state and territory. The tax on $80,000 in Darwin is identical to the tax on $80,000 in Sydney or Melbourne. Territory differences show up in cost of living, average wages, and (for employers) the rate of payroll tax, not in your take-home pay.',
   },
   {
     question: 'What is the average salary in the Northern Territory?',
@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How does Darwin cost of living compare?',
     answer:
-      'Darwin has a high cost of living driven by its remoteness — groceries and some goods are noticeably more expensive than the east coast. Median rent for a one-bedroom inner-city apartment is around $520/week (around $27,000/year — about 27% of a $100k salary). The trade-off is wages that are typically 10-15% above the national average to compensate.',
+      'Darwin has a high cost of living driven by its remoteness, groceries and some goods are noticeably more expensive than the east coast. Median rent for a one-bedroom inner-city apartment is around $520/week (around $27,000/year, about 27% of a $100k salary). The trade-off is wages that are typically 10-15% above the national average to compensate.',
   },
   {
     question: 'What is the NT Allowance?',
@@ -63,7 +63,7 @@ export default function NtPayCalculatorPage() {
           <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in the Northern Territory. The federal tax
             brackets, Medicare levy, and HELP repayment thresholds are the same across
-            Australia — so the math is identical whether you work in Darwin, Alice
+            Australia, so the math is identical whether you work in Darwin, Alice
             Springs, or Katherine. What varies is the cost of living, the median wage in
             your industry, and the territory-specific allowances that apply to many NT
             roles.

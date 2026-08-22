@@ -6,11 +6,11 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Money Briefs — Australian financial news, explained',
-  description: `Weekly money briefs from ${brand.name}. The week's biggest Australian financial news — interest rates, tax, super, wages, property — explained in plain English. Updated Tuesdays and Fridays.`,
+  title: 'Money Briefs, Australian financial news, explained',
+  description: `Weekly money briefs from ${brand.name}. The week's biggest Australian financial news, interest rates, tax, super, wages, property, explained in plain English. Updated Tuesdays and Fridays.`,
   alternates: { canonical: '/news/' },
   openGraph: {
-    title: 'Money Briefs — Australian financial news, explained',
+    title: 'Money Briefs, Australian financial news, explained',
     description: 'Weekly money briefs from SalaryCalc. The biggest Australian financial news, explained in plain English.',
     url: `${brand.url}/news/`,
     type: 'website',
@@ -47,13 +47,12 @@ export default function NewsIndexPage() {
       <section className="mt-12">
         <p className="kicker">Money Briefs · {brand.name}</p>
         <h1 className="h-display mt-3 text-ink-800">
-          The week in Australian money,<br />
-          <span className="ledger-highlight">explained in plain English.</span>
+          The week in Australian money, <span className="ledger-highlight">explained in plain English.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-base text-ink-600 sm:text-lg">
           Every Tuesday and Friday we pull the biggest Australian financial news from
-          trusted sources — the RBA, the ATO, the ABS, the ABC, the Sydney Morning Herald,
-          The Guardian — and explain what it means for your pay, your mortgage, your
+          trusted sources, the RBA, the ATO, the ABS, the ABC, the Sydney Morning Herald,
+          The Guardian, and explain what it means for your pay, your mortgage, your
           super, and your taxes. No jargon. No spin. Just the practical bit.
         </p>
         <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
@@ -151,7 +150,7 @@ export default function NewsIndexPage() {
             },
             {
               src: 'Sydney Morning Herald',
-              what: 'Major Australian newspaper — business, markets, property, and personal finance.',
+              what: 'Major Australian newspaper, business, markets, property, and personal finance.',
               url: 'https://www.smh.com.au/business',
             },
             {
