@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { HecsCalculator } from '@/components/HecsCalculator';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { sources } from '@/lib/tax/sources';
 
 export const metadata: Metadata = {
@@ -190,6 +191,15 @@ export default function HecsCalculatorPage() {
             for the full explainer, including the history of indexation and the 20%
             debt reduction that was applied automatically in 2024.
           </p>
+        </section>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="hecs-calculator"
+            heading="HECS-HELP rate changes, in your inbox."
+            description="From 1 July 2025 the HECS repayment system is marginal. We send a short note when the thresholds or repayment rates change, so you can update your budget."
+          />
         </section>
       </article>
     </>

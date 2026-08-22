@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'About SalaryCalc, Australian pay calculator, methodology, and editorial standards',
@@ -393,7 +394,16 @@ export default function AboutPage() {
             Open the pay calculator →
           </Link>
         </section>
-      </article>
+      
+      <div className="mt-16">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="about"
+          heading="Follow SalaryCalc."
+          description="Two emails a week, the latest money briefs and the occasional long-form guide. Free, no spam, unsubscribe in one click."
+        />
+      </div>
+    </article>
     </>
   );
 }

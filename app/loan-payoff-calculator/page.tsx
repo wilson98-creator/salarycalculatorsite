@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { LoanPayoffCalculator } from '@/components/LoanPayoffCalculator';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Loan Payoff Calculator (Australia), Debt Repayment Planner',
@@ -158,6 +159,15 @@ export default function LoanPayoffCalculatorPage() {
             <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, student debt is its own thing (income-contingent, not amortising the same way).</li>
             <li><Link href="/methodology">Methodology</Link>, the math behind the numbers.</li>
           </ul>
+        </section>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="loan-payoff-calculator"
+            heading="Tips for paying off debt faster."
+            description="Once a fortnight, a short, practical tip on accelerating your debt payoff. No spam, unsubscribe in one click."
+          />
         </section>
       </article>
     </>

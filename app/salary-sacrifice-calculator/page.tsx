@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { SalarySacrificeCalculator } from '@/components/SalarySacrificeCalculator';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Salary Sacrifice Calculator (Australia 2026–27)',
@@ -163,6 +164,15 @@ export default function SalarySacrificeCalculatorPage() {
             <li><Link href="/guides/salary-sacrifice">Salary sacrifice guide</Link>, the long-form explainer with the worked numbers.</li>
             <li><Link href="/methodology">Methodology</Link>, how every figure is derived.</li>
           </ul>
+        </section>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="salary-sacrifice-calculator"
+            heading="Get more from your super."
+            description="Tips on maximising pre-tax super contributions, twice a month. No spam, unsubscribe in one click."
+          />
         </section>
       </article>
     </>

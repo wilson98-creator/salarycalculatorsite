@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { MortgageCalculator } from '@/components/MortgageCalculator';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Mortgage Calculator With Extra Payments (Australia)',
@@ -151,6 +152,15 @@ export default function MortgageCalculatorPage() {
             <li><Link href="/loan-payoff-calculator">Loan payoff calculator</Link>, for personal loans and credit cards rather than mortgages.</li>
             <li><Link href="/methodology">Methodology</Link>, exactly how every figure on this site is calculated.</li>
           </ul>
+        </section>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="mortgage-calculator"
+            heading="Mortgage rate updates."
+            description="When the RBA moves the cash rate, we send a plain-English breakdown of what it means for your monthly repayment."
+          />
         </section>
       </article>
     </>

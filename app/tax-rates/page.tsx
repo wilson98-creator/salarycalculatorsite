@@ -3,6 +3,7 @@ import { residentBrackets } from '@/lib/tax/brackets';
 import { medicareParams } from '@/lib/tax/medicare';
 import { sources } from '@/lib/tax/sources';
 import { brand } from '@/lib/brand';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Australian tax rates, current and historical',
@@ -71,6 +72,15 @@ export default function TaxRatesPage() {
         <li><a href={sources.medicareLevy.url} target="_blank" rel="noopener noreferrer">{sources.medicareLevy.label}</a></li>
         <li><a href={sources.hecsRepayment.url} target="_blank" rel="noopener noreferrer">{sources.hecsRepayment.label}</a></li>
       </ul>
+    
+      <div className="mt-16">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="tax-rates"
+          heading="Tax rate updates, in your inbox."
+          description="We send a short note the day after an ATO rate change, with the new brackets and what it means for your take-home pay."
+        />
+      </div>
     </article>
   );
 }

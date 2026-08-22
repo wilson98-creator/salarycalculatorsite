@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Methodology, how SalaryCalc calculates Australian take-home pay',
@@ -426,7 +427,16 @@ export default function MethodologyPage() {
             <TrustLink href="/tax-rates" title="FY 2026-27 tax rates" detail="All ATO brackets in one place." />
           </ul>
         </section>
-      </article>
+      
+      <div className="mt-16">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="methodology"
+          heading="Get notified when ATO rates change."
+          description="We send a short note the day after an ATO update or rate change, with the diff and what it means for the calculator."
+        />
+      </div>
+    </article>
     </>
   );
 }

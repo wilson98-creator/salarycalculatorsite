@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { JsonLd, faqSchema } from '@/components/Schema';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions',
@@ -260,6 +261,15 @@ export default function FaqPage() {
       </aside>
 
       <JsonLd data={faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))} />
+    
+      <div className="mt-16">
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="faq"
+          heading="Get answers in your inbox."
+          description="When we add a new frequently-asked question, get it by email instead of having to come back and check."
+        />
+      </div>
     </article>
   );
 }

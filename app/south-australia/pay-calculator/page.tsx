@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { PayCalculator } from '@/components/PayCalculator';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
@@ -124,7 +125,16 @@ export default function SaPayCalculatorPage() {
             <li><Link href="/methodology">Methodology</Link></li>
           </ul>
         </section>
-      </article>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="state-south-australia"
+            heading="Money news for South Australia workers."
+            description="When state-specific pay, tax, or award rates change, we send a short note so you know what to expect at your next pay."
+          />
+        </section>
+    </article>
     </>
   );
 }

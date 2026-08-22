@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
@@ -395,6 +396,13 @@ export default function Stage3Guide() {
             <TrustLink href="/about" title="About SalaryCalc" detail="Story, editorial standards, corrections policy." />
           </ul>
         </section>
+      
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="guide-stage3"
+          heading="More guides like this, in your inbox."
+          description="We publish new long-form Australian finance guides every few weeks. Get notified when one drops, no spam, unsubscribe anytime."
+        />
       </article>
     </>
   );

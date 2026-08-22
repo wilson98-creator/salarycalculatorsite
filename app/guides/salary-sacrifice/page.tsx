@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
@@ -369,6 +370,13 @@ export default function SalarySacrificeGuide() {
             <TrustLink href="/about" title="About SalaryCalc" detail="Story, editorial standards, corrections policy." />
           </ul>
         </section>
+      
+        <NewsletterForm
+          accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+          source="guide-sacrifice"
+          heading="More guides like this, in your inbox."
+          description="We publish new long-form Australian finance guides every few weeks. Get notified when one drops, no spam, unsubscribe anytime."
+        />
       </article>
     </>
   );

@@ -4,6 +4,7 @@ import { brand } from '@/lib/brand';
 import { CasualPayCalculator } from '@/components/CasualPayCalculator';
 import { JsonLd, faqSchema, softwareApplicationSchema, articleSchema } from '@/components/Schema';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
   title: 'Casual Pay Calculator Australia (FY 2026–27), With Loading & Tax',
@@ -162,6 +163,15 @@ export default function CasualPayCalculatorPage() {
             <li><Link href="/tax-rates">Tax rates</Link>, current brackets, Medicare thresholds, HECS schedules.</li>
             <li><Link href="/methodology">Methodology</Link>, exactly how every number is calculated.</li>
           </ul>
+        </section>
+      
+        <section className="mt-16">
+          <NewsletterForm
+            accessKey={process.env.NEXT_PUBLIC_NEWSLETTER_KEY}
+            source="casual-pay-calculator"
+            heading="Casual pay updates, in your inbox."
+            description="When the national minimum wage or Modern Award rates change, we send a short note so you know what to negotiate at your next shift."
+          />
         </section>
       </article>
     </>
