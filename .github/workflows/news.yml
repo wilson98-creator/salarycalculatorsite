@@ -67,8 +67,8 @@ jobs:
       - name: Commit & push if changed
         run: |
           if [[ -n "$(git status --porcelain content/news/)" ]]; then
-            git config user.name "SalaryCalc Bot"
-            git config user.email "bot@salarycalc.example.com.au"
+            git config user.name "SalaryCalc News Bot"
+            git config user.email "news-bot@thesalarycalc.com.au"
             git add content/news/
             git commit -m "Auto: weekly money briefs ($(date -u +%Y-%m-%d))"
             git push

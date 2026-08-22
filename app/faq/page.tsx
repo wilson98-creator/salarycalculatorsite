@@ -199,7 +199,7 @@ const faqs = [
   {
     cat: 'Practical',
     q: 'Where do you get the numbers from?',
-    a: 'Every rate, threshold, and coefficient used in the calculator is sourced from a published ATO or government source. Each source is listed on the methodology page with a direct link. If you find a number that does not match the ATO, please email us at hello@salarycalc.example.com.au.',
+    a: 'Every rate, threshold, and coefficient used in the calculator is sourced from a published ATO or government source. Each source is listed on the methodology page with a direct link. If you find a number that does not match the ATO, please email us at hello@thesalarycalc.com.au.',
   },
   {
     cat: 'Practical',
@@ -209,7 +209,7 @@ const faqs = [
   {
     cat: 'Practical',
     q: 'I found a bug. How do I report it?',
-    a: 'Email hello@salarycalc.example.com.au with what you typed, what you expected, and what happened. A screenshot helps. We aim to fix calculation bugs within 24 hours.',
+    a: 'Email hello@thesalarycalc.com.au with what you typed, what you expected, and what happened. A screenshot helps. We aim to fix calculation bugs within 24 hours.',
   },
   {
     cat: 'Practical',

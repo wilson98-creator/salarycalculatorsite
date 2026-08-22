@@ -9,7 +9,7 @@ export const brand = {
   locale: 'en-AU',
   language: 'en-AU',
   country: 'AU',
-  contactEmail: 'hello@salarycalc.example.com.au',
+  contactEmail: 'hello@thesalarycalc.com.au',
   foundingDate: '2026-01-01',
   // Adjust each time the calculation logic is meaningfully changed.
   lastReviewed: '2026-08-19',
