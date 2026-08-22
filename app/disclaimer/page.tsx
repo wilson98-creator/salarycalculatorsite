@@ -70,16 +70,16 @@ export default function DisclaimerPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Disclaimer' }]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Disclaimer
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             SalaryCalc provides estimates only. The information and calculators
             on this site are general information — not financial, tax, or
             legal advice. Read this page in full before relying on any
             calculator output.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last updated <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -90,45 +90,45 @@ export default function DisclaimerPage() {
         </header>
 
         {/* TL;DR — the 30-second version */}
-        <section aria-labelledby="disclaimer-summary" className="card not-prose mb-12 border-warning-200 bg-warning-50 dark:border-warning-800 dark:bg-warning-900/20">
-          <h2 id="disclaimer-summary" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+        <section aria-labelledby="disclaimer-summary" className="card not-prose mb-12 border-warning-200 bg-warning-50">
+          <h2 id="disclaimer-summary" className="text-base font-semibold text-ink-900">
             The 30-second version
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-warning-700 dark:text-warning-400">1.</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-warning-700">1.</span>
+              <span className="text-ink-700">
                 <strong>Estimates only.</strong> The calculator gives you a rough figure based on ATO rates.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-warning-700 dark:text-warning-400">2.</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-warning-700">2.</span>
+              <span className="text-ink-700">
                 <strong>Not a tax agent.</strong> We are not registered, do not provide tax agent services, and have no PI insurance.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-warning-700 dark:text-warning-400">3.</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-warning-700">3.</span>
+              <span className="text-ink-700">
                 <strong>Binding decisions need a professional.</strong> For your tax return, a job offer, a salary sacrifice agreement — talk to a registered tax agent.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-warning-700 dark:text-warning-400">4.</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-warning-700">4.</span>
+              <span className="text-ink-700">
                 <strong>Your payslip may differ.</strong> Employers use a separate formula (PAYG Schedule 1) with weekly rounding. Small differences are normal and reconcile at tax time.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-warning-700 dark:text-warning-400">5.</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-warning-700">5.</span>
+              <span className="text-ink-700">
                 <strong>Errors happen.</strong> We fix them within 24 hours when reported, but we are not liable for any decision you make in the meantime.
               </span>
             </li>
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. No reliance</h2>
           <p>
             The information and calculators on {brand.name} (the
@@ -217,28 +217,28 @@ export default function DisclaimerPage() {
             days. The &quot;last updated&quot; date below reflects the most
             recent version.
           </p>
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-600">
             Last updated: <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
           </p>
         </section>
 
         <section aria-labelledby="disclaimer-faq" className="mt-16 max-w-3xl">
-          <h2 id="disclaimer-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="disclaimer-faq" className="text-2xl font-bold text-ink-900">
             Common disclaimer questions
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -247,7 +247,7 @@ export default function DisclaimerPage() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related legal pages</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related legal pages</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/terms" title="Terms of service" detail="Using the site, and what we will not do." />
             <TrustLink href="/privacy" title="Privacy policy" detail="What we collect (almost nothing) and why." />
@@ -267,12 +267,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

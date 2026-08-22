@@ -119,10 +119,10 @@ export default function SalarySacrificeGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Salary sacrifice' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Salary sacrifice: how to lower your tax bill the legal way
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Salary sacrifice is an arrangement where you redirect part of
             your pre-tax salary into superannuation or other benefits. Because
             the sacrificed amount is taken out before income tax is
@@ -130,7 +130,7 @@ export default function SalarySacrificeGuide() {
             actually saves you money, the annual caps, and the situations
             where it does not make sense.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -142,44 +142,44 @@ export default function SalarySacrificeGuide() {
 
         {/* TL;DR */}
         <section aria-labelledby="ss-tldr" className="card not-prose mb-10">
-          <h2 id="ss-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="ss-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Salary sacrifice moves pre-tax salary into super. The super tax rate is <strong>15%</strong> vs your marginal rate of 30-45%.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Concessional cap: <strong>$30,000/year</strong> including your employer&apos;s SG.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Sweet spot: <strong>$45,000-$135,000</strong> earners (30% marginal rate) save 15c per dollar sacrificed.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Division 293 adds 15% extra on contributions if combined income exceeds $250,000.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Use the <Link href="/salary-sacrifice-calculator">SalaryCalc calculator</Link> to model the impact on your take-home.
               </span>
             </li>
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. The basic idea</h2>
           <p>
             Without salary sacrifice, your marginal tax rate is 30%, 37%, or
@@ -335,22 +335,22 @@ export default function SalarySacrificeGuide() {
         </section>
 
         <section aria-labelledby="ss-faq" className="mt-16 max-w-3xl">
-          <h2 id="ss-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="ss-faq" className="text-2xl font-bold text-ink-900">
             Common questions about salary sacrifice
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -359,7 +359,7 @@ export default function SalarySacrificeGuide() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/salary-sacrifice-calculator" title="Salary sacrifice calculator" detail="See the tax saving and take-home impact instantly." />
             <TrustLink href="/hecs-calculator" title="HECS-HELP calculator" detail="Sacrifice reduces your repayment income — see how." />
@@ -379,12 +379,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

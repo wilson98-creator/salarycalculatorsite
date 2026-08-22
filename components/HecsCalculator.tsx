@@ -34,7 +34,7 @@ export function HecsCalculator() {
           <div>
             <label htmlFor="hecs-income" className="label">Repayment income (annual)</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="hecs-income"
                 type="number"
@@ -64,15 +64,15 @@ export function HecsCalculator() {
           </div>
         </div>
 
-        <details className="rounded-xl border border-ink-200 bg-ink-50/40 dark:border-ink-800 dark:bg-ink-900/40">
-          <summary className="cursor-pointer list-none p-4 text-sm font-semibold text-ink-900 dark:text-ink-50">
+        <details className="rounded-xl border border-ink-200 bg-ink-50/40/40">
+          <summary className="cursor-pointer list-none p-4 text-sm font-semibold text-ink-900">
             Project years to pay off (optional)
           </summary>
           <div className="grid gap-4 p-4 pt-0 sm:grid-cols-2">
             <div>
               <label htmlFor="hecs-debt" className="label">Current HELP balance</label>
               <div className="flex items-stretch gap-2">
-                <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-white px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+                <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-white px-3 text-ink-600">$</span>
                 <input
                   id="hecs-debt"
                   type="number"
@@ -98,7 +98,7 @@ export function HecsCalculator() {
                   value={Number.isFinite(indexation) ? indexation : ''}
                   onChange={(e) => setIndexation(parseFloat(e.target.value) || 0)}
                 />
-                <span className="inline-flex items-center rounded-r-lg border border-l-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">%</span>
+                <span className="inline-flex items-center rounded-r-lg border border-l-0 border-ink-200 bg-ink-50 px-3 text-ink-600">%</span>
               </div>
               <p className="help">WPI-capped since 2024. Recent average ~3–4%.</p>
             </div>
@@ -108,14 +108,14 @@ export function HecsCalculator() {
 
       <div className="mt-12">
         <div className="mb-3 flex items-center justify-between">
-          <h3 className="text-base font-semibold text-ink-900 dark:text-ink-50">Annual HECS-HELP repayment</h3>
+          <h3 className="text-base font-semibold text-ink-900">Annual HECS-HELP repayment</h3>
           <span className="chip">FY {fy}</span>
         </div>
         <div className="result-row">
           <span className="result-label">Compulsory repayment</span>
-          <span className="result-value text-2xl text-brand-700 dark:text-brand-300">{formatAUD(repayment)}</span>
+          <span className="result-value text-2xl text-brand-700">{formatAUD(repayment)}</span>
         </div>
-        <div className="my-2 h-px bg-ink-200 dark:bg-ink-700" />
+        <div className="my-2 h-px bg-ink-200" />
         <div className="result-row">
           <span className="result-label">Effective rate (vs repayment income)</span>
           <span className="result-value">{income > 0 ? ((repayment / income) * 100).toFixed(2) : '0.00'}%</span>
@@ -137,8 +137,8 @@ export function HecsCalculator() {
 
         {projection && debtBalance > 0 && (
           <>
-            <div className="my-3 h-px bg-ink-200 dark:bg-ink-700" />
-            <h4 className="text-sm font-semibold text-ink-900 dark:text-ink-50">Projection (flat income, {indexation}% indexation)</h4>
+            <div className="my-3 h-px bg-ink-200" />
+            <h4 className="text-sm font-semibold text-ink-900">Projection (flat income, {indexation}% indexation)</h4>
             <div className="result-row">
               <span className="result-label">Years to pay off</span>
               <span className="result-value">{projection.yearsToPayoff || '—'}</span>

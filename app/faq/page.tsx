@@ -229,23 +229,23 @@ export default function FaqPage() {
   return (
     <article className="max-w-3xl">
       <header className="mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-ink-900 dark:text-ink-50 sm:text-4xl">Frequently asked questions</h1>
-        <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
-          Plain-English answers to common questions about Australian pay, tax, super and HECS-HELP. Every answer is sourced from the ATO — see the <Link href="/methodology" className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">methodology page</Link> for the full list of sources.
+        <h1 className="text-3xl font-bold tracking-tight text-ink-900 sm:text-4xl">Frequently asked questions</h1>
+        <p className="mt-4 text-base text-ink-600 sm:text-lg">
+          Plain-English answers to common questions about Australian pay, tax, super and HECS-HELP. Every answer is sourced from the ATO — see the <Link href="/methodology" className="text-brand-600 underline-offset-2 hover:underline">methodology page</Link> for the full list of sources.
         </p>
       </header>
 
       {categories.map((cat) => (
         <section key={cat} className="mb-10">
-          <h2 className="mb-4 text-xl font-bold text-ink-900 dark:text-ink-50">{cat}</h2>
+          <h2 className="mb-4 text-xl font-bold text-ink-900">{cat}</h2>
           <div className="space-y-2">
             {byCategory[cat].map((f) => (
-              <details key={f.q} className="group rounded-xl border border-ink-200 bg-white p-4 open:shadow-sm dark:border-ink-800 dark:bg-ink-900 dark:open:shadow-none">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                  <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <details key={f.q} className="group rounded-xl border border-ink-200 bg-white p-4 open:shadow-sm">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                  <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                   {f.q}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.a}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.a}</p>
               </details>
             ))}
           </div>
@@ -253,9 +253,9 @@ export default function FaqPage() {
       ))}
 
       <aside className="mt-12">
-        <p className="font-semibold text-ink-900 dark:text-ink-50">Didn\'t find your answer?</p>
+        <p className="font-semibold text-ink-900">Didn\'t find your answer?</p>
         <p className="mt-2">
-          Email <a href={`mailto:${brand.contactEmail}`} className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">{brand.contactEmail}</a> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline dark:text-brand-300">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
+          Email <a href={`mailto:${brand.contactEmail}`} className="text-brand-600 underline-offset-2 hover:underline">{brand.contactEmail}</a> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
         </p>
       </aside>
 

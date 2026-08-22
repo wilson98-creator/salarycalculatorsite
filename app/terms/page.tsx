@@ -70,16 +70,16 @@ export default function TermsPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Terms' }]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Terms of service
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             By using {brand.name} (the &quot;Service&quot;) you agree to the
             following terms. We have written them in plain English — please
             read them. If you have any questions,{' '}
             <Link href="/contact">get in touch</Link>.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last updated <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -88,7 +88,7 @@ export default function TermsPage() {
           </div>
         </header>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. Use of the Service</h2>
           <p>
             The Service is provided free of charge for personal, non-commercial
@@ -190,28 +190,28 @@ export default function TermsPage() {
             <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>{' '}
             or use the <Link href="/contact">contact page</Link>.
           </p>
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-600">
             Last updated: <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
           </p>
         </section>
 
         <section aria-labelledby="terms-faq" className="mt-16 max-w-3xl">
-          <h2 id="terms-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="terms-faq" className="text-2xl font-bold text-ink-900">
             Common terms questions
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -220,7 +220,7 @@ export default function TermsPage() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related legal pages</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related legal pages</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/privacy" title="Privacy policy" detail="What we collect (almost nothing) and why." />
             <TrustLink href="/disclaimer" title="Disclaimer" detail="The full legal disclaimer." />
@@ -240,12 +240,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

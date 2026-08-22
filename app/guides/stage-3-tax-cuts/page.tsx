@@ -91,10 +91,10 @@ export default function Stage3Guide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Stage 3 tax cuts' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Stage 3 tax cuts and what is coming next
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             The &quot;Stage 3&quot; tax cuts were originally legislated in
             2019 as the third tranche of a 10-year plan to flatten the
             Australian tax system. The legislation was substantially rewritten
@@ -103,7 +103,7 @@ export default function Stage3Guide() {
             scheduled for 1 July 2027. This guide walks through the history,
             what actually changed, and what is still to come.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -115,33 +115,33 @@ export default function Stage3Guide() {
 
         {/* TL;DR timeline */}
         <section aria-labelledby="stage3-tldr" className="card not-prose mb-10">
-          <h2 id="stage3-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="stage3-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version — the three cuts
           </h2>
           <ol className="mt-5 space-y-3 text-sm">
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">1.</span>
+              <span className="font-mono font-semibold text-brand-600">1.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">1 July 2024 — Stage 3 rewrite</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">1 July 2024 — Stage 3 rewrite</p>
+                <p className="text-ink-700">
                   19% became 16% ($18,201-$45,000). 32.5% became 30% ($45,001-$135,000). 37% threshold rose to $135,000. 45% threshold rose to $190,000. Top rate unchanged.
                 </p>
               </div>
             </li>
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">2.</span>
+              <span className="font-mono font-semibold text-brand-600">2.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">1 July 2026 — Cost of living cut</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">1 July 2026 — Cost of living cut</p>
+                <p className="text-ink-700">
                   Second bracket dropped from 16% to 15%. Maximum saving: $268/year for income $45,000+. Already legislated.
                 </p>
               </div>
             </li>
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">3.</span>
+              <span className="font-mono font-semibold text-brand-600">3.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">1 July 2027 — Next cut (already legislated)</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">1 July 2027 — Next cut (already legislated)</p>
+                <p className="text-ink-700">
                   Second bracket will drop from 15% to 14%. Maximum saving at the new rate: $536/year for income $45,000+ (combined with the 2026-27 cut).
                 </p>
               </div>
@@ -149,7 +149,7 @@ export default function Stage3Guide() {
           </ol>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. The original plan (2019)</h2>
           <p>
             In 2019 the then-government legislated the original Stage 3 plan:
@@ -361,22 +361,22 @@ export default function Stage3Guide() {
         </section>
 
         <section aria-labelledby="stage3-faq" className="mt-16 max-w-3xl">
-          <h2 id="stage3-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="stage3-faq" className="text-2xl font-bold text-ink-900">
             Common questions about the Stage 3 tax cuts
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -385,7 +385,7 @@ export default function Stage3Guide() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/" title="Pay calculator" detail="Switch between FY 2024-25, 2025-26, 2026-27, and 2027-28 brackets." />
             <TrustLink href="/tax-rates" title="FY 2026-27 tax rates" detail="All ATO brackets in one place." />
@@ -405,12 +405,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

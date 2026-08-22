@@ -70,14 +70,14 @@ export default function LoanPayoffCalculatorPage() {
             { name: 'Calculators', href: '/#calculators' },
             { name: 'Loan payoff' },
           ]} />
-          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <p className="mt-3 text-sm text-brand-600">Calculator</p>
+          <h1 className="h-display mt-6 text-ink-900">
             Loan payoff calculator
           </h1>
-          <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 text-base text-ink-600 sm:text-lg">
             Work out when your loan will be paid off, how much interest you will pay, and the savings from making extra repayments or applying a lump sum. Built for credit cards, personal loans, and any other amortising debt.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">Month-by-month schedule</span>
             <span className="kicker">Extra repayments</span>
             <span className="kicker">Lump sum (e.g. redundancy)</span>
@@ -87,7 +87,7 @@ export default function LoanPayoffCalculatorPage() {
 
         <LoanPayoffCalculator />
 
-        <section className="prose prose-slate dark:prose-invert mt-14">
+        <section className="prose prose-slate prose-invert mt-14">
           <h2>How loan payoff math works</h2>
           <p>
             Most personal loans and credit cards amortise: each month, interest is calculated on the remaining balance, and your payment is split into interest and principal. The principal portion shrinks the balance; the interest portion is the lender’s cut.
@@ -141,16 +141,16 @@ export default function LoanPayoffCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300" dangerouslySetInnerHTML={{ __html: f.answer }} />
+              <p className="mt-3 text-sm leading-relaxed text-ink-600" dangerouslySetInnerHTML={{ __html: f.answer }} />
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
             <li><Link href="/">Pay calculator</Link> — see what you can afford to put toward debt each month.</li>

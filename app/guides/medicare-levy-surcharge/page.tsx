@@ -123,17 +123,17 @@ export default function MlsGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Medicare Levy Surcharge' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Medicare Levy Surcharge
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             The Medicare Levy Surcharge (MLS) is an additional 1% to 1.5%
             charged to higher-income earners who do not hold an appropriate
             level of private hospital cover. It is paid on top of the
             standard 2% Medicare levy. This guide explains the thresholds, how
             the surcharge is calculated, and the simplest ways to avoid it.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -145,38 +145,38 @@ export default function MlsGuide() {
 
         {/* TL;DR */}
         <section aria-labelledby="mls-tldr" className="card not-prose mb-10">
-          <h2 id="mls-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="mls-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Surcharge kicks in at <strong>$105,000 single / $210,000 family</strong> in FY 2026-27.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Tier 1: <strong>1.0%</strong>. Tier 2: <strong>1.5%</strong> on the whole of your MLS income, not just the excess.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Avoid it by taking out <strong>ATO-compliant hospital cover</strong>. Extras-only does not count.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 The MLS is paid at <strong>tax time</strong>, not through PAYG. Use the ATO MLS calculator for an estimate.
               </span>
             </li>
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. What the surcharge is for</h2>
           <p>
             The MLS is designed to encourage higher-income earners to take
@@ -353,22 +353,22 @@ export default function MlsGuide() {
         </section>
 
         <section aria-labelledby="mls-faq" className="mt-16 max-w-3xl">
-          <h2 id="mls-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="mls-faq" className="text-2xl font-bold text-ink-900">
             Common questions about the Medicare Levy Surcharge
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -377,7 +377,7 @@ export default function MlsGuide() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/" title="Pay calculator" detail="Live take-home pay calculator with all FY 2026-27 rates." />
             <TrustLink href="/guides/australian-income-tax" title="Australian income tax guide" detail="How the tax system works end-to-end." />
@@ -397,12 +397,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

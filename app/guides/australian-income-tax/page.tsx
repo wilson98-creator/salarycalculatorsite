@@ -92,17 +92,17 @@ export default function IncomeTaxGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Australian income tax' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Australian income tax: a complete guide
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Australian income tax is progressive — different rates apply to
             different portions of your income, not a single flat rate on the
             whole amount. This guide walks through how the system works, who
             pays what, and the most common ways people end up with the wrong
             outcome at tax time.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -114,44 +114,44 @@ export default function IncomeTaxGuide() {
 
         {/* TL;DR */}
         <section aria-labelledby="tax-tldr" className="card not-prose mb-10">
-          <h2 id="tax-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="tax-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 The Australian tax system is <strong>progressive</strong>: 0% to $18,200, 15% to $45,000, 30% to $135,000, 37% to $190,000, 45% above (FY 2026-27 residents).
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Your employer withholds a slightly different number (PAYG) than your actual annual tax — the difference reconciles at tax time.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Add the <strong>2% Medicare levy</strong>, subtract <strong>LITO</strong> if eligible (up to $700), and add <strong>HECS-HELP</strong> repayment if you have a study debt.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Foreign residents do not get the tax-free threshold, LITO, or Medicare levy.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 The <Link href="/">SalaryCalc calculator</Link> applies every rate and threshold in this guide. Use it for everyday estimates; use a registered tax agent for binding decisions.
               </span>
             </li>
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. The structure of the system</h2>
           <p>
             The Australian Taxation Office (ATO) administers a self-assessment
@@ -368,22 +368,22 @@ export default function IncomeTaxGuide() {
 
         {/* FAQ */}
         <section aria-labelledby="tax-faq" className="mt-16 max-w-3xl">
-          <h2 id="tax-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="tax-faq" className="text-2xl font-bold text-ink-900">
             Common questions about Australian income tax
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -393,7 +393,7 @@ export default function IncomeTaxGuide() {
 
         {/* Related */}
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/" title="Pay calculator" detail="Live take-home pay calculator with all FY 2026-27 rates." />
             <TrustLink href="/hecs-calculator" title="HECS-HELP calculator" detail="Repayment under the new 2025-26 marginal system." />
@@ -413,12 +413,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

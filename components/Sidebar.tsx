@@ -65,68 +65,76 @@ export function Sidebar() {
     <>
       {/* Mobile backdrop */}
       <div
-        className={`fixed inset-0 top-16 z-30 bg-ink-900/40 backdrop-blur-sm transition-opacity duration-200 lg:hidden ${
+        className={`fixed inset-0 top-16 z-30 bg-ink-900/60 backdrop-blur-sm transition-opacity duration-200 lg:hidden ${
           isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={close}
         aria-hidden="true"
       />
 
-      {/* Sidebar — borderless, monochrome, monospace labels */}
+      {/* Sidebar — accessible nav with clear active state and visible borders.
+          Slightly elevated surface so it reads as a distinct region. */}
       <aside
         aria-label="Primary"
-        className={`fixed top-16 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-r border-ink-400 bg-paper-0 transition-all duration-200 ease-in-out ${
+        className={`fixed top-16 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-r border-ink-300 bg-ink-100 transition-all duration-200 ease-in-out ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } ${isCollapsed ? 'lg:w-16' : 'lg:w-64'} w-64 lg:translate-x-0`}
+        } ${isCollapsed ? 'lg:w-16' : 'lg:w-72'} w-72 lg:translate-x-0`}
       >
-        {/* Collapse toggle (desktop only) — text-based, no icon */}
+        {/* Collapse toggle (desktop only) — visible button, keyboard accessible */}
         <button
           type="button"
           onClick={() => setCollapsed(!isCollapsed)}
-          className="absolute -right-2 top-4 z-50 hidden font-mono text-[10px] tracking-[0.15em] text-ink-600 transition hover:text-ink-800 lg:inline"
+          className="absolute -right-3 top-5 z-50 hidden h-8 w-8 items-center justify-center rounded-full border border-ink-300 bg-ink-100 font-mono text-sm text-ink-700 transition hover:border-ledger-500 hover:text-ledger-500 lg:inline-flex"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           {isCollapsed ? '›' : '‹'}
         </button>
 
-        <nav className="flex-1 overflow-y-auto py-8">
+        <nav className="flex-1 overflow-y-auto px-2 py-8 lg:px-3" aria-label="Site sections">
           {sections.map((section, i) => (
             <div key={section.title} className={i > 0 ? 'mt-8' : ''}>
               {!isCollapsed && (
-                <div className="mb-3 px-6">
+                <div className="mb-3 px-3">
                   <p className="section-index">§ {section.index} · {section.title}</p>
                 </div>
               )}
-              <ul className="rule-line border-t border-ink-400">
+              <ul className="border-t border-ink-300">
                 {section.items.map((item) => {
                   const active = isItemActive(pathname, item.href);
                   return (
-                    <li key={item.href} className="rule-line border-b border-ink-400">
+                    <li key={item.href} className="border-b border-ink-300">
                       <Link
                         href={item.href}
                         onClick={close}
                         title={isCollapsed ? item.label : undefined}
                         aria-current={active ? 'page' : undefined}
-                        className={`block py-3 text-sm transition ${
-                          isCollapsed ? 'px-2 text-center' : 'px-6'
+                        className={`group relative flex items-baseline gap-3 py-3 text-[15px] transition ${
+                          isCollapsed ? 'justify-center px-2' : 'px-4'
                         } ${
                           active
-                            ? 'font-semibold text-ink-800'
-                            : 'text-ink-600 hover:text-ink-800'
+                            ? 'bg-ink-200 font-semibold text-ink-800'
+                            : 'text-ink-600 hover:bg-ink-200 hover:text-ink-800'
                         }`}
                       >
+                        {/* Active indicator — left bar in yellow-green */}
+                        {active && (
+                          <span
+                            aria-hidden="true"
+                            className="absolute left-0 top-0 h-full w-[3px] bg-ledger-500"
+                          />
+                        )}
                         {isCollapsed ? (
-                          <span className="font-mono text-[11px] uppercase tracking-[0.15em]">
+                          <span className="font-mono text-xs font-semibold uppercase tracking-[0.1em] text-ink-700">
                             {item.label.replace(/[^A-Za-z]/g, '').slice(0, 2)}
                           </span>
                         ) : (
-                          <span className="flex items-baseline gap-3">
+                          <>
                             {active && (
-                              <span className="font-mono text-ledger-500">·</span>
+                              <span aria-hidden="true" className="font-mono text-sm text-ledger-500">·</span>
                             )}
                             <span>{item.label}</span>
-                          </span>
+                          </>
                         )}
                       </Link>
                     </li>
@@ -139,9 +147,9 @@ export function Sidebar() {
 
         {/* Footer note in sidebar (desktop only) */}
         {!isCollapsed && (
-          <div className="rule-line border-t border-ink-400 p-6 text-ink-600">
-            <p className="font-mono text-[11px] uppercase tracking-[0.15em]">FY 2026–27</p>
-            <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em]">
+          <div className="border-t border-ink-300 px-5 py-5 text-ink-600">
+            <p className="font-mono text-xs uppercase tracking-[0.15em]">FY 2026–27</p>
+            <p className="mt-1 font-mono text-xs uppercase tracking-[0.15em]">
               ATO-sourced
             </p>
           </div>

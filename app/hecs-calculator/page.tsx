@@ -64,16 +64,16 @@ export default function HecsCalculatorPage() {
             { name: 'Calculators', href: '/#calculators' },
             { name: 'HECS-HELP' },
           ]} />
-          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <p className="mt-3 text-sm text-brand-600">Calculator · FY 2026–27</p>
+          <h1 className="h-display mt-6 text-ink-900">
             HECS-HELP repayment calculator
           </h1>
-          <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 text-base text-ink-600 sm:text-lg">
             Work out your compulsory HECS-HELP, VSL, TSL, SSL or SFSS repayment for the
             current financial year, plus how long until your debt is paid off. Uses the
             new marginal system that took effect on 1 July 2025.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">New marginal system</span>
             <span className="kicker">FY 2026–27 rates</span>
             <span className="kicker">Years-to-payoff projection</span>
@@ -83,7 +83,7 @@ export default function HecsCalculatorPage() {
 
         <HecsCalculator />
 
-        <section className="prose prose-slate dark:prose-invert mt-14">
+        <section className="prose prose-slate prose-invert mt-14">
           <h2>How the new HECS system works</h2>
           <p>
             From 1 July 2025, HECS-HELP repayments are calculated using a marginal
@@ -148,16 +148,16 @@ export default function HecsCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.answer}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.answer}</p>
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>HECS as a debt repayment problem</h2>
           <p>
             HECS-HELP is unusual among Australian debts in that it is not amortising in the traditional sense. There is no fixed monthly bill, no term, and no penalty for missing a payment — your employer withholds the right amount (or the ATO assesses it at tax time) and the balance grows by indexation every June. For most people, this makes it the most favourable debt they will ever have, and they should not rush to pay it off ahead of higher-rate debts like credit cards or personal loans.
@@ -170,7 +170,7 @@ export default function HecsCalculatorPage() {
           </p>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Sources and methodology</h2>
           <p>
             Repayment thresholds and rates are sourced from the{' '}

@@ -77,7 +77,7 @@ export function PayCalculator() {
           <div className="sm:col-span-2">
             <label htmlFor="gross" className="label">Gross pay</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="gross"
                 type="number"
@@ -136,19 +136,19 @@ export function PayCalculator() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <label className="flex items-center gap-2 text-sm text-ink-700 dark:text-ink-300">
+          <label className="flex items-center gap-2 text-sm text-ink-700">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500 dark:border-ink-600 dark:bg-ink-800"
+              className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500"
               checked={hasHecs}
               onChange={(e) => setHasHecs(e.target.checked)}
             />
             I have a HECS-HELP / VSL / SFSS debt
           </label>
-          <label className="flex items-center gap-2 text-sm text-ink-700 dark:text-ink-300">
+          <label className="flex items-center gap-2 text-sm text-ink-700">
             <input
               type="checkbox"
-              className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500 dark:border-ink-600 dark:bg-ink-800"
+              className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500"
               checked={grossIncludesSuper}
               onChange={(e) => setGrossIncludesSuper(e.target.checked)}
             />
@@ -281,17 +281,17 @@ function Results({ result }: { result: PayResult }) {
       {/* Take-home per period — horizontal rows with hairlines, not a grid */}
       <div className="mt-12">
         <p className="kicker">Per period</p>
-        <ul className="mt-3 rule-line border-t border-ink-200 dark:border-ink-800">
+        <ul className="mt-3 rule-line border-t border-ink-200">
           {allPeriods.map((p) => (
             <li
               key={p.key}
-              className="rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 py-3 dark:border-ink-800"
+              className="rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 py-3"
             >
-              <span className={`font-mono text-[11px] uppercase tracking-[0.15em] ${p.isSelected ? 'text-ink-900 dark:text-ink-50' : 'text-ink-500 dark:text-ink-400'}`}>
+              <span className={`font-mono text-[11px] uppercase tracking-[0.15em] ${p.isSelected ? 'text-ink-900' : 'text-ink-600'}`}>
                 {p.isSelected && <span className="text-ledger-500">· </span>}
                 {p.label}
               </span>
-              <span className="font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+              <span className="font-mono text-lg font-semibold tabular-nums text-ink-900">
                 {formatAUD(p.amount)}
               </span>
             </li>
@@ -302,7 +302,7 @@ function Results({ result }: { result: PayResult }) {
       {/* Breakdown — monospace, no zebra, just top/bottom rule lines */}
       <div className="mt-12">
         <p className="kicker">Breakdown</p>
-        <ul className="mt-3 rule-line border-t border-ink-200 dark:border-ink-800">
+        <ul className="mt-3 rule-line border-t border-ink-200">
           <BreakdownRow label="Gross salary" value={formatAUD(result.gross)} />
           <BreakdownRow label="Taxable income" value={formatAUD(result.taxableIncome)} muted />
           <BreakdownRow label="Income tax" value={`−${formatAUD(result.incomeTax)}`} deduction />
@@ -316,7 +316,7 @@ function Results({ result }: { result: PayResult }) {
           <BreakdownRow label="Net take-home" value={formatAUD(result.net)} bold total />
           <BreakdownRow label="Superannuation (employer, on top)" value={formatAUD(result.superannuation)} muted />
         </ul>
-        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">
           <span>Effective rate: {(result.effectiveRate * 100).toFixed(1)}%</span>
           <span>Marginal rate: {(result.marginalRate * 100).toFixed(0)}%</span>
         </div>
@@ -341,20 +341,20 @@ function BreakdownRow({
   total?: boolean;
 }) {
   const valueClass = deduction
-    ? 'font-mono text-base font-medium tabular-nums text-ink-500 dark:text-ink-400'
+    ? 'font-mono text-base font-medium tabular-nums text-ink-600'
     : bold
-    ? 'font-mono text-lg font-bold tabular-nums text-ink-900 dark:text-ink-50'
+    ? 'font-mono text-lg font-bold tabular-nums text-ink-900'
     : muted
-    ? 'font-mono text-sm tabular-nums text-ink-500 dark:text-ink-400'
-    : 'font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-50';
+    ? 'font-mono text-sm tabular-nums text-ink-600'
+    : 'font-mono text-base font-semibold tabular-nums text-ink-900';
   return (
     <li
-      className={`rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 dark:border-ink-800 ${
+      className={`rule-line flex items-baseline justify-between gap-3 border-b border-ink-200 ${
         total ? 'py-4' : 'py-3'
       }`}
     >
       <span
-        className={`text-sm ${muted ? 'text-ink-500 dark:text-ink-400' : 'text-ink-700 dark:text-ink-300'}`}
+        className={`text-sm ${muted ? 'text-ink-600' : 'text-ink-700'}`}
       >
         {label}
       </span>

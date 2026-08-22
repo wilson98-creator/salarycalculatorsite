@@ -10,35 +10,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Premium Dark Fintech — INK palette mapped to dark-mode values.
+        // Low numbers (50) = dark surfaces, high numbers (950) = bright text.
+        // This is the COLOUR the body text, borders, and surfaces render in.
         ink: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
+          50: '#0a0e1a',   // page background (darkest)
+          100: '#14192a',  // elevated surface
+          200: '#1f2440',  // surface (cards)
+          300: '#2a2f4d',  // border light
+          400: '#3a3a4a',  // border (stronger)
+          500: '#5a5a6e',  // muted text
+          600: '#a0a0ae',  // secondary text (>=4.5:1 on #0a0e1a)
+          700: '#c7cad4',  // light text (>=7:1 on #0a0e1a, AAA)
+          800: '#e8e9ee',  // primary text (>=14:1 on #0a0e1a, AAA+)
+          900: '#f1f2f5',  // near-white
+          950: '#fafaf7',  // warmest white (brightest)
         },
-        // Premium Dark Fintech palette (Direction F).
-        // `ink` is reused but mapped to dark-mode values: 50 is the darkest
-        // (deepest ink) and 900 is the lightest (near-white). Existing
-        // component classes like `text-ink-500` continue to work because
-        // Tailwind picks up the new values.
+        // Brand palette (premium dark, used for footer / result figure).
         brand: {
           50: '#050811',   // deepest ink (footer background)
-          100: '#0a0e1a',  // page background (deep ink with blue undertone)
-          200: '#14192a',  // elevated surface (cards)
+          100: '#0a0e1a',  // page background (alias of ink-50)
+          200: '#14192a',  // elevated surface (alias of ink-100)
           300: '#1a1f3a',  // deep purple-blue (subtle accent surface)
-          400: '#1f2440',  // soft borders
-          500: '#5a5a6e',  // medium gray (tertiary text)
-          600: '#a0a0ae',  // light gray (secondary text)
-          700: '#c7cad4',  // light text variant
-          800: '#e8e9ee',  // primary text near-white
-          900: '#fafaf7',  // warm white (headings + result figure container)
+          400: '#1f2440',  // soft borders (alias of ink-200)
+          500: '#5a5a6e',  // medium gray (alias of ink-500)
+          600: '#a0a0ae',  // light gray (alias of ink-600)
+          700: '#c7cad4',  // light text (alias of ink-700)
+          800: '#e8e9ee',  // primary text (alias of ink-800)
+          900: '#fafaf7',  // warm white (alias of ink-950)
         },
         // ledger = bright yellow-green (the ONLY chromatic color on the surface)
         // Used for the result figure, CTAs, and active state.

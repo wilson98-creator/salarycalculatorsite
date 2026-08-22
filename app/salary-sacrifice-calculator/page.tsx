@@ -70,14 +70,14 @@ export default function SalarySacrificeCalculatorPage() {
             { name: 'Calculators', href: '/#calculators' },
             { name: 'Salary sacrifice' },
           ]} />
-          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <p className="mt-3 text-sm text-brand-600">Calculator · FY 2026–27</p>
+          <h1 className="h-display mt-6 text-ink-900">
             Salary sacrifice calculator
           </h1>
-          <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 text-base text-ink-600 sm:text-lg">
             See exactly how much tax you save by sacrificing pre-tax salary into super, what your take-home pay change is, and whether the 15% super tax makes it worth it for your situation. Uses the same ATO rates as our other calculators.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">ATO-sourced rates</span>
             <span className="kicker">$30K concessional cap</span>
             <span className="kicker">Tax + take-home + super</span>
@@ -87,7 +87,7 @@ export default function SalarySacrificeCalculatorPage() {
 
         <SalarySacrificeCalculator />
 
-        <section className="prose prose-slate dark:prose-invert mt-14">
+        <section className="prose prose-slate prose-invert mt-14">
           <h2>How salary sacrifice actually works</h2>
           <p>
             Without salary sacrifice, every extra dollar you earn is taxed at your marginal rate. For most middle-income earners that is 30% or 37%. Salary sacrifice redirects part of your pre-tax salary into super, where it is taxed at 15% (the super funds’ concessional rate). The arithmetic is simple: if your marginal rate is higher than 15%, you save the difference on every sacrificed dollar.
@@ -146,16 +146,16 @@ export default function SalarySacrificeCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.answer}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.answer}</p>
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
             <li><Link href="/">Pay calculator</Link> — your baseline take-home, before sacrifice.</li>

@@ -88,7 +88,7 @@ export function CasualPayCalculator() {
           <div>
             <label htmlFor="base" className="label">Base hourly rate</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="base"
                 type="number"
@@ -173,10 +173,10 @@ export function CasualPayCalculator() {
           </div>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-ink-700 dark:text-ink-300">
+        <label className="flex items-center gap-2 text-sm text-ink-700">
           <input
             type="checkbox"
-            className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500 dark:border-ink-600 dark:bg-ink-800"
+            className="h-4 w-4 rounded border-ink-300 text-brand-500 focus:ring-brand-500"
             checked={hasHecs}
             onChange={(e) => setHasHecs(e.target.checked)}
           />
@@ -185,13 +185,13 @@ export function CasualPayCalculator() {
       </div>
 
       <div className="mt-12">
-        <h3 className="mb-3 text-base font-semibold text-ink-900 dark:text-ink-50">Your casual pay</h3>
+        <h3 className="mb-3 text-base font-semibold text-ink-900">Your casual pay</h3>
 
         <div className="result-row">
           <span className="result-label">Loaded hourly rate</span>
-          <span className="result-value text-2xl text-brand-700 dark:text-brand-300">{formatAUD(loadedRate)}/hr</span>
+          <span className="result-value text-2xl text-brand-700">{formatAUD(loadedRate)}/hr</span>
         </div>
-        <div className="my-2 h-px bg-ink-200 dark:bg-ink-700" />
+        <div className="my-2 h-px bg-ink-200" />
 
         <div className="result-row">
           <span className="result-label">Annual gross</span>
@@ -211,10 +211,10 @@ export function CasualPayCalculator() {
             <span className="result-value text-rose-700 dark:text-rose-400">−{formatAUD(result.hecsRepayment)}</span>
           </div>
         )}
-        <div className="my-2 h-px bg-ink-200 dark:bg-ink-700" />
+        <div className="my-2 h-px bg-ink-200" />
         <div className="result-row">
           <span className="result-label">Annual net</span>
-          <span className="result-value text-lg text-brand-700 dark:text-brand-300">{formatAUD(result.net)}</span>
+          <span className="result-value text-lg text-brand-700">{formatAUD(result.net)}</span>
         </div>
         <div className="result-row">
           <span className="result-label">Weekly net (estimate)</span>
@@ -225,12 +225,12 @@ export function CasualPayCalculator() {
           <span className="result-value">{formatAUD(result.net / 26)}</span>
         </div>
         <div className="result-row">
-          <span className="result-label text-ink-500 dark:text-ink-400">Superannuation (employer, on top)</span>
-          <span className="result-value text-ink-700 dark:text-ink-300">{formatAUD(result.superannuation)}/yr</span>
+          <span className="result-label text-ink-600">Superannuation (employer, on top)</span>
+          <span className="result-value text-ink-700">{formatAUD(result.superannuation)}/yr</span>
         </div>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-ink-600 dark:text-ink-400">
-          <span className="chip bg-white dark:bg-ink-900">Effective tax: {(result.effectiveRate * 100).toFixed(1)}%</span>
-          <span className="chip bg-white dark:bg-ink-900">Marginal: {(result.marginalRate * 100).toFixed(0)}%</span>
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-ink-600">
+          <span className="chip bg-white">Effective tax: {(result.effectiveRate * 100).toFixed(1)}%</span>
+          <span className="chip bg-white">Marginal: {(result.marginalRate * 100).toFixed(0)}%</span>
         </div>
       </div>
     </section>

@@ -5,11 +5,16 @@
 :root {
   /* Permanent dark mode — no light variant */
   color-scheme: dark;
-  color-scheme: dark;
 }
 
 html, body {
   height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -18,6 +23,35 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern", "liga", "calt", "ss01";
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Visible focus indicators — required for keyboard / screen-reader users.
+   We use the ledger (yellow-green) accent so it pops against the dark bg. */
+*:focus-visible {
+  outline: 2px solid #c7f000;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+button:focus-visible,
+a:focus-visible {
+  outline-offset: 3px;
+}
+
+/* Remove default focus for mouse users, keep for keyboard. */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect users who prefer reduced motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Custom scrollbar — dark, minimal */
@@ -25,6 +59,12 @@ body {
 ::-webkit-scrollbar-track { background: #0a0e1a; }
 ::-webkit-scrollbar-thumb { background: #1f2440; border-radius: 5px; }
 ::-webkit-scrollbar-thumb:hover { background: #5a5a6e; }
+
+/* Selection */
+::selection {
+  background: #c7f000;
+  color: #0a0e1a;
+}
 
 /* ──────────────────────────────────────────────────────────
    PREMIUM DARK FINTECH DESIGN SYSTEM
@@ -35,26 +75,28 @@ body {
    - No cards with shadows everywhere. Subtle elevation.
    ────────────────────────────────────────────────────────── */
 
-/* Underline-only inputs */
+/* Underline-only inputs — clear labels, generous touch targets */
 .input {
-  @apply w-full border-0 border-b border-ink-400 bg-transparent px-0 py-2 text-base text-ink-800
+  @apply w-full border-0 border-b border-ink-400 bg-transparent px-0 py-3 text-base text-ink-800
     outline-none transition focus:border-ledger-500 focus:ring-0
     disabled:text-ink-500;
   font-feature-settings: "tnum", "lnum";
+  min-height: 44px;
 }
 
 .label {
-  @apply mb-1 block text-[11px] font-semibold uppercase tracking-[0.18em] text-ink-600;
+  @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-ink-700;
 }
 
 .help {
-  @apply mt-1 text-[11px] uppercase tracking-[0.18em] text-ink-500;
+  @apply mt-1.5 text-xs uppercase tracking-[0.18em] text-ink-500;
 }
 
 /* Text-link style (fintech: underline + hover color shift) */
 .btn {
   @apply inline-flex items-center justify-center px-1 py-1 text-sm font-semibold
     transition focus:outline-none focus-visible:ring-2 focus-visible:ring-ledger-500 focus-visible:ring-offset-2 focus-visible:ring-offset-paper-0;
+  min-height: 32px;
 }
 .btn-text {
   @apply btn text-ink-800 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500;
@@ -65,41 +107,42 @@ body {
 
 /* Section index marker */
 .section-index {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600;
+  @apply font-mono text-xs uppercase tracking-[0.2em] text-ink-600;
 }
 
 /* Kicker */
 .kicker {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-500;
+  @apply font-mono text-xs uppercase tracking-[0.2em] text-ledger-500;
 }
 .kicker-neutral {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600;
+  @apply font-mono text-xs uppercase tracking-[0.2em] text-ink-600;
 }
 .kicker-accent {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em] text-ledger-500;
+  @apply font-mono text-xs uppercase tracking-[0.2em] text-ledger-500;
 }
 
 /* Hairline rule */
 .rule-line {
-  @apply border-0 border-t border-ink-400;
+  @apply border-0 border-t border-ink-300;
 }
 
-/* Editorial H1 — heavy sans-serif, modern fintech, 80-96px desktop */
+/* Editorial H1 — heavy sans-serif, modern fintech, 48-64px desktop
+   (smaller than before — better readability, more comfortable to scan) */
 .h-display {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 800;
   letter-spacing: -0.035em;
-  line-height: 0.95;
-  font-size: 2.5rem; /* 40px mobile */
+  line-height: 1.05;
+  font-size: 2.25rem; /* 36px mobile */
 }
 @media (min-width: 768px) {
   .h-display {
-    font-size: 3.75rem; /* 60px tablet */
+    font-size: 3rem; /* 48px tablet */
   }
 }
 @media (min-width: 1024px) {
   .h-display {
-    font-size: 5rem; /* 80px desktop */
+    font-size: 4rem; /* 64px desktop */
   }
 }
 
@@ -108,12 +151,17 @@ body {
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.1;
-  font-size: 1.75rem;
+  line-height: 1.15;
+  font-size: 1.625rem; /* 26px mobile */
 }
 @media (min-width: 768px) {
   .h-section {
-    font-size: 2.5rem;
+    font-size: 2rem; /* 32px tablet */
+  }
+}
+@media (min-width: 1024px) {
+  .h-section {
+    font-size: 2.5rem; /* 40px desktop */
   }
 }
 
@@ -121,29 +169,30 @@ body {
 .ledger-highlight {
   background: #c7f000;
   color: #0a0e1a;
-  padding: 0.1em 0.25em;
+  padding: 0.1em 0.3em;
   border-radius: 0.2em;
   font-weight: 800;
 }
 
-/* Result figure — the ONLY ledger (yellow-green) element on the page. */
+/* Result figure — the ONLY ledger (yellow-green) element on the page.
+   Sized for impact but not overwhelming. */
 .result-figure {
   font-family: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
   font-weight: 700;
   font-variant-numeric: tabular-nums lining-nums;
   color: #c7f000;
   letter-spacing: -0.03em;
-  line-height: 0.95;
+  line-height: 1;
   font-size: 2.5rem;
 }
 @media (min-width: 768px) {
   .result-figure {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 }
 @media (min-width: 1024px) {
   .result-figure {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
 }
 
@@ -152,25 +201,25 @@ body {
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  color: #a0a0ae;
+  color: #c7cad4;
 }
 
 /* Section spacing — generous */
 .section {
-  margin-top: 5rem;
-  padding-top: 3rem;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
   border-top: 1px solid #1f2440;
 }
 @media (min-width: 768px) {
   .section {
-    margin-top: 7rem;
-    padding-top: 4rem;
+    margin-top: 5.5rem;
+    padding-top: 3rem;
   }
 }
 @media (min-width: 1024px) {
   .section {
-    margin-top: 9rem;
-    padding-top: 5rem;
+    margin-top: 7rem;
+    padding-top: 4rem;
   }
 }
 
@@ -180,14 +229,14 @@ body {
   font-size: 4em;
   line-height: 0.85;
   float: left;
-  margin: 0.1em 0.1em 0.1em 0;
+  margin: 0.1em 0.12em 0.1em 0;
   font-weight: 800;
   color: #c7f000;
 }
 
 /* Underline-only period chip */
 .chip {
-  @apply inline-flex items-center gap-2 font-mono text-[13px] tracking-wider text-ink-600;
+  @apply inline-flex items-center gap-2 font-mono text-sm tracking-wider text-ink-600;
 }
 .chip-active {
   @apply text-ink-800 font-semibold;
@@ -203,7 +252,7 @@ body {
 
 /* Trust-link row */
 .trust-row {
-  @apply block py-3 transition hover:opacity-70;
+  @apply block py-3 transition hover:opacity-80;
 }
 
 /* Footer — deepest ink bookend */
@@ -212,8 +261,8 @@ body {
   color: #e8e9ee;
 }
 .footer-meta {
-  @apply font-mono text-[11px] uppercase tracking-[0.2em];
-  color: #5a5a6e;
+  @apply font-mono text-xs uppercase tracking-[0.2em];
+  color: #7a7a86;
 }
 
 /* Subtle teal accent surface for select cards */
@@ -247,4 +296,142 @@ html {
 }
 body {
   transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ──────────────────────────────────────────────────────────
+   ACCESSIBLE TYPOGRAPHY FOR LONG-FORM CONTENT
+   - Body: 17px (above WCAG AAA recommendation of 16px+)
+   - Line height: 1.75 (well above 1.5 WCAG minimum)
+   - Max measure: 65ch (~720px) for comfortable reading
+   - Headings: clear hierarchy, generous spacing
+   ────────────────────────────────────────────────────────── */
+.prose-content {
+  max-width: 65ch;
+  color: #c7cad4;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.75;
+}
+.prose-content p {
+  margin-top: 1.1rem;
+  margin-bottom: 1.1rem;
+  color: #c7cad4;
+}
+.prose-content p:first-child {
+  margin-top: 0;
+}
+.prose-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #e8e9ee;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+.prose-content h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #e8e9ee;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+.prose-content h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #e8e9ee;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.prose-content a {
+  color: #c7f000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease;
+}
+.prose-content a:hover {
+  color: #d4f933;
+  text-decoration-thickness: 2px;
+}
+.prose-content strong {
+  color: #e8e9ee;
+  font-weight: 600;
+}
+.prose-content em {
+  font-style: italic;
+  color: #e8e9ee;
+}
+.prose-content ul, .prose-content ol {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  color: #c7cad4;
+}
+.prose-content ul { list-style: disc; }
+.prose-content ol { list-style: decimal; }
+.prose-content li {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+}
+.prose-content li::marker {
+  color: #a0a0ae;
+}
+.prose-content blockquote {
+  border-left: 3px solid #c7f000;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #a0a0ae;
+}
+.prose-content code {
+  background: #1f2440;
+  color: #e8e9ee;
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9em;
+}
+.prose-content hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid #1f2440;
+}
+.prose-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+.prose-content th, .prose-content td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid #1f2440;
+}
+.prose-content th {
+  font-weight: 600;
+  color: #e8e9ee;
+  border-bottom: 1px solid #3a3a4a;
+}
+
+/* Skip link — visually hidden until focused */
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: #c7f000;
+  color: #0a0e1a;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
 }

@@ -67,16 +67,16 @@ export default function CasualPayCalculatorPage() {
             { name: 'Calculators', href: '/#calculators' },
             { name: 'Casual pay' },
           ]} />
-          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator · FY 2026–27</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <p className="mt-3 text-sm text-brand-600">Calculator · FY 2026–27</p>
+          <h1 className="h-display mt-6 text-ink-900">
             Casual pay calculator
           </h1>
-          <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 text-base text-ink-600 sm:text-lg">
             Work out your loaded casual hourly rate and what lands in your bank after
             tax. Built for the 1 in 4 Australians paid as casuals, with sensible
             defaults for the most common Modern Awards.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">25% casual loading default</span>
             <span className="kicker">9 common awards</span>
             <span className="kicker">HECS-aware</span>
@@ -86,7 +86,7 @@ export default function CasualPayCalculatorPage() {
 
         <CasualPayCalculator />
 
-        <section className="prose prose-slate dark:prose-invert mt-14">
+        <section className="prose prose-slate prose-invert mt-14">
           <h2>How casual pay works</h2>
           <p>
             A casual employee is someone who works on a non-regular, as-needed basis
@@ -132,16 +132,16 @@ export default function CasualPayCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.answer}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.answer}</p>
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>How this fits into a broader pay plan</h2>
           <p>
             If you earn income from multiple casual jobs, the calculator handles each one separately, but the ATO adds them up at tax time. Your combined casual income across all employers is what determines your tax bracket, your Medicare levy, and any HECS repayment liability. If your total casual income pushes you into a higher tax bracket, it may be worth sacrificing into super to reduce your repayment income — see our <Link href="/salary-sacrifice-calculator">salary sacrifice calculator</Link>.
@@ -154,7 +154,7 @@ export default function CasualPayCalculatorPage() {
           </p>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Other tools you might need</h2>
           <ul>
             <li><Link href="/">Main pay calculator</Link> — for permanent roles, salary packaging, and detailed scenarios.</li>

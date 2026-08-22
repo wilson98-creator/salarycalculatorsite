@@ -37,7 +37,7 @@ export function MortgageCalculator() {
           <div>
             <label htmlFor="loan-amount" className="label">Loan amount</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="loan-amount"
                 type="number"
@@ -80,7 +80,7 @@ export function MortgageCalculator() {
         <div>
           <label htmlFor="extra-payment" className="label">Extra monthly repayment (optional)</label>
           <div className="flex items-stretch gap-2">
-            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
             <input
               id="extra-payment"
               type="number"
@@ -96,30 +96,30 @@ export function MortgageCalculator() {
       </div>
 
       <div className="mt-12">
-        <h3 className="mb-1 text-base font-semibold text-ink-900 dark:text-ink-50">Monthly repayment</h3>
-        <p className="font-mono text-3xl font-bold tabular-nums text-brand-700 dark:text-brand-300">
+        <h3 className="mb-1 text-base font-semibold text-ink-900">Monthly repayment</h3>
+        <p className="font-mono text-3xl font-bold tabular-nums text-brand-700">
           {formatAUD(minPayment + extraMonthly)}
-          <span className="ml-1 text-sm font-normal text-ink-500 dark:text-ink-400">/ month</span>
+          <span className="ml-1 text-sm font-normal text-ink-600">/ month</span>
         </p>
 
-        <div className="my-4 h-px bg-ink-200 dark:bg-ink-700" />
+        <div className="my-4 h-px bg-ink-200" />
 
         <div className="grid gap-4 sm:grid-cols-3">
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Payoff time (minimum only)</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Payoff time (minimum only)</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {formatYearsMonths(base.monthsToPayoff)}
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Total interest (minimum only)</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Total interest (minimum only)</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {formatAUD0(base.totalInterest)}
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Total cost of loan</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Total cost of loan</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {formatAUD0(base.totalPaid)}
             </p>
           </div>
@@ -127,24 +127,24 @@ export function MortgageCalculator() {
 
         {extraMonthly > 0 && (
           <>
-            <div className="my-4 h-px bg-ink-200 dark:bg-ink-700" />
-            <h4 className="text-sm font-semibold text-ink-900 dark:text-ink-50">With {formatAUD(extraMonthly)} extra per month</h4>
+            <div className="my-4 h-px bg-ink-200" />
+            <h4 className="text-sm font-semibold text-ink-900">With {formatAUD(extraMonthly)} extra per month</h4>
             <div className="mt-3 grid gap-4 sm:grid-cols-3">
               <div>
-                <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Time saved</p>
+                <p className="text-xs uppercase tracking-wider text-ink-600">Time saved</p>
                 <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-emerald-700 dark:text-emerald-400">
                   {formatYearsMonths(Math.max(0, monthsSaved))}
                 </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Interest saved</p>
+                <p className="text-xs uppercase tracking-wider text-ink-600">Interest saved</p>
                 <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-emerald-700 dark:text-emerald-400">
                   {formatAUD0(interestSaved)}
                 </p>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">New payoff time</p>
-                <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+                <p className="text-xs uppercase tracking-wider text-ink-600">New payoff time</p>
+                <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
                   {formatYearsMonths(withExtra.monthsToPayoff)}
                 </p>
               </div>

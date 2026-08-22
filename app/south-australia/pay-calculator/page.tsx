@@ -52,10 +52,10 @@ export default function SaPayCalculatorPage() {
             { name: 'By state' },
             { name: 'South Australia' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             South Australia pay calculator
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Calculate your take-home pay in South Australia. The federal tax brackets,
             Medicare levy, and HELP repayment thresholds are the same across Australia —
             so the math is identical whether you work in Adelaide, Mount Gambier, or
@@ -68,7 +68,7 @@ export default function SaPayCalculatorPage() {
           <PayCalculator />
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-3xl">
+        <section className="prose prose-slate prose-invert mt-12 max-w-3xl">
           <h2>South Australia pay in context</h2>
           <p>
             South Australia has a workforce concentrated in health, education, defence,
@@ -104,16 +104,16 @@ export default function SaPayCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.answer}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.answer}</p>
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-3xl">
+        <section className="prose prose-slate prose-invert mt-12 max-w-3xl">
           <h2>Related calculators</h2>
           <ul>
             <li><Link href="/">Pay calculator (Australia-wide)</Link></li>

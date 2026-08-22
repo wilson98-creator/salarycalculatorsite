@@ -80,16 +80,16 @@ export default function PrivacyPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Privacy' }]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Privacy policy
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             SalaryCalc is built around a simple principle: we never see the
             numbers you type into the calculator. This page documents exactly
             what data we do and do not collect, how we use it, and the choices
             you have.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last updated <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -100,7 +100,7 @@ export default function PrivacyPage() {
 
         {/* TL;DR summary box */}
         <section aria-labelledby="privacy-summary" className="card not-prose mb-12">
-          <h2 id="privacy-summary" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="privacy-summary" className="text-base font-semibold text-ink-900">
             TL;DR — what we collect
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
@@ -114,7 +114,7 @@ export default function PrivacyPage() {
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. What the calculator does</h2>
           <p>
             The pay calculator runs entirely in your browser. The salary figure,
@@ -214,29 +214,29 @@ export default function PrivacyPage() {
             The &quot;last updated&quot; date below reflects the most recent
             version.
           </p>
-          <p className="text-sm text-ink-500">
+          <p className="text-sm text-ink-600">
             Last updated: <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
           </p>
         </section>
 
         {/* FAQ */}
         <section aria-labelledby="privacy-faq" className="mt-16 max-w-3xl">
-          <h2 id="privacy-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="privacy-faq" className="text-2xl font-bold text-ink-900">
             Common privacy questions
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -245,7 +245,7 @@ export default function PrivacyPage() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related legal pages</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related legal pages</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/terms" title="Terms of service" detail="Using the site, and what we will not do." />
             <TrustLink href="/disclaimer" title="Disclaimer" detail="The full legal disclaimer." />
@@ -263,8 +263,8 @@ export default function PrivacyPage() {
 function PrivacyRow({ label, value }: { label: string; value: string }) {
   return (
     <li className="flex items-baseline justify-between gap-3">
-      <span className="text-ink-700 dark:text-ink-300">{label}</span>
-      <span className="text-right text-ink-900 dark:text-ink-100">{value}</span>
+      <span className="text-ink-700">{label}</span>
+      <span className="text-right text-ink-900">{value}</span>
     </li>
   );
 }
@@ -274,12 +274,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

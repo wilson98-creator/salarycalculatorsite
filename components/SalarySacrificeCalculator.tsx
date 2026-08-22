@@ -61,7 +61,7 @@ export function SalarySacrificeCalculator() {
           <div>
             <label htmlFor="ss-gross" className="label">Annual gross salary</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="ss-gross"
                 type="number"
@@ -76,7 +76,7 @@ export function SalarySacrificeCalculator() {
           <div>
             <label htmlFor="ss-amount" className="label">Pre-tax sacrifice (annual)</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="ss-amount"
                 type="number"
@@ -108,7 +108,7 @@ export function SalarySacrificeCalculator() {
         <div>
           <label htmlFor="ss-sg" className="label">Employer super guarantee this year</label>
           <div className="flex items-stretch gap-2">
-            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
             <input
               id="ss-sg"
               type="number"
@@ -125,7 +125,7 @@ export function SalarySacrificeCalculator() {
 
       <div className="mt-6 grid gap-4 lg:grid-cols-2">
         <div className="mt-12">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">Without sacrifice</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-ink-600">Without sacrifice</h3>
           <div className="mt-3 space-y-2">
             <Row label="Income tax" value={before.incomeTax} />
             <Row label="Medicare levy" value={before.medicare} />
@@ -135,7 +135,7 @@ export function SalarySacrificeCalculator() {
         </div>
 
         <div className="mt-12">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">With {formatAUD(sacrifice)} sacrifice</h3>
+          <h3 className="text-sm font-semibold uppercase tracking-wider text-brand-700">With {formatAUD(sacrifice)} sacrifice</h3>
           <div className="mt-3 space-y-2">
             <Row label="Income tax" value={after.incomeTax} />
             <Row label="Medicare levy" value={after.medicare} />
@@ -181,8 +181,8 @@ export function SalarySacrificeCalculator() {
 function Row({ label, value, bold = false, muted = false }: { label: string; value: number; bold?: boolean; muted?: boolean }) {
   return (
     <div className="flex items-baseline justify-between gap-3">
-      <span className={`text-sm ${muted ? 'text-ink-500 dark:text-ink-400' : 'text-ink-700 dark:text-ink-300'}`}>{label}</span>
-      <span className={`font-mono tabular-nums ${bold ? 'text-lg font-semibold text-ink-900 dark:text-ink-50' : 'text-sm text-ink-700 dark:text-ink-300'}`}>
+      <span className={`text-sm ${muted ? 'text-ink-600' : 'text-ink-700'}`}>{label}</span>
+      <span className={`font-mono tabular-nums ${bold ? 'text-lg font-semibold text-ink-900' : 'text-sm text-ink-700'}`}>
         {formatAUD(value)}
       </span>
     </div>

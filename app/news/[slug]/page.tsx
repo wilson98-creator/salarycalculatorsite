@@ -83,7 +83,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
         <header className="max-w-3xl">
           <div className="flex flex-wrap items-center gap-3">
             <span className="kicker">{CATEGORY_LABEL[post.category] || 'Money brief'}</span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
               {published}
             </span>
           </div>
@@ -167,7 +167,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
                     <span className="text-lg font-semibold text-ink-800 sm:text-xl">
                       {RELATED_LABELS[slug] || slug}
                     </span>
-                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                    <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
                       Open <span aria-hidden>→</span>
                     </span>
                   </Link>
@@ -189,7 +189,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
                     href={`/news/${r.id}/`}
                     className="block py-6 transition hover:opacity-80"
                   >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
                       {new Date(r.date).toLocaleDateString('en-AU', { day: '2-digit', month: 'short', year: 'numeric' })} · {r.source}
                     </p>
                     <p className="mt-2 text-lg font-semibold text-ink-800 sm:text-xl">

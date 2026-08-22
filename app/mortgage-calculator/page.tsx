@@ -70,14 +70,14 @@ export default function MortgageCalculatorPage() {
             { name: 'Calculators', href: '/#calculators' },
             { name: 'Mortgage' },
           ]} />
-          <p className="mt-3 text-sm text-brand-600 dark:text-brand-300">Calculator</p>
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <p className="mt-3 text-sm text-brand-600">Calculator</p>
+          <h1 className="h-display mt-6 text-ink-900">
             Mortgage calculator
           </h1>
-          <p className="mt-4 text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 text-base text-ink-600 sm:text-lg">
             Work out your monthly repayment, total interest, and exactly how much time and money you save by paying extra. Built for owner-occupier and investment loans, with the same amortization logic the banks use.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">Standard amortization</span>
             <span className="kicker">Extra payments</span>
             <span className="kicker">Interest + time saved</span>
@@ -87,7 +87,7 @@ export default function MortgageCalculatorPage() {
 
         <MortgageCalculator />
 
-        <section className="prose prose-slate dark:prose-invert mt-14">
+        <section className="prose prose-slate prose-invert mt-14">
           <h2>How a mortgage amortizes</h2>
           <p>
             A principal-and-interest mortgage is a standard amortizing loan. Each month, your repayment is split into two parts: interest on the remaining balance, and a small amount of principal. Early in the loan, most of the repayment is interest; by the end, most of it is principal. This is why the total interest you pay over 30 years on a typical Australian mortgage is often close to the original loan amount.
@@ -134,16 +134,16 @@ export default function MortgageCalculatorPage() {
         <section className="mt-6 space-y-3">
           {faqs.map((f) => (
             <details key={f.question} className="card group">
-              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+              <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                 {f.question}
               </summary>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{f.answer}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-600">{f.answer}</p>
             </details>
           ))}
         </section>
 
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-none">
+        <section className="prose prose-slate prose-invert mt-12 max-w-none">
           <h2>Related tools</h2>
           <ul>
             <li><Link href="/">Pay calculator</Link> — what you can actually afford to put toward a mortgage each month.</li>

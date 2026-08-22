@@ -79,19 +79,19 @@ export default function HomePage() {
       <section className="grid gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-6">
           <p className="kicker">Australian Pay Calculator · FY 2026–27 · ATO-Grounded</p>
-          <h1 className="h-display mt-6 text-ink-800 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-800">
             What you actually <span className="oxblood-underline">take</span> home.
           </h1>
-          <p className="mt-8 max-w-md text-lg text-ink-600 dark:text-ink-300">
+          <p className="mt-8 max-w-md text-lg text-ink-600">
             The honest, ATO-grounded Australian pay calculator. No login,
             no tracking, every rate cited, every bracket explained.
           </p>
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
             <span>Methodology last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
             <span>Sources: ATO</span>
           </div>
         </div>
-        <aside className="lg:col-span-6 lg:pl-12 lg:border-l lg:border-ink-200 lg:dark:border-ink-800">
+        <aside className="lg:col-span-6 lg:pl-12 lg:border-l lg:border-ink-200">
           <div className="lg:sticky lg:top-24">
             <PayCalculator />
           </div>
@@ -105,12 +105,12 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="section-index">§ 01</p>
-            <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            <h2 className="h-section mt-4 text-ink-900">
               How the calculation works.
             </h2>
           </div>
           <div className="lg:col-span-8">
-            <p className="drop-cap text-base text-ink-700 dark:text-ink-300 sm:text-lg">
+            <p className="drop-cap text-base text-ink-700 sm:text-lg">
               Australian income tax is progressive — different rates apply
               to different portions of your income, not a single flat rate
               on the whole amount. Here is the actual calculation, with
@@ -123,49 +123,49 @@ export default function HomePage() {
 
             <ol className="mt-12 space-y-8">
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 01</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Start with gross pay. <span className="font-mono text-ink-500">$85,000.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 01</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Start with gross pay. <span className="font-mono text-ink-600">$85,000.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 02</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Subtract pre-tax salary sacrifice. <span className="font-mono text-ink-500">$0.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 02</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Subtract pre-tax salary sacrifice. <span className="font-mono text-ink-600">$0.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 03</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Taxable income. <span className="font-mono text-ink-500">$85,000.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 03</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Taxable income. <span className="font-mono text-ink-600">$85,000.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 04</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Income tax (bracket method). 0% to $18,200 + 15% to $45,000 + 30% to $85,000. <span className="font-mono text-ink-500">$16,020.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 04</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Income tax (bracket method). 0% to $18,200 + 15% to $45,000 + 30% to $85,000. <span className="font-mono text-ink-600">$16,020.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 05</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Less LITO (phased out above $66,667). <span className="font-mono text-ink-500">$0.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 05</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Less LITO (phased out above $66,667). <span className="font-mono text-ink-600">$0.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 06</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  Medicare levy (2%). <span className="font-mono text-ink-500">$1,700.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 06</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  Medicare levy (2%). <span className="font-mono text-ink-600">$1,700.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Step 07</p>
-                <p className="mt-2 text-base text-ink-900 dark:text-ink-50 sm:text-lg">
-                  HECS-HELP repayment (not enabled). <span className="font-mono text-ink-500">$0.00</span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 07</p>
+                <p className="mt-2 text-base text-ink-900 sm:text-lg">
+                  HECS-HELP repayment (not enabled). <span className="font-mono text-ink-600">$0.00</span>
                 </p>
               </li>
               <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">Result</p>
+                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Result</p>
                 <p className="result-figure mt-2">$67,280</p>
                 <p className="kicker mt-3">net take-home per year</p>
               </li>
@@ -181,12 +181,12 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="section-index">§ 02</p>
-            <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            <h2 className="h-section mt-4 text-ink-900">
               PAYG vs. your actual tax.
             </h2>
           </div>
           <div className="lg:col-span-8">
-            <p className="text-base text-ink-700 dark:text-ink-300 sm:text-lg">
+            <p className="text-base text-ink-700 sm:text-lg">
               Employers use the formulas in ATO Schedule 1 (NAT 1004) to
               work out how much to withhold from each pay. These formulas
               use weekly-equivalent earnings and small rounding
@@ -209,29 +209,29 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="section-index">§ 03</p>
-            <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            <h2 className="h-section mt-4 text-ink-900">
               Other calculators.
             </h2>
-            <p className="mt-4 text-sm text-ink-500 dark:text-ink-400">
+            <p className="mt-4 text-sm text-ink-600">
               One for every common Australian pay scenario. All use the
               same ATO-sourced math.
             </p>
           </div>
           <div className="lg:col-span-8">
-            <ul className="rule-line border-t border-ink-200 dark:border-ink-800">
+            <ul className="rule-line border-t border-ink-200">
               {calculators.map((c) => (
-                <li key={c.href} className="rule-line border-b border-ink-200 dark:border-ink-800">
+                <li key={c.href} className="rule-line border-b border-ink-200">
                   <Link
                     href={c.href}
                     className="block py-6 transition hover:opacity-60"
                   >
-                    <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-500">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">
                       Calculator
                     </p>
-                    <p className="mt-2 text-lg font-semibold text-ink-900 dark:text-ink-50 sm:text-xl">
+                    <p className="mt-2 text-lg font-semibold text-ink-900 sm:text-xl">
                       {c.title} <span className="text-ink-400">→</span>
                     </p>
-                    <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">{c.blurb}</p>
+                    <p className="mt-1 text-sm text-ink-600">{c.blurb}</p>
                   </Link>
                 </li>
               ))}
@@ -247,12 +247,12 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="section-index">§ 04</p>
-            <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            <h2 className="h-section mt-4 text-ink-900">
               All the ways to calculate your pay.
             </h2>
           </div>
           <div className="lg:col-span-8">
-            <p className="text-base text-ink-700 dark:text-ink-300 sm:text-lg">
+            <p className="text-base text-ink-700 sm:text-lg">
               People search for this calculation under a dozen different
               names — wage calculator, paycheck calculator, salary
               calculator, annual income calculator, take home pay
@@ -261,27 +261,27 @@ export default function HomePage() {
               my bank account</em>. What changes is the framing, not the
               math.
             </p>
-            <ul className="mt-10 space-y-6 text-base text-ink-700 dark:text-ink-300">
+            <ul className="mt-10 space-y-6 text-base text-ink-700">
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Wage calculator / hourly wage calculator / hourly to salary calculator</strong> — for people paid by the hour. Enter your hourly rate, set hours per week and weeks per year, and the calculator annualises the rest.
+                <strong className="text-ink-900">Wage calculator / hourly wage calculator / hourly to salary calculator</strong> — for people paid by the hour. Enter your hourly rate, set hours per week and weeks per year, and the calculator annualises the rest.
               </li>
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Salary calculator / annual salary calculator / annual income calculator</strong> — for salaried employees. Enter your package as an annual figure and the calculator shows the monthly, fortnightly and weekly take-home equivalents.
+                <strong className="text-ink-900">Salary calculator / annual salary calculator / annual income calculator</strong> — for salaried employees. Enter your package as an annual figure and the calculator shows the monthly, fortnightly and weekly take-home equivalents.
               </li>
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Paycheck calculator / take home pay calculator</strong> — for the everyday question of &quot;how much is in my next pay&quot;. The same calculation, but the calculator shows the per-period number prominently.
+                <strong className="text-ink-900">Paycheck calculator / take home pay calculator</strong> — for the everyday question of &quot;how much is in my next pay&quot;. The same calculation, but the calculator shows the per-period number prominently.
               </li>
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong> — the same math, from the employer&apos;s side. Your employer&apos;s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
+                <strong className="text-ink-900">Payroll calculator / online payroll calculator / payroll hours calculator / payroll taxes calculator</strong> — the same math, from the employer&apos;s side. Your employer&apos;s payroll software applies the same PAYG withholding rules to every pay, which is why the per-period number is what arrives in your bank.
               </li>
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Salary comparison</strong> — for people weighing two job offers. The calculator makes it easy to enter each offer and see the after-tax, after-super comparison.
+                <strong className="text-ink-900">Salary comparison</strong> — for people weighing two job offers. The calculator makes it easy to enter each offer and see the after-tax, after-super comparison.
               </li>
               <li>
-                <strong className="text-ink-900 dark:text-ink-50">Holiday entitlement calculator</strong> — annual leave is paid at the ordinary rate (casuals receive 25% casual loading instead of paid leave). The main calculator shows your take-home per pay; the annual leave component is just your ordinary rate multiplied by the hours of leave accrued.
+                <strong className="text-ink-900">Holiday entitlement calculator</strong> — annual leave is paid at the ordinary rate (casuals receive 25% casual loading instead of paid leave). The main calculator shows your take-home per pay; the annual leave component is just your ordinary rate multiplied by the hours of leave accrued.
               </li>
             </ul>
-            <p className="mt-8 text-base text-ink-700 dark:text-ink-300">
+            <p className="mt-8 text-base text-ink-700">
               The calculator above is set up to handle all of these. Pick a
               pay period (hourly, daily, weekly, fortnightly, monthly or
               annual), enter the gross, and the math is the same.
@@ -298,17 +298,17 @@ export default function HomePage() {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
               <p className="section-index">§ 06</p>
-              <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+              <h2 className="h-section mt-4 text-ink-900">
                 Money Briefs.
               </h2>
-              <p className="mt-4 text-sm text-ink-600 dark:text-ink-400">
+              <p className="mt-4 text-sm text-ink-600">
                 The week in Australian money — interest rates, tax, super, wages,
                 property — explained in plain English. New briefs on Tuesdays and Fridays.
               </p>
               <p className="mt-6">
                 <Link
                   href="/news/"
-                  className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500 dark:text-ink-50"
+                  className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2 hover:text-ledger-500"
                 >
                   See all briefs →
                 </Link>
@@ -317,24 +317,24 @@ export default function HomePage() {
             <div className="lg:col-span-8">
               <ul className="space-y-0">
                 {latestNews.map((post) => (
-                  <li key={post.id} className="rule-line border-t border-b border-ink-200 py-6 dark:border-ink-800">
+                  <li key={post.id} className="rule-line border-t border-b border-ink-200 py-6">
                     <Link
                       href={`/news/${post.id}/`}
                       className="group block"
                     >
                       <div className="flex flex-wrap items-center gap-3">
                         <span className="kicker">{post.kicker || 'Money brief'}</span>
-                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
                           {new Date(post.date).toLocaleDateString('en-AU', { day: '2-digit', month: 'short' })}
                         </span>
                       </div>
-                      <h3 className="mt-3 text-xl font-semibold text-ink-900 group-hover:text-ledger-500 dark:text-ink-50 sm:text-2xl">
+                      <h3 className="mt-3 text-xl font-semibold text-ink-900 group-hover:text-ledger-500 sm:text-2xl">
                         {post.title}
                       </h3>
-                      <p className="mt-2 max-w-3xl text-sm text-ink-600 dark:text-ink-400 sm:text-base">
+                      <p className="mt-2 max-w-3xl text-sm text-ink-600 sm:text-base">
                         {post.excerpt}
                       </p>
-                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-500">
+                      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
                         Read brief →
                       </p>
                     </Link>
@@ -353,16 +353,16 @@ export default function HomePage() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="section-index">§ 07</p>
-            <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+            <h2 className="h-section mt-4 text-ink-900">
               Common questions.
             </h2>
           </div>
           <div className="lg:col-span-8">
             <ul className="space-y-0">
               {homeFaqs.map((q, i) => (
-                <li key={q.question} className="rule-line border-t border-b border-ink-200 py-6 dark:border-ink-800">
+                <li key={q.question} className="rule-line border-t border-b border-ink-200 py-6">
                   <details className="group">
-                    <summary className="flex cursor-pointer items-baseline justify-between gap-4 text-base font-semibold text-ink-900 dark:text-ink-50 sm:text-lg">
+                    <summary className="flex cursor-pointer items-baseline justify-between gap-4 text-base font-semibold text-ink-900 sm:text-lg">
                       <span className="flex items-baseline gap-3">
                         <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-400">
                           {String(i + 1).padStart(2, '0')}
@@ -371,7 +371,7 @@ export default function HomePage() {
                       </span>
                       <span className="font-mono text-ink-400 transition group-open:rotate-45">+</span>
                     </summary>
-                    <p className="mt-4 pl-8 text-base text-ink-600 dark:text-ink-400">
+                    <p className="mt-4 pl-8 text-base text-ink-600">
                       {q.answer}
                     </p>
                   </details>
@@ -379,7 +379,7 @@ export default function HomePage() {
               ))}
             </ul>
             <p className="mt-8">
-              <Link href="/faq" className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2 dark:text-ink-50">
+              <Link href="/faq" className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-900 underline decoration-1 underline-offset-4 hover:decoration-2">
                 See all 30+ questions →
               </Link>
             </p>

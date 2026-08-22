@@ -39,7 +39,7 @@ export function LoanPayoffCalculator() {
           <div>
             <label htmlFor="lp-balance" className="label">Current loan balance</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="lp-balance"
                 type="number"
@@ -71,7 +71,7 @@ export function LoanPayoffCalculator() {
           <div>
             <label htmlFor="lp-payment" className="label">Current monthly payment</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="lp-payment"
                 type="number"
@@ -87,7 +87,7 @@ export function LoanPayoffCalculator() {
           <div>
             <label htmlFor="lp-extra" className="label">Extra monthly payment</label>
             <div className="flex items-stretch gap-2">
-              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+              <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
               <input
                 id="lp-extra"
                 type="number"
@@ -104,7 +104,7 @@ export function LoanPayoffCalculator() {
         <div>
           <label htmlFor="lp-redundancy" className="label">Lump sum (e.g. redundancy payout) — optional</label>
           <div className="flex items-stretch gap-2">
-            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-500 dark:border-ink-700 dark:bg-ink-800 dark:text-ink-400">$</span>
+            <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-ink-50 px-3 text-ink-600">$</span>
             <input
               id="lp-redundancy"
               type="number"
@@ -120,7 +120,7 @@ export function LoanPayoffCalculator() {
       </div>
 
       <div className="mt-12">
-        <h3 className="mb-1 text-base font-semibold text-ink-900 dark:text-ink-50">With current payment of {formatAUD(payment)}/month</h3>
+        <h3 className="mb-1 text-base font-semibold text-ink-900">With current payment of {formatAUD(payment)}/month</h3>
 
         {!paymentCoversInterest && (
           <p className="mt-2 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-900 dark:border-rose-800 dark:bg-rose-900/20 dark:text-rose-200">
@@ -130,20 +130,20 @@ export function LoanPayoffCalculator() {
 
         <div className="mt-4 grid gap-4 sm:grid-cols-3">
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Payoff time</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Payoff time</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {base.monthsToPayoff > 12 * 30 ? '30+ years' : formatYearsMonths(base.monthsToPayoff)}
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Total interest</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Total interest</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {formatAUD0(base.totalInterest)}
             </p>
           </div>
           <div>
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Total cost</p>
-            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900 dark:text-ink-50">
+            <p className="text-xs uppercase tracking-wider text-ink-600">Total cost</p>
+            <p className="mt-1 font-mono text-lg font-semibold tabular-nums text-ink-900">
               {formatAUD0(base.totalPaid)}
             </p>
           </div>

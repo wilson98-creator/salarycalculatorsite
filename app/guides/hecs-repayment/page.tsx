@@ -124,10 +124,10 @@ export default function HecsGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'HECS-HELP repayment' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             HECS-HELP repayment: a practical guide
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             HECS-HELP is Australia&apos;s income-contingent student loan
             scheme. You only repay when you earn above a threshold, repayments
             are withheld by your employer, and the balance is indexed each
@@ -135,7 +135,7 @@ export default function HecsGuide() {
             took effect on 1 July 2025, when indexation hurts the most, and
             strategies for paying the debt down faster.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -147,31 +147,31 @@ export default function HecsGuide() {
 
         {/* TL;DR */}
         <section aria-labelledby="hecs-tldr" className="card not-prose mb-10">
-          <h2 id="hecs-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="hecs-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version
           </h2>
           <ul className="mt-5 space-y-2.5 text-sm">
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 From 1 July 2025 HECS uses a <strong>marginal bracket</strong> system, like income tax.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 FY 2026-27 lower threshold: <strong>~$69,528</strong>. Income above this: marginal repayment from 1% to 10% of total repayment income.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Your balance is indexed on 1 June each year by the <strong>lower of CPI and WPI</strong>. Recent rates: 7.1%, 4.7%, 3.2%, 2.8%.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">→</span>
-              <span className="text-ink-700 dark:text-ink-300">
+              <span className="font-mono font-semibold text-brand-600">→</span>
+              <span className="text-ink-700">
                 Tick the HELP box on your TFN declaration so your employer withholds the repayment. Use the{' '}
                 <Link href="/hecs-calculator">HECS calculator</Link> to see your actual repayment.
               </span>
@@ -179,7 +179,7 @@ export default function HecsGuide() {
           </ul>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. What HECS-HELP is</h2>
           <p>
             HECS-HELP is the loan the Australian government provides to cover
@@ -366,22 +366,22 @@ export default function HecsGuide() {
         </section>
 
         <section aria-labelledby="hecs-faq" className="mt-16 max-w-3xl">
-          <h2 id="hecs-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="hecs-faq" className="text-2xl font-bold text-ink-900">
             Common questions about HECS-HELP
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -390,7 +390,7 @@ export default function HecsGuide() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/hecs-calculator" title="HECS-HELP calculator" detail="Repayment under the new 2025-26 marginal system." />
             <TrustLink href="/salary-sacrifice-calculator" title="Salary sacrifice calculator" detail="See how sacrifice reduces your repayment income." />
@@ -410,12 +410,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

@@ -123,17 +123,17 @@ export default function MethodologyPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Methodology' }]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             How we calculate your pay
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Every number on SalaryCalc comes from a published Australian Taxation
             Office source. This page documents exactly which file each rate came
             from, when we last reviewed the figures, and what the calculator does not
             (yet) model. If you spot a discrepancy between our output and your
             payslip, please <Link href="/contact">let us know</Link>.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -146,14 +146,14 @@ export default function MethodologyPage() {
         {/* TL;DR summary table — the headline is the pipeline, but most users
             want to see "what's the rate, where does it come from" first. */}
         <section aria-labelledby="rates-summary" className="card not-prose mb-12">
-          <h2 id="rates-summary" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="rates-summary" className="text-base font-semibold text-ink-900">
             Rate source summary — at a glance
           </h2>
-          <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
+          <p className="mt-1 text-sm text-ink-600">
             Every rate, threshold, and coefficient on the site links back to one of
             these ATO publications.
           </p>
-          <ul className="mt-5 divide-y divide-ink-200 dark:divide-ink-700">
+          <ul className="mt-5 divide-y divide-ink-200">
             <SourceRow
               label="Income tax brackets (FY 2026-27)"
               source={sources.taxRates.label}
@@ -185,14 +185,14 @@ export default function MethodologyPage() {
               url={sources.paygFormulas.url}
             />
           </ul>
-          <p className="mt-5 text-xs text-ink-500 dark:text-ink-400">
+          <p className="mt-5 text-xs text-ink-600">
             All links open the ATO publication in a new tab. The rate file in our
             source code is the single source of truth for the calculator.
           </p>
         </section>
 
         {/* 1. The pipeline */}
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. The pipeline</h2>
           <p>
             Every time you change an input, the calculator runs the following
@@ -389,22 +389,22 @@ export default function MethodologyPage() {
 
         {/* FAQ */}
         <section aria-labelledby="methodology-faq" className="mt-16 max-w-3xl">
-          <h2 id="methodology-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="methodology-faq" className="text-2xl font-bold text-ink-900">
             Common methodology questions
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -414,7 +414,7 @@ export default function MethodologyPage() {
 
         {/* Trust cluster */}
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 className="text-2xl font-bold text-ink-900">
             Trust and how to reach us
           </h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -434,12 +434,12 @@ export default function MethodologyPage() {
 function SourceRow({ label, source, url }: { label: string; source: string; url: string }) {
   return (
     <li className="flex items-baseline justify-between gap-3 py-2.5">
-      <span className="text-sm text-ink-700 dark:text-ink-300">{label}</span>
+      <span className="text-sm text-ink-700">{label}</span>
       <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-xs text-brand-600 underline-offset-2 hover:underline dark:text-brand-300"
+        className="text-xs text-brand-600 underline-offset-2 hover:underline"
       >
         {source} ↗
       </a>
@@ -452,12 +452,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

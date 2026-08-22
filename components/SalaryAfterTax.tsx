@@ -53,14 +53,14 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
               { name: `$${data.gross.toLocaleString()} after tax` },
             ]}
           />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             ${data.gross.toLocaleString()} after tax{' '}
             Australia
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             On a ${data.gross.toLocaleString()} annual salary in Australia, your take-home pay is
             approximately{' '}
-            <strong className="text-success-700 dark:text-success-400">
+            <strong className="text-success-700">
               ${data.net.toLocaleString()} per year
             </strong>{' '}
             (${fortnightly.toLocaleString()} per fortnight, before super). Here is the
@@ -76,25 +76,25 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
           </h2>
           <div className="grid gap-6 sm:grid-cols-3">
             <div>
-              <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Net take-home (per year)</p>
+              <p className="text-xs uppercase tracking-wider text-ink-600">Net take-home (per year)</p>
               <p className="result-figure mt-1">${data.net.toLocaleString()}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Per fortnight</p>
-              <p className="font-mono text-3xl font-bold tabular-nums text-ink-900 dark:text-ink-100 mt-1">
+              <p className="text-xs uppercase tracking-wider text-ink-600">Per fortnight</p>
+              <p className="font-mono text-3xl font-bold tabular-nums text-ink-900 mt-1">
                 ${data.perFortnight.toLocaleString()}
               </p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400">Effective tax rate</p>
-              <p className="font-mono text-3xl font-bold tabular-nums text-ink-900 dark:text-ink-100 mt-1">
+              <p className="text-xs uppercase tracking-wider text-ink-600">Effective tax rate</p>
+              <p className="font-mono text-3xl font-bold tabular-nums text-ink-900 mt-1">
                 {effectiveRate}%
               </p>
             </div>
           </div>
 
-          <div className="mt-6 border-t border-ink-200 pt-4 dark:border-ink-700">
-            <p className="text-xs uppercase tracking-wider text-ink-500 dark:text-ink-400 mb-3">Take-home per period</p>
+          <div className="mt-6 border-t border-ink-200 pt-4">
+            <p className="text-xs uppercase tracking-wider text-ink-600 mb-3">Take-home per period</p>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <PeriodBox label="Annual" value={data.net} />
               <PeriodBox label="Monthly" value={data.perMonth} />
@@ -106,8 +106,8 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
         {/* Breakdown */}
         <section className="card not-prose mb-10">
-          <h2 className="text-xl font-bold text-ink-900 dark:text-ink-50">Where the ${data.gross.toLocaleString()} goes</h2>
-          <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">FY 2026–27 · Australian resident · No HECS · No salary sacrifice</p>
+          <h2 className="text-xl font-bold text-ink-900">Where the ${data.gross.toLocaleString()} goes</h2>
+          <p className="mt-1 text-sm text-ink-600">FY 2026–27 · Australian resident · No HECS · No salary sacrifice</p>
 
           <ul className="mt-6 space-y-3 text-sm">
             <Row label="Gross salary" value={`$${data.gross.toLocaleString()}.00`} bold />
@@ -123,10 +123,10 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
         {/* Live calculator for adjustments */}
         <section className="mt-10">
-          <h2 className="h-section mt-4 text-ink-900 dark:text-ink-50">
+          <h2 className="h-section mt-4 text-ink-900">
             Adjust for your situation
           </h2>
-          <p className="mt-3 text-base text-ink-600 dark:text-ink-400">
+          <p className="mt-3 text-base text-ink-600">
             The numbers above assume an Australian resident with no HECS-HELP debt and no
             salary sacrifice. Use the live calculator below to add HECS, salary sacrifice,
             or change the pay period.
@@ -137,7 +137,7 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
         </section>
 
         {/* Long-form content */}
-        <section className="prose prose-slate dark:prose-invert mt-14 max-w-3xl">
+        <section className="prose prose-slate prose-invert mt-14 max-w-3xl">
           <h2>How we calculated ${data.gross.toLocaleString()} after tax</h2>
           <p>{data.blurb}</p>
           <p>
@@ -176,22 +176,22 @@ export function SalaryAfterTaxPage({ data, metadata }: { data: SalaryAfterTaxDat
 
         {/* FAQ */}
         <section className="mt-12 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Common questions about ${data.gross.toLocaleString()} after tax</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Common questions about ${data.gross.toLocaleString()} after tax</h2>
           <div className="mt-5 space-y-3">
             {data.faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
-                  <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300">›</span>
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
+                  <span aria-hidden="true" className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition">›</span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">{q.answer}</p>
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">{q.answer}</p>
               </details>
             ))}
           </div>
         </section>
 
         {/* Related links */}
-        <section className="prose prose-slate dark:prose-invert mt-12 max-w-3xl">
+        <section className="prose prose-slate prose-invert mt-12 max-w-3xl">
           <h2>Related calculators</h2>
           <ul>
             <li><Link href="/">Pay calculator</Link> — full live calculator with HECS, sacrifice, and all periods.</li>
@@ -211,12 +211,12 @@ function PeriodBox({ label, value, highlight = false }: { label: string; value: 
     <div
       className={
         highlight
-          ? 'rounded-lg border border-brand-500 bg-brand-50 p-3 dark:bg-brand-900/30'
-          : 'rounded-lg border border-ink-200 p-3 dark:border-ink-700'
+          ? 'rounded-lg border border-brand-500 bg-brand-50 p-3'
+          : 'rounded-lg border border-ink-200 p-3'
       }
     >
-      <p className="text-xs text-ink-500 dark:text-ink-400">{label}</p>
-      <p className="mt-1 font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-100">
+      <p className="text-xs text-ink-600">{label}</p>
+      <p className="mt-1 font-mono text-base font-semibold tabular-nums text-ink-900">
         ${value.toLocaleString()}
       </p>
     </div>
@@ -235,17 +235,17 @@ function Row({ label, value, negative = false, positive = false, bold = false, t
   const valueClass = negative
     ? 'result-deduction'
     : positive
-    ? 'text-success-600 dark:text-success-400 font-mono text-base font-semibold tabular-nums'
+    ? 'text-success-600 font-mono text-base font-semibold tabular-nums'
     : muted
-    ? 'font-mono text-sm tabular-nums text-ink-500 dark:text-ink-400'
-    : 'font-mono text-base font-semibold tabular-nums text-ink-900 dark:text-ink-100';
+    ? 'font-mono text-sm tabular-nums text-ink-600'
+    : 'font-mono text-base font-semibold tabular-nums text-ink-900';
   return (
     <li className={
       total
-        ? 'flex items-baseline justify-between gap-3 border-t-2 border-ink-300 pt-3 dark:border-ink-600'
+        ? 'flex items-baseline justify-between gap-3 border-t-2 border-ink-300 pt-3'
         : 'flex items-baseline justify-between gap-3'
     }>
-      <span className={bold ? 'font-semibold text-ink-900 dark:text-ink-50' : muted ? 'text-xs text-ink-500 dark:text-ink-400' : 'text-ink-700 dark:text-ink-300'}>
+      <span className={bold ? 'font-semibold text-ink-900' : muted ? 'text-xs text-ink-600' : 'text-ink-700'}>
         {label}
       </span>
       <span className={valueClass}>{value}</span>

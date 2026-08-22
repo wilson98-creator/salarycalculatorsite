@@ -70,14 +70,14 @@ export default function ContactPage() {
       <article className="max-w-4xl">
         <header className="mb-10">
           <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Contact' }]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Contact SalaryCalc
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             The fastest way to reach us is email. We read every message and aim
             to respond within 1-2 business days.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">All emails read</span>
             <span className="kicker">24-hour error response</span>
             <span className="kicker">Security disclosure process</span>
@@ -85,21 +85,21 @@ export default function ContactPage() {
         </header>
 
         {/* Email card — the hero CTA */}
-        <section className="card not-prose mb-10 border-brand-200 bg-brand-50 dark:border-brand-800 dark:bg-brand-900/20">
-          <p className="text-sm font-semibold text-brand-700 dark:text-brand-300">Email us</p>
+        <section className="card not-prose mb-10 border-brand-200 bg-brand-50">
+          <p className="text-sm font-semibold text-brand-700">Email us</p>
           <a
             href={`mailto:${brand.contactEmail}`}
-            className="mt-2 inline-block font-mono text-2xl font-bold text-ink-900 underline-offset-4 hover:underline dark:text-ink-50 sm:text-3xl"
+            className="mt-2 inline-block font-mono text-2xl font-bold text-ink-900 underline-offset-4 hover:underline sm:text-3xl"
           >
             {brand.contactEmail}
           </a>
-          <p className="mt-3 text-sm text-ink-600 dark:text-ink-300">
+          <p className="mt-3 text-sm text-ink-600">
             We respond in Australian Eastern Time (AEST/AEDT).
           </p>
         </section>
 
         {/* What to contact us about */}
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>What to contact us about</h2>
           <p>
             The fastest way to get a useful response is to be specific. Here is
@@ -166,22 +166,22 @@ export default function ContactPage() {
         </section>
 
         <section aria-labelledby="contact-faq" className="mt-16 max-w-3xl">
-          <h2 id="contact-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="contact-faq" className="text-2xl font-bold text-ink-900">
             Common contact questions
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -191,7 +191,7 @@ export default function ContactPage() {
 
         {/* Trust cluster */}
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 className="text-2xl font-bold text-ink-900">
             More about SalaryCalc
           </h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -213,12 +213,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

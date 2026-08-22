@@ -14,14 +14,14 @@ const fys: ('2024-25' | '2025-26' | '2026-27')[] = ['2024-25', '2025-26', '2026-
 
 export default function TaxRatesPage() {
   return (
-    <article className="prose prose-slate dark:prose-invert max-w-3xl">
+    <article className="prose prose-slate prose-invert max-w-3xl">
       <h1>Australian tax rates</h1>
       <p>
         Current and historical tax brackets, Medicare levy thresholds, and
         HECS-HELP repayment rates. All figures sourced from the{' '}
         <a href={sources.atoHomepage} target="_blank" rel="noopener noreferrer">Australian Taxation Office</a>.
       </p>
-      <p className="text-sm text-ink-500">Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>.</p>
+      <p className="text-sm text-ink-600">Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>.</p>
 
       <h2>Resident income tax brackets</h2>
       {fys.map((fy) => (

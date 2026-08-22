@@ -110,16 +110,16 @@ export default function AboutPage() {
               { name: 'About' },
             ]}
           />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             About {brand.name}
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             SalaryCalc is a free Australian pay calculator built on ATO-sourced rates
             and a transparent methodology. We are a brand — not a personal platform —
             and we publish our source so any developer or tax professional can audit
             our numbers in under a minute.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time></span>
             <span className="kicker">Source code published</span>
             <span className="kicker">ATO-grounded</span>
@@ -129,7 +129,7 @@ export default function AboutPage() {
 
         {/* Quick facts — E-E-A-T compensation pattern */}
         <section aria-labelledby="quick-facts" className="card not-prose mb-12">
-          <h2 id="quick-facts" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="quick-facts" className="text-base font-semibold text-ink-900">
             SalaryCalc at a glance
           </h2>
           <dl className="mt-5 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
@@ -147,7 +147,7 @@ export default function AboutPage() {
         </section>
 
         {/* Why we built this */}
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>Why we built SalaryCalc</h2>
           <p>
             Most Australian pay calculators fall into one of three camps. There are
@@ -299,24 +299,24 @@ export default function AboutPage() {
         <section aria-labelledby="changelog" className="mt-16 max-w-3xl">
           <h2
             id="changelog"
-            className="text-2xl font-bold text-ink-900 dark:text-ink-50"
+            className="text-2xl font-bold text-ink-900"
           >
             What&apos;s changed recently
           </h2>
-          <p className="mt-2 text-sm text-ink-600 dark:text-ink-400">
+          <p className="mt-2 text-sm text-ink-600">
             A public changelog of every substantive update to the site. Most recent
             first.
           </p>
           <ol className="mt-6 space-y-6">
             {changeLog.map((c) => (
               <li key={c.date} className="border-l-2 border-brand-500 pl-4">
-                <p className="text-xs font-semibold uppercase tracking-wider text-brand-700 dark:text-brand-300">
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-700">
                   <time dateTime={c.date}>{c.date}</time>
                 </p>
-                <p className="mt-1 text-base font-semibold text-ink-900 dark:text-ink-50">
+                <p className="mt-1 text-base font-semibold text-ink-900">
                   {c.title}
                 </p>
-                <p className="mt-1 text-sm text-ink-600 dark:text-ink-300">
+                <p className="mt-1 text-sm text-ink-600">
                   {c.detail}
                 </p>
               </li>
@@ -328,23 +328,23 @@ export default function AboutPage() {
         <section aria-labelledby="about-faq" className="mt-16 max-w-3xl">
           <h2
             id="about-faq"
-            className="text-2xl font-bold text-ink-900 dark:text-ink-50"
+            className="text-2xl font-bold text-ink-900"
           >
             Common questions about SalaryCalc
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -356,11 +356,11 @@ export default function AboutPage() {
         <section aria-labelledby="trust-links" className="mt-16 max-w-3xl">
           <h2
             id="trust-links"
-            className="text-2xl font-bold text-ink-900 dark:text-ink-50"
+            className="text-2xl font-bold text-ink-900"
           >
             Trust, methodology, and how to reach us
           </h2>
-          <p className="mt-3 text-base text-ink-600 dark:text-ink-400">
+          <p className="mt-3 text-base text-ink-600">
             These pages document the math, the legal terms, and the people behind
             SalaryCalc. Read them if you want to verify a number, understand the
             limits of the calculator, or get in touch.
@@ -378,11 +378,11 @@ export default function AboutPage() {
         </section>
 
         {/* Final CTA */}
-        <section className="mt-16 max-w-3xl dark:bg-brand-900/20">
-          <h2 className="text-xl font-bold text-ink-900 dark:text-ink-50">
+        <section className="mt-16 max-w-3xl">
+          <h2 className="text-xl font-bold text-ink-900">
             Ready to calculate?
           </h2>
-          <p className="mt-2 text-sm text-ink-700 dark:text-ink-300">
+          <p className="mt-2 text-sm text-ink-700">
             Try the pay calculator — see your take-home pay for FY 2026-27 with
             HECS, salary sacrifice, and all pay periods supported.
           </p>
@@ -401,10 +401,10 @@ export default function AboutPage() {
 function Fact({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">
+      <dt className="text-xs font-semibold uppercase tracking-wider text-ink-600">
         {label}
       </dt>
-      <dd className="mt-1 text-sm text-ink-900 dark:text-ink-100">{value}</dd>
+      <dd className="mt-1 text-sm text-ink-900">{value}</dd>
     </div>
   );
 }
@@ -414,12 +414,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

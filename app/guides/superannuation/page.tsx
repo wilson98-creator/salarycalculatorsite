@@ -92,10 +92,10 @@ export default function SuperGuide() {
             { name: 'Guides', href: '/guides' },
             { name: 'Superannuation' },
           ]} />
-          <h1 className="h-display mt-6 text-ink-900 dark:text-ink-50">
+          <h1 className="h-display mt-6 text-ink-900">
             Superannuation basics for employees
           </h1>
-          <p className="mt-4 max-w-3xl text-base text-ink-600 dark:text-ink-400 sm:text-lg">
+          <p className="mt-4 max-w-3xl text-base text-ink-600 sm:text-lg">
             Superannuation is Australia&apos;s mandatory private retirement
             savings system. Your employer pays at least 12% of your salary
             into a super fund on your behalf, the money is invested, and
@@ -103,7 +103,7 @@ export default function SuperGuide() {
             covers how the system works and the four levers that have the
             biggest impact on your retirement outcome.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600 dark:text-ink-400">
+          <div className="mt-5 flex flex-wrap items-center gap-2 text-xs text-ink-600">
             <span className="kicker">
               Last reviewed <time dateTime={brand.lastReviewed}>{brand.lastReviewed}</time>
             </span>
@@ -115,45 +115,45 @@ export default function SuperGuide() {
 
         {/* TL;DR — the four levers */}
         <section aria-labelledby="super-tldr" className="card not-prose mb-10">
-          <h2 id="super-tldr" className="text-base font-semibold text-ink-900 dark:text-ink-50">
+          <h2 id="super-tldr" className="text-base font-semibold text-ink-900">
             The 60-second version — the four levers
           </h2>
-          <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
+          <p className="mt-1 text-sm text-ink-600">
             Your retirement outcome is driven by these four factors, in this order of impact.
           </p>
           <ol className="mt-5 space-y-3 text-sm">
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">1.</span>
+              <span className="font-mono font-semibold text-brand-600">1.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">Time in the market</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">Time in the market</p>
+                <p className="text-ink-700">
                   The single biggest driver. Starting at 25 vs 35 can mean a 2-3x difference in final balance. Compound growth over decades.
                 </p>
               </div>
             </li>
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">2.</span>
+              <span className="font-mono font-semibold text-brand-600">2.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">How much goes in</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">How much goes in</p>
+                <p className="text-ink-700">
                   SG (12% from your employer) + any salary sacrifice + any after-tax contributions. Concessional cap: $30,000/year.
                 </p>
               </div>
             </li>
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">3.</span>
+              <span className="font-mono font-semibold text-brand-600">3.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">Investment return</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">Investment return</p>
+                <p className="text-ink-700">
                   Diversified growth options have historically returned 7-9% per year over 20+ year periods, with significant short-term volatility.
                 </p>
               </div>
             </li>
             <li className="flex gap-3">
-              <span className="font-mono font-semibold text-brand-600 dark:text-brand-400">4.</span>
+              <span className="font-mono font-semibold text-brand-600">4.</span>
               <div>
-                <p className="font-semibold text-ink-900 dark:text-ink-50">Fees</p>
-                <p className="text-ink-700 dark:text-ink-300">
+                <p className="font-semibold text-ink-900">Fees</p>
+                <p className="text-ink-700">
                   A 1% difference in annual fees on $500,000 over 20 years is around $150,000 in returns foregone. Compare fund fees carefully.
                 </p>
               </div>
@@ -161,7 +161,7 @@ export default function SuperGuide() {
           </ol>
         </section>
 
-        <section className="prose prose-slate dark:prose-invert max-w-3xl">
+        <section className="prose prose-slate prose-invert max-w-3xl">
           <h2>1. The Superannuation Guarantee</h2>
           <p>
             The Superannuation Guarantee (SG) is the minimum amount your
@@ -360,22 +360,22 @@ export default function SuperGuide() {
         </section>
 
         <section aria-labelledby="super-faq" className="mt-16 max-w-3xl">
-          <h2 id="super-faq" className="text-2xl font-bold text-ink-900 dark:text-ink-50">
+          <h2 id="super-faq" className="text-2xl font-bold text-ink-900">
             Common questions about superannuation
           </h2>
           <div className="mt-5 space-y-3">
             {faqs.map((q) => (
               <details key={q.question} className="card group">
-                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900 dark:text-ink-50">
+                <summary className="cursor-pointer list-none text-base font-semibold text-ink-900">
                   <span
                     aria-hidden="true"
-                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition dark:text-brand-300"
+                    className="mr-2 text-brand-500 group-open:rotate-90 inline-block transition"
                   >
                     ›
                   </span>
                   {q.question}
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+                <p className="mt-3 text-sm leading-relaxed text-ink-600">
                   {q.answer}
                 </p>
               </details>
@@ -384,7 +384,7 @@ export default function SuperGuide() {
         </section>
 
         <section className="mt-16 max-w-3xl">
-          <h2 className="text-2xl font-bold text-ink-900 dark:text-ink-50">Related guides and tools</h2>
+          <h2 className="text-2xl font-bold text-ink-900">Related guides and tools</h2>
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
             <TrustLink href="/salary-sacrifice-calculator" title="Salary sacrifice calculator" detail="See how sacrifice changes your take-home and super." />
             <TrustLink href="/" title="Pay calculator" detail="Live take-home pay with super guarantee shown separately." />
@@ -404,12 +404,12 @@ function TrustLink({ href, title, detail }: { href: string; title: string; detai
     <li>
       <Link
         href={href}
-        className="block transition hover:border-brand-300 dark:border-ink-800 dark:bg-ink-900 dark:hover:border-brand-700"
+        className="block transition hover:border-brand-300"
       >
-        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700 dark:text-ink-100 dark:hover:text-brand-300">
+        <p className="text-sm font-semibold text-ink-900 hover:text-brand-700">
           {title} →
         </p>
-        <p className="mt-1 text-xs text-ink-500 dark:text-ink-400">{detail}</p>
+        <p className="mt-1 text-xs text-ink-600">{detail}</p>
       </Link>
     </li>
   );

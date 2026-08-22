@@ -26,7 +26,7 @@ export function Header() {
           className="font-sans text-xl font-extrabold tracking-tight text-ink-800 hover:text-ledger-500 sm:text-2xl"
           aria-label={`${brand.name} home`}
         >
-          {brand.name}<span className="ml-1 font-mono text-[11px] font-normal tracking-[0.2em] text-ink-500">.au</span>
+          {brand.name}<span className="ml-1 font-mono text-[11px] font-normal tracking-[0.2em] text-ink-600">.au</span>
         </Link>
 
         {/* Right cluster — top nav (theme toggle removed: dark mode is permanent) */}
