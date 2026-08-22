@@ -122,53 +122,107 @@ export default function HomePage() {
               .
             </p>
 
-            <ol className="mt-12 space-y-8">
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 01</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Start with gross pay. <span className="font-mono text-ink-600">$85,000.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 02</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Subtract pre-tax salary sacrifice. <span className="font-mono text-ink-600">$0.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 03</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Taxable income. <span className="font-mono text-ink-600">$85,000.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 04</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Income tax (bracket method). 0% to $18,200 + 15% to $45,000 + 30% to $85,000. <span className="font-mono text-ink-600">$16,020.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 05</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Less LITO (phased out above $66,667). <span className="font-mono text-ink-600">$0.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 06</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  Medicare levy (2%). <span className="font-mono text-ink-600">$1,700.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Step 07</p>
-                <p className="mt-2 text-base text-ink-900 sm:text-lg">
-                  HECS-HELP repayment (not enabled). <span className="font-mono text-ink-600">$0.00</span>
-                </p>
-              </li>
-              <li>
-                <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">Result</p>
-                <p className="result-figure mt-2">$67,280</p>
-                <p className="kicker mt-3">net take-home per year</p>
+            <ol className="mt-10 border-t border-ink-300">
+              {[
+                {
+                  n: '01',
+                  label: 'Start with gross pay',
+                  detail: null,
+                  value: '$85,000.00',
+                  variant: 'neutral',
+                },
+                {
+                  n: '02',
+                  label: 'Subtract pre-tax salary sacrifice',
+                  detail: null,
+                  value: '$0.00',
+                  variant: 'neutral',
+                },
+                {
+                  n: '03',
+                  label: 'Taxable income',
+                  detail: null,
+                  value: '$85,000.00',
+                  variant: 'neutral',
+                },
+                {
+                  n: '04',
+                  label: 'Income tax (bracket method)',
+                  detail: '0% to $18,200 · 15% to $45,000 · 30% to $85,000',
+                  value: '$16,020.00',
+                  variant: 'deduction',
+                },
+                {
+                  n: '05',
+                  label: 'Less LITO',
+                  detail: 'Phased out above $66,667',
+                  value: '$0.00',
+                  variant: 'neutral',
+                },
+                {
+                  n: '06',
+                  label: 'Medicare levy',
+                  detail: '2% of taxable income',
+                  value: '$1,700.00',
+                  variant: 'deduction',
+                },
+                {
+                  n: '07',
+                  label: 'HECS-HELP repayment',
+                  detail: 'Not enabled',
+                  value: '$0.00',
+                  variant: 'neutral',
+                },
+              ].map((step) => (
+                <li key={step.n} className="border-b border-ink-300 py-4 sm:py-5">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                    <div className="flex items-start gap-4 sm:items-center">
+                      <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-ink-300 bg-ink-100 font-mono text-xs font-semibold tabular-nums text-ink-700">
+                        {step.n}
+                      </span>
+                      <div>
+                        <p className="text-base font-semibold text-ink-800 sm:text-lg">
+                          {step.label}
+                        </p>
+                        {step.detail && (
+                          <p className="mt-0.5 font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">
+                            {step.detail}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <span
+                      className={
+                        step.variant === 'deduction'
+                          ? 'result-value result-value-deduction self-start sm:self-auto'
+                          : 'result-value self-start sm:self-auto'
+                      }
+                    >
+                      {step.value}
+                    </span>
+                  </div>
+                </li>
+              ))}
+              <li className="py-6 sm:py-8">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+                  <div className="flex items-start gap-4 sm:items-center">
+                    <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-ledger-500 bg-ledger-500 font-mono text-sm font-bold tabular-nums text-ink-900">
+                      ✓
+                    </span>
+                    <div>
+                      <p className="kicker">Result</p>
+                      <p className="mt-1 text-lg font-semibold text-ink-800 sm:text-xl">
+                        Net take-home per year
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-left sm:text-right">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-ink-600">
+                      Annual net
+                    </p>
+                    <p className="result-figure mt-1">$67,280</p>
+                  </div>
+                </div>
               </li>
             </ol>
           </div>
