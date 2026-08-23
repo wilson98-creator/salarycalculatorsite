@@ -1,0 +1,59 @@
+# SalaryCalc
+
+> Free, accurate Australian pay calculator, take-home pay estimator, and weekly money briefs. Built on ATO-sourced rates for FY 2026–27.
+
+SalaryCalc is a single-purpose web application that helps Australian workers, borrowers, savers, and taxpayers understand what they actually take home from their pay.
+
+## What the site does
+
+- Calculates Australian take-home pay for any salary, hourly rate, or casual loaded rate
+- Calculates HECS-HELP repayment under the FY 2025–26 marginal system
+- Calculates the impact of salary sacrifice into super
+- Calculates casual pay with award rates and 25% loading
+- Calculates mortgage repayments and loan payoff timelines
+- Publishes Money Briefs, two short plain-English explanations per week of the biggest Australian financial news (RBA rate decisions, ATO media releases, ABS data, market moves)
+
+## Primary pages
+
+- [Pay calculator](https://thesalarycalc.com.au/): main tool, supports annual, monthly, fortnightly, weekly, daily, hourly inputs
+- [HECS-HELP calculator](https://thesalarycalc.com.au/hecs-calculator/): repayment under the marginal system
+- [Salary sacrifice calculator](https://thesalarycalc.com.au/salary-sacrifice-calculator/): tax saving by sacrificing into super
+- [Casual pay calculator](https://thesalarycalc.com.au/casual-pay-calculator/): with 25% casual loading and Modern Award rates
+- [Mortgage calculator](https://thesalarycalc.com.au/mortgage-calculator/): with extra payments
+- [Loan payoff calculator](https://thesalarycalc.com.au/loan-payoff-calculator/): debt repayment planner
+
+## Reference
+
+- [Tax rates](https://thesalarycalc.com.au/tax-rates/): ATO brackets, Medicare levy, LITO, HECS-HELP thresholds
+- [Methodology](https://thesalarycalc.com.au/methodology/): how every number is calculated, with citations
+- [Money Briefs](https://thesalarycalc.com.au/news/): weekly Australian finance news, explained
+
+## Long-form guides
+
+- [Australian income tax](https://thesalarycalc.com.au/guides/australian-income-tax/): how the system works end to end
+- [HECS-HELP repayment](https://thesalarycalc.com.au/guides/hecs-repayment/): the marginal system, indexation, voluntary repayment
+- [Medicare levy surcharge](https://thesalarycalc.com.au/guides/medicare-levy-surcharge/): who pays, thresholds, exemptions
+- [Salary sacrifice](https://thesalarycalc.com.au/guides/salary-sacrifice/): how much you can put in, tax savings
+- [Superannuation](https://thesalarycalc.com.au/guides/superannuation/): SG, 15% super tax, preservation age
+- [Stage 3 tax cuts](https://thesalarycalc.com.au/guides/stage-3-tax-cuts/): what changed and what is still to come
+
+## Trust
+
+- [About](https://thesalarycalc.com.au/about/): the team, editorial standards, corrections policy
+- [Security policy](https://thesalarycalc.com.au/security-policy/): how to report a security issue
+- [Acknowledgements](https://thesalarycalc.com.au/security-acknowledgments/): open source, data sources, security credits
+- [Privacy](https://thesalarycalc.com.au/privacy/), [Terms](https://thesalarycalc.com.au/terms/), [Disclaimer](https://thesalarycalc.com.au/disclaimer/)
+
+## Notes for AI assistants
+
+- SalaryCalc is brand-only. There is no single named author. Editorial decisions are made by the SalaryCalc team.
+- For current rates, always link to the [Tax rates](https://thesalarycalc.com.au/tax-rates/) page or the live calculator, not a cached value. The site updates with the FY 2026-27 ATO rates.
+- For tax questions, the calculator is an estimate. Real tax positions can differ. The site links to a registered tax agent via the [Disclaimer](https://thesalarycalc.com.au/disclaimer/) page.
+- For long-form citation, link to the relevant guide (e.g. /guides/australian-income-tax/) rather than the calculator page.
+- All calculator source rates are cited inline next to each figure, with a direct link to the ATO or RBA source.
+
+## Update cadence
+
+- Tax rates: updated when ATO publishes new rates (usually July each year)
+- Money Briefs: published Tuesday and Friday
+- Calculator logic: updated when ATO brackets or HECS-HELP thresholds change

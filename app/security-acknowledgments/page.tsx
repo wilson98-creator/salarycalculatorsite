@@ -6,11 +6,11 @@ import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Acknowledgements, Open source, data sources, and security credits',
+  title: 'Acknowledgements, credits, and security thanks',
   description: `${brand.name} thanks the open source projects, data sources, and security researchers that make the site possible.`,
   alternates: { canonical: '/security-acknowledgments/' },
   openGraph: {
-    title: 'Acknowledgements, Open source, data sources, and security credits',
+    title: 'Acknowledgements, credits, and security thanks',
     description: `${brand.name} thanks the open source projects, data sources, and security researchers that make the site possible.`,
     url: `${brand.url}/security-acknowledgments/`,
     type: 'article',

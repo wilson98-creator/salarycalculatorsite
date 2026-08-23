@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Contact SalaryCalc, report an error or suggest a feature',
+  title: 'Contact SalaryCalc',
   description:
     'How to get in touch with the SalaryCalc team. We respond to all emails within 1-2 business days. Found a wrong number? We will investigate within 24 hours.',
   alternates: { canonical: '/contact' },

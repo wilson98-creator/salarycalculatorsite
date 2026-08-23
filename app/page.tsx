@@ -14,7 +14,7 @@ import { sources } from '@/lib/tax/sources';
 import { getLatestNews } from '@/lib/news/loader';
 
 export const metadata: Metadata = {
-  title: 'Australian Pay Calculator (FY 2026–27), Take-Home Pay After Tax',
+  title: 'Australian Pay Calculator (FY 2026–27)',
   description:
     'Free, accurate Australian pay calculator, also covers wage, salary, paycheck, annual income, hourly wage, payroll, salary comparison and holiday entitlement. FY 2026–27 ATO rates.',
   alternates: { canonical: '/' },

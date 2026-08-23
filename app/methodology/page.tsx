@@ -7,7 +7,7 @@ import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Sche
 import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
-  title: 'Methodology, how SalaryCalc calculates Australian take-home pay',
+  title: 'Methodology, how SalaryCalc calculates your pay',
   description:
     'Line-by-line explanation of how SalaryCalc calculates Australian take-home pay, with source links to the ATO for every rate and threshold. FY 2026-27 brackets fully cited.',
   alternates: { canonical: '/methodology' },

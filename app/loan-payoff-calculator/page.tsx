@@ -7,7 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
-  title: 'Loan Payoff Calculator (Australia), Debt Repayment Planner',
+  title: 'Loan Payoff Calculator Australia',
   description:
     'Free Australian loan payoff calculator. See when your loan will be paid off, how much interest you’ll pay, and the savings from extra repayments. Models credit cards, personal loans, and a one-off lump sum (e.g. redundancy).',
   alternates: { canonical: '/loan-payoff-calculator' },

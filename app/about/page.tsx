@@ -6,7 +6,7 @@ import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
-  title: 'About SalaryCalc, Australian pay calculator, methodology, and editorial standards',
+  title: 'About SalaryCalc, Australian pay calculator',
   description:
     'SalaryCalc is a free Australian pay calculator built on ATO-sourced rates. Learn how we keep our numbers honest, our editorial standards, the team behind the site, and how to report an error.',
   alternates: { canonical: '/about' },

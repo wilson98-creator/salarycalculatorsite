@@ -7,11 +7,11 @@ import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
 export const metadata: Metadata = {
-  title: 'Money Briefs, Australian financial news, explained',
+  title: 'Money Briefs, Australian finance explained',
   description: `Weekly money briefs from ${brand.name}. The week's biggest Australian financial news, interest rates, tax, super, wages, property, explained in plain English. Updated Tuesdays and Fridays.`,
   alternates: { canonical: '/news/' },
   openGraph: {
-    title: 'Money Briefs, Australian financial news, explained',
+    title: 'Money Briefs, Australian finance explained',
     description: 'Weekly money briefs from SalaryCalc. The biggest Australian financial news, explained in plain English.',
     url: `${brand.url}/news/`,
     type: 'website',

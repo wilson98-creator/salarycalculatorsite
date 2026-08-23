@@ -7,7 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
-  title: 'Mortgage Calculator With Extra Payments (Australia)',
+  title: 'Mortgage Calculator with Extra Payments (AU)',
   description:
     'Free Australian mortgage calculator with extra payments. See your monthly repayment, total interest, and how much time and money you save by paying extra. Default rate updated for FY 2026–27.',
   alternates: { canonical: '/mortgage-calculator' },

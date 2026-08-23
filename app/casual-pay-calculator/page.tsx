@@ -7,7 +7,7 @@ import { Breadcrumb } from '@/components/Breadcrumb';
 import { NewsletterForm } from '@/components/NewsletterForm';
 
 export const metadata: Metadata = {
-  title: 'Casual Pay Calculator Australia (FY 2026–27), With Loading & Tax',
+  title: 'Casual Pay Calculator Australia (FY 2026–27)',
   description:
     'Free Australian casual pay calculator. Enter your hourly rate, casual loading, and hours, see the loaded rate, weekly/fortnightly/annual pay, tax, HECS, and super.',
   alternates: { canonical: '/casual-pay-calculator' },
