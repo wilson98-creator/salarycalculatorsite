@@ -162,6 +162,7 @@ export default function SalarySacrificeCalculatorPage() {
             <li><Link href="/">Pay calculator</Link>, your baseline take-home, before sacrifice.</li>
             <li><Link href="/hecs-calculator">HECS-HELP calculator</Link>, sacrifice lowers your repayment income, which can drop you into a lower HECS band.</li>
             <li><Link href="/guides/salary-sacrifice">Salary sacrifice guide</Link>, the long-form explainer with the worked numbers.</li>
+            <li><Link href="/salary-packaging-calculator">Salary packaging calculator</Link>, broader packaging including novated lease cars and other pre-tax benefits.</li>
             <li><Link href="/methodology">Methodology</Link>, how every figure is derived.</li>
           </ul>
         </section>

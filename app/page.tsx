@@ -55,6 +55,7 @@ const calculators = [
   { href: '/casual-pay-calculator', title: 'Casual pay calculator', blurb: 'Loaded rate + tax + HECS for casuals on Modern Awards.' },
   { href: '/mortgage-calculator', title: 'Mortgage calculator', blurb: 'Repayments, total interest, and savings from extra payments.' },
   { href: '/loan-payoff-calculator', title: 'Loan payoff calculator', blurb: 'Pay off credit cards and personal loans faster.' },
+  { href: '/salary-packaging-calculator', title: 'Salary packaging calculator', blurb: 'Novated lease cars, extra super, and other pre-tax benefits.' },
 ];
 
 export default function HomePage() {

@@ -26,6 +26,7 @@ export function Footer() {
             <li><Link href="/casual-pay-calculator" className="hover:text-white">Casual pay</Link></li>
             <li><Link href="/mortgage-calculator" className="hover:text-white">Mortgage</Link></li>
             <li><Link href="/loan-payoff-calculator" className="hover:text-white">Loan payoff</Link></li>
+            <li><Link href="/salary-packaging-calculator" className="hover:text-white">Salary packaging</Link></li>
           </ul>
         </div>
         <div>

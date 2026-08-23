@@ -26,6 +26,7 @@ const sections: Section[] = [
       { href: '/casual-pay-calculator', label: 'Casual pay' },
       { href: '/mortgage-calculator', label: 'Mortgage' },
       { href: '/loan-payoff-calculator', label: 'Loan payoff' },
+      { href: '/salary-packaging-calculator', label: 'Salary packaging' },
     ],
   },
   {
@@ -48,6 +49,8 @@ const sections: Section[] = [
       { href: '/guides/salary-sacrifice', label: 'Salary sacrifice' },
       { href: '/guides/superannuation', label: 'Superannuation' },
       { href: '/guides/stage-3-tax-cuts', label: 'Stage 3 cuts' },
+      { href: '/guides/how-to-read-your-payslip', label: 'Read your payslip' },
+      { href: '/guides/tax-brackets-history', label: 'Tax brackets history' },
     ],
   },
 ];

@@ -69,6 +69,20 @@ const guides = [
     readTime: '5 min read',
     keywords: ['stage 3 tax cuts', 'cost of living tax cuts', 'australian tax brackets'],
   },
+  {
+    slug: 'how-to-read-your-payslip',
+    title: 'How to read your Australian payslip',
+    blurb: 'Every line on a standard Australian payslip explained: gross, ordinary time earnings, pre-tax deductions, PAYG, Medicare, HECS, super, net. With a sample annotated payslip.',
+    readTime: '8 min read',
+    keywords: ['australian payslip', 'payslip explained', 'payg withholding', 'ordinary time earnings'],
+  },
+  {
+    slug: 'tax-brackets-history',
+    title: 'Australian tax brackets history, every change since 2000',
+    blurb: 'Every federal tax bracket change from Howard to Albanese, the Stage 1, 2, 3 tax cuts explained, and the bracket creep story behind why median workers pay more than they used to.',
+    readTime: '10 min read',
+    keywords: ['australian tax brackets history', 'stage 3 tax cuts', 'bracket creep', 'howard tax cuts'],
+  },
 ];
 
 const faqs = [
