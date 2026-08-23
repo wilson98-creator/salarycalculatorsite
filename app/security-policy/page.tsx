@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function SecurityPolicyPage() {
   const updated = '2026-08-23';
-  const contactEmail = 'security@thesalarycalc.com.au';
+  const contactEmail = 'hello@thesalarycalc.com.au';
 
   return (
     <>
