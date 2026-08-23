@@ -122,7 +122,13 @@ export function articleSchema(opts: {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  /** Optional per-page image URL. Falls back to the brand logo. */
+  image?: string;
 }) {
+  // Google requires an `image` array for Article rich results. The image
+  // should be at least 1200px wide for max-display. We default to the
+  // brand logo; pages with a hero image should pass their own.
+  const imageUrl = opts.image ?? `${brand.url}/icons/salarycalc-logo.png`;
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -130,10 +136,15 @@ export function articleSchema(opts: {
     description: opts.description,
     mainEntityOfPage: { '@type': 'WebPage', '@id': opts.url },
     url: opts.url,
+    image: [imageUrl],
     author: { '@id': `${brand.url}/#organization` },
     publisher: {
       '@id': `${brand.url}/#organization`,
       name: brand.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${brand.url}/icons/salarycalc-logo.png`,
+      },
     },
     datePublished: opts.datePublished ?? '2025-01-01',
     dateModified: opts.dateModified ?? brand.lastReviewed,
