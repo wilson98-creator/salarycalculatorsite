@@ -1,7 +1,13 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { hecsBands, hecsRepayment, projectPayoff } from '@/lib/tax/hecs';
+import {
+  hecsBands,
+  hecsRepayment,
+  paycalculatorHecsBands,
+  projectPayoff,
+  type HecsBand,
+} from '@/lib/tax/hecs';
 import type { FinancialYear } from '@/lib/tax/brackets';
 import { formatAUD } from '@/lib/tax/calculate';
 import { LineChart } from '@/components/LineChart';
@@ -15,17 +21,54 @@ const fyOptions: { value: FinancialYear; label: string }[] = [
 
 const PROJECTION_MAX_YEARS = 70;
 
+type HecsSchedule = 'ato-new' | 'paycalculator';
+
+const scheduleOptions: { value: HecsSchedule; label: string; description: string }[] = [
+  {
+    value: 'ato-new',
+    label: 'Current ATO system (FY 2025-26+ marginal)',
+    description: 'Marginal brackets, 1% to 10%. What the ATO actually charges from 1 July 2025.',
+  },
+  {
+    value: 'paycalculator',
+    label: 'Reference: paycalculator.com.au (simplified)',
+    description: '4-bracket simplified version: 0% / 15% / 17% / 10%. Not the actual ATO schedule — kept for comparison.',
+  },
+];
+
+/** Compute HECS repayment against a custom band set (marginal method). */
+function repaymentWithBands(income: number, bands: HecsBand[]): number {
+  if (income <= bands[1]?.threshold) return 0;
+  let total = 0;
+  for (let i = 1; i < bands.length; i++) {
+    const lower = bands[i].threshold;
+    const upper = bands[i + 1]?.threshold ?? Infinity;
+    if (income <= lower) break;
+    const slice = Math.min(income, upper) - lower;
+    if (slice > 0) total += slice * bands[i].rate;
+  }
+  return total;
+}
+
 export function HecsCalculator() {
   const [income, setIncome] = useState<number>(85000);
   const [fy, setFy] = useState<FinancialYear>('2025-26');
   const [debtBalance, setDebtBalance] = useState<number>(35000);
   const [indexation, setIndexation] = useState<number>(3.5);
   const [wageGrowth, setWageGrowth] = useState<number>(3.5);
+  const [schedule, setSchedule] = useState<HecsSchedule>('ato-new');
 
-  const bands = hecsBands[fy] ?? hecsBands['2025-26'];
+  // Pick the band set and repayment function based on the schedule toggle.
+  const usingPaycalculator = schedule === 'paycalculator';
+  const bands = usingPaycalculator
+    ? paycalculatorHecsBands
+    : (hecsBands[fy] ?? hecsBands['2025-26']);
   const firstThreshold = bands[1]?.threshold ?? 54435;
   const belowThreshold = income <= firstThreshold;
-  const repayment = useMemo(() => hecsRepayment(income, fy), [income, fy]);
+  const repayment = useMemo(
+    () => (usingPaycalculator ? repaymentWithBands(income, bands) : hecsRepayment(income, fy)),
+    [income, fy, usingPaycalculator, bands],
+  );
   const projection = useMemo(
     () => projectPayoff(debtBalance, income, fy, indexation / 100, {
       maxYears: PROJECTION_MAX_YEARS,
@@ -83,12 +126,15 @@ export function HecsCalculator() {
     const targetRepayment = debtBalance * (indexation / 100);
     // Find the lowest income where HECS >= targetRepayment.
     for (let testIncome = firstThreshold; testIncome <= 300000; testIncome += 100) {
-      if (hecsRepayment(testIncome, fy) >= targetRepayment) {
+      const testRepayment = usingPaycalculator
+        ? repaymentWithBands(testIncome, bands)
+        : hecsRepayment(testIncome, fy);
+      if (testRepayment >= targetRepayment) {
         return testIncome;
       }
     }
     return null;
-  }, [debtBalance, indexation, fy, firstThreshold]);
+  }, [debtBalance, indexation, fy, firstThreshold, usingPaycalculator, bands]);
 
   // At the current wage growth rate, when does income cross the tipping point?
   const yearsToTippingPoint = useMemo(() => {
@@ -142,6 +188,24 @@ export function HecsCalculator() {
             </select>
             <p className="help">From FY 2025–26 the system is marginal (similar to income tax).</p>
           </div>
+        </div>
+
+        <div className="mt-2 rounded-lg border border-ink-200 bg-ink-50 p-3">
+          <label htmlFor="hecs-schedule" className="label flex items-baseline gap-2">
+            HECS schedule
+            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-500">Compare</span>
+          </label>
+          <select
+            id="hecs-schedule"
+            className="input"
+            value={schedule}
+            onChange={(e) => setSchedule(e.target.value as HecsSchedule)}
+          >
+            {scheduleOptions.map((o) => (
+              <option key={o.value} value={o.value}>{o.label}</option>
+            ))}
+          </select>
+          <p className="help">{scheduleOptions.find((o) => o.value === schedule)?.description}</p>
         </div>
 
         <details className="rounded-xl border border-ink-200 bg-ink-50/40">
@@ -227,6 +291,16 @@ export function HecsCalculator() {
         </div>
 
         {/* PROMINENT: Danger zone warning — when HECS < indexation */}
+        {usingPaycalculator && (
+          <div className="mt-6 rounded-lg border-2 border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-200">
+            <p className="font-semibold text-base">⚠ Showing the paycalculator.com.au simplified schedule.</p>
+            <p className="mt-1">
+              This is a 4-bracket simplified version, not what the ATO actually charges. The ATO uses a
+              15-bracket marginal schedule from 1 July 2025 (marginal brackets 1% to 10%). Switch the
+              schedule dropdown to &lsquo;Current ATO system&rsquo; to see the official numbers.
+            </p>
+          </div>
+        )}
         {isDangerZone && debtBalance > 0 && (
           <div className="mt-6 rounded-lg border-2 border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-200">
             <p className="font-semibold text-base">⚠ At your current income, HECS doesn&apos;t cover indexation — but this is usually temporary.</p>

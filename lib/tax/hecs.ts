@@ -17,6 +17,25 @@ export interface HecsBand {
   rate: number;
 }
 
+/**
+ * Simplified 4-bracket "reference" schedule used by paycalculator.com.au.
+ * This is NOT the ATO's actual schedule. The ATO has used a marginal
+ * 15-bracket schedule since FY 2018-19 (and a new marginal schedule from
+ * FY 2025-26). This simplified version applies a single rate to income
+ * above each threshold:
+ *   - $0 - $69,528: 0%
+ *   - $69,528 - $129,716: 15% on income above $69,528
+ *   - $129,717 - $186,049: 17% on income above $129,717
+ *   - Over $186,050: 10% on income above $186,050
+ * Provided for comparison with that site only.
+ */
+export const paycalculatorHecsBands: HecsBand[] = [
+  { threshold: 0, rate: 0 },
+  { threshold: 69528, rate: 0.15 },
+  { threshold: 129717, rate: 0.17 },
+  { threshold: 186050, rate: 0.10 },
+];
+
 export const hecsBands: Record<string, HecsBand[]> = {
   // 2024-25: lower threshold ~$51,550. Source: ato.gov.au.
   '2024-25': [
