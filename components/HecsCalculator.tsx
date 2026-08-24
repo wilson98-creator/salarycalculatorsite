@@ -54,7 +54,7 @@ export function HecsCalculator() {
   const [income, setIncome] = useState<number>(85000);
   const [fy, setFy] = useState<FinancialYear>('2025-26');
   const [debtBalance, setDebtBalance] = useState<number>(35000);
-  const [indexation, setIndexation] = useState<number>(3.5);
+  const [indexation, setIndexation] = useState<number>(2.8);
   const [wageGrowth, setWageGrowth] = useState<number>(3.5);
   const [schedule, setSchedule] = useState<HecsSchedule>('ato-new');
 
@@ -244,7 +244,7 @@ export function HecsCalculator() {
                 />
                 <span className="inline-flex items-center rounded-r-lg border border-l-0 border-ink-200 bg-ink-50 px-3 text-ink-600">%</span>
               </div>
-              <p className="help">WPI-capped since 2024. Recent years: 7.1% (2023), 4.7% (2024), 3.2% (2025).</p>
+              <p className="help">WPI-capped since 2024. Recent years: 7.1% (2023), 4.7% (2024), 3.2% (2025), 2.8% (2026). Default is 2.8% (FY 2026-27 ATO rate).</p>
             </div>
             <div>
               <label htmlFor="hecs-wage-growth" className="label">Annual wage growth (% p.a.)</label>
