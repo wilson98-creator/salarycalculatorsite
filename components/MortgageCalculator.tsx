@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { amortize, formatYearsMonths, formatAUD, formatAUD0 } from '@/lib/tax/amortize';
+import { LineChart } from '@/components/LineChart';
 
 export function MortgageCalculator() {
   const [principal, setPrincipal] = useState<number>(650000);
@@ -151,7 +152,48 @@ export function MortgageCalculator() {
             </div>
           </>
         )}
+
+        {/* Amortisation chart */}
+        <div className="mt-8">
+          <h4 className="mb-3 text-sm font-semibold text-ink-900">Loan balance over time</h4>
+          <LineChart
+            series={[
+              {
+                name: 'Minimum payments only',
+                color: 'var(--brand-500)',
+                points: yearlyClosingBalances(base.schedule, principal),
+              },
+              ...(extraMonthly > 0
+                ? [
+                    {
+                      name: `With +${formatAUD(extraMonthly)}/month`,
+                      color: 'var(--ledger-500)',
+                      points: yearlyClosingBalances(withExtra.schedule, principal),
+                    },
+                  ]
+                : []),
+            ]}
+            xLabel="Year"
+            yLabel="Balance"
+            xFormat={(v) => `Y${v}`}
+            caption="Each line shows the remaining loan balance at the end of each year. The extra-payment line drops faster and reaches zero sooner."
+          />
+        </div>
       </div>
     </section>
   );
+}
+
+/** Sample a monthly amortization schedule to one point per year, plus the starting point. */
+function yearlyClosingBalances(
+  schedule: ReturnType<typeof amortize>['schedule'],
+  startBalance: number,
+): Array<{ x: number; y: number }> {
+  const points = [{ x: 0, y: startBalance }];
+  for (let year = 1; year <= Math.ceil(schedule.length / 12); year++) {
+    const lastMonthOfYear = schedule[Math.min(year * 12, schedule.length) - 1];
+    if (lastMonthOfYear) points.push({ x: year, y: lastMonthOfYear.closingBalance });
+    else break;
+  }
+  return points;
 }

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { amortize, formatYearsMonths, formatAUD, formatAUD0 } from '@/lib/tax/amortize';
+import { LineChart } from '@/components/LineChart';
 
 export function LoanPayoffCalculator() {
   const [balance, setBalance] = useState<number>(25000);
@@ -183,6 +184,47 @@ export function LoanPayoffCalculator() {
           </div>
         </div>
       )}
+
+      {/* Loan balance over time chart */}
+      <div className="mt-8">
+        <h4 className="mb-3 text-sm font-semibold text-ink-900">Loan balance over time</h4>
+        <LineChart
+          series={[
+            {
+              name: 'Current payment',
+              color: 'var(--brand-500)',
+              points: monthlyYearlyBalances(base.schedule, balance),
+            },
+            ...(extraMonthly > 0 || redundancy > 0
+              ? [
+                  {
+                    name: 'With extra / lump sum',
+                    color: 'var(--ledger-500)',
+                    points: monthlyYearlyBalances(withRedundancy.schedule, withRedundancyBalance),
+                  },
+                ]
+              : []),
+          ]}
+          xLabel="Year"
+          yLabel="Balance"
+          xFormat={(v) => `Y${v}`}
+          caption="A steeper drop means faster payoff. Watch the two lines diverge over time — that gap is the interest you save."
+        />
+      </div>
     </section>
   );
+}
+
+/** Sample a monthly amortization schedule to one point per year, plus the starting point. */
+function monthlyYearlyBalances(
+  schedule: ReturnType<typeof amortize>['schedule'],
+  startBalance: number,
+): Array<{ x: number; y: number }> {
+  const points = [{ x: 0, y: startBalance }];
+  for (let year = 1; year <= Math.ceil(schedule.length / 12); year++) {
+    const lastMonthOfYear = schedule[Math.min(year * 12, schedule.length) - 1];
+    if (lastMonthOfYear) points.push({ x: year, y: lastMonthOfYear.closingBalance });
+    else break;
+  }
+  return points;
 }

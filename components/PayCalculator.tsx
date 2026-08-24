@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react';
 import {
   calculate,
   formatAUD,
+  formatAUD0,
   fromAnnual,
   type PayInputs,
   type PayPeriod,
@@ -321,8 +322,86 @@ function Results({ result }: { result: PayResult }) {
           <span>Marginal rate: {(result.marginalRate * 100).toFixed(0)}%</span>
         </div>
       </div>
+
+      {/* Where each dollar goes, horizontal stacked bar. Pure SVG. */}
+      <BreakdownBar result={result} />
     </div>
   );
+}
+
+/** A horizontal stacked bar showing what happens to each dollar of gross pay. */
+function BreakdownBar({ result }: { result: PayResult }) {
+  // Annualise all the parts so the proportions are right.
+  const annualMultiplier = periodMultiplierFor(result.period);
+  const gross = result.gross * annualMultiplier;
+  const tax = result.incomeTax * annualMultiplier;
+  const medicare = result.medicare * annualMultiplier;
+  const hecs = result.hecsRepayment * annualMultiplier;
+  const net = result.net * annualMultiplier;
+  const superannuation = result.superannuation * annualMultiplier;
+  const postTax = result.postTaxDeductions * annualMultiplier;
+
+  // The bar shows the GROSS + SUPER split (employer cost on top of gross).
+  const totalForBar = gross + superannuation;
+  if (totalForBar <= 0) return null;
+
+  const segments = [
+    { label: 'Net take-home', value: net, color: 'var(--ledger-500)' },
+    { label: 'Income tax', value: tax, color: 'var(--danger-500)' },
+    { label: 'Medicare', value: medicare, color: 'var(--warning-500)' },
+    { label: 'HECS-HELP', value: hecs, color: 'var(--accent2-500)' },
+    { label: 'Post-tax', value: postTax, color: 'var(--ink-500)' },
+    { label: 'Super (employer)', value: superannuation, color: 'var(--brand-500)' },
+  ].filter((s) => s.value > 0);
+
+  return (
+    <div className="mt-10">
+      <p className="kicker">Where each dollar of total employment cost goes</p>
+      <div
+        className="mt-3 flex h-9 w-full overflow-hidden rounded-md border border-ink-300"
+        role="img"
+        aria-label="Stacked bar showing how the total employment cost is split between net pay, tax, Medicare, HECS, and superannuation"
+      >
+        {segments.map((s) => {
+          const widthPct = (s.value / totalForBar) * 100;
+          return (
+            <div
+              key={s.label}
+              className="flex items-center justify-center text-[10px] font-bold uppercase tracking-wider text-white"
+              style={{
+                width: `${widthPct}%`,
+                background: s.color,
+                minWidth: widthPct > 4 ? undefined : '0',
+              }}
+              title={`${s.label}: ${formatAUD(s.value)} (${widthPct.toFixed(1)}%)`}
+            >
+              {widthPct > 8 ? s.label : ''}
+            </div>
+          );
+        })}
+      </div>
+      {/* Legend with values */}
+      <ul className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-600">
+        {segments.map((s) => (
+          <li key={s.label} className="flex items-baseline gap-1.5">
+            <span
+              aria-hidden="true"
+              className="inline-block h-2 w-3 rounded-sm"
+              style={{ background: s.color }}
+            />
+            <span className="font-medium text-ink-700">{s.label}</span>
+            <span className="font-mono tabular-nums text-ink-500">
+              {formatAUD0(s.value)} ({((s.value / totalForBar) * 100).toFixed(0)}%)
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function periodMultiplierFor(period: PayPeriod): number {
+  return { annual: 1, monthly: 12, fortnightly: 26, weekly: 52, daily: 260, hourly: 1976 }[period];
 }
 
 function BreakdownRow({
