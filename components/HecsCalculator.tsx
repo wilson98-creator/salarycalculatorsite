@@ -147,9 +147,9 @@ export function HecsCalculator() {
   }, [income, tippingPointIncome, wageGrowth]);
 
   // Is current repayment less than indexation? (the danger zone)
-  const interestPerYear = debtBalance * (indexation / 100);
-  const isDangerZone = !belowThreshold && repayment < interestPerYear;
-  const annualShortfall = isDangerZone ? interestPerYear - repayment : 0;
+  const indexationPerYear = debtBalance * (indexation / 100);
+  const isDangerZone = !belowThreshold && repayment < indexationPerYear;
+  const annualShortfall = isDangerZone ? indexationPerYear - repayment : 0;
 
   return (
     <section aria-labelledby="hecs-calc-heading" className="card not-prose">
@@ -307,7 +307,7 @@ export function HecsCalculator() {
             <p className="mt-2">
               At {formatAUD(income, 0)} income, your annual HECS repayment is{' '}
               <span className="font-mono font-semibold">{formatAUD(repayment)}</span>, but your balance is being indexed at{' '}
-              <span className="font-mono font-semibold">{formatAUD(interestPerYear)}/yr</span> ({indexation}%).
+              <span className="font-mono font-semibold">{formatAUD(indexationPerYear)}/yr</span> ({indexation}%).
               The shortfall is <span className="font-mono font-semibold">{formatAUD(annualShortfall)}/yr</span>.
             </p>
             {tippingPointIncome && yearsToTippingPoint !== null && wageGrowth > 0 && (
@@ -379,8 +379,8 @@ export function HecsCalculator() {
             <span className="result-value">{formatAUD(projection.totalRepaid)}</span>
           </div>
           <div className="result-row">
-            <span className="result-label">Total interest added</span>
-            <span className="result-value result-value-deduction">{formatAUD(projection.totalInterest)}</span>
+            <span className="result-label">Total indexation added</span>
+            <span className="result-value result-value-deduction">{formatAUD(projection.totalIndexation)}</span>
           </div>
           {projection.yearsToPayoff > 0 && (
             <div className="result-row">

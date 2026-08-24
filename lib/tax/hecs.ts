@@ -152,14 +152,14 @@ export function hecsRepayment(repaymentIncome: number, fy: string): number {
 export interface ProjectionResult {
   yearsToPayoff: number;
   totalRepaid: number;
-  totalInterest: number;
+  totalIndexation: number;
   /** Year-by-year breakdown. */
   schedule: Array<{
     year: number;
     startingBalance: number;
     income: number;
     repayment: number;
-    interest: number;
+    indexation: number;
     endingBalance: number;
   }>;
 }
@@ -202,7 +202,7 @@ export function projectPayoff(
     return {
       yearsToPayoff: 0,
       totalRepaid: 0,
-      totalInterest: 0,
+      totalIndexation: 0,
       schedule: [],
     };
   }
@@ -210,41 +210,41 @@ export function projectPayoff(
   const schedule: ProjectionResult['schedule'] = [];
   let balance = startingBalance;
   let totalRepaid = 0;
-  let totalInterest = 0;
+  let totalIndexation = 0;
   let year = 0;
   let currentIncome = repaymentIncome;
 
   while (balance > 0 && year < maxYears) {
     year += 1;
     const starting = balance;
-    const interest = starting * indexationRate;
+    const indexation = starting * indexationRate;
     let repayment = hecsRepayment(currentIncome, fy);
-    // If this year's repayment doesn't cover the interest, the debt grows.
-    const ending = starting + interest - repayment;
+    // If this year's repayment doesn't cover the indexation, the debt grows.
+    const ending = starting + indexation - repayment;
     if (ending < 0) {
       // Final year — repay only what's left.
-      const actualRepayment = starting + interest;
+      const actualRepayment = starting + indexation;
       totalRepaid += actualRepayment;
-      totalInterest += interest;
+      totalIndexation += indexation;
       schedule.push({
         year,
         startingBalance: starting,
         income: currentIncome,
         repayment: actualRepayment,
-        interest,
+        indexation,
         endingBalance: 0,
       });
       balance = 0;
       break;
     }
     totalRepaid += repayment;
-    totalInterest += interest;
+    totalIndexation += indexation;
     schedule.push({
       year,
       startingBalance: starting,
       income: currentIncome,
       repayment,
-      interest,
+      indexation,
       endingBalance: ending,
     });
     balance = ending;
@@ -255,7 +255,7 @@ export function projectPayoff(
   return {
     yearsToPayoff: year,
     totalRepaid,
-    totalInterest,
+    totalIndexation,
     schedule,
   };
 }
