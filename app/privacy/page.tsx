@@ -175,7 +175,7 @@ export default function PrivacyPage() {
           <p>
             If you have questions about your personal information or wish to
             make a complaint, contact us at{' '}
-            <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>.
+            <Link href="/contact">{brand.contactEmail}</Link>.
             We will respond within 30 days. You can also contact the Office of
             the Australian Information Commissioner (
             <a

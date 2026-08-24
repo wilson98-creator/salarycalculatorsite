@@ -223,7 +223,7 @@ export default function AboutPage() {
           </p>
           <p>
             If you spot a number that disagrees with the ATO, please email{' '}
-            <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a> or use
+            <Link href="/contact">{brand.contactEmail}</Link> or use
             the <Link href="/contact">contact page</Link>. We read every message and
             will investigate within 24 hours.
           </p>

@@ -187,7 +187,7 @@ export default function TermsPage() {
           <h2>11. Contact</h2>
           <p>
             Questions about these terms? Email{' '}
-            <a href={`mailto:${brand.contactEmail}`}>{brand.contactEmail}</a>{' '}
+            <Link href="/contact">{brand.contactEmail}</Link>{' '}
             or use the <Link href="/contact">contact page</Link>.
           </p>
           <p className="text-sm text-ink-600">

@@ -256,7 +256,7 @@ export default function FaqPage() {
       <aside className="mt-12">
         <p className="font-semibold text-ink-900">Didn\'t find your answer?</p>
         <p className="mt-2">
-          Email <a href={`mailto:${brand.contactEmail}`} className="text-brand-600 underline-offset-2 hover:underline">{brand.contactEmail}</a> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
+          Email <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">{brand.contactEmail}</Link> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
         </p>
       </aside>
 

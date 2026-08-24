@@ -87,14 +87,13 @@ export default function ContactPage() {
         {/* Email card, the hero CTA */}
         <section className="card not-prose mb-10 border-brand-200 bg-brand-50">
           <p className="text-sm font-semibold text-brand-700">Email us</p>
-          <a
-            href={`mailto:${brand.contactEmail}`}
-            className="mt-2 inline-block font-mono text-2xl font-bold text-ink-900 underline-offset-4 hover:underline sm:text-3xl"
+          <p
+            className="mt-2 font-mono text-2xl font-bold text-ink-900 sm:text-3xl"
           >
             {brand.contactEmail}
-          </a>
+          </p>
           <p className="mt-3 text-sm text-ink-600">
-            We respond in Australian Eastern Time (AEST/AEDT).
+            We respond in Australian Eastern Time (AEST/AEDT). Or use the form below.
           </p>
         </section>
 

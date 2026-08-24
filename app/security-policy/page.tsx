@@ -102,7 +102,7 @@ export default function SecurityPolicyPage() {
           <h2>How to report</h2>
           <p>
             Send a detailed report to{' '}
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+            <Link href="/contact">{contactEmail}</Link>.
           </p>
           <p>Your report should include:</p>
           <ul>
@@ -173,7 +173,7 @@ export default function SecurityPolicyPage() {
           <p>
             If email is not appropriate (for example, you need to encrypt a
             large proof-of-concept file), contact{' '}
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a> first to
+            <Link href="/contact">{contactEmail}</Link> first to
             arrange an alternative channel. We can publish a PGP public key
             on request.
           </p>
@@ -205,7 +205,7 @@ export default function SecurityPolicyPage() {
           <p className="kicker">Quick reference</p>
           <p className="mt-2">
             Email security reports to{' '}
-            <a href={`mailto:${contactEmail}`}>{contactEmail}</a>. Do not file
+            <Link href="/contact">{contactEmail}</Link>. Do not file
             public issues. We will credit you on the{' '}
             <Link href="/security-acknowledgments/">Acknowledgements</Link>{' '}
             page unless you ask to stay anonymous.
