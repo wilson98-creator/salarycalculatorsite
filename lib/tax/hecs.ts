@@ -158,6 +158,8 @@ export interface ProjectionResult {
     year: number;
     startingBalance: number;
     income: number;
+    compulsory: number;
+    voluntary: number;
     repayment: number;
     indexation: number;
     endingBalance: number;
@@ -173,30 +175,48 @@ export interface ProjectPayoffOptions {
    * most people over a working life. Default 0 = flat income.
    */
   wageGrowthRate?: number;
+  /**
+   * Extra voluntary repayment per year on top of the compulsory HECS
+   * withholding. Most Australians who clear HECS in 8-12 years do it by
+   * adding $4-10k/yr in voluntary payments. Default 0.
+   */
+  voluntaryAnnual?: number;
 }
 
 /**
- * Project how long it takes to pay off a HECS debt given an initial repayment
- * income, an assumed annual indexation rate, and (optionally) annual wage
- * growth. Returns null if income is below the repayment threshold.
- *
- * With wageGrowthRate = 0, this is a flat-income projection (worst case for
- * the borrower, conservative). With a positive wage growth rate, the model
- * matches what happens in practice for most workers.
+ * HECS repayment for a given income against a custom band set. Used by
+ * `projectPayoffWithBands` so the projection can use either the ATO marginal
+ * bands or a reference schedule (e.g. the simplified paycalculator.com.au
+ * 4-bracket version).
  */
-export function projectPayoff(
+function hecsRepaymentWithBands(repaymentIncome: number, bands: HecsBand[]): number {
+  if (repaymentIncome <= bands[1]?.threshold) return 0;
+  let total = 0;
+  for (let i = 1; i < bands.length; i++) {
+    const lower = bands[i].threshold;
+    const upper = bands[i + 1]?.threshold ?? Infinity;
+    if (repaymentIncome <= lower) break;
+    const slice = Math.min(repaymentIncome, upper) - lower;
+    if (slice > 0) total += slice * bands[i].rate;
+  }
+  return total;
+}
+
+/**
+ * Project how long it takes to pay off a HECS debt against a custom band set.
+ * This is the workhorse — `projectPayoff` is a thin wrapper that supplies the
+ * ATO bands for the given FY.
+ */
+export function projectPayoffWithBands(
   startingBalance: number,
   repaymentIncome: number,
-  fy: string,
-  indexationRate = 0.03,
-  maxYearsOrOptions: number | ProjectPayoffOptions = 50,
+  indexationRate: number,
+  options: ProjectPayoffOptions,
+  bands: HecsBand[],
 ): ProjectionResult | null {
-  const options: ProjectPayoffOptions =
-    typeof maxYearsOrOptions === 'number'
-      ? { maxYears: maxYearsOrOptions }
-      : maxYearsOrOptions;
   const maxYears = options.maxYears ?? 50;
   const wageGrowthRate = options.wageGrowthRate ?? 0;
+  const voluntaryAnnual = options.voluntaryAnnual ?? 0;
 
   if (startingBalance <= 0) {
     return {
@@ -218,18 +238,25 @@ export function projectPayoff(
     year += 1;
     const starting = balance;
     const indexation = starting * indexationRate;
-    let repayment = hecsRepayment(currentIncome, fy);
-    // If this year's repayment doesn't cover the indexation, the debt grows.
+    const compulsory = hecsRepaymentWithBands(currentIncome, bands);
+    // In the final year, voluntary can't exceed the actual remaining balance +
+    // indexation (capped below). Otherwise it adds dollar-for-dollar.
+    let voluntary = voluntaryAnnual;
+    let repayment = compulsory + voluntary;
     const ending = starting + indexation - repayment;
     if (ending < 0) {
-      // Final year — repay only what's left.
+      // Final year — repay only what's left (compulsory already paid, so the
+      // residual is voluntary).
       const actualRepayment = starting + indexation;
+      const actualVoluntary = Math.max(0, actualRepayment - compulsory);
       totalRepaid += actualRepayment;
       totalIndexation += indexation;
       schedule.push({
         year,
         startingBalance: starting,
         income: currentIncome,
+        compulsory,
+        voluntary: actualVoluntary,
         repayment: actualRepayment,
         indexation,
         endingBalance: 0,
@@ -243,6 +270,8 @@ export function projectPayoff(
       year,
       startingBalance: starting,
       income: currentIncome,
+      compulsory,
+      voluntary,
       repayment,
       indexation,
       endingBalance: ending,
@@ -258,4 +287,35 @@ export function projectPayoff(
     totalIndexation,
     schedule,
   };
+}
+
+/**
+ * Project how long it takes to pay off a HECS debt given an initial repayment
+ * income, an assumed annual indexation rate, and (optionally) annual wage
+ * growth. Returns null if income is below the repayment threshold.
+ *
+ * With wageGrowthRate = 0, this is a flat-income projection (worst case for
+ * the borrower, conservative). With a positive wage growth rate, the model
+ * matches what happens in practice for most workers. Add `voluntaryAnnual` to
+ * model making extra repayments on top of the compulsory withholding.
+ */
+export function projectPayoff(
+  startingBalance: number,
+  repaymentIncome: number,
+  fy: string,
+  indexationRate = 0.03,
+  maxYearsOrOptions: number | ProjectPayoffOptions = 50,
+): ProjectionResult | null {
+  const options: ProjectPayoffOptions =
+    typeof maxYearsOrOptions === 'number'
+      ? { maxYears: maxYearsOrOptions }
+      : maxYearsOrOptions;
+  const bands = hecsBands[fy] ?? hecsBands['2025-26'];
+  return projectPayoffWithBands(
+    startingBalance,
+    repaymentIncome,
+    indexationRate,
+    options,
+    bands,
+  );
 }

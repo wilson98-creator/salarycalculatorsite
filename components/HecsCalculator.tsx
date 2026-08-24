@@ -5,7 +5,7 @@ import {
   hecsBands,
   hecsRepayment,
   paycalculatorHecsBands,
-  projectPayoff,
+  projectPayoffWithBands,
   type HecsBand,
 } from '@/lib/tax/hecs';
 import type { FinancialYear } from '@/lib/tax/brackets';
@@ -52,10 +52,11 @@ function repaymentWithBands(income: number, bands: HecsBand[]): number {
 
 export function HecsCalculator() {
   const [income, setIncome] = useState<number>(85000);
-  const [fy, setFy] = useState<FinancialYear>('2025-26');
+  const [fy, setFy] = useState<FinancialYear>('2026-27');
   const [debtBalance, setDebtBalance] = useState<number>(35000);
   const [indexation, setIndexation] = useState<number>(2.8);
   const [wageGrowth, setWageGrowth] = useState<number>(3.5);
+  const [voluntaryAnnual, setVoluntaryAnnual] = useState<number>(0);
   const [schedule, setSchedule] = useState<HecsSchedule>('ato-new');
 
   // Pick the band set and repayment function based on the schedule toggle.
@@ -70,21 +71,42 @@ export function HecsCalculator() {
     [income, fy, usingPaycalculator, bands],
   );
   const projection = useMemo(
-    () => projectPayoff(debtBalance, income, fy, indexation / 100, {
-      maxYears: PROJECTION_MAX_YEARS,
-      wageGrowthRate: wageGrowth / 100,
-    }),
-    [debtBalance, income, fy, indexation, wageGrowth],
+    () => projectPayoffWithBands(
+      debtBalance, income, indexation / 100,
+      { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual },
+      bands,
+    ),
+    [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands],
   );
 
   // For comparison, also compute the flat-income projection (conservative)
   const flatProjection = useMemo(
-    () => projectPayoff(debtBalance, income, fy, indexation / 100, {
-      maxYears: PROJECTION_MAX_YEARS,
-      wageGrowthRate: 0,
-    }),
-    [debtBalance, income, fy, indexation],
+    () => projectPayoffWithBands(
+      debtBalance, income, indexation / 100,
+      { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: 0, voluntaryAnnual },
+      bands,
+    ),
+    [debtBalance, income, indexation, voluntaryAnnual, bands],
   );
+
+  // What if you add $X more in voluntary? Show a quick comparison.
+  const projectionWithMoreVoluntary = useMemo(() => {
+    if (voluntaryAnnual <= 0) return null;
+    return projectPayoffWithBands(
+      debtBalance, income, indexation / 100,
+      { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual: voluntaryAnnual + 4000 },
+      bands,
+    );
+  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands]);
+
+  const projectionWithoutVoluntary = useMemo(() => {
+    if (voluntaryAnnual <= 0) return null;
+    return projectPayoffWithBands(
+      debtBalance, income, indexation / 100,
+      { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual: 0 },
+      bands,
+    );
+  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands]);
 
   // For the chart: build series showing starting balance each year vs ending balance
   const chartSeries = useMemo(() => {
@@ -93,16 +115,17 @@ export function HecsCalculator() {
     if (pts.length > 0) {
       pts.unshift({ x: 0, y: debtBalance });
     }
+    const volLabel = voluntaryAnnual > 0 ? ` + $${voluntaryAnnual.toLocaleString()}/yr voluntary` : '';
     return [
       {
-        name: `With ${wageGrowth}% annual wage growth`,
+        name: `With ${wageGrowth}% annual wage growth${volLabel}`,
         color: 'var(--ledger-500)',
         points: pts,
       },
       ...(wageGrowth > 0 && flatProjection
         ? [
             {
-              name: 'With flat income (no raises)',
+              name: `With flat income (no raises)${volLabel}`,
               color: 'var(--ink-500)',
               points: [
                 { x: 0, y: debtBalance },
@@ -112,7 +135,7 @@ export function HecsCalculator() {
           ]
         : []),
     ];
-  }, [projection, flatProjection, debtBalance, wageGrowth]);
+  }, [projection, flatProjection, debtBalance, wageGrowth, voluntaryAnnual]);
 
   // Determine warning state
   const isGrowing = projection && projection.yearsToPayoff >= PROJECTION_MAX_YEARS && projection.schedule[PROJECTION_MAX_YEARS - 1]?.endingBalance > debtBalance;
@@ -263,6 +286,22 @@ export function HecsCalculator() {
               </div>
               <p className="help">Typical Australian wage growth is 3-4% p.a. Set to 0 for a flat-income projection.</p>
             </div>
+            <div>
+              <label htmlFor="hecs-voluntary" className="label">Voluntary extra repayment ($/yr)</label>
+              <div className="flex items-stretch gap-2">
+                <span className="inline-flex items-center rounded-l-lg border border-r-0 border-ink-200 bg-white px-3 text-ink-600">$</span>
+                <input
+                  id="hecs-voluntary"
+                  type="number"
+                  min={0}
+                  step="500"
+                  className="input rounded-l-none"
+                  value={Number.isFinite(voluntaryAnnual) ? voluntaryAnnual : ''}
+                  onChange={(e) => setVoluntaryAnnual(parseFloat(e.target.value) || 0)}
+                />
+              </div>
+              <p className="help">Any extra you pay on top of the compulsory withholding. Most people who clear HECS in 8-12 years add $4-10k/yr here.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -289,6 +328,25 @@ export function HecsCalculator() {
           <span className="result-label">Per month (estimate)</span>
           <span className="result-value">{formatAUD(repayment / 12)}</span>
         </div>
+
+        {/* Marginal vs effective rate explainer — when the gap is large */}
+        {!belowThreshold && !usingPaycalculator && income > 0 && (() => {
+          const effective = (repayment / income) * 100;
+          // Find the marginal bracket rate the user is currently in
+          const marginalBand = bands.find((b, i) => {
+            const next = bands[i + 1]?.threshold ?? Infinity;
+            return income > b.threshold && income <= next;
+          });
+          const marginalRate = marginalBand && marginalBand.rate > 0 ? marginalBand.rate * 100 : null;
+          if (!marginalRate || effective >= marginalRate * 0.85) return null;
+          return (
+            <div className="mt-4 rounded-lg border border-ink-200 bg-ink-50/50 p-3 text-sm text-ink-700 dark:border-ink-700 dark:bg-ink-800/40 dark:text-ink-200">
+              <p>
+                <strong>Marginal vs effective rate.</strong> Your income is in the {marginalRate.toFixed(1)}% HECS bracket, but because HECS is calculated <em>marginal</em> (like income tax), the first {formatAUD(bands[1].threshold, 0)} is exempt and lower brackets apply to the layers below. The effective rate against your full income is only <span className="font-mono font-semibold">{effective.toFixed(2)}%</span>, so the compulsory repayment is much smaller than the {marginalRate.toFixed(0)}% headline figure suggests.
+              </p>
+            </div>
+          );
+        })()}
 
         {/* PROMINENT: Danger zone warning — when HECS < indexation */}
         {usingPaycalculator && (
@@ -341,9 +399,12 @@ export function HecsCalculator() {
       {/* Projection section */}
       {projection && debtBalance > 0 && (
         <div className="mt-10 border-t border-ink-200 pt-8">
-          <div className="mb-3 flex items-center justify-between">
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
             <h3 className="text-base font-semibold text-ink-900">Payoff projection</h3>
-            <span className="kicker">flat income, {indexation}% p.a. indexation</span>
+            <span className="kicker">
+              {wageGrowth > 0 ? `${wageGrowth}% wage growth` : 'flat income'}, {indexation}% idx
+              {voluntaryAnnual > 0 ? `, $${voluntaryAnnual.toLocaleString()}/yr voluntary` : ''}
+            </span>
           </div>
 
           {/* Chart */}
@@ -405,11 +466,35 @@ export function HecsCalculator() {
             </div>
           )}
 
-          {isSlow && !isGrowing && (
+          {isSlow && !isGrowing && voluntaryAnnual === 0 && (
             <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
-              <p className="font-semibold">Long payoff horizon.</p>
+              <p className="font-semibold">Long payoff horizon — voluntary repayments make a big difference here.</p>
               <p className="mt-1">
-                Your debt will be paid off in {projection.yearsToPayoff} years. Even small voluntary repayments (e.g. {formatAUD(2000)}/yr) can cut years off the total. Voluntary repayments are tax-effective if you make them through your employer as pre-tax salary sacrifice.
+                Your debt will be paid off in {projection.yearsToPayoff} years under the compulsory-only scenario. Most Australians in your bracket clear the loan in 8-12 years by adding voluntary payments. Try the &ldquo;Voluntary extra repayment&rdquo; input above to see the impact.
+              </p>
+              {projectionWithMoreVoluntary && (
+                <p className="mt-2 font-mono text-xs text-amber-800 dark:text-amber-300">
+                  Example: adding <span className="font-semibold">$4,000/yr</span> on top of the compulsory brings payoff down to{' '}
+                  <span className="font-semibold">
+                    {projectionWithMoreVoluntary.yearsToPayoff >= PROJECTION_MAX_YEARS ? `${PROJECTION_MAX_YEARS}+` : projectionWithMoreVoluntary.yearsToPayoff} years
+                  </span>.
+                </p>
+              )}
+            </div>
+          )}
+
+          {isSlow && !isGrowing && voluntaryAnnual > 0 && projectionWithoutVoluntary && (
+            <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
+              <p className="font-semibold">Voluntary repayments are doing real work here.</p>
+              <p className="mt-1">
+                Without your ${voluntaryAnnual.toLocaleString()}/yr voluntary contribution, payoff would be{' '}
+                <span className="font-mono font-semibold">
+                  {projectionWithoutVoluntary.yearsToPayoff >= PROJECTION_MAX_YEARS ? `${PROJECTION_MAX_YEARS}+` : projectionWithoutVoluntary.yearsToPayoff} years
+                </span>{' '}
+                (compulsory only). With it, you finish in {projection.yearsToPayoff} years — saving{' '}
+                <span className="font-mono font-semibold">
+                  {Math.max(0, (projectionWithoutVoluntary.yearsToPayoff >= PROJECTION_MAX_YEARS ? PROJECTION_MAX_YEARS : projectionWithoutVoluntary.yearsToPayoff) - projection.yearsToPayoff)} years
+                </span>.
               </p>
             </div>
           )}
