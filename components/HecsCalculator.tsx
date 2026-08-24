@@ -20,13 +20,26 @@ export function HecsCalculator() {
   const [fy, setFy] = useState<FinancialYear>('2025-26');
   const [debtBalance, setDebtBalance] = useState<number>(35000);
   const [indexation, setIndexation] = useState<number>(3.5);
+  const [wageGrowth, setWageGrowth] = useState<number>(3.5);
 
   const bands = hecsBands[fy] ?? hecsBands['2025-26'];
   const firstThreshold = bands[1]?.threshold ?? 54435;
   const belowThreshold = income <= firstThreshold;
   const repayment = useMemo(() => hecsRepayment(income, fy), [income, fy]);
   const projection = useMemo(
-    () => projectPayoff(debtBalance, income, fy, indexation / 100, PROJECTION_MAX_YEARS),
+    () => projectPayoff(debtBalance, income, fy, indexation / 100, {
+      maxYears: PROJECTION_MAX_YEARS,
+      wageGrowthRate: wageGrowth / 100,
+    }),
+    [debtBalance, income, fy, indexation, wageGrowth],
+  );
+
+  // For comparison, also compute the flat-income projection (conservative)
+  const flatProjection = useMemo(
+    () => projectPayoff(debtBalance, income, fy, indexation / 100, {
+      maxYears: PROJECTION_MAX_YEARS,
+      wageGrowthRate: 0,
+    }),
     [debtBalance, income, fy, indexation],
   );
 
@@ -39,12 +52,24 @@ export function HecsCalculator() {
     }
     return [
       {
-        name: 'Outstanding balance',
+        name: `With ${wageGrowth}% annual wage growth`,
         color: 'var(--ledger-500)',
         points: pts,
       },
+      ...(wageGrowth > 0 && flatProjection
+        ? [
+            {
+              name: 'With flat income (no raises)',
+              color: 'var(--ink-500)',
+              points: [
+                { x: 0, y: debtBalance },
+                ...flatProjection.schedule.map((row) => ({ x: row.year, y: row.endingBalance })),
+              ],
+            },
+          ]
+        : []),
     ];
-  }, [projection, debtBalance]);
+  }, [projection, flatProjection, debtBalance, wageGrowth]);
 
   // Determine warning state
   const isGrowing = projection && projection.yearsToPayoff >= PROJECTION_MAX_YEARS && projection.schedule[PROJECTION_MAX_YEARS - 1]?.endingBalance > debtBalance;
@@ -64,6 +89,16 @@ export function HecsCalculator() {
     }
     return null;
   }, [debtBalance, indexation, fy, firstThreshold]);
+
+  // At the current wage growth rate, when does income cross the tipping point?
+  const yearsToTippingPoint = useMemo(() => {
+    if (!tippingPointIncome || income <= 0 || wageGrowth <= 0) return null;
+    if (income >= tippingPointIncome) return 0;
+    // Solve income * (1 + g)^y >= tippingPointIncome
+    const ratio = tippingPointIncome / income;
+    const years = Math.log(ratio) / Math.log(1 + wageGrowth / 100);
+    return Math.ceil(years);
+  }, [income, tippingPointIncome, wageGrowth]);
 
   // Is current repayment less than indexation? (the danger zone)
   const interestPerYear = debtBalance * (indexation / 100);
@@ -147,6 +182,23 @@ export function HecsCalculator() {
               </div>
               <p className="help">WPI-capped since 2024. Recent years: 7.1% (2023), 4.7% (2024), 3.2% (2025).</p>
             </div>
+            <div>
+              <label htmlFor="hecs-wage-growth" className="label">Annual wage growth (% p.a.)</label>
+              <div className="flex items-stretch gap-2">
+                <input
+                  id="hecs-wage-growth"
+                  type="number"
+                  min={0}
+                  max={20}
+                  step="0.1"
+                  className="input rounded-r-none"
+                  value={Number.isFinite(wageGrowth) ? wageGrowth : ''}
+                  onChange={(e) => setWageGrowth(parseFloat(e.target.value) || 0)}
+                />
+                <span className="inline-flex items-center rounded-r-lg border border-l-0 border-ink-200 bg-ink-50 px-3 text-ink-600">%</span>
+              </div>
+              <p className="help">Typical Australian wage growth is 3-4% p.a. Set to 0 for a flat-income projection.</p>
+            </div>
           </div>
         </details>
       </div>
@@ -176,21 +228,29 @@ export function HecsCalculator() {
 
         {/* PROMINENT: Danger zone warning — when HECS < indexation */}
         {isDangerZone && debtBalance > 0 && (
-          <div className="mt-6 rounded-lg border-2 border-rose-300 bg-rose-50 p-4 text-sm text-rose-900 dark:border-rose-800/40 dark:bg-rose-900/20 dark:text-rose-200">
-            <p className="font-semibold text-base">⚠ Your compulsory HECS won&apos;t cover indexation.</p>
+          <div className="mt-6 rounded-lg border-2 border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-200">
+            <p className="font-semibold text-base">⚠ At your current income, HECS doesn&apos;t cover indexation — but this is usually temporary.</p>
             <p className="mt-2">
               At {formatAUD(income, 0)} income, your annual HECS repayment is{' '}
               <span className="font-mono font-semibold">{formatAUD(repayment)}</span>, but your balance is being indexed at{' '}
               <span className="font-mono font-semibold">{formatAUD(interestPerYear)}/yr</span> ({indexation}%).
-              The shortfall is <span className="font-mono font-semibold">{formatAUD(annualShortfall)}/yr</span>, which is why the debt grows.
+              The shortfall is <span className="font-mono font-semibold">{formatAUD(annualShortfall)}/yr</span>.
             </p>
-            {tippingPointIncome && (
+            {tippingPointIncome && yearsToTippingPoint !== null && wageGrowth > 0 && (
               <p className="mt-2">
-                <strong>Tipping point:</strong> at <span className="font-mono font-semibold">{formatAUD(tippingPointIncome, 0)}</span> income,
-                your HECS repayment would first cover indexation. Below that, you&apos;re losing ground.
+                <strong>Tipping point:</strong> at <span className="font-mono font-semibold">{formatAUD(tippingPointIncome, 0)}</span> income, your HECS would first cover indexation.
+                At {wageGrowth}% annual wage growth, you&apos;ll hit that in roughly{' '}
+                <span className="font-mono font-semibold">{yearsToTippingPoint} year{yearsToTippingPoint === 1 ? '' : 's'}</span>.
+                After that the debt starts shrinking.
               </p>
             )}
-            <p className="mt-3 text-rose-800 dark:text-rose-300">
+            {tippingPointIncome && (wageGrowth === 0 || yearsToTippingPoint === null) && (
+              <p className="mt-2">
+                <strong>Tipping point:</strong> at <span className="font-mono font-semibold">{formatAUD(tippingPointIncome, 0)}</span> income,
+                your HECS would first cover indexation. Without wage growth, the debt grows every year.
+              </p>
+            )}
+            <p className="mt-3 text-amber-800 dark:text-amber-300">
               <strong>What you can do:</strong> make voluntary repayments (they reduce the balance dollar-for-dollar),
               or salary sacrifice into super to lower your repayment income.
             </p>

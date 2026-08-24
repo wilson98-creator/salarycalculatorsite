@@ -138,25 +138,47 @@ export interface ProjectionResult {
   schedule: Array<{
     year: number;
     startingBalance: number;
+    income: number;
     repayment: number;
     interest: number;
     endingBalance: number;
   }>;
 }
 
+export interface ProjectPayoffOptions {
+  /** Cap the projection at this many years to avoid infinite loops. */
+  maxYears?: number;
+  /**
+   * Assumed annual wage growth (e.g. 0.035 for 3.5% p.a.). When set, the
+   * projected income grows each year, which is how HECS actually works for
+   * most people over a working life. Default 0 = flat income.
+   */
+  wageGrowthRate?: number;
+}
+
 /**
- * Project how long it takes to pay off a HECS debt given a flat repayment income
- * and an assumed annual indexation rate. Returns null if income is below the
- * repayment threshold (debt will only grow).
+ * Project how long it takes to pay off a HECS debt given an initial repayment
+ * income, an assumed annual indexation rate, and (optionally) annual wage
+ * growth. Returns null if income is below the repayment threshold.
+ *
+ * With wageGrowthRate = 0, this is a flat-income projection (worst case for
+ * the borrower, conservative). With a positive wage growth rate, the model
+ * matches what happens in practice for most workers.
  */
 export function projectPayoff(
   startingBalance: number,
   repaymentIncome: number,
   fy: string,
   indexationRate = 0.03,
-  /** Cap the projection at this many years to avoid infinite loops. */
-  maxYears = 50,
+  maxYearsOrOptions: number | ProjectPayoffOptions = 50,
 ): ProjectionResult | null {
+  const options: ProjectPayoffOptions =
+    typeof maxYearsOrOptions === 'number'
+      ? { maxYears: maxYearsOrOptions }
+      : maxYearsOrOptions;
+  const maxYears = options.maxYears ?? 50;
+  const wageGrowthRate = options.wageGrowthRate ?? 0;
+
   if (startingBalance <= 0) {
     return {
       yearsToPayoff: 0,
@@ -171,12 +193,13 @@ export function projectPayoff(
   let totalRepaid = 0;
   let totalInterest = 0;
   let year = 0;
+  let currentIncome = repaymentIncome;
 
   while (balance > 0 && year < maxYears) {
     year += 1;
     const starting = balance;
     const interest = starting * indexationRate;
-    let repayment = hecsRepayment(repaymentIncome, fy);
+    let repayment = hecsRepayment(currentIncome, fy);
     // If this year's repayment doesn't cover the interest, the debt grows.
     const ending = starting + interest - repayment;
     if (ending < 0) {
@@ -187,6 +210,7 @@ export function projectPayoff(
       schedule.push({
         year,
         startingBalance: starting,
+        income: currentIncome,
         repayment: actualRepayment,
         interest,
         endingBalance: 0,
@@ -199,11 +223,14 @@ export function projectPayoff(
     schedule.push({
       year,
       startingBalance: starting,
+      income: currentIncome,
       repayment,
       interest,
       endingBalance: ending,
     });
     balance = ending;
+    // Apply wage growth for the next year
+    currentIncome = currentIncome * (1 + wageGrowthRate);
   }
 
   return {
