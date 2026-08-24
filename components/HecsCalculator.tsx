@@ -51,6 +51,25 @@ export function HecsCalculator() {
   const isSlow = projection && projection.yearsToPayoff >= 25 && projection.yearsToPayoff < PROJECTION_MAX_YEARS;
   const isQuick = projection && projection.yearsToPayoff > 0 && projection.yearsToPayoff < 25;
 
+  // The "tipping point" — the income at which HECS repayment first covers
+  // the indexation on the current debt. Below this, the debt grows.
+  const tippingPointIncome = useMemo(() => {
+    if (debtBalance <= 0 || indexation <= 0) return null;
+    const targetRepayment = debtBalance * (indexation / 100);
+    // Find the lowest income where HECS >= targetRepayment.
+    for (let testIncome = firstThreshold; testIncome <= 300000; testIncome += 100) {
+      if (hecsRepayment(testIncome, fy) >= targetRepayment) {
+        return testIncome;
+      }
+    }
+    return null;
+  }, [debtBalance, indexation, fy, firstThreshold]);
+
+  // Is current repayment less than indexation? (the danger zone)
+  const interestPerYear = debtBalance * (indexation / 100);
+  const isDangerZone = !belowThreshold && repayment < interestPerYear;
+  const annualShortfall = isDangerZone ? interestPerYear - repayment : 0;
+
   return (
     <section aria-labelledby="hecs-calc-heading" className="card not-prose">
       <h2 id="hecs-calc-heading" className="sr-only">HECS-HELP repayment calculator</h2>
@@ -155,6 +174,29 @@ export function HecsCalculator() {
           <span className="result-value">{formatAUD(repayment / 12)}</span>
         </div>
 
+        {/* PROMINENT: Danger zone warning — when HECS < indexation */}
+        {isDangerZone && debtBalance > 0 && (
+          <div className="mt-6 rounded-lg border-2 border-rose-300 bg-rose-50 p-4 text-sm text-rose-900 dark:border-rose-800/40 dark:bg-rose-900/20 dark:text-rose-200">
+            <p className="font-semibold text-base">⚠ Your compulsory HECS won&apos;t cover indexation.</p>
+            <p className="mt-2">
+              At {formatAUD(income, 0)} income, your annual HECS repayment is{' '}
+              <span className="font-mono font-semibold">{formatAUD(repayment)}</span>, but your balance is being indexed at{' '}
+              <span className="font-mono font-semibold">{formatAUD(interestPerYear)}/yr</span> ({indexation}%).
+              The shortfall is <span className="font-mono font-semibold">{formatAUD(annualShortfall)}/yr</span>, which is why the debt grows.
+            </p>
+            {tippingPointIncome && (
+              <p className="mt-2">
+                <strong>Tipping point:</strong> at <span className="font-mono font-semibold">{formatAUD(tippingPointIncome, 0)}</span> income,
+                your HECS repayment would first cover indexation. Below that, you&apos;re losing ground.
+              </p>
+            )}
+            <p className="mt-3 text-rose-800 dark:text-rose-300">
+              <strong>What you can do:</strong> make voluntary repayments (they reduce the balance dollar-for-dollar),
+              or salary sacrifice into super to lower your repayment income.
+            </p>
+          </div>
+        )}
+
         {belowThreshold && (
           <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-200">
             Your income is below the HECS threshold of {formatAUD(firstThreshold, 0)}, so no compulsory repayment this year. Your balance will still be indexed on 1 June.
@@ -180,11 +222,11 @@ export function HecsCalculator() {
                 xFormat={(v) => v.toString()}
                 caption={
                   isGrowing
-                    ? `At this income, your compulsory repayment is less than annual indexation, so the balance is projected to grow for ${PROJECTION_MAX_YEARS}+ years.`
+                    ? `Balance at year ${PROJECTION_MAX_YEARS}: ${formatAUD(projection.schedule[PROJECTION_MAX_YEARS - 1]?.endingBalance ?? 0)} (was ${formatAUD(debtBalance)} at year 0). The line slopes up because indexation outpaces your repayment.`
                     : isSlow
-                    ? `At this income, the debt pays off, but slowly. Consider voluntary repayments if you can afford them.`
+                    ? `Balance declines over ${projection.yearsToPayoff} years but the line is gentle — small voluntary repayments would accelerate this.`
                     : isQuick
-                    ? `Your compulsory repayment outpaces indexation, so the debt reduces steadily.`
+                    ? `Balance declines steadily. Loan free in ${projection.yearsToPayoff} years.`
                     : undefined
                 }
               />
@@ -222,9 +264,9 @@ export function HecsCalculator() {
           {/* Warnings — separate, contextual */}
           {isGrowing && (
             <div className="mt-4 rounded-lg border border-rose-200 bg-rose-50 p-3 text-sm text-rose-900 dark:border-rose-800/40 dark:bg-rose-900/20 dark:text-rose-200">
-              <p className="font-semibold">Your debt will grow, not shrink.</p>
+              <p className="font-semibold">Bottom line: the projection shows {PROJECTION_MAX_YEARS}+ years because the debt is growing.</p>
               <p className="mt-1">
-                At {formatAUD(income, 0)} income, your compulsory HECS repayment ({formatAUD(repayment)}/yr) is less than the assumed {indexation}% indexation on your balance. The balance grows by roughly {formatAUD((debtBalance * indexation / 100) - repayment)}/year. Consider voluntary repayments, salary sacrifice into super (which lowers your repayment income), or talking to a financial counsellor.
+                See the warning above for the full explanation and tipping point. The fastest ways out: voluntary repayments (any amount, any time), or salary sacrifice into super to lower your repayment income.
               </p>
             </div>
           )}
