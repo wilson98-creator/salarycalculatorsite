@@ -222,10 +222,10 @@ export default function AboutPage() {
             we link to.
           </p>
           <p>
-            If you spot a number that disagrees with the ATO, please email{' '}
-            <Link href="/contact">{brand.contactEmail}</Link> or use
-            the <Link href="/contact">contact page</Link>. We read every message and
-            will investigate within 24 hours.
+            If you spot a number that disagrees with the ATO, please email us at{' '}
+            <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{brand.contactEmail}</code>{' '}
+            or use the <Link href="/contact">contact page</Link>. We read every message
+            and will investigate within 24 hours.
           </p>
 
           <h2>Editorial standards</h2>

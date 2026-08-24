@@ -102,7 +102,8 @@ export default function SecurityPolicyPage() {
           <h2>How to report</h2>
           <p>
             Send a detailed report to{' '}
-            <Link href="/contact">{contactEmail}</Link>.
+            <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{contactEmail}</code>{' '}
+            or via the <Link href="/contact">contact page</Link>.
           </p>
           <p>Your report should include:</p>
           <ul>
@@ -172,8 +173,8 @@ export default function SecurityPolicyPage() {
           <h2>Out-of-band reports</h2>
           <p>
             If email is not appropriate (for example, you need to encrypt a
-            large proof-of-concept file), contact{' '}
-            <Link href="/contact">{contactEmail}</Link> first to
+            large proof-of-concept file),{' '}
+            <Link href="/contact">contact us</Link> first to
             arrange an alternative channel. We can publish a PGP public key
             on request.
           </p>
@@ -205,7 +206,7 @@ export default function SecurityPolicyPage() {
           <p className="kicker">Quick reference</p>
           <p className="mt-2">
             Email security reports to{' '}
-            <Link href="/contact">{contactEmail}</Link>. Do not file
+            <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{contactEmail}</code>. Do not file
             public issues. We will credit you on the{' '}
             <Link href="/security-acknowledgments/">Acknowledgements</Link>{' '}
             page unless you ask to stay anonymous.

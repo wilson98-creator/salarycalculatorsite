@@ -256,7 +256,9 @@ export default function FaqPage() {
       <aside className="mt-12">
         <p className="font-semibold text-ink-900">Didn\'t find your answer?</p>
         <p className="mt-2">
-          Email <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">{brand.contactEmail}</Link> or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
+          Email us at{' '}
+          <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{brand.contactEmail}</code>{' '}
+          or use the <Link href="/contact" className="text-brand-600 underline-offset-2 hover:underline">contact page</Link>. For anything affecting your actual tax position, talk to a registered tax agent.
         </p>
       </aside>
 

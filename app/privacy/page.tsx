@@ -174,8 +174,9 @@ export default function PrivacyPage() {
           <h2>6. Your rights</h2>
           <p>
             If you have questions about your personal information or wish to
-            make a complaint, contact us at{' '}
-            <Link href="/contact">{brand.contactEmail}</Link>.
+            make a complaint, email us at{' '}
+            <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{brand.contactEmail}</code>{' '}
+            or use the <Link href="/contact">contact page</Link>.
             We will respond within 30 days. You can also contact the Office of
             the Australian Information Commissioner (
             <a

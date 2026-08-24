@@ -186,8 +186,8 @@ export default function TermsPage() {
 
           <h2>11. Contact</h2>
           <p>
-            Questions about these terms? Email{' '}
-            <Link href="/contact">{brand.contactEmail}</Link>{' '}
+            Questions about these terms? Email us at{' '}
+            <code className="rounded bg-ink-200 px-1.5 py-0.5 font-mono text-sm text-ink-800">{brand.contactEmail}</code>{' '}
             or use the <Link href="/contact">contact page</Link>.
           </p>
           <p className="text-sm text-ink-600">
