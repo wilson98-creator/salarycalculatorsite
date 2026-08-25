@@ -1,33 +1,154 @@
 // HECS-HELP / VSL / TSL / SSL / SFSS compulsory repayment.
-// Source: ATO "Repaying your study loan"
-// https://www.ato.gov.au/individuals-and-families/education-and-study/managing-your-study-loan/repaying-your-study-loan
 //
-// Repayment rates are published per FY as a table of (threshold, rate).
-// This file holds 2024-25 figures from the ATO. Update yearly.
+// Source: ATO "Study and training loan repayment thresholds and rates"
+// https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds
+//
+// System history:
+// - FY 2024-25 and earlier: FLAT-RATE system. The bracket rate applies to the
+//   WHOLE repayment income. 19 brackets, rates 0%-10%.
+// - FY 2025-26 onwards: MARGINAL system. Each bracket rate applies only to
+//   the income WITHIN that band (like income tax). 4 brackets, 0%/15%/17%/10%.
 //
 // Repayment is calculated on "repayment income" = taxable income + reportable
-// fringe benefits + reportable employer super contributions. The MVP treats
-// repayment income as taxable income for simplicity. Salary-sacrifice super
-// reduces repayment income, which a real payroll system models; the MVP
-// offers an explicit "include pre-tax super sacrifice in repayment income"
-// toggle.
+// fringe benefits + reportable employer super contributions + total net
+// investment loss + exempt foreign employment income.
 
 export interface HecsBand {
+  /** Lower bound of this band (the upper bound is the next band's threshold). */
   threshold: number;
+  /** Rate applied in this band. For flat-rate system, applies to whole income. */
   rate: number;
 }
 
+export type HecsSystem = 'flat' | 'marginal';
+
 /**
- * Simplified 4-bracket "reference" schedule used by paycalculator.com.au.
- * This is NOT the ATO's actual schedule. The ATO has used a marginal
- * 15-bracket schedule since FY 2018-19 (and a new marginal schedule from
- * FY 2025-26). This simplified version applies a single rate to income
- * above each threshold:
- *   - $0 - $69,528: 0%
- *   - $69,528 - $129,716: 15% on income above $69,528
- *   - $129,717 - $186,049: 17% on income above $129,717
- *   - Over $186,050: 10% on income above $186,050
- * Provided for comparison with that site only.
+ * FY 2024-25 (and earlier) FLAT-RATE system.
+ * Rate applies to the WHOLE repayment income, not just the slice in the band.
+ * Source: ATO Table 3 — 2024-25 repayment income thresholds and rates.
+ */
+export const hecsFlatBands: Record<string, HecsBand[]> = {
+  '2024-25': [
+    { threshold: 0, rate: 0 },
+    { threshold: 54435, rate: 0.01 },
+    { threshold: 62851, rate: 0.02 },
+    { threshold: 66621, rate: 0.025 },
+    { threshold: 70619, rate: 0.03 },
+    { threshold: 74856, rate: 0.035 },
+    { threshold: 79347, rate: 0.04 },
+    { threshold: 84108, rate: 0.045 },
+    { threshold: 89155, rate: 0.05 },
+    { threshold: 94504, rate: 0.055 },
+    { threshold: 100175, rate: 0.06 },
+    { threshold: 106186, rate: 0.065 },
+    { threshold: 112557, rate: 0.07 },
+    { threshold: 119310, rate: 0.075 },
+    { threshold: 126468, rate: 0.08 },
+    { threshold: 134057, rate: 0.085 },
+    { threshold: 142101, rate: 0.09 },
+    { threshold: 150627, rate: 0.095 },
+    { threshold: 159664, rate: 0.10 },
+  ],
+};
+
+/**
+ * FY 2025-26 onwards MARGINAL system (like income tax).
+ * Each band rate applies only to the slice of income within that band.
+ * Source: ATO Tables 1 & 2 — 2025-26 and 2026-27 repayment thresholds and rates.
+ */
+export const hecsMarginalBands: Record<string, HecsBand[]> = {
+  '2025-26': [
+    { threshold: 0, rate: 0 },
+    { threshold: 67000, rate: 0.15 },
+    { threshold: 125000, rate: 0.17 },
+    { threshold: 179285, rate: 0.10 },
+  ],
+  '2026-27': [
+    { threshold: 0, rate: 0 },
+    { threshold: 69528, rate: 0.15 },
+    { threshold: 129717, rate: 0.17 },
+    { threshold: 186050, rate: 0.10 },
+  ],
+  // 2027-28 estimated by 3.8% WPI indexation (matching 2025-26→2026-27 uplift).
+  // Update the day ATO publishes actual figures (typically late June).
+  '2027-28': [
+    { threshold: 0, rate: 0 },
+    { threshold: 72170, rate: 0.15 },
+    { threshold: 134644, rate: 0.17 },
+    { threshold: 193120, rate: 0.10 },
+  ],
+};
+
+/**
+ * Backwards-compatible single export used by the UI.
+ * 2024-25 and earlier: flat-rate system.
+ * 2025-26 onwards: marginal system.
+ */
+export const hecsBands: Record<string, HecsBand[]> = {
+  ...hecsFlatBands,
+  ...hecsMarginalBands,
+};
+
+/**
+ * Identify which system applies to a given FY.
+ */
+export function hecsSystemForFy(fy: string): HecsSystem {
+  if (hecsFlatBands[fy]) return 'flat';
+  if (hecsMarginalBands[fy]) return 'marginal';
+  return 'marginal'; // default to current
+}
+
+/**
+ * First HECS threshold (the income at which compulsory repayment starts) for a
+ * given FY, regardless of system.
+ */
+export function hecsFirstThreshold(fy: string): number {
+  const flat = hecsFlatBands[fy];
+  if (flat) return flat[1]?.threshold ?? 0;
+  const marginal = hecsMarginalBands[fy];
+  if (marginal) return marginal[1]?.threshold ?? 0;
+  return 67000;
+}
+
+/**
+ * Calculate the HECS-HELP repayment for the FY under the correct system.
+ * - FY 2024-25 and earlier: flat rate of the highest matching band applied to whole income.
+ * - FY 2025-26 onwards: marginal method (rate applies to slice of income in each band).
+ */
+export function hecsRepayment(repaymentIncome: number, fy: string): number {
+  const system = hecsSystemForFy(fy);
+  if (system === 'flat') {
+    const bands = hecsFlatBands[fy] ?? hecsFlatBands['2024-25'];
+    if (repaymentIncome <= bands[1].threshold) return 0;
+    // Flat system: apply the rate of the highest band where income > threshold
+    // to the WHOLE income.
+    let rate = 0;
+    for (const band of bands) {
+      if (repaymentIncome > band.threshold) {
+        rate = band.rate;
+      }
+    }
+    return repaymentIncome * rate;
+  }
+  // Marginal system
+  const bands = hecsMarginalBands[fy] ?? hecsMarginalBands['2026-27'];
+  if (repaymentIncome <= bands[1].threshold) return 0;
+  let total = 0;
+  for (let i = 1; i < bands.length; i++) {
+    const lower = bands[i].threshold;
+    const upper = bands[i + 1]?.threshold ?? Infinity;
+    if (repaymentIncome <= lower) break;
+    const slice = Math.min(repaymentIncome, upper) - lower;
+    if (slice > 0) total += slice * bands[i].rate;
+  }
+  return total;
+}
+
+/**
+ * Simplified reference schedule used by paycalculator.com.au (4 brackets,
+ * marginal method). Matches the ATO 2025-26+ system closely in dollar terms
+ * at most incomes. Kept for comparison only — the ATO's actual marginal
+ * schedule is what your employer withholds.
  */
 export const paycalculatorHecsBands: HecsBand[] = [
   { threshold: 0, rate: 0 },
@@ -35,119 +156,6 @@ export const paycalculatorHecsBands: HecsBand[] = [
   { threshold: 129717, rate: 0.17 },
   { threshold: 186050, rate: 0.10 },
 ];
-
-export const hecsBands: Record<string, HecsBand[]> = {
-  // 2024-25: lower threshold ~$51,550. Source: ato.gov.au.
-  '2024-25': [
-    { threshold: 0, rate: 0 },
-    { threshold: 51550, rate: 0.01 },
-    { threshold: 59520, rate: 0.02 },
-    { threshold: 65614, rate: 0.025 },
-    { threshold: 70852, rate: 0.03 },
-    { threshold: 74605, rate: 0.035 },
-    { threshold: 80478, rate: 0.04 },
-    { threshold: 86620, rate: 0.045 },
-    { threshold: 93342, rate: 0.05 },
-    { threshold: 100354, rate: 0.055 },
-    { threshold: 108214, rate: 0.06 },
-    { threshold: 116846, rate: 0.065 },
-    { threshold: 125846, rate: 0.07 },
-    { threshold: 135326, rate: 0.075 },
-    { threshold: 145504, rate: 0.08 },
-    { threshold: 156494, rate: 0.085 },
-    { threshold: 168324, rate: 0.09 },
-    { threshold: 181038, rate: 0.095 },
-    { threshold: 200000, rate: 0.1 },
-  ],
-  // 2025-26: lower threshold ~$54,435. Source: ato.gov.au.
-  '2025-26': [
-    { threshold: 0, rate: 0 },
-    { threshold: 54435, rate: 0.01 },
-    { threshold: 62850, rate: 0.02 },
-    { threshold: 69263, rate: 0.025 },
-    { threshold: 74813, rate: 0.03 },
-    { threshold: 78748, rate: 0.035 },
-    { threshold: 84956, rate: 0.04 },
-    { threshold: 91452, rate: 0.045 },
-    { threshold: 98550, rate: 0.05 },
-    { threshold: 105950, rate: 0.055 },
-    { threshold: 114245, rate: 0.06 },
-    { threshold: 123380, rate: 0.065 },
-    { threshold: 132877, rate: 0.07 },
-    { threshold: 142893, rate: 0.075 },
-    { threshold: 153638, rate: 0.08 },
-    { threshold: 165237, rate: 0.085 },
-    { threshold: 177738, rate: 0.09 },
-    { threshold: 191192, rate: 0.095 },
-    { threshold: 200000, rate: 0.1 },
-  ],
-  // 2026-27 estimated. The ATO typically publishes HECS thresholds in June
-  // before the FY starts. We estimate by uplifting FY 2025-26 by 3.5% WPI.
-  // Update this block the day the ATO publishes actual figures.
-  '2026-27': [
-    { threshold: 0, rate: 0 },
-    { threshold: 56340, rate: 0.01 },
-    { threshold: 65050, rate: 0.02 },
-    { threshold: 71685, rate: 0.025 },
-    { threshold: 77430, rate: 0.03 },
-    { threshold: 81505, rate: 0.035 },
-    { threshold: 87930, rate: 0.04 },
-    { threshold: 94655, rate: 0.045 },
-    { threshold: 102000, rate: 0.05 },
-    { threshold: 109660, rate: 0.055 },
-    { threshold: 118245, rate: 0.06 },
-    { threshold: 127695, rate: 0.065 },
-    { threshold: 137530, rate: 0.07 },
-    { threshold: 147895, rate: 0.075 },
-    { threshold: 159015, rate: 0.08 },
-    { threshold: 171020, rate: 0.085 },
-    { threshold: 183960, rate: 0.09 },
-    { threshold: 197885, rate: 0.095 },
-    { threshold: 200000, rate: 0.10 },
-  ],
-  // 2027-28 estimated. Same convention.
-  '2027-28': [
-    { threshold: 0, rate: 0 },
-    { threshold: 58310, rate: 0.01 },
-    { threshold: 67325, rate: 0.02 },
-    { threshold: 74195, rate: 0.025 },
-    { threshold: 80140, rate: 0.03 },
-    { threshold: 84360, rate: 0.035 },
-    { threshold: 91010, rate: 0.04 },
-    { threshold: 97970, rate: 0.045 },
-    { threshold: 105570, rate: 0.05 },
-    { threshold: 113500, rate: 0.055 },
-    { threshold: 122385, rate: 0.06 },
-    { threshold: 132165, rate: 0.065 },
-    { threshold: 142345, rate: 0.07 },
-    { threshold: 153070, rate: 0.075 },
-    { threshold: 164580, rate: 0.08 },
-    { threshold: 177005, rate: 0.085 },
-    { threshold: 190400, rate: 0.09 },
-    { threshold: 200000, rate: 0.095 },
-    { threshold: 200001, rate: 0.10 },
-  ],
-};
-
-/**
- * Calculate the HECS-HELP repayment for the FY.
- * Returns 0 if income is below the first threshold.
- */
-export function hecsRepayment(repaymentIncome: number, fy: string): number {
-  const bands = hecsBands[fy] ?? hecsBands['2025-26'];
-  if (repaymentIncome <= bands[1].threshold) return 0;
-
-  // Marginal method: for each dollar, find the band it falls into and apply that rate.
-  let total = 0;
-  for (let i = 1; i < bands.length; i++) {
-    const lower = bands[i].threshold;
-    const upper = bands[i + 1]?.threshold ?? Infinity;
-    if (repaymentIncome <= lower) break;
-    const taxableInBand = Math.min(repaymentIncome, upper) - lower;
-    if (taxableInBand > 0) total += taxableInBand * bands[i].rate;
-  }
-  return total;
-}
 
 export interface ProjectionResult {
   yearsToPayoff: number;
@@ -181,15 +189,23 @@ export interface ProjectPayoffOptions {
    * adding $4-10k/yr in voluntary payments. Default 0.
    */
   voluntaryAnnual?: number;
+  /**
+   * Which system's bands to use for the projection. Default 'ato' uses the
+   * actual ATO schedule for the given FY. 'paycalculator' uses the
+   * simplified 4-bracket reference schedule.
+   */
+  systemOverride?: 'ato' | 'paycalculator';
 }
 
 /**
- * HECS repayment for a given income against a custom band set. Used by
- * `projectPayoffWithBands` so the projection can use either the ATO marginal
- * bands or a reference schedule (e.g. the simplified paycalculator.com.au
- * 4-bracket version).
+ * HECS repayment for a given income against a custom band set, using the
+ * marginal method (works for the ATO's 2025-26+ schedule and the paycalculator
+ * 4-bracket reference — both are marginal).
  */
-function hecsRepaymentWithBands(repaymentIncome: number, bands: HecsBand[]): number {
+function hecsRepaymentMarginalCustom(
+  repaymentIncome: number,
+  bands: HecsBand[],
+): number {
   if (repaymentIncome <= bands[1]?.threshold) return 0;
   let total = 0;
   for (let i = 1; i < bands.length; i++) {
@@ -204,8 +220,8 @@ function hecsRepaymentWithBands(repaymentIncome: number, bands: HecsBand[]): num
 
 /**
  * Project how long it takes to pay off a HECS debt against a custom band set.
- * This is the workhorse — `projectPayoff` is a thin wrapper that supplies the
- * ATO bands for the given FY.
+ * The bands must be a marginal schedule (not flat-rate) for the math to be
+ * correct.
  */
 export function projectPayoffWithBands(
   startingBalance: number,
@@ -238,15 +254,11 @@ export function projectPayoffWithBands(
     year += 1;
     const starting = balance;
     const indexation = starting * indexationRate;
-    const compulsory = hecsRepaymentWithBands(currentIncome, bands);
-    // In the final year, voluntary can't exceed the actual remaining balance +
-    // indexation (capped below). Otherwise it adds dollar-for-dollar.
+    const compulsory = hecsRepaymentMarginalCustom(currentIncome, bands);
     let voluntary = voluntaryAnnual;
     let repayment = compulsory + voluntary;
     const ending = starting + indexation - repayment;
     if (ending < 0) {
-      // Final year — repay only what's left (compulsory already paid, so the
-      // residual is voluntary).
       const actualRepayment = starting + indexation;
       const actualVoluntary = Math.max(0, actualRepayment - compulsory);
       totalRepaid += actualRepayment;
@@ -277,7 +289,6 @@ export function projectPayoffWithBands(
       endingBalance: ending,
     });
     balance = ending;
-    // Apply wage growth for the next year
     currentIncome = currentIncome * (1 + wageGrowthRate);
   }
 
@@ -293,11 +304,6 @@ export function projectPayoffWithBands(
  * Project how long it takes to pay off a HECS debt given an initial repayment
  * income, an assumed annual indexation rate, and (optionally) annual wage
  * growth. Returns null if income is below the repayment threshold.
- *
- * With wageGrowthRate = 0, this is a flat-income projection (worst case for
- * the borrower, conservative). With a positive wage growth rate, the model
- * matches what happens in practice for most workers. Add `voluntaryAnnual` to
- * model making extra repayments on top of the compulsory withholding.
  */
 export function projectPayoff(
   startingBalance: number,
@@ -310,7 +316,10 @@ export function projectPayoff(
     typeof maxYearsOrOptions === 'number'
       ? { maxYears: maxYearsOrOptions }
       : maxYearsOrOptions;
-  const bands = hecsBands[fy] ?? hecsBands['2025-26'];
+  const bands =
+    options.systemOverride === 'paycalculator'
+      ? paycalculatorHecsBands
+      : (hecsMarginalBands[fy] ?? hecsMarginalBands['2026-27']);
   return projectPayoffWithBands(
     startingBalance,
     repaymentIncome,

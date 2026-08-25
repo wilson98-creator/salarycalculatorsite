@@ -2,53 +2,24 @@
 
 import { useMemo, useState } from 'react';
 import {
-  hecsBands,
+  hecsMarginalBands,
+  hecsFlatBands,
   hecsRepayment,
-  paycalculatorHecsBands,
+  hecsSystemForFy,
   projectPayoffWithBands,
-  type HecsBand,
 } from '@/lib/tax/hecs';
 import type { FinancialYear } from '@/lib/tax/brackets';
 import { formatAUD } from '@/lib/tax/calculate';
 import { LineChart } from '@/components/LineChart';
 
 const fyOptions: { value: FinancialYear; label: string }[] = [
-  { value: '2024-25', label: 'FY 2024–25' },
-  { value: '2025-26', label: 'FY 2025–26 (current marginal system)' },
-  { value: '2026-27', label: 'FY 2026–27' },
-  { value: '2027-28', label: 'FY 2027–28' },
+  { value: '2024-25', label: 'FY 2024–25 (old flat-rate system)' },
+  { value: '2025-26', label: 'FY 2025–26 (new marginal system launched)' },
+  { value: '2026-27', label: 'FY 2026–27 (current)' },
+  { value: '2027-28', label: 'FY 2027–28 (estimated)' },
 ];
 
 const PROJECTION_MAX_YEARS = 70;
-
-type HecsSchedule = 'ato-new' | 'paycalculator';
-
-const scheduleOptions: { value: HecsSchedule; label: string; description: string }[] = [
-  {
-    value: 'ato-new',
-    label: 'Current ATO system (FY 2025-26+ marginal)',
-    description: 'Marginal brackets, 1% to 10%. What the ATO actually charges from 1 July 2025.',
-  },
-  {
-    value: 'paycalculator',
-    label: 'Reference: paycalculator.com.au (simplified)',
-    description: '4-bracket simplified version: 0% / 15% / 17% / 10%. Not the actual ATO schedule — kept for comparison.',
-  },
-];
-
-/** Compute HECS repayment against a custom band set (marginal method). */
-function repaymentWithBands(income: number, bands: HecsBand[]): number {
-  if (income <= bands[1]?.threshold) return 0;
-  let total = 0;
-  for (let i = 1; i < bands.length; i++) {
-    const lower = bands[i].threshold;
-    const upper = bands[i + 1]?.threshold ?? Infinity;
-    if (income <= lower) break;
-    const slice = Math.min(income, upper) - lower;
-    if (slice > 0) total += slice * bands[i].rate;
-  }
-  return total;
-}
 
 export function HecsCalculator() {
   const [income, setIncome] = useState<number>(85000);
@@ -57,26 +28,30 @@ export function HecsCalculator() {
   const [indexation, setIndexation] = useState<number>(2.8);
   const [wageGrowth, setWageGrowth] = useState<number>(3.5);
   const [voluntaryAnnual, setVoluntaryAnnual] = useState<number>(0);
-  const [schedule, setSchedule] = useState<HecsSchedule>('ato-new');
 
-  // Pick the band set and repayment function based on the schedule toggle.
-  const usingPaycalculator = schedule === 'paycalculator';
-  const bands = usingPaycalculator
-    ? paycalculatorHecsBands
-    : (hecsBands[fy] ?? hecsBands['2025-26']);
-  const firstThreshold = bands[1]?.threshold ?? 54435;
+  const system = hecsSystemForFy(fy);
+  // The projection loop needs marginal-style bands. For flat-rate years
+  // (2024-25 and earlier), we project using the next marginal FY as a proxy
+  // and surface a warning.
+  const projectionBands =
+    system === 'marginal'
+      ? (hecsMarginalBands[fy] ?? hecsMarginalBands['2026-27'])
+      : hecsMarginalBands['2026-27'];
+  const firstThreshold = system === 'flat'
+    ? (hecsFlatBands[fy]?.[1]?.threshold ?? 54435)
+    : (hecsMarginalBands[fy]?.[1]?.threshold ?? 69528);
   const belowThreshold = income <= firstThreshold;
   const repayment = useMemo(
-    () => (usingPaycalculator ? repaymentWithBands(income, bands) : hecsRepayment(income, fy)),
-    [income, fy, usingPaycalculator, bands],
+    () => hecsRepayment(income, fy),
+    [income, fy],
   );
   const projection = useMemo(
     () => projectPayoffWithBands(
       debtBalance, income, indexation / 100,
       { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual },
-      bands,
+      projectionBands,
     ),
-    [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands],
+    [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, projectionBands],
   );
 
   // For comparison, also compute the flat-income projection (conservative)
@@ -84,9 +59,9 @@ export function HecsCalculator() {
     () => projectPayoffWithBands(
       debtBalance, income, indexation / 100,
       { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: 0, voluntaryAnnual },
-      bands,
+      projectionBands,
     ),
-    [debtBalance, income, indexation, voluntaryAnnual, bands],
+    [debtBalance, income, indexation, voluntaryAnnual, projectionBands],
   );
 
   // What if you add $X more in voluntary? Show a quick comparison.
@@ -95,18 +70,18 @@ export function HecsCalculator() {
     return projectPayoffWithBands(
       debtBalance, income, indexation / 100,
       { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual: voluntaryAnnual + 4000 },
-      bands,
+      projectionBands,
     );
-  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands]);
+  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, projectionBands]);
 
   const projectionWithoutVoluntary = useMemo(() => {
     if (voluntaryAnnual <= 0) return null;
     return projectPayoffWithBands(
       debtBalance, income, indexation / 100,
       { maxYears: PROJECTION_MAX_YEARS, wageGrowthRate: wageGrowth / 100, voluntaryAnnual: 0 },
-      bands,
+      projectionBands,
     );
-  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, bands]);
+  }, [debtBalance, income, indexation, wageGrowth, voluntaryAnnual, projectionBands]);
 
   // For the chart: build series showing starting balance each year vs ending balance
   const chartSeries = useMemo(() => {
@@ -147,17 +122,14 @@ export function HecsCalculator() {
   const tippingPointIncome = useMemo(() => {
     if (debtBalance <= 0 || indexation <= 0) return null;
     const targetRepayment = debtBalance * (indexation / 100);
-    // Find the lowest income where HECS >= targetRepayment.
     for (let testIncome = firstThreshold; testIncome <= 300000; testIncome += 100) {
-      const testRepayment = usingPaycalculator
-        ? repaymentWithBands(testIncome, bands)
-        : hecsRepayment(testIncome, fy);
+      const testRepayment = hecsRepayment(testIncome, fy);
       if (testRepayment >= targetRepayment) {
         return testIncome;
       }
     }
     return null;
-  }, [debtBalance, indexation, fy, firstThreshold, usingPaycalculator, bands]);
+  }, [debtBalance, indexation, fy, firstThreshold]);
 
   // At the current wage growth rate, when does income cross the tipping point?
   const yearsToTippingPoint = useMemo(() => {
@@ -209,26 +181,12 @@ export function HecsCalculator() {
                 <option key={o.value} value={o.value}>{o.label}</option>
               ))}
             </select>
-            <p className="help">From FY 2025–26 the system is marginal (similar to income tax).</p>
+            <p className="help">
+              {system === 'flat'
+                ? `FY ${fy} uses the old flat-rate system — the bracket rate applies to your whole repayment income. From 1 July 2025 the ATO moved to a marginal system.`
+                : `FY ${fy} uses the new ATO marginal system: 0% below ${formatAUD(firstThreshold, 0)}, 15% above, 17% above the next band, 10% cap at the top.`}
+            </p>
           </div>
-        </div>
-
-        <div className="mt-2 rounded-lg border border-ink-200 bg-ink-50 p-3">
-          <label htmlFor="hecs-schedule" className="label flex items-baseline gap-2">
-            HECS schedule
-            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink-500">Compare</span>
-          </label>
-          <select
-            id="hecs-schedule"
-            className="input"
-            value={schedule}
-            onChange={(e) => setSchedule(e.target.value as HecsSchedule)}
-          >
-            {scheduleOptions.map((o) => (
-              <option key={o.value} value={o.value}>{o.label}</option>
-            ))}
-          </select>
-          <p className="help">{scheduleOptions.find((o) => o.value === schedule)?.description}</p>
         </div>
 
         <details className="rounded-xl border border-ink-200 bg-ink-50/40">
@@ -329,12 +287,11 @@ export function HecsCalculator() {
           <span className="result-value">{formatAUD(repayment / 12)}</span>
         </div>
 
-        {/* Marginal vs effective rate explainer — when the gap is large */}
-        {!belowThreshold && !usingPaycalculator && income > 0 && (() => {
+        {/* Marginal vs effective rate explainer — when the gap is large (marginal system only) */}
+        {!belowThreshold && system === 'marginal' && income > 0 && (() => {
           const effective = (repayment / income) * 100;
-          // Find the marginal bracket rate the user is currently in
-          const marginalBand = bands.find((b, i) => {
-            const next = bands[i + 1]?.threshold ?? Infinity;
+          const marginalBand = projectionBands.find((b, i) => {
+            const next = projectionBands[i + 1]?.threshold ?? Infinity;
             return income > b.threshold && income <= next;
           });
           const marginalRate = marginalBand && marginalBand.rate > 0 ? marginalBand.rate * 100 : null;
@@ -342,20 +299,29 @@ export function HecsCalculator() {
           return (
             <div className="mt-4 rounded-lg border border-ink-200 bg-ink-50/50 p-3 text-sm text-ink-700 dark:border-ink-700 dark:bg-ink-800/40 dark:text-ink-200">
               <p>
-                <strong>Marginal vs effective rate.</strong> Your income is in the {marginalRate.toFixed(1)}% HECS bracket, but because HECS is calculated <em>marginal</em> (like income tax), the first {formatAUD(bands[1].threshold, 0)} is exempt and lower brackets apply to the layers below. The effective rate against your full income is only <span className="font-mono font-semibold">{effective.toFixed(2)}%</span>, so the compulsory repayment is much smaller than the {marginalRate.toFixed(0)}% headline figure suggests.
+                <strong>Marginal vs effective rate.</strong> Your income is in the {marginalRate.toFixed(0)}% HECS bracket, but because HECS is calculated <em>marginal</em> (like income tax), the first {formatAUD(projectionBands[1].threshold, 0)} is exempt. The effective rate against your full income is only <span className="font-mono font-semibold">{effective.toFixed(2)}%</span>.
               </p>
             </div>
           );
         })()}
 
-        {/* PROMINENT: Danger zone warning — when HECS < indexation */}
-        {usingPaycalculator && (
-          <div className="mt-6 rounded-lg border-2 border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-900/20 dark:text-amber-200">
-            <p className="font-semibold text-base">⚠ Showing the paycalculator.com.au simplified schedule.</p>
-            <p className="mt-1">
-              This is a 4-bracket simplified version, not what the ATO actually charges. The ATO uses a
-              15-bracket marginal schedule from 1 July 2025 (marginal brackets 1% to 10%). Switch the
-              schedule dropdown to &lsquo;Current ATO system&rsquo; to see the official numbers.
+        {/* 10% cap notice — when high income triggers the ATO cap */}
+        {!belowThreshold && system === 'marginal' && income > (projectionBands[3]?.threshold ?? Infinity) && (() => {
+          const capRate = projectionBands[3]?.rate ?? 0.10;
+          return (
+            <div className="mt-4 rounded-lg border border-ink-200 bg-ink-50/50 p-3 text-sm text-ink-700 dark:border-ink-700 dark:bg-ink-800/40 dark:text-ink-200">
+              <p>
+                <strong>10% cap applies.</strong> Above {formatAUD(projectionBands[3].threshold, 0)}, your HECS repayment is capped at <span className="font-mono font-semibold">{(capRate * 100).toFixed(0)}%</span> of your repayment income. The marginal method still works the same way — the cap is just a ceiling on the effective rate.
+              </p>
+            </div>
+          );
+        })()}
+
+        {/* Old flat-rate system notice */}
+        {system === 'flat' && (
+          <div className="mt-4 rounded-lg border border-ink-200 bg-ink-50/50 p-3 text-sm text-ink-700 dark:border-ink-700 dark:bg-ink-800/40 dark:text-ink-200">
+            <p>
+              <strong>FY {fy} uses the old flat-rate system.</strong> In this year, the bracket rate (1%-10%) applied to your <em>whole</em> repayment income, not just the slice. From 1 July 2025 the ATO moved to a marginal system, so current and future HECS is calculated differently. The projection below uses the current marginal system as a proxy.
             </p>
           </div>
         )}

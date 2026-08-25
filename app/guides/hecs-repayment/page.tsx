@@ -58,12 +58,12 @@ const faqs = [
   {
     question: 'How is HECS-HELP repayment calculated under the new system?',
     answer:
-      'From 1 July 2025 HECS-HELP uses a marginal bracket system, similar to income tax. You only pay the higher rate on the income above each threshold, not on your whole repayment income. The schedule starts at 1% above the lower threshold and rises to 10% of total repayment income above $200,000.',
+      'From 1 July 2025 the ATO uses a 4-bracket marginal system: 0% below the lower threshold, 15% on income between the first and second threshold, 17% between the second and third, and a 10% cap above the top threshold. Only the slice of income within each band is taxed at that band’s rate (the marginal method, like income tax). For FY 2026-27 the thresholds are $69,528 / $129,717 / $186,050. At $110,000 repayment income, you pay 15% × ($110,000 − $69,528) = $6,070.80.',
   },
   {
     question: 'When do I start repaying HECS?',
     answer:
-      'You start making compulsory repayments once your repayment income exceeds the threshold for the financial year. For FY 2026-27 the threshold is approximately $69,528. For FY 2025-26 it was $54,435. Your employer withholds the repayment through PAYG if you ticked the HECS-HELP box on your Tax File Number declaration.',
+      'You start making compulsory repayments once your repayment income exceeds the threshold for the financial year. For FY 2026-27 the threshold is $69,528. For FY 2025-26 it was $67,000. For FY 2024-25 and earlier the threshold was $54,435 (and a flat-rate system applied). Your employer withholds the repayment through PAYG if you ticked the HECS-HELP box on your Tax File Number declaration.',
   },
   {
     question: 'What is "repayment income" and why does it differ from my salary?',
@@ -161,7 +161,7 @@ export default function HecsGuide() {
             <li className="flex items-baseline gap-3">
               <span className="font-mono font-semibold text-brand-600">→</span>
               <span className="text-ink-700">
-                FY 2026-27 lower threshold: <strong>~$69,528</strong>. Income above this: marginal repayment from 1% to 10% of total repayment income.
+                FY 2026-27 lower threshold: <strong>$69,528</strong>. Income above this: marginal repayment, 15% then 17% then a 10% cap.
               </span>
             </li>
             <li className="flex items-baseline gap-3">
@@ -207,7 +207,7 @@ export default function HecsGuide() {
           <p>
             From 1 July 2025 the system is marginal, like income tax, you
             only pay the higher rate on the income above each threshold, not
-            on your whole income. For FY 2025-26 the schedule was:
+            on your whole income. The ATO schedule from FY 2025-26 is:
           </p>
           <table>
             <thead>
@@ -218,28 +218,28 @@ export default function HecsGuide() {
             </thead>
             <tbody>
               <tr>
-                <td>Below $54,435</td>
+                <td>$0 – $67,000 (FY 2025-26) / $69,528 (FY 2026-27)</td>
                 <td>Nil</td>
               </tr>
               <tr>
-                <td>$54,435 – $125,000</td>
-                <td>15c per $1 above $54,435</td>
+                <td>Above first threshold – $125,000 / $129,717</td>
+                <td>15c per $1 above the lower threshold</td>
               </tr>
               <tr>
-                <td>$125,001 – $159,664</td>
-                <td>$10,585 + 17c per $1 above $125,000</td>
+                <td>Above second threshold – $179,285 / $186,050</td>
+                <td>$8,700 / $9,028 + 17c per $1 above the second threshold</td>
               </tr>
               <tr>
-                <td>$159,665 and over</td>
-                <td>10% of total repayment income</td>
+                <td>Above the top threshold</td>
+                <td>10% of total repayment income (the cap)</td>
               </tr>
             </tbody>
           </table>
           <p>
-            For FY 2026-27 the thresholds have shifted up, the lower
-            threshold is now around $69,528. The SalaryCalc{' '}
+            The SalaryCalc{' '}
             <Link href="/hecs-calculator">HECS calculator</Link> applies the
-            marginal method automatically.
+            marginal method automatically and matches the ATO published
+            tables to the cent.
           </p>
 
           <h2>3. What &quot;repayment income&quot; actually is</h2>

@@ -54,7 +54,7 @@ const howToSteps = [
   },
   {
     name: 'Add the HECS-HELP repayment',
-    text: 'If you have a study debt and your repayment income exceeds the threshold, the calculator applies the marginal HECS-HELP rate (1% to 10% depending on income band).',
+    text: 'If you have a study debt and your repayment income exceeds the threshold, the calculator applies the ATO HECS-HELP rate for the financial year you select. From FY 2025-26 the ATO uses a 4-bracket marginal system (0% / 15% / 17% / 10% cap); before that a 19-bracket flat-rate system applied (rate applied to whole repayment income).',
   },
   {
     name: 'Show the result for every pay period',
@@ -74,9 +74,9 @@ const faqs = [
       'Not in the main calculator. The Medicare Levy Surcharge is 1-1.5% on top of the Medicare levy for high-income earners without private hospital cover, and depends on the family threshold. The methodology page documents this in the "What we don\'t model" section. If you are close to the threshold, talk to a registered tax agent or use the ATO\'s MLS estimator.',
   },
   {
-    question: 'How is the HECS-HELP marginal rate calculated?',
+    question: 'How is HECS-HELP calculated from FY 2025-26?',
     answer:
-      'From 1 July 2025 HECS-HELP uses a marginal bracket system, similar to income tax. You only pay the higher rate on the income above each threshold, not on your whole repayment income. The schedule starts at 1% above the lower threshold and rises to 10% above $200,000.',
+      'From 1 July 2025 the ATO uses a 4-bracket marginal system: 0% below the lower threshold, 15% on income between the first and second threshold, 17% between the second and third, and a 10% cap above the top threshold. Only the income within each band is taxed at that band’s rate (the marginal method, like income tax). For FY 2025-26 the thresholds are $67,000 / $125,000 / $179,285. For FY 2026-27 they are $69,528 / $129,717 / $186,050. For example, at $110,000 repayment income in FY 2026-27 you pay 15% × ($110,000 − $69,528) = $6,070.80.',
   },
   {
     question: 'What is "repayment income" for HECS?',
@@ -301,8 +301,8 @@ export default function MethodologyPage() {
           <p>
             Compulsory repayments are calculated on &quot;repayment income&quot;
             (taxable income plus reportable fringe benefits plus reportable
-            employer super contributions). The current marginal schedule ranges
-            from 1% at the lower threshold up to 10% above $200,000. Salaried
+            employer super contributions). From FY 2025-26 the ATO uses a
+            4-bracket marginal system: 0% / 15% / 17% / 10% cap. Salaried
             employees with HECS debt have the repayment withheld by their
             employer. The MVP treats repayment income as taxable income for
             simplicity; turn on the salary-sacrifice toggle if you make pre-tax

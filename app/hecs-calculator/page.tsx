@@ -17,11 +17,11 @@ export const metadata: Metadata = {
 const faqs = [
   {
     question: 'How is HECS-HELP repayment calculated under the new system?',
-    answer: 'From 1 July 2025 HECS-HELP uses a marginal bracket system, similar to income tax. You only pay the higher rate on the income above each threshold, not on your whole income. For FY 2025–26 the threshold is $54,435 with a 15% rate on income between $54,435 and $125,000. For FY 2026–27 the lower threshold is around $69,528. The calculator applies the marginal method automatically based on the year you select.',
+    answer: 'From 1 July 2025 the ATO uses a 4-bracket marginal system: 0% below the lower threshold, 15% on income between the first and second threshold, 17% between the second and third, and a 10% cap above the top threshold. Only the slice of income within each band is taxed at that band’s rate (the marginal method, like income tax). For FY 2026–27 the thresholds are $69,528 / $129,717 / $186,050. For example, at $110,000 repayment income you pay 15% × ($110,000 − $69,528) = $6,070.80.',
   },
   {
     question: 'When do I start repaying HECS?',
-    answer: 'You start making compulsory repayments once your repayment income exceeds the threshold for the financial year. For FY 2026–27 the threshold is approximately $69,528. For FY 2025–26 it was $54,435. Your employer withholds the repayment through PAYG if you tick the HECS-HELP box on your Tax File Number declaration.',
+    answer: 'You start making compulsory repayments once your repayment income exceeds the threshold for the financial year. For FY 2026–27 the threshold is $69,528. For FY 2025–26 it was $67,000. For FY 2024–25 and earlier the threshold was $54,435 (and a flat-rate system applied). Your employer withholds the repayment through PAYG if you tick the HECS-HELP box on your Tax File Number declaration.',
   },
   {
     question: 'What is "repayment income" and why does it differ from my salary?',
@@ -94,11 +94,13 @@ export default function HecsCalculatorPage() {
             rise could cost more than it earned.
           </p>
           <p>
-            Under the marginal system, you only pay the higher rate on the income
-            above each threshold. For FY 2026–27 the threshold is approximately
-            $69,528 with a 15% rate on income between the threshold and $125,000.
-            Higher bands apply above that, capping at 10% of total repayment income
-            for very high earners.
+            Under the new system, you only pay the higher rate on the income
+            above each threshold (the marginal method, like income tax). For
+            FY 2026–27 the schedule is: 0% below $69,528, 15% on income
+            between $69,528 and $129,717, 17% on income between $129,717 and
+            $186,050, and a 10% cap above $186,050. The calculator applies
+            the marginal method automatically and matches the ATO published
+            tables to the cent.
           </p>
 
           <h2>Repayment income vs taxable income</h2>
@@ -167,7 +169,12 @@ export default function HecsCalculatorPage() {
             If you are building a general debt repayment plan, a <strong>debt repayment calculator</strong> is the right starting point. The conventional advice is to use the <strong>avalanche method</strong>: pay the minimum on every debt, and direct every spare dollar to the debt with the highest interest rate. For most Australians, that means credit cards (18-22%) and personal loans (9-14%) come first, then HECS last, because HECS behaves more like a slowly-indexing savings plan than a typical loan. Use our <Link href="/loan-payoff-calculator">loan payoff calculator</Link> to model credit card and personal loan scenarios, and our <Link href="/loan-payoff-calculator">debt payoff calculator</Link> to see how long different payoff strategies actually take on a real balance.
           </p>
           <p>
-            Where this changes: if you are on the marginal repayment system, the repayment rate increases as your income grows. A 1.5% indexation combined with a 2% effective repayment rate means you are slowly gaining ground even without voluntary payments. If you are on the old flat-rate system (pre-July 2025 debts), the analysis is different, talk to a financial counsellor before making voluntary payments.
+            Under the marginal repayment system that applies from FY 2025-26,
+            the effective repayment rate increases as your income grows, so
+            most people gain ground every year even without voluntary
+            payments. Debts taken on before 1 July 2025 sit on the old
+            flat-rate system where the analysis is different, talk to a
+            financial counsellor before making voluntary payments on those.
           </p>
         </section>
 

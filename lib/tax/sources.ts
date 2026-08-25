@@ -21,8 +21,8 @@ export const sources = {
     url: 'https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets-and-rebates/low-income-tax-offset',
   },
   hecsRepayment: {
-    label: 'Repaying your study loan',
-    url: 'https://www.ato.gov.au/individuals-and-families/education-and-study/managing-your-study-loan/repaying-your-study-loan',
+    label: 'Study and training loan repayment thresholds and rates',
+    url: 'https://www.ato.gov.au/tax-rates-and-codes/study-and-training-support-loans-rates-and-repayment-thresholds',
   },
   superGuarantee: {
     label: 'Superannuation guarantee',
