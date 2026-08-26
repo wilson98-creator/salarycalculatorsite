@@ -7,7 +7,7 @@ export function Header() {
   const { toggle, isOpen } = useSidebar();
 
   return (
-    <header className="sticky top-0 z-50 bg-paper-0/90 backdrop-blur">
+    <header className="sticky top-0 z-50 bg-paper-0 shadow-[0_1px_0_0_rgba(0,0,0,0.06)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.06)]">
       <div className="rule-line absolute inset-x-0 bottom-0" aria-hidden="true" />
       <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6">
         {/* Mobile only: opens the sidebar drawer. Hidden on lg+ where the
