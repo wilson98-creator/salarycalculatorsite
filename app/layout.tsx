@@ -52,7 +52,15 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image', title: `${brand.name}, Australian Pay Calculator`, description: brand.shortDescription },
   icons: {
-    icon: [{ url: '/icons/icon.svg', type: 'image/svg+xml' }],
+    // The v=2 query forces browsers to drop their cached old favicon
+    // (the cream one) and pick up the new white-box + green-outline mark.
+    icon: [
+      { url: '/icons/icon.svg?v=2', type: 'image/svg+xml' },
+      { url: '/icons/favicon-32.png?v=2', type: 'image/png', sizes: '32x32' },
+      { url: '/icons/favicon-16.png?v=2', type: 'image/png', sizes: '16x16' },
+      { url: '/favicon.ico?v=2', type: 'image/x-icon' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png?v=2', type: 'image/png', sizes: '180x180' }],
   },
   manifest: '/manifest.webmanifest',
   other: { 'google-site-verification': '_6KD07ejnLc9X4RGJB80gujOo0bllGWDKDvVSMxitmY' },

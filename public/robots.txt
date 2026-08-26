@@ -142,3 +142,12 @@ Allow: /
 # Sitemap
 # ────────────────────────────────────────────────────────────────────
 Sitemap: https://thesalarycalc.com.au/sitemap.xml
+
+# ────────────────────────────────────────────────────────────────────
+# Block Cloudflare email-obfuscation paths
+# Email Address Obfuscation rewrites any email on the page into
+# /cdn-cgi/l/email-protection#... URLs. Google keeps discovering these
+# and flagging them as "not indexed" in Search Console. They are not
+# real pages; tell crawlers to leave them alone.
+# ────────────────────────────────────────────────────────────────────
+Disallow: /cdn-cgi/
