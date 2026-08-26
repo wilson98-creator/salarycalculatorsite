@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Paywise">
-  <rect width="512" height="512" fill="#1e6fff"/>
-  <text x="50%" y="62%" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="220" font-weight="700" fill="#ffffff">$</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SalaryCalc">
+  <rect width="64" height="64" fill="#fef3c7"/>
+  <rect x="2.5" y="2.5" width="59" height="59" rx="9.5" fill="none" stroke="#3f6212" stroke-width="1" opacity="0.18"/>
+  <text x="32" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700" font-style="italic" fill="#3f6212">S</text>
+  <line x1="14" y1="52" x2="50" y2="52" stroke="#84cc16" stroke-width="2.5" stroke-linecap="round"/>
 </svg>
