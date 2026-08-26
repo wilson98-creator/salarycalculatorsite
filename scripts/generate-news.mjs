@@ -304,17 +304,20 @@ function buildExplanation(item) {
     };
   }
 
-  // Generic — fall back to a simple structured explanation.
+  // Generic — use the article's own description as the substance, then add
+  // a SalaryCalc take. We never want to ship a brief that is just a wrapper
+  // around the headline. The take is generic enough to work for any
+  // Australian financial news that has survived the strict filter.
+  const desc = (item.description || '').trim();
   return {
     body: [
-      `${item.feed.name} published this story this week. Headline: ${item.title}.`,
-      `We pulled the headline and summary so you can decide whether it's worth reading in full. The original article is linked at the top of this brief.`,
-      `The "what this means for you" section below is a generic, hand-written reminder to think about how any piece of Australian financial news lands on your own pay, mortgage, super, and tax position.`,
-    ].join('\n\n'),
+      desc,
+      `Our take: financial news only matters to the extent it changes a number on your own spreadsheet. The three numbers that matter most for Australian households are take-home pay, mortgage rate, and super balance. If this story moves any of them, it is worth your time. If not, scroll past. Either way, do not act on a headline alone — the linked article has the data, the context, and the quotes that the headline strip omits.`,
+    ].filter(Boolean).join('\n\n'),
     whatItMeans: [
-      'Check the source: This is a third-party summary. Always cross-check the original article (linked at the top) before acting on it.',
-      'Run your numbers: If the story affects your pay, mortgage, super, or tax, run the relevant calculator with the new assumptions.',
-      'If in doubt, talk to a registered professional. Tax agents, financial advisers, and mortgage brokers are searchable via the ATO, ASIC, and AFCA registers.',
+      'Read the source first. The link at the top of this brief has the data and the quotes that the headline omits. Headlines are written to be clicked, not to be acted on.',
+      'Run your numbers. If the story affects your pay, tax, mortgage, or super, the calculator linked below will let you model it in about thirty seconds.',
+      'Wait twenty-four hours. Most financial news breaks fast and clarifies slowly. The first reading is almost always wrong about the second-order effects.',
     ],
     relatedSlugs: ['guides/australian-income-tax'],
     category: 'general',
