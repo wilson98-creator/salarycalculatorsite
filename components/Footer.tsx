@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
           <div className="font-serif text-2xl italic">
-            {brand.name}<span className="not-italic font-mono text-[11px] tracking-[0.15em] text-ink-600">.au</span>
+            {brand.name}
           </div>
           <p className="mt-3 text-sm text-ink-400">
             {brand.tagline}.

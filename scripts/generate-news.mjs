@@ -351,11 +351,13 @@ async function buildExplanationWithLlm(item) {
 
 Style rules:
 - Australian English spelling (organisation, recognise, colour).
-- Plain language. No "according to reports", no "stakeholders", no "headwinds".
-- Always start the first paragraph with a concrete fact, not a hedge.
+- Write at a year-12 reading level. The reader has finished high school but does not work in finance. Define any technical term on first use, in the same sentence. Examples: "the Reserve Bank (RBA), the country's central bank", "the Wage Price Index, which measures how fast pay is growing", "net interest margin, the gap between what banks charge on loans and what they pay on deposits".
+- Avoid jargon. Do not use: NIM, CARF, CGT, CPI, FWO, APRA, EBITDA, YoY, QoQ, basis points. Spell these out or replace with everyday words.
+- No "according to reports", no "stakeholders", no "headwinds", no "broader economy". Plain everyday words.
+- Always start the first paragraph with a concrete fact, not a hedge. Use specific dollar figures when the article gives them.
 - No em dashes, use commas or full stops instead.
 - Keep total body to 100-150 words across 2-3 short paragraphs.
-- "What this means" bullets must start with the affected group in 2-4 words, then a colon, then the practical impact in one sentence. Examples: "Variable-rate mortgage:", "Savers:", "Workers on awards:", "First-home buyers:".
+- "What this means" bullets must start with the affected group in 2-4 words, then a colon, then the practical impact in plain English in one sentence. Examples: "If you have a mortgage:", "If you are saving:", "If you are looking for a new job:", "If you shop at Coles:".
 - Pick 1-3 related calculator/guide slugs from the list. Only pick ones that genuinely help the reader.
 - Do NOT make up specific numbers you don't know. Use approximate language if needed.
 - Output ONLY the JSON object, no commentary, no markdown fences.`;
