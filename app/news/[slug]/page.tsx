@@ -86,6 +86,9 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
               {published}
             </span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink-600">
+              By SalaryCalc editorial
+            </span>
           </div>
           <h1 className="h-display mt-4 text-ink-800">
             {post.title}
@@ -94,7 +97,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
             {post.excerpt}
           </p>
           <p className="mt-6 text-sm text-ink-600">
-            Originally published by{' '}
+            Original story at{' '}
             <a
               href={post.sourceUrl}
               target="_blank"
@@ -103,7 +106,11 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
             >
               {post.source}
             </a>
-            . Summarised and re-explained by the SalaryCalc editorial team.
+            . This brief is our own analysis for Australian workers, borrowers, savers and taxpayers — see our{' '}
+            <Link href="/methodology" className="text-ink-800 underline decoration-1 underline-offset-4 hover:text-ledger-500">
+              editorial methodology
+            </Link>
+            . Last reviewed {published}.
           </p>
         </header>
 
@@ -206,7 +213,7 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
           <h2 className="h-section mt-4 text-ink-800">Source and method.</h2>
           <div className="mt-6 max-w-3xl text-sm text-ink-600 sm:text-base">
             <p>
-              This brief is a plain-English summary of news published by{' '}
+              The story we are writing about was published by{' '}
               <a
                 href={post.sourceUrl}
                 target="_blank"
@@ -215,14 +222,25 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
               >
                 {post.source}
               </a>
-              . We do not speak for the original publisher. Always cross-check the
-              primary source, especially for tax, super, and legal decisions, and
-              consider talking to a registered tax agent or financial adviser before
-              acting on anything in this brief.
+              . We have read the original, picked out the parts that matter for
+              Australian workers, borrowers, savers, and taxpayers, and added our
+              own analysis and worked examples. Where the source is making a
+              claim we think is wrong, we say so. We do not paraphrase sentences
+              from the original.
             </p>
             <p className="mt-4">
-              SalaryCalc publishes Money Briefs for general information. It is not
-              financial or tax advice. See our{' '}
+              Every brief is checked against the original source before
+              publication and again at the start of each month. The
+              &ldquo;last reviewed&rdquo; date in the header reflects the most
+              recent check. See our{' '}
+              <Link href="/methodology" className="underline decoration-1 underline-offset-4 hover:text-ledger-500">editorial methodology</Link>{' '}
+              for the full process.
+            </p>
+            <p className="mt-4">
+              Money Briefs are general information, not financial or tax advice.
+              Always cross-check the primary source before acting on anything
+              here, especially for tax, super, and legal decisions, and consider
+              talking to a registered tax agent or financial adviser. See our{' '}
               <Link href="/disclaimer/" className="underline decoration-1 underline-offset-4 hover:text-ledger-500">disclaimer</Link>.
             </p>
           </div>
