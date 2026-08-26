@@ -15,8 +15,7 @@ import { getLatestNews } from '@/lib/news/loader';
 
 export const metadata: Metadata = {
   title: 'Australian Pay Calculator (FY 2026–27)',
-  description:
-    'Free, accurate Australian pay calculator, also covers wage, salary, paycheck, annual income, hourly wage, payroll, salary comparison and holiday entitlement. FY 2026–27 ATO rates.',
+  description: brand.shortDescription,
   alternates: { canonical: '/' },
 };
 
@@ -39,7 +38,7 @@ const homeFaqs = [
   {
     question: 'How is HECS-HELP repayment calculated?',
     answer:
-      'From 1 July 2025 HECS-HELP uses a marginal bracket system, you only pay the higher rate on income above each threshold, not on your whole income. For FY 2026–27 the threshold is around $69,528. Tick the "I have a HECS-HELP debt" option in the calculator to see the impact on your take-home pay.',
+      'From 1 July 2025 the ATO uses a 4-bracket marginal system: 0% below the lower threshold, 15% on income between the first and second threshold, 17% between the second and third, and a 10% cap above the top threshold. For FY 2026-27 the thresholds are $69,528 / $129,717 / $186,050. Tick the "I have a HECS-HELP debt" option in the calculator to see the impact on your take-home pay.',
   },
   {
     question: 'Is this financial advice?',
