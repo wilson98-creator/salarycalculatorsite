@@ -70,6 +70,20 @@ const FEEDS = [
   },
 ];
 
+/** Drop a few RSS feed patterns that produce unusable briefs. Live blogs
+ *  bundle multiple stories into one feed item and always have a
+ *  "Get our email newsletter" / "Follow today's news live" sign-up CTA
+ *  baked into the description. Editorial pieces with no financial
+ *  hook are also dropped. */
+const TITLE_BLOCKLIST = [
+  /news live:/i,
+  /live blog/i,
+  /newsletter/i,
+  /opinion:/i,
+  /editorial:/i,
+  /letters:/i,
+];
+
 /** Read every existing post id+sourceUrl so we can de-dupe. */
 function getExistingSlugs() {
   if (!existsSync(CONTENT_DIR)) return new Set();
@@ -124,10 +138,17 @@ function parseRss(xml, feed) {
     const description = pickTag(body, 'description');
     const pubDate = pickTag(body, 'pubDate') || pickTag(body, 'dc:date');
     if (!title || !link) continue;
+    const cleanTitle = stripHtml(title).trim();
+    const cleanDescription = stripHtml(description || '').trim();
+    // Drop live blogs, newsletters, opinion pieces, etc. — see TITLE_BLOCKLIST.
+    if (TITLE_BLOCKLIST.some((re) => re.test(cleanTitle))) {
+      console.log(`[news] drop (blocklist): ${cleanTitle.slice(0, 70)}…`);
+      continue;
+    }
     items.push({
-      title: stripHtml(title).trim(),
+      title: cleanTitle,
       link: stripHtml(link).trim(),
-      description: stripHtml(description || '').trim(),
+      description: cleanDescription,
       pubDate: pubDate ? new Date(pubDate) : new Date(),
       feed,
     });
@@ -147,8 +168,10 @@ function pickTag(body, tag) {
 }
 
 function stripHtml(s) {
+  // Decode entities FIRST, otherwise literal HTML produced by the decoder
+  // (e.g. &lt;p&gt; → <p>) survives the tag-strip regex pass.
+  // Then strip tags, then decode any remaining entities.
   return s
-    .replace(/<[^>]+>/g, '')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
@@ -162,7 +185,18 @@ function stripHtml(s) {
     .replace(/&#8217;/g, "'")
     .replace(/&#8220;/g, '"')
     .replace(/&#8221;/g, '"')
-    .replace(/&#\d+;/g, '');
+    .replace(/&#\d+;/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&#\d+;/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 /** Build the structured layman-explanation body using a topic-based template. */
@@ -416,11 +450,21 @@ function writePost(item) {
   }
 
   const exp = item._explanation;
+  // Build the excerpt. description is already stripHtml'd in parseRss, but
+  // apply again as a safety net. Trim to 2 sentences max so cards stay tidy.
+  let excerpt = stripHtml(item.description || '').trim();
+  if (excerpt.length > 220) excerpt = excerpt.slice(0, 217).trim() + '…';
+  // Defensive: if any HTML tag survived, drop the whole excerpt and fall
+  // back to a generic intro so the published JSON never contains raw markup.
+  if (/<[a-z][^>]*>/i.test(excerpt)) {
+    excerpt = `Summary of ${item.title}, published by ${item.feed.name}.`;
+  }
+
   const post = {
     id,
     date,
     title: item.title.replace(/\.$/, ''),
-    excerpt: item.description.slice(0, 220).trim() + (item.description.length > 220 ? '…' : ''),
+    excerpt,
     source: item.feed.name,
     sourceUrl: item.link,
     category: exp.category,
