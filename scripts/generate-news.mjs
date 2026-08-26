@@ -25,13 +25,16 @@ const STATE_DIR = join(__dirname, '..', '.github', 'state');
 
 const MAX_PER_RUN = 2; // 2 briefs per scheduled run
 
+/** Strong personal-finance signal. Items must match at least one of
+ *  these in the title OR description to be picked up. This is the ONLY
+ *  filter — it's deliberately strict so we don't publish briefs about
+ *  art-gallery loans, AI music charts, sports results, weather, or
+ *  lifestyle pieces that happen to land in the Business feed. */
+const STRONG_FINANCIAL_SIGNALS = /(cash rate|interest rate|interest rates|mortgage|mortgages|home loan|home loans|refinanc|fixed rate|variable rate|housing|property price|property prices|home value|home values|core logic|rent |rental|wage|wages|wage growth|wage price|wage price index|wpi|pay rise|pay rise|pay increase|salary|salaries|income|ato |australian taxation|tax office|tax cut|tax cuts|tax bracket|tax brackets|stage 3|stage 2|stage 1|lito|offsets|franking|cgt|capital gains|negative gear|negative gearing|superannuation|concessional|non-concessional|division 293|stsl|hecs|help debt|student loan|inflation|cpi |unemployment|labour force|jobs data|employment data|fair work|fwc |minimum wage|award rate|asx |asx200|all ordinaries|sharemarket|stock market|dividend|etf|managed fund|yield|term deposit|savings rate|bonus saver|exchange rate|australian dollar|crypto|bitcoin|ethereum|btc |eth |bank |banks|banking|retail bank|big four|westpac|commbank|anz |nab |rba |reserve bank|economy|gdp |recession|jobs |housing affordability|borrowing|borrower|borrowers|homebuyer|home buyer|first home|fhb |home guarantee|family home|grants|electricity bill|energy bill|gas bill|petrol|child care|centrelink|family tax benefit|age pension|jobseeker|newstart|pension|energyAustralia|origin energy|agl|amp |bhp |rio tinto|fortescue|riotinto|iron ore|lng |coal|gas export|telstra|optus|vodafone|woolworths|coles|aldi|amazon|google|apple|microsoft|meta |nvidia|tesla)/i;
+
 /** Source feed definitions. All URLs verified working as of Aug 2026.
- *  `filter` is an optional regex — items whose title does not match
- *  the filter are dropped. RBA does not need a filter (all items are
- *  monetary-policy / official releases). For SMH/Age/Guardian we use
- *  a finance keyword filter so we don't accidentally pick up a story
- *  about a celebrity or a sports result that happens to be in the
- *  "Business" feed. */
+ *  Every non-RBA feed is filtered through STRONG_FINANCIAL_SIGNALS.
+ *  RBA is kept as-is (every item is monetary policy). */
 const FEEDS = [
   {
     id: 'rba',
@@ -48,7 +51,6 @@ const FEEDS = [
     category: 'general',
     kicker: 'SMH · Business',
     sourceUrl: 'https://www.smh.com.au/business',
-    filter: /(rate|inflation|wage|tax|super|ato|asx|market|bank|economy|gdp|cpi|jobs|unemployment|housing|mortgage|property|dollar|treasury|rba|cost of living|interest|pay|salary|finance|invest|share|fund|earning|spent|spend|price|prices|cost|consumer|retail|mining|energy|gas|electric|company|companies|corporate|profit|revenue|merger|acquisition|division|trading|trader|wall street|wall st|bond|yield)/i,
   },
   {
     id: 'age-business',
@@ -57,7 +59,6 @@ const FEEDS = [
     category: 'general',
     kicker: 'The Age · Business',
     sourceUrl: 'https://www.theage.com.au/business',
-    filter: /(rate|inflation|wage|tax|super|ato|asx|market|bank|economy|gdp|cpi|jobs|unemployment|housing|mortgage|property|dollar|treasury|rba|cost of living|interest|pay|salary|finance|invest|share|fund|earning|spent|spend|price|prices|cost|consumer|retail|mining|energy|gas|electric|company|companies|corporate|profit|revenue|merger|acquisition|division|trading|trader|wall street|wall st|bond|yield)/i,
   },
   {
     id: 'guardian-au',
@@ -66,7 +67,6 @@ const FEEDS = [
     category: 'general',
     kicker: 'The Guardian · Business',
     sourceUrl: 'https://www.theguardian.com/au/business',
-    filter: /(rate|inflation|wage|tax|super|ato|asx|market|bank|economy|gdp|cpi|jobs|unemployment|housing|mortgage|property|dollar|treasury|rba|cost of living|interest|pay|salary|finance|invest|share|fund|earning|spent|spend|price|prices|cost|consumer|retail|mining|energy|gas|electric|company|companies|corporate|profit|revenue|merger|acquisition|division|trading|trader|wall street|wall st|bond|yield|australia|australian|nsw|vic|qld|wa|sa|tas|act|nt|fair work|ato|treasury|ombs)/i,
   },
 ];
 
@@ -82,6 +82,15 @@ const TITLE_BLOCKLIST = [
   /opinion:/i,
   /editorial:/i,
   /letters:/i,
+  // Non-financial culture / sport / lifestyle topics that the strong
+  // signal filter can miss if the title contains "rate" or "price"
+  // in a non-financial context (e.g. "rate of interest" about a book).
+  /blue poles/i,
+  /archibald/i,
+  /art gallery/i,
+  /gallery of/i,
+  /concert|festival|tour|gig|fashion|sport|afl|nrl|netball|cricket|tennis|soccer|footballer|musician|singer|actor|actress|celebrity|reality tv|masterchef|big brother|kitchen|recipe|cookbook|restaurant|cafe|wine|beer|spirits|holiday|travel|flight|hotel|resort/i,
+  /weather|storm|cyclone|flood|fire |bushfire|quake/i,
 ];
 
 /** Read every existing post id+sourceUrl so we can de-dupe. */
@@ -497,8 +506,12 @@ async function main() {
   for (const feed of FEEDS) {
     console.log(`[news] fetching ${feed.id}…`);
     const items = await fetchFeed(feed);
-    const filtered = feed.filter ? items.filter((it) => feed.filter.test(it.title)) : items;
-    console.log(`[news]   ${items.length} item(s) → ${filtered.length} after filter`);
+    // RBA is always relevant. For everything else, require at least one
+    // strong personal-finance signal in the title OR description.
+    const filtered = feed.id === 'rba'
+      ? items
+      : items.filter((it) => STRONG_FINANCIAL_SIGNALS.test(it.title) || STRONG_FINANCIAL_SIGNALS.test(it.description));
+    console.log(`[news]   ${items.length} item(s) → ${filtered.length} after strict filter`);
     for (const it of filtered) {
       if (!posted.has(it.link)) allItems.push(it);
     }
