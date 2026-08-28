@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
 
@@ -280,6 +281,8 @@ export default function HecsGuide() {
             people who earn below the repayment threshold, the debt can grow
             for years before repayments start reducing it.
           </p>
+
+          <InArticleAd />
 
           <h2>5. Should you make voluntary repayments?</h2>
           <p>

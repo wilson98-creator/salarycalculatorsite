@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
@@ -367,6 +368,7 @@ export default function TaxBracketsHistoryPage() {
             cut to the lowest earners, which is why the political debate
             was so fierce.
           </p>
+          <InArticleAd />
         </section>
 
         <section className="prose-content">

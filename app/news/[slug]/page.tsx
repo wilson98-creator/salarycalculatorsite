@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { loadAllNews, getNewsBySlug, getRelatedNews } from '@/lib/news/loader';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { JsonLd, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
 export function generateStaticParams() {
@@ -124,6 +125,8 @@ export default async function NewsPostPage({ params }: { params: Promise<{ slug:
             </p>
           ))}
         </div>
+
+        <InArticleAd />
 
         {/* What it means */}
         <section className="section">

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
 
@@ -268,6 +269,8 @@ export default function MlsGuide() {
             the financial year, the surcharge is pro-rated based on the
             number of days you were covered.
           </p>
+
+          <InArticleAd />
 
           <h2>5. Lifetime Health Cover loading</h2>
           <p>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
@@ -252,6 +253,8 @@ export default function SuperGuide() {
             to more conservative options reduces the risk of a market
             downturn eating into your savings just as you need them.
           </p>
+
+          <InArticleAd />
 
           <h2>5. When you can access it</h2>
           <p>

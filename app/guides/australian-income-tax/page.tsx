@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema } from '@/components/Schema';
 
@@ -249,6 +250,8 @@ export default function IncomeTaxGuide() {
             remaining offset. The SalaryCalc calculator applies LITO
             automatically.
           </p>
+
+          <InArticleAd />
 
           <h2>5. Medicare levy</h2>
           <p>

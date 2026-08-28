@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, howToSchema } from '@/components/Schema';
 
@@ -254,6 +255,8 @@ export default function SalarySacrificeGuide() {
             not-for-profit organisations offer novated leases as a standard
             benefit.
           </p>
+
+          <InArticleAd />
 
           <h2>5. Salary packaging for not-for-profit and public sector workers</h2>
           <p>

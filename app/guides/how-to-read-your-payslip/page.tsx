@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { brand } from '@/lib/brand';
 import { sources } from '@/lib/tax/sources';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { InArticleAd } from '@/components/InArticleAd';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { JsonLd, faqSchema, articleSchema, breadcrumbSchema } from '@/components/Schema';
 
@@ -265,6 +266,7 @@ export default function HowToReadYourPayslipPage() {
             withholding Medicare, so tick the "foreign resident" or "no
             Medicare levy" box on your TFN declaration.
           </p>
+          <InArticleAd />
         </section>
 
         <section className="prose-content">
